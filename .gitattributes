@@ -1,2 +1,65 @@
 # Auto detect text files and perform LF normalization
 * text=auto
+# Unity 项目 Git LFS 配置
+# 场景文件
+*.unity filter=lfs diff=lfs merge=lfs -text
+# 预制体文件
+*.prefab filter=lfs diff=lfs merge=lfs -text
+# 材质文件
+*.mat filter=lfs diff=lfs merge=lfs -text
+# 纹理文件
+*.png filter=lfs diff=lfs merge=lfs -text
+*.jpg filter=lfs diff=lfs merge=lfs -text
+*.jpeg filter=lfs diff=lfs merge=lfs -text
+*.tga filter=lfs diff=lfs merge=lfs -text
+*.psd filter=lfs diff=lfs merge=lfs -text
+*.exr filter=lfs diff=lfs merge=lfs -text
+# 3D 模型文件
+*.fbx filter=lfs diff=lfs merge=lfs -text
+*.obj filter=lfs diff=lfs merge=lfs -text
+*.dae filter=lfs diff=lfs merge=lfs -text
+*.3ds filter=lfs diff=lfs merge=lfs -text
+*.blend filter=lfs diff=lfs merge=lfs -text
+# 音频文件
+*.mp3 filter=lfs diff=lfs merge=lfs -text
+*.wav filter=lfs diff=lfs merge=lfs -text
+*.ogg filter=lfs diff=lfs merge=lfs -text
+*.aiff filter=lfs diff=lfs merge=lfs -text
+# 视频文件
+*.mp4 filter=lfs diff=lfs merge=lfs -text
+*.mov filter=lfs diff=lfs merge=lfs -text
+*.avi filter=lfs diff=lfs merge=lfs -text
+# 字体文件
+*.ttf filter=lfs diff=lfs merge=lfs -text
+*.otf filter=lfs diff=lfs merge=lfs -text
+# 其他 Unity 资源文件
+*.asset filter=lfs diff=lfs merge=lfs -text
+*.controller filter=lfs diff=lfs merge=lfs -text
+*.anim filter=lfs diff=lfs merge=lfs -text
+*.overrideController filter=lfs diff=lfs merge=lfs -text
+*.physicMaterial filter=lfs diff=lfs merge=lfs -text
+*.physicsMaterial2D filter=lfs diff=lfs merge=lfs -text
+*.playable filter=lfs diff=lfs merge=lfs -text
+*.preset filter=lfs diff=lfs merge=lfs -text
+*.spriteatlas filter=lfs diff=lfs merge=lfs -text
+*.brush filter=lfs diff=lfs merge=lfs -text
+*.colors filter=lfs diff=lfs merge=lfs -text
+*.curves filter=lfs diff=lfs merge=lfs -text
+*.curvesNormalized filter=lfs diff=lfs merge=lfs -text
+*.giparams filter=lfs diff=lfs merge=lfs -text
+*.guiskin filter=lfs diff=lfs merge=lfs -text
+*.mask filter=lfs diff=lfs merge=lfs -text
+*.physics2D filter=lfs diff=lfs merge=lfs -text
+*.shadervariants filter=lfs diff=lfs merge=lfs -text
+*.signal filter=lfs diff=lfs merge=lfs -text
+# 动画文件
+*.fbx.asset filter=lfs diff=lfs merge=lfs -text
+*.anim.asset filter=lfs diff=lfs merge=lfs -text
+*.asset.meta filter=lfs diff=lfs merge=lfs -text
+# 压缩文件
+*.zip filter=lfs diff=lfs merge=lfs -text
+*.rar filter=lfs diff=lfs merge=lfs -text
+*.7z filter=lfs diff=lfs merge=lfs -text
+# 二进制文件
+*.bytes filter=lfs diff=lfs merge=lfs -text
+*.bin filter=lfs diff=lfs merge=lfs -text

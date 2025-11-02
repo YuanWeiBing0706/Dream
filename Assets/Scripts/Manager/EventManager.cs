@@ -3,7 +3,7 @@ using System.Collections.Concurrent;
 using System.Collections.Generic;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
-namespace Proteon
+namespace Dream
 {
     public class EventManager
     {

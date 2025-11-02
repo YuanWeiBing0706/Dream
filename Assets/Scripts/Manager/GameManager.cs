@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Debug;
 using System.Linq;
-using System.Proteon;
 using System.Reflection;
 using Cysharp.Threading.Tasks;
 using Events;
@@ -11,7 +10,7 @@ using Interface.IUntiy;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-namespace Proteon
+namespace Dream
 {
     /// <summary>
     /// 游戏管理器，负责管理游戏系统的生命周期和初始化
@@ -58,7 +57,7 @@ namespace Proteon
         /// </summary>
         private async void Start()
         {
-            await LoadResources(); //加载资源
+            // await LoadResources(); //加载资源
             DebugConsoleSystem.Instance.Init(); //初始化调试系统
 
             //自动收集并初始化所有 GameSystem
@@ -121,8 +120,8 @@ namespace Proteon
         /// <returns>异步任务</returns>
         private async UniTask LoadResources()
         {
-            await ResourcesManager.Initialize();
-            await ResourcesManager.Inst.LoadAllConfig();
+            // await ResourcesManager.Initialize();
+            // await ResourcesManager.Inst.LoadAllConfig();
         }
 
         /// <summary>

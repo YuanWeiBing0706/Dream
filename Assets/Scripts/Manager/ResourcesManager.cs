@@ -5,7 +5,7 @@ using System.Reflection;
 using Cysharp.Threading.Tasks;
 using UnityEngine;
 using YooAsset;
-namespace Proteon
+namespace Dream
 {
    public class ResourcesManager
     {
@@ -39,38 +39,56 @@ namespace Proteon
             }
 
 #if UNITY_EDITOR
-            // 编辑器模拟构建模式，模拟真实包加载流程
-            var buildResult = EditorSimulateModeHelper.SimulateBuild("DefaultPackage");
-
-            // 获取资源包根目录
-            var packageRoot = buildResult.PackageRootDirectory;
-
-            // 创建模拟文件系统参数
-            var editorFileSystemParams = FileSystemParameters.CreateDefaultEditorFileSystemParameters(packageRoot);
-
-            // 设置模拟模式初始化参数
-            var initParameters = new EditorSimulateModeParameters();
-            initParameters.EditorFileSystemParameters = editorFileSystemParams;
-
-            // 异步初始化资源包
-            var initOperation = package.InitializeAsync(initParameters);
-            await initOperation;
-
-            // 获取包版本并更新资源清单
-            var op = package.RequestPackageVersionAsync();
-            await op;
-            await package.UpdatePackageManifestAsync(op.PackageVersion);
-
-            // 打印初始化结果
-            if (initOperation.Status == EOperationStatus.Succeed)
+            try
             {
-                Debug.Log("资源包初始化成功");
+                // 编辑器模拟构建模式，模拟真实包加载流程
+                var buildResult = EditorSimulateModeHelper.SimulateBuild("DefaultPackage");
+
+                // 获取资源包根目录
+                var packageRoot = buildResult.PackageRootDirectory;
+
+                // 创建模拟文件系统参数
+                var editorFileSystemParams = FileSystemParameters.CreateDefaultEditorFileSystemParameters(packageRoot);
+
+                // 设置模拟模式初始化参数
+                var initParameters = new EditorSimulateModeParameters();
+                initParameters.EditorFileSystemParameters = editorFileSystemParams;
+
+                // 异步初始化资源包
+                var initOperation = package.InitializeAsync(initParameters);
+                await initOperation;
+
+                // 获取包版本并更新资源清单
+                var op = package.RequestPackageVersionAsync();
+                await op;
+                await package.UpdatePackageManifestAsync(op.PackageVersion);
+
+                if (initOperation.Status == EOperationStatus.Succeed)
+                {
+                    Debug.Log("资源包初始化成功（EditorSimulateMode）");
+                    return;
+                }
+                else
+                {
+                    Debug.LogWarning("资源包初始化失败（EditorSimulateMode），将回退到 Offline 模式");
+                }
             }
-            else
+            catch (Exception e)
             {
-                Debug.Log("资源包初始化失败");
+                Debug.LogWarning($"EditorSimulate 初始化失败：{e.Message}\n回退到 Offline 模式");
             }
 
+            // 回退：使用离线模式参数
+            {
+                var buildinFileSystemParams = FileSystemParameters.CreateDefaultBuildinFileSystemParameters();
+                var initParameters = new OfflinePlayModeParameters();
+                initParameters.BuildinFileSystemParameters = buildinFileSystemParams;
+                await package.InitializeAsync(initParameters);
+                var op = package.RequestPackageVersionAsync();
+                await op;
+                await package.UpdatePackageManifestAsync(op.PackageVersion);
+                Debug.Log("资源包初始化成功（OfflinePlayMode 回退）");
+            }
 #else
             // 构建发布平台使用的离线模式
             var buildinFileSystemParams = FileSystemParameters.CreateDefaultBuildinFileSystemParameters();

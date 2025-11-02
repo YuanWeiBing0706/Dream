@@ -118,6 +118,15 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""AngleView"",
+                    ""type"": ""Value"",
+                    ""id"": ""3bf74ec7-3a45-4738-abce-2715af0f1c0a"",
+                    ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
@@ -250,6 +259,17 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Dodge"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2f33430c-09fb-40fa-8c20-b499f373c403"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""AngleView"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -419,6 +439,7 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
         m_PlayerInput_Key_Move = m_PlayerInput_Key.FindAction("Move", throwIfNotFound: true);
         m_PlayerInput_Key_Behavior = m_PlayerInput_Key.FindAction("Behavior", throwIfNotFound: true);
         m_PlayerInput_Key_Dodge = m_PlayerInput_Key.FindAction("Dodge", throwIfNotFound: true);
+        m_PlayerInput_Key_AngleView = m_PlayerInput_Key.FindAction("AngleView", throwIfNotFound: true);
         // PlayerInput_Pad
         m_PlayerInput_Pad = asset.FindActionMap("PlayerInput_Pad", throwIfNotFound: true);
         m_PlayerInput_Pad_Move = m_PlayerInput_Pad.FindAction("Move", throwIfNotFound: true);
@@ -508,6 +529,7 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerInput_Key_Move;
     private readonly InputAction m_PlayerInput_Key_Behavior;
     private readonly InputAction m_PlayerInput_Key_Dodge;
+    private readonly InputAction m_PlayerInput_Key_AngleView;
     /// <summary>
     /// Provides access to input actions defined in input action map "PlayerInput_Key".
     /// </summary>
@@ -531,6 +553,10 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "PlayerInput_Key/Dodge".
         /// </summary>
         public InputAction @Dodge => m_Wrapper.m_PlayerInput_Key_Dodge;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerInput_Key/AngleView".
+        /// </summary>
+        public InputAction @AngleView => m_Wrapper.m_PlayerInput_Key_AngleView;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -566,6 +592,9 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
             @Dodge.started += instance.OnDodge;
             @Dodge.performed += instance.OnDodge;
             @Dodge.canceled += instance.OnDodge;
+            @AngleView.started += instance.OnAngleView;
+            @AngleView.performed += instance.OnAngleView;
+            @AngleView.canceled += instance.OnAngleView;
         }
 
         /// <summary>
@@ -586,6 +615,9 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
             @Dodge.started -= instance.OnDodge;
             @Dodge.performed -= instance.OnDodge;
             @Dodge.canceled -= instance.OnDodge;
+            @AngleView.started -= instance.OnAngleView;
+            @AngleView.performed -= instance.OnAngleView;
+            @AngleView.canceled -= instance.OnAngleView;
         }
 
         /// <summary>
@@ -765,6 +797,13 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnDodge(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "AngleView" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnAngleView(InputAction.CallbackContext context);
     }
     /// <summary>
     /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PlayerInput_Pad" which allows adding and removing callbacks.

@@ -1,5 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
-namespace Proteon
+namespace Dream
 {
     public abstract class Config
     {
