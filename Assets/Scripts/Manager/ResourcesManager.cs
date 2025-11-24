@@ -2,30 +2,28 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using Attribute;
 using Cysharp.Threading.Tasks;
+using Dream;
 using UnityEngine;
 using YooAsset;
-namespace Dream
-{
-   public class ResourcesManager
-    {
-        // 单例实例
-        private readonly static ResourcesManager resourceManager = new ResourcesManager();
-        
-        // 获取单例实例
-        public static ResourcesManager Inst => resourceManager;
 
+namespace Manager
+{
+    public class ResourcesManager
+    {
         // 已加载资源的缓存句柄
-        private static Dictionary<string, AssetHandle> assetOperationHandles = new Dictionary<string, AssetHandle>();
+        private Dictionary<string, AssetHandle> assetOperationHandles = new Dictionary<string, AssetHandle>();
 
         // 已加载的配置对象缓存，按类型区分
         private readonly Dictionary<Type, Config> configs = new Dictionary<Type, Config>();
 
-        /// <summary>
-        /// 初始化资源系统（使用 YooAsset）
-        /// 根据平台区分编辑器模拟模式与离线模式初始化
-        /// </summary>
-        public async static UniTask Initialize()
+        public ResourcesManager()
+        {
+
+        }
+        
+        public async UniTask InitializeAsync()
         {
             // 初始化 YooAsset 框架
             YooAssets.Initialize();
@@ -112,7 +110,7 @@ namespace Dream
         /// <typeparam name="T">资源类型</typeparam>
         /// <param name="assetPath">资源路径</param>
         /// <returns>加载完成的资源对象</returns>
-        public static T LoadAsset<T>(string assetPath) where T : UnityEngine.Object
+        public T LoadAsset<T>(string assetPath) where T : UnityEngine.Object
         {
             // 若缓存中不存在，则同步加载
             if (!assetOperationHandles.TryGetValue(assetPath, out AssetHandle handle))
@@ -135,7 +133,7 @@ namespace Dream
         /// 获取所有带有 ConfigAttribute 特性的类型（用于配置表加载）
         /// </summary>
         /// <returns>类型集合</returns>
-        private static IEnumerable<Type> GetTypesWithConfigAttribute()
+        private IEnumerable<Type> GetTypesWithConfigAttribute()
         {
             return AppDomain.CurrentDomain.GetAssemblies()
                 .SelectMany(assembly =>
@@ -172,9 +170,9 @@ namespace Dream
 
                     // 强制转为 Config 类型
                     var config = instance as Config;
-                    
-                   await config.LoadConfig();
-                   
+
+                    await config.LoadConfig();
+
                     configs.TryAdd(type, config);
                 }
                 catch (Exception ex)

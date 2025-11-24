@@ -9,17 +9,13 @@ namespace Dream
     {
         // 多线程安全的字典，存储事件主题和对应的委托集合
         private readonly ConcurrentDictionary<string, HashSet<Delegate>> _eventConcurrentDictionary = new ConcurrentDictionary<string, HashSet<Delegate>>();
-        // 单例实例
-        private readonly static EventManager _instance;
-        // 获取单例实例
-        public static EventManager Instance => _instance;
 
         /// <summary>
         /// 静态构造函数，初始化单例实例
         /// </summary>
         static EventManager()
         {
-            _instance = new EventManager();
+            
         }
 
         /// <summary>
