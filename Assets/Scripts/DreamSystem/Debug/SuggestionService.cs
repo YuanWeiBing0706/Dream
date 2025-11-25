@@ -1,7 +1,16 @@
-﻿namespace DreamSystem.Debug
+﻿
+namespace DreamSystem.Debug
 {
     public class SuggestionService
     {
+        // readonly ResourcesManager _resources;
+        //
+        // // 注入！不要用 static Inst
+        // public SuggestionService(ResourcesManager resources): base(waitAsync: ture)
+        // {
+        //     _resources = resources;
+        // }
+        //
         // /// <summary>
         // /// 获取 Action 层级的联想建议（第一token，不含斜杠）
         // /// </summary>
@@ -9,7 +18,7 @@
         // /// <returns>匹配该前缀的所action 名称</returns>
         // public List<string> GetActionSuggestions(string prefix)
         // {
-        //     return ResourcesManager.Inst.GetConfig<CommandConfig>().GetAllCouponDataList()
+        //     return _resources.GetConfig<CommandConfig>().GetAllCouponDataList()
         //         .Select(commandData => commandData.action) // 提取所action 名称
         //         .Where(a => a.StartsWith(prefix, StringComparison.OrdinalIgnoreCase)) // 匹配前缀
         //         .Distinct(StringComparer.OrdinalIgnoreCase)
@@ -24,7 +33,7 @@
         // /// <returns>匹配action 下的所module 名称</returns>
         // public List<string> GetModuleSuggestions(string action, string prefix)
         // {
-        //     return ResourcesManager.Inst.GetConfig<CommandConfig>().GetAllCouponDataList()
+        //     return _resources.GetConfig<CommandConfig>().GetAllCouponDataList()
         //         .Where(commandData => commandData.action.Equals(action, StringComparison.OrdinalIgnoreCase)) // 筛action
         //         .Select(commandData => commandData.module) // 提取 module 名称
         //         .Where(m => m.StartsWith(prefix, StringComparison.OrdinalIgnoreCase)) // 匹配前缀
@@ -43,7 +52,7 @@
         // public List<string> GetParameterSuggestions(string action, string module, int paramIndex, string prefix)
         // {
         //     // 查找命令
-        //     var cmd = ResourcesManager.Inst.GetConfig<CommandConfig>().GetAllCouponDataList()
+        //     var cmd = _resources.GetConfig<CommandConfig>().GetAllCouponDataList()
         //         .FirstOrDefault(cd => cd.action.Equals(action, StringComparison.OrdinalIgnoreCase) &&
         //                               cd.module.Equals(module, StringComparison.OrdinalIgnoreCase));
         //     if (cmd.action == null || paramIndex < 0 || paramIndex >= cmd.parameters.Count)
@@ -57,21 +66,21 @@
         //     switch (providerKey)
         //     {
         //         case "ItemList":
-        //             raw = ResourcesManager.Inst
+        //             raw = _resources
         //                 .GetConfig<ItemConfig>()
         //                 .GetAllItems()
         //                 .Select(i => i.itemID)
         //                 .ToList();
         //             break;
         //         case "CouponList":
-        //             raw = ResourcesManager.Inst
+        //             raw = _resources
         //                 .GetConfig<CouponConfig>()
         //                 .GetAllCouponDataList()
         //                 .Select(coupon => coupon.couponID)
         //                 .ToList();
         //             break;
         //         case "TarotList":
-        //             raw = ResourcesManager.Inst
+        //             raw = _resources
         //                 .GetConfig<TarotConfig>()
         //                 .GetAllTarotDataList()
         //                 .Select(tarot => tarot.id)
@@ -93,35 +102,35 @@
         //             raw = new List<string> {"100", "200", "500", "1000"};
         //             break;
         //         case "MaterialList":
-        //             raw = ResourcesManager.Inst
+        //             raw = _resources
         //                 .GetConfig<DiceMaterialForgeConfig>()
         //                 .allMat
         //                 .Select(m => m.id)
         //                 .ToList();
         //             break;
         //         case "AbilityList":
-        //             raw = ResourcesManager.Inst
+        //             raw = _resources
         //                 .GetConfig<DiceFaceForgeConfig>()
         //                 .RandomableFace
         //                 .Select(f => f.id)
         //                 .ToList();
         //             break;
         //         case "DiceFaceList":
-        //             raw = ResourcesManager.Inst
+        //             raw = _resources
         //                 .GetConfig<ExpansionPackConfig>()
         //                 .GetAllExpansionPacks().Where(ex => ex.expansionPackType == ExpansionPackType.ModifyDiceFace)
         //                 .Select(ex => ex.expansionPackID)
         //                 .ToList();
         //             break;
         //         case "DiceMaterialList":
-        //             raw = ResourcesManager.Inst
+        //             raw = _resources
         //                 .GetConfig<ExpansionPackConfig>()
         //                 .GetAllExpansionPacks().Where(ex => ex.expansionPackType == ExpansionPackType.ModifyDiceFace)
         //                 .Select(ex => ex.expansionPackID)
         //                 .ToList();
         //             break;
         //         case "ComboList":
-        //             raw = ResourcesManager.Inst
+        //             raw = _resources
         //                 .GetConfig<ExpansionPackConfig>()
         //                 .GetAllExpansionPacks().Where(ex => ex.expansionPackType == ExpansionPackType.ComboEnhancement)
         //                 .Select(ex => ex.expansionPackID)

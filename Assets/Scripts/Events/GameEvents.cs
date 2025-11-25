@@ -5,9 +5,7 @@
     /// </summary>
     public class GameEvents
     {
-        public const string PLAYER_ANGLE_VIEW_PERFORMED = nameof(PLAYER_ANGLE_VIEW_PERFORMED);
-        
-        public const string PLAYER_ANGLE_VIEW_CANCELED = nameof(PLAYER_ANGLE_VIEW_CANCELED);
-        
+        public const string PLAYER_MOVE_PERFORMED = nameof(PLAYER_MOVE_PERFORMED);
+        public const string PLAYER_MOVE_CANCELED = nameof(PLAYER_MOVE_CANCELED);
     }
 }

@@ -89,168 +89,47 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
     ""name"": ""GameInputManager"",
     ""maps"": [
         {
-            ""name"": ""PlayerInput_Key"",
+            ""name"": ""PlayerControl"",
             ""id"": ""d81ea031-6671-4042-af38-3726705ad0a8"",
             ""actions"": [
                 {
                     ""name"": ""Move"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""2aa21887-b6fe-43d9-a5ab-70d50d1500bb"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
-                },
-                {
-                    ""name"": ""Behavior"",
-                    ""type"": ""Button"",
-                    ""id"": ""460e7721-79bd-4b26-88b8-dac9965ef2b0"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""Dodge"",
-                    ""type"": ""Button"",
+                    ""type"": ""Value"",
                     ""id"": ""518fe411-db6f-4d6c-843a-52cee3647c94"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""initialStateCheck"": true
                 },
                 {
                     ""name"": ""AngleView"",
-                    ""type"": ""Value"",
+                    ""type"": ""PassThrough"",
                     ""id"": ""3bf74ec7-3a45-4738-abce-2715af0f1c0a"",
                     ""expectedControlType"": ""Vector2"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Behavior"",
+                    ""type"": ""Value"",
+                    ""id"": ""e0572ea5-22b2-4b30-a636-72e7ccd43957"",
+                    ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
                 }
             ],
             ""bindings"": [
-                {
-                    ""name"": """",
-                    ""id"": ""97a49d90-a579-40e2-b422-f7095500e3be"",
-                    ""path"": ""<Keyboard>/w"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""010ad53a-b432-4ff6-b0d5-51ac0f407637"",
-                    ""path"": ""<Keyboard>/d"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a7ff7902-c48e-46ad-b141-93a33c0d7bfc"",
-                    ""path"": ""<Keyboard>/a"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""9f4ba695-43ab-483e-b01a-847531e3d8ee"",
-                    ""path"": ""<Keyboard>/s"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Move"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""1317ce4f-1c6f-42ab-9e40-d1259581962c"",
-                    ""path"": ""<Mouse>/leftButton"",
-                    ""interactions"": ""Hold,Press"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Behavior"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""67473e5f-82d4-45d7-8aea-b69e367acb08"",
-                    ""path"": ""<Mouse>/rightButton"",
-                    ""interactions"": ""Hold,Press"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Behavior"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""77ea99d3-d77d-4b82-bf5b-9c23878946e2"",
-                    ""path"": ""<Mouse>/middleButton"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Behavior"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""12dc4134-0094-4606-abaf-82669a55e0e3"",
-                    ""path"": ""<Keyboard>/q"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Behavior"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""6b7484eb-7668-4ae2-a49e-3e6dafbfd944"",
-                    ""path"": ""<Keyboard>/r"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Behavior"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""cf3315d2-1e70-4f66-b1eb-f420880533b2"",
-                    ""path"": ""<Keyboard>/e"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Behavior"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""a48a3bb4-aee4-4796-85d6-1fe953705d86"",
-                    ""path"": ""<Keyboard>/tab"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Behavior"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
                 {
                     ""name"": """",
                     ""id"": ""b2acab73-36d9-441d-8e9a-8777838c7faf"",
@@ -264,53 +143,73 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""2f33430c-09fb-40fa-8c20-b499f373c403"",
-                    ""path"": ""<Mouse>/delta"",
+                    ""id"": ""89ab0d04-9f07-431b-9a10-86b8f79cbfba"",
+                    ""path"": ""<Gamepad>/buttonEast"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""AngleView"",
+                    ""action"": ""Dodge"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
-                }
-            ]
-        },
-        {
-            ""name"": ""PlayerInput_Pad"",
-            ""id"": ""b892671d-173e-47ae-96ec-ef3d5a1ae96d"",
-            ""actions"": [
-                {
-                    ""name"": ""Move"",
-                    ""type"": ""Value"",
-                    ""id"": ""f3a9eb74-d220-4e04-b711-4503bf70d873"",
-                    ""expectedControlType"": ""Vector3"",
-                    ""processors"": """",
-                    ""interactions"": """",
-                    ""initialStateCheck"": true
                 },
                 {
-                    ""name"": ""Behavior"",
-                    ""type"": ""Button"",
-                    ""id"": ""3537c448-b835-4583-ae6a-89542cd00f3d"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
+                    ""name"": ""2D Vector"",
+                    ""id"": ""d94cc334-d239-4259-b113-8792936852a0"",
+                    ""path"": ""2DVector"",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": true,
+                    ""isPartOfComposite"": false
                 },
                 {
-                    ""name"": ""Dodge"",
-                    ""type"": ""Button"",
-                    ""id"": ""2a1d5463-fc13-4fd8-842f-f2987f602bdb"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
+                    ""name"": ""up"",
+                    ""id"": ""071b7ac2-4b57-4603-adaa-f9aaabfa0b2d"",
+                    ""path"": ""<Keyboard>/w"",
                     ""interactions"": """",
-                    ""initialStateCheck"": false
-                }
-            ],
-            ""bindings"": [
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""down"",
+                    ""id"": ""c2737bab-2437-4520-848b-5ee593149f44"",
+                    ""path"": ""<Keyboard>/s"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""left"",
+                    ""id"": ""906d2c1c-67f9-403f-a653-f130868cffcc"",
+                    ""path"": ""<Keyboard>/a"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
+                {
+                    ""name"": ""right"",
+                    ""id"": ""9b51bcfb-4e02-4dbb-ba97-3a167b5bbd82"",
+                    ""path"": ""<Keyboard>/d"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Move"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": true
+                },
                 {
                     ""name"": """",
-                    ""id"": ""79aa9c41-004a-41f9-87b3-27d07a0a4e44"",
+                    ""id"": ""6343b209-b3d5-4a2c-baed-cbffb2367e56"",
                     ""path"": ""<Gamepad>/leftStick"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -321,9 +220,20 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""07cc7465-32d3-4c10-8412-a5b977b0cf94"",
+                    ""id"": ""03225b9c-cd13-4ff0-9f83-c4be3be16a8b"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Behavior"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""730f7b83-5b0a-4b69-ba89-110b27d088bd"",
                     ""path"": ""<Gamepad>/buttonWest"",
-                    ""interactions"": ""Press,Hold"",
+                    ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
                     ""action"": ""Behavior"",
@@ -332,19 +242,19 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""ec5be730-bf1f-415f-86d6-cf10b89362a1"",
+                    ""id"": ""e2d79c5b-f04d-4c48-a9ef-3edb888c945b"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Behavior"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9c155898-585a-4f83-9178-22e815dd56e0"",
                     ""path"": ""<Gamepad>/buttonNorth"",
-                    ""interactions"": ""Hold,Press"",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Behavior"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""f2bc80e3-4666-4ffe-abbb-4ffb6d1643d3"",
-                    ""path"": ""<Gamepad>/buttonSouth"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -354,8 +264,8 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""511e4683-de0b-43fc-bc1b-9a23c87665b6"",
-                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""id"": ""65c7a1cf-db65-4851-bccb-7df428bd02b8"",
+                    ""path"": ""<Keyboard>/q"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
@@ -365,18 +275,7 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""2aadabec-e6b2-40f0-bf23-12e70a2ae3f9"",
-                    ""path"": ""<Gamepad>/rightTrigger"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""Behavior"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""4edd4c06-6bb5-4885-aee8-9cb9c27626c6"",
+                    ""id"": ""c732eb3f-61a0-463b-b08d-e3111111b9c2"",
                     ""path"": ""<Gamepad>/leftShoulder"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -387,7 +286,40 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""6ede6900-4435-4d54-9fa7-d58d71770358"",
+                    ""id"": ""4414acb8-23e4-4520-aedf-f1adc31098d6"",
+                    ""path"": ""<Keyboard>/e"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Behavior"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0e7b1956-ea85-45c8-9085-e8766ee94d1f"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Behavior"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e30ae339-1a25-482e-a4d5-ab897383bb79"",
+                    ""path"": ""<Keyboard>/r"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Behavior"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""03361762-a297-4c8f-9b4a-87a5da659bef"",
                     ""path"": ""<Gamepad>/leftTrigger"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -398,7 +330,18 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""ea9f7c64-d9ac-44b3-b7d1-357fcdd7ff07"",
+                    ""id"": ""042aa171-be57-4ef2-b853-2f19991aaf9e"",
+                    ""path"": ""<Keyboard>/tab"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Behavior"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c9659d90-c7e2-479e-8261-474413a3d1a8"",
                     ""path"": ""<Gamepad>/start"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -409,7 +352,40 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""82f16b42-9c85-49f1-8ca9-65a605d73f68"",
+                    ""id"": ""7c4314df-df02-4822-b762-8512bf1fac14"",
+                    ""path"": ""<Keyboard>/f"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Behavior"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""079f0ad1-05fa-4538-b349-dab0a75202c1"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Behavior"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d78ab713-9b17-494f-836f-d675a3dbf93a"",
+                    ""path"": ""<Mouse>/middleButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Behavior"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""0144268b-b434-4d99-80e9-69bfe495a9cf"",
                     ""path"": ""<Gamepad>/rightStickPress"",
                     ""interactions"": """",
                     ""processors"": """",
@@ -420,12 +396,23 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""60a11713-5a88-4a0d-8282-ffcd78f68793"",
-                    ""path"": ""<Gamepad>/buttonEast"",
+                    ""id"": ""4eca5ed8-f7e7-49d4-8efc-85ab77632781"",
+                    ""path"": ""<Gamepad>/rightStick"",
                     ""interactions"": """",
-                    ""processors"": """",
+                    ""processors"": ""StickDeadzone"",
                     ""groups"": """",
-                    ""action"": ""Dodge"",
+                    ""action"": ""AngleView"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""ecf14cf6-ce38-4e12-b016-d95fa2129ec2"",
+                    ""path"": ""<Mouse>/delta"",
+                    ""interactions"": """",
+                    ""processors"": ""ScaleVector2(x=0.1,y=0.1)"",
+                    ""groups"": """",
+                    ""action"": ""AngleView"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -434,23 +421,17 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
     ],
     ""controlSchemes"": []
 }");
-        // PlayerInput_Key
-        m_PlayerInput_Key = asset.FindActionMap("PlayerInput_Key", throwIfNotFound: true);
-        m_PlayerInput_Key_Move = m_PlayerInput_Key.FindAction("Move", throwIfNotFound: true);
-        m_PlayerInput_Key_Behavior = m_PlayerInput_Key.FindAction("Behavior", throwIfNotFound: true);
-        m_PlayerInput_Key_Dodge = m_PlayerInput_Key.FindAction("Dodge", throwIfNotFound: true);
-        m_PlayerInput_Key_AngleView = m_PlayerInput_Key.FindAction("AngleView", throwIfNotFound: true);
-        // PlayerInput_Pad
-        m_PlayerInput_Pad = asset.FindActionMap("PlayerInput_Pad", throwIfNotFound: true);
-        m_PlayerInput_Pad_Move = m_PlayerInput_Pad.FindAction("Move", throwIfNotFound: true);
-        m_PlayerInput_Pad_Behavior = m_PlayerInput_Pad.FindAction("Behavior", throwIfNotFound: true);
-        m_PlayerInput_Pad_Dodge = m_PlayerInput_Pad.FindAction("Dodge", throwIfNotFound: true);
+        // PlayerControl
+        m_PlayerControl = asset.FindActionMap("PlayerControl", throwIfNotFound: true);
+        m_PlayerControl_Move = m_PlayerControl.FindAction("Move", throwIfNotFound: true);
+        m_PlayerControl_Dodge = m_PlayerControl.FindAction("Dodge", throwIfNotFound: true);
+        m_PlayerControl_AngleView = m_PlayerControl.FindAction("AngleView", throwIfNotFound: true);
+        m_PlayerControl_Behavior = m_PlayerControl.FindAction("Behavior", throwIfNotFound: true);
     }
 
     ~@GameInputManager()
     {
-        UnityEngine.Debug.Assert(!m_PlayerInput_Key.enabled, "This will cause a leak and performance issues, GameInputManager.PlayerInput_Key.Disable() has not been called.");
-        UnityEngine.Debug.Assert(!m_PlayerInput_Pad.enabled, "This will cause a leak and performance issues, GameInputManager.PlayerInput_Pad.Disable() has not been called.");
+        UnityEngine.Debug.Assert(!m_PlayerControl.enabled, "This will cause a leak and performance issues, GameInputManager.PlayerControl.Disable() has not been called.");
     }
 
     /// <summary>
@@ -523,44 +504,44 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
         return asset.FindBinding(bindingMask, out action);
     }
 
-    // PlayerInput_Key
-    private readonly InputActionMap m_PlayerInput_Key;
-    private List<IPlayerInput_KeyActions> m_PlayerInput_KeyActionsCallbackInterfaces = new List<IPlayerInput_KeyActions>();
-    private readonly InputAction m_PlayerInput_Key_Move;
-    private readonly InputAction m_PlayerInput_Key_Behavior;
-    private readonly InputAction m_PlayerInput_Key_Dodge;
-    private readonly InputAction m_PlayerInput_Key_AngleView;
+    // PlayerControl
+    private readonly InputActionMap m_PlayerControl;
+    private List<IPlayerControlActions> m_PlayerControlActionsCallbackInterfaces = new List<IPlayerControlActions>();
+    private readonly InputAction m_PlayerControl_Move;
+    private readonly InputAction m_PlayerControl_Dodge;
+    private readonly InputAction m_PlayerControl_AngleView;
+    private readonly InputAction m_PlayerControl_Behavior;
     /// <summary>
-    /// Provides access to input actions defined in input action map "PlayerInput_Key".
+    /// Provides access to input actions defined in input action map "PlayerControl".
     /// </summary>
-    public struct PlayerInput_KeyActions
+    public struct PlayerControlActions
     {
         private @GameInputManager m_Wrapper;
 
         /// <summary>
         /// Construct a new instance of the input action map wrapper class.
         /// </summary>
-        public PlayerInput_KeyActions(@GameInputManager wrapper) { m_Wrapper = wrapper; }
+        public PlayerControlActions(@GameInputManager wrapper) { m_Wrapper = wrapper; }
         /// <summary>
-        /// Provides access to the underlying input action "PlayerInput_Key/Move".
+        /// Provides access to the underlying input action "PlayerControl/Move".
         /// </summary>
-        public InputAction @Move => m_Wrapper.m_PlayerInput_Key_Move;
+        public InputAction @Move => m_Wrapper.m_PlayerControl_Move;
         /// <summary>
-        /// Provides access to the underlying input action "PlayerInput_Key/Behavior".
+        /// Provides access to the underlying input action "PlayerControl/Dodge".
         /// </summary>
-        public InputAction @Behavior => m_Wrapper.m_PlayerInput_Key_Behavior;
+        public InputAction @Dodge => m_Wrapper.m_PlayerControl_Dodge;
         /// <summary>
-        /// Provides access to the underlying input action "PlayerInput_Key/Dodge".
+        /// Provides access to the underlying input action "PlayerControl/AngleView".
         /// </summary>
-        public InputAction @Dodge => m_Wrapper.m_PlayerInput_Key_Dodge;
+        public InputAction @AngleView => m_Wrapper.m_PlayerControl_AngleView;
         /// <summary>
-        /// Provides access to the underlying input action "PlayerInput_Key/AngleView".
+        /// Provides access to the underlying input action "PlayerControl/Behavior".
         /// </summary>
-        public InputAction @AngleView => m_Wrapper.m_PlayerInput_Key_AngleView;
+        public InputAction @Behavior => m_Wrapper.m_PlayerControl_Behavior;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
-        public InputActionMap Get() { return m_Wrapper.m_PlayerInput_Key; }
+        public InputActionMap Get() { return m_Wrapper.m_PlayerControl; }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
         public void Enable() { Get().Enable(); }
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
@@ -568,9 +549,9 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
         /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
         public bool enabled => Get().enabled;
         /// <summary>
-        /// Implicitly converts an <see ref="PlayerInput_KeyActions" /> to an <see ref="InputActionMap" /> instance.
+        /// Implicitly converts an <see ref="PlayerControlActions" /> to an <see ref="InputActionMap" /> instance.
         /// </summary>
-        public static implicit operator InputActionMap(PlayerInput_KeyActions set) { return set.Get(); }
+        public static implicit operator InputActionMap(PlayerControlActions set) { return set.Get(); }
         /// <summary>
         /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
         /// </summary>
@@ -578,23 +559,23 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
         /// </remarks>
-        /// <seealso cref="PlayerInput_KeyActions" />
-        public void AddCallbacks(IPlayerInput_KeyActions instance)
+        /// <seealso cref="PlayerControlActions" />
+        public void AddCallbacks(IPlayerControlActions instance)
         {
-            if (instance == null || m_Wrapper.m_PlayerInput_KeyActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_PlayerInput_KeyActionsCallbackInterfaces.Add(instance);
+            if (instance == null || m_Wrapper.m_PlayerControlActionsCallbackInterfaces.Contains(instance)) return;
+            m_Wrapper.m_PlayerControlActionsCallbackInterfaces.Add(instance);
             @Move.started += instance.OnMove;
             @Move.performed += instance.OnMove;
             @Move.canceled += instance.OnMove;
-            @Behavior.started += instance.OnBehavior;
-            @Behavior.performed += instance.OnBehavior;
-            @Behavior.canceled += instance.OnBehavior;
             @Dodge.started += instance.OnDodge;
             @Dodge.performed += instance.OnDodge;
             @Dodge.canceled += instance.OnDodge;
             @AngleView.started += instance.OnAngleView;
             @AngleView.performed += instance.OnAngleView;
             @AngleView.canceled += instance.OnAngleView;
+            @Behavior.started += instance.OnBehavior;
+            @Behavior.performed += instance.OnBehavior;
+            @Behavior.canceled += instance.OnBehavior;
         }
 
         /// <summary>
@@ -603,148 +584,30 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
         /// <remarks>
         /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
         /// </remarks>
-        /// <seealso cref="PlayerInput_KeyActions" />
-        private void UnregisterCallbacks(IPlayerInput_KeyActions instance)
+        /// <seealso cref="PlayerControlActions" />
+        private void UnregisterCallbacks(IPlayerControlActions instance)
         {
             @Move.started -= instance.OnMove;
             @Move.performed -= instance.OnMove;
             @Move.canceled -= instance.OnMove;
-            @Behavior.started -= instance.OnBehavior;
-            @Behavior.performed -= instance.OnBehavior;
-            @Behavior.canceled -= instance.OnBehavior;
             @Dodge.started -= instance.OnDodge;
             @Dodge.performed -= instance.OnDodge;
             @Dodge.canceled -= instance.OnDodge;
             @AngleView.started -= instance.OnAngleView;
             @AngleView.performed -= instance.OnAngleView;
             @AngleView.canceled -= instance.OnAngleView;
-        }
-
-        /// <summary>
-        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PlayerInput_KeyActions.UnregisterCallbacks(IPlayerInput_KeyActions)" />.
-        /// </summary>
-        /// <seealso cref="PlayerInput_KeyActions.UnregisterCallbacks(IPlayerInput_KeyActions)" />
-        public void RemoveCallbacks(IPlayerInput_KeyActions instance)
-        {
-            if (m_Wrapper.m_PlayerInput_KeyActionsCallbackInterfaces.Remove(instance))
-                UnregisterCallbacks(instance);
-        }
-
-        /// <summary>
-        /// Replaces all existing callback instances and previously registered input action callbacks associated with them with callbacks provided via <param cref="instance" />.
-        /// </summary>
-        /// <remarks>
-        /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
-        /// </remarks>
-        /// <seealso cref="PlayerInput_KeyActions.AddCallbacks(IPlayerInput_KeyActions)" />
-        /// <seealso cref="PlayerInput_KeyActions.RemoveCallbacks(IPlayerInput_KeyActions)" />
-        /// <seealso cref="PlayerInput_KeyActions.UnregisterCallbacks(IPlayerInput_KeyActions)" />
-        public void SetCallbacks(IPlayerInput_KeyActions instance)
-        {
-            foreach (var item in m_Wrapper.m_PlayerInput_KeyActionsCallbackInterfaces)
-                UnregisterCallbacks(item);
-            m_Wrapper.m_PlayerInput_KeyActionsCallbackInterfaces.Clear();
-            AddCallbacks(instance);
-        }
-    }
-    /// <summary>
-    /// Provides a new <see cref="PlayerInput_KeyActions" /> instance referencing this action map.
-    /// </summary>
-    public PlayerInput_KeyActions @PlayerInput_Key => new PlayerInput_KeyActions(this);
-
-    // PlayerInput_Pad
-    private readonly InputActionMap m_PlayerInput_Pad;
-    private List<IPlayerInput_PadActions> m_PlayerInput_PadActionsCallbackInterfaces = new List<IPlayerInput_PadActions>();
-    private readonly InputAction m_PlayerInput_Pad_Move;
-    private readonly InputAction m_PlayerInput_Pad_Behavior;
-    private readonly InputAction m_PlayerInput_Pad_Dodge;
-    /// <summary>
-    /// Provides access to input actions defined in input action map "PlayerInput_Pad".
-    /// </summary>
-    public struct PlayerInput_PadActions
-    {
-        private @GameInputManager m_Wrapper;
-
-        /// <summary>
-        /// Construct a new instance of the input action map wrapper class.
-        /// </summary>
-        public PlayerInput_PadActions(@GameInputManager wrapper) { m_Wrapper = wrapper; }
-        /// <summary>
-        /// Provides access to the underlying input action "PlayerInput_Pad/Move".
-        /// </summary>
-        public InputAction @Move => m_Wrapper.m_PlayerInput_Pad_Move;
-        /// <summary>
-        /// Provides access to the underlying input action "PlayerInput_Pad/Behavior".
-        /// </summary>
-        public InputAction @Behavior => m_Wrapper.m_PlayerInput_Pad_Behavior;
-        /// <summary>
-        /// Provides access to the underlying input action "PlayerInput_Pad/Dodge".
-        /// </summary>
-        public InputAction @Dodge => m_Wrapper.m_PlayerInput_Pad_Dodge;
-        /// <summary>
-        /// Provides access to the underlying input action map instance.
-        /// </summary>
-        public InputActionMap Get() { return m_Wrapper.m_PlayerInput_Pad; }
-        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Enable()" />
-        public void Enable() { Get().Enable(); }
-        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.Disable()" />
-        public void Disable() { Get().Disable(); }
-        /// <inheritdoc cref="UnityEngine.InputSystem.InputActionMap.enabled" />
-        public bool enabled => Get().enabled;
-        /// <summary>
-        /// Implicitly converts an <see ref="PlayerInput_PadActions" /> to an <see ref="InputActionMap" /> instance.
-        /// </summary>
-        public static implicit operator InputActionMap(PlayerInput_PadActions set) { return set.Get(); }
-        /// <summary>
-        /// Adds <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
-        /// </summary>
-        /// <param name="instance">Callback instance.</param>
-        /// <remarks>
-        /// If <paramref name="instance" /> is <c>null</c> or <paramref name="instance"/> have already been added this method does nothing.
-        /// </remarks>
-        /// <seealso cref="PlayerInput_PadActions" />
-        public void AddCallbacks(IPlayerInput_PadActions instance)
-        {
-            if (instance == null || m_Wrapper.m_PlayerInput_PadActionsCallbackInterfaces.Contains(instance)) return;
-            m_Wrapper.m_PlayerInput_PadActionsCallbackInterfaces.Add(instance);
-            @Move.started += instance.OnMove;
-            @Move.performed += instance.OnMove;
-            @Move.canceled += instance.OnMove;
-            @Behavior.started += instance.OnBehavior;
-            @Behavior.performed += instance.OnBehavior;
-            @Behavior.canceled += instance.OnBehavior;
-            @Dodge.started += instance.OnDodge;
-            @Dodge.performed += instance.OnDodge;
-            @Dodge.canceled += instance.OnDodge;
-        }
-
-        /// <summary>
-        /// Removes <see cref="InputAction.started"/>, <see cref="InputAction.performed"/> and <see cref="InputAction.canceled"/> callbacks provided via <param cref="instance" /> on all input actions contained in this map.
-        /// </summary>
-        /// <remarks>
-        /// Calling this method when <paramref name="instance" /> have not previously been registered has no side-effects.
-        /// </remarks>
-        /// <seealso cref="PlayerInput_PadActions" />
-        private void UnregisterCallbacks(IPlayerInput_PadActions instance)
-        {
-            @Move.started -= instance.OnMove;
-            @Move.performed -= instance.OnMove;
-            @Move.canceled -= instance.OnMove;
             @Behavior.started -= instance.OnBehavior;
             @Behavior.performed -= instance.OnBehavior;
             @Behavior.canceled -= instance.OnBehavior;
-            @Dodge.started -= instance.OnDodge;
-            @Dodge.performed -= instance.OnDodge;
-            @Dodge.canceled -= instance.OnDodge;
         }
 
         /// <summary>
-        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PlayerInput_PadActions.UnregisterCallbacks(IPlayerInput_PadActions)" />.
+        /// Unregisters <param cref="instance" /> and unregisters all input action callbacks via <see cref="PlayerControlActions.UnregisterCallbacks(IPlayerControlActions)" />.
         /// </summary>
-        /// <seealso cref="PlayerInput_PadActions.UnregisterCallbacks(IPlayerInput_PadActions)" />
-        public void RemoveCallbacks(IPlayerInput_PadActions instance)
+        /// <seealso cref="PlayerControlActions.UnregisterCallbacks(IPlayerControlActions)" />
+        public void RemoveCallbacks(IPlayerControlActions instance)
         {
-            if (m_Wrapper.m_PlayerInput_PadActionsCallbackInterfaces.Remove(instance))
+            if (m_Wrapper.m_PlayerControlActionsCallbackInterfaces.Remove(instance))
                 UnregisterCallbacks(instance);
         }
 
@@ -754,27 +617,27 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
         /// <remarks>
         /// If <paramref name="instance" /> is <c>null</c>, calling this method will only unregister all existing callbacks but not register any new callbacks.
         /// </remarks>
-        /// <seealso cref="PlayerInput_PadActions.AddCallbacks(IPlayerInput_PadActions)" />
-        /// <seealso cref="PlayerInput_PadActions.RemoveCallbacks(IPlayerInput_PadActions)" />
-        /// <seealso cref="PlayerInput_PadActions.UnregisterCallbacks(IPlayerInput_PadActions)" />
-        public void SetCallbacks(IPlayerInput_PadActions instance)
+        /// <seealso cref="PlayerControlActions.AddCallbacks(IPlayerControlActions)" />
+        /// <seealso cref="PlayerControlActions.RemoveCallbacks(IPlayerControlActions)" />
+        /// <seealso cref="PlayerControlActions.UnregisterCallbacks(IPlayerControlActions)" />
+        public void SetCallbacks(IPlayerControlActions instance)
         {
-            foreach (var item in m_Wrapper.m_PlayerInput_PadActionsCallbackInterfaces)
+            foreach (var item in m_Wrapper.m_PlayerControlActionsCallbackInterfaces)
                 UnregisterCallbacks(item);
-            m_Wrapper.m_PlayerInput_PadActionsCallbackInterfaces.Clear();
+            m_Wrapper.m_PlayerControlActionsCallbackInterfaces.Clear();
             AddCallbacks(instance);
         }
     }
     /// <summary>
-    /// Provides a new <see cref="PlayerInput_PadActions" /> instance referencing this action map.
+    /// Provides a new <see cref="PlayerControlActions" /> instance referencing this action map.
     /// </summary>
-    public PlayerInput_PadActions @PlayerInput_Pad => new PlayerInput_PadActions(this);
+    public PlayerControlActions @PlayerControl => new PlayerControlActions(this);
     /// <summary>
-    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PlayerInput_Key" which allows adding and removing callbacks.
+    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PlayerControl" which allows adding and removing callbacks.
     /// </summary>
-    /// <seealso cref="PlayerInput_KeyActions.AddCallbacks(IPlayerInput_KeyActions)" />
-    /// <seealso cref="PlayerInput_KeyActions.RemoveCallbacks(IPlayerInput_KeyActions)" />
-    public interface IPlayerInput_KeyActions
+    /// <seealso cref="PlayerControlActions.AddCallbacks(IPlayerControlActions)" />
+    /// <seealso cref="PlayerControlActions.RemoveCallbacks(IPlayerControlActions)" />
+    public interface IPlayerControlActions
     {
         /// <summary>
         /// Method invoked when associated input action "Move" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
@@ -783,13 +646,6 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnMove(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Behavior" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnBehavior(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Dodge" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
@@ -804,21 +660,6 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnAngleView(InputAction.CallbackContext context);
-    }
-    /// <summary>
-    /// Interface to implement callback methods for all input action callbacks associated with input actions defined by "PlayerInput_Pad" which allows adding and removing callbacks.
-    /// </summary>
-    /// <seealso cref="PlayerInput_PadActions.AddCallbacks(IPlayerInput_PadActions)" />
-    /// <seealso cref="PlayerInput_PadActions.RemoveCallbacks(IPlayerInput_PadActions)" />
-    public interface IPlayerInput_PadActions
-    {
-        /// <summary>
-        /// Method invoked when associated input action "Move" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnMove(InputAction.CallbackContext context);
         /// <summary>
         /// Method invoked when associated input action "Behavior" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
         /// </summary>
@@ -826,12 +667,5 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnBehavior(InputAction.CallbackContext context);
-        /// <summary>
-        /// Method invoked when associated input action "Dodge" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
-        /// </summary>
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
-        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
-        void OnDodge(InputAction.CallbackContext context);
     }
 }

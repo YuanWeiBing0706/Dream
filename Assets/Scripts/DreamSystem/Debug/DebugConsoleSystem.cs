@@ -1,21 +1,29 @@
-﻿namespace DreamSystem.Debug
-{
-    public class DebugConsoleSystem : GameSystem
-    {
-        private bool _isActive;
-        public DebugConsoleSystem()
-        {
+﻿using Cysharp.Threading.Tasks;
+using DreamManager;
 
-        }
-        
-        public void Activate()
+namespace DreamSystem.Debug
+{
+    public class DebugConsoleSystem : AsyncGameSystem
+    {
+        readonly ResourcesManager _resources;
+        readonly SuggestionService _suggestionService;
+
+        // 注入资源管理器和服务
+        public DebugConsoleSystem(ResourcesManager resources, SuggestionService suggestionService)
         {
-            _isActive = true;
+            _resources = resources;
+            _suggestionService = suggestionService;
         }
-        
-        public void LateTick()
+
+        protected override async UniTask OnStartAsync()
         {
-            if(!_isActive) return;
+            UnityEngine.Debug.Log("[DebugSystem] 开始准备数据...");
+            // var cmdConfig = _resources.GetConfig<CommandConfig>();
+            UnityEngine.Debug.Log("[DebugSystem] 准备成功...");
+            // 把配置塞给 Service，构建搜索树（Trie Tree）等
+            // _suggestionService.BuildCache(cmdConfig);
+            
+            await UniTask.CompletedTask;
         }
     }
 }
