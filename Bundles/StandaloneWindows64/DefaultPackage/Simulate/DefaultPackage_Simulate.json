@@ -9,7 +9,7 @@
     "BuildPipeline": "EditorSimulateBuildPipeline",
     "PackageName": "DefaultPackage",
     "PackageVersion": "Simulate",
-    "PackageNote": "2025/11/26 1:11:51",
+    "PackageNote": "2025/12/7 13:22:52",
     "AssetList": [
         {
             "Address": "",
@@ -1973,7 +1973,7 @@
         },
         {
             "Address": "",
-            "AssetPath": "Assets/Bundles/Mesh/Player/CharacterBaseMesh.fbx",
+            "AssetPath": "Assets/Bundles/Meshes/Player/CharacterBaseMesh.fbx",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 8,
@@ -1981,7 +1981,7 @@
         },
         {
             "Address": "",
-            "AssetPath": "Assets/Bundles/Mesh/Player/Weapons/Arrow01.fbx",
+            "AssetPath": "Assets/Bundles/Meshes/Player/Weapons/Arrow01.fbx",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 9,
@@ -1989,7 +1989,7 @@
         },
         {
             "Address": "",
-            "AssetPath": "Assets/Bundles/Mesh/Player/Weapons/Arrow02.fbx",
+            "AssetPath": "Assets/Bundles/Meshes/Player/Weapons/Arrow02.fbx",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 9,
@@ -1997,7 +1997,7 @@
         },
         {
             "Address": "",
-            "AssetPath": "Assets/Bundles/Mesh/Player/Weapons/Axe01.fbx",
+            "AssetPath": "Assets/Bundles/Meshes/Player/Weapons/Axe01.fbx",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 9,
@@ -2005,7 +2005,7 @@
         },
         {
             "Address": "",
-            "AssetPath": "Assets/Bundles/Mesh/Player/Weapons/Backpack01.fbx",
+            "AssetPath": "Assets/Bundles/Meshes/Player/Weapons/Backpack01.fbx",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 9,
@@ -2013,7 +2013,7 @@
         },
         {
             "Address": "",
-            "AssetPath": "Assets/Bundles/Mesh/Player/Weapons/Backpack02.fbx",
+            "AssetPath": "Assets/Bundles/Meshes/Player/Weapons/Backpack02.fbx",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 9,
@@ -2021,7 +2021,7 @@
         },
         {
             "Address": "",
-            "AssetPath": "Assets/Bundles/Mesh/Player/Weapons/Backpack03.fbx",
+            "AssetPath": "Assets/Bundles/Meshes/Player/Weapons/Backpack03.fbx",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 9,
@@ -2029,7 +2029,7 @@
         },
         {
             "Address": "",
-            "AssetPath": "Assets/Bundles/Mesh/Player/Weapons/Bow01.fbx",
+            "AssetPath": "Assets/Bundles/Meshes/Player/Weapons/Bow01.fbx",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 9,
@@ -2037,7 +2037,7 @@
         },
         {
             "Address": "",
-            "AssetPath": "Assets/Bundles/Mesh/Player/Weapons/Bow02.fbx",
+            "AssetPath": "Assets/Bundles/Meshes/Player/Weapons/Bow02.fbx",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 9,
@@ -2045,7 +2045,7 @@
         },
         {
             "Address": "",
-            "AssetPath": "Assets/Bundles/Mesh/Player/Weapons/Hammer01.fbx",
+            "AssetPath": "Assets/Bundles/Meshes/Player/Weapons/Hammer01.fbx",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 9,
@@ -2053,7 +2053,7 @@
         },
         {
             "Address": "",
-            "AssetPath": "Assets/Bundles/Mesh/Player/Weapons/Shield01.fbx",
+            "AssetPath": "Assets/Bundles/Meshes/Player/Weapons/Shield01.fbx",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 9,
@@ -2061,7 +2061,7 @@
         },
         {
             "Address": "",
-            "AssetPath": "Assets/Bundles/Mesh/Player/Weapons/Shield02.fbx",
+            "AssetPath": "Assets/Bundles/Meshes/Player/Weapons/Shield02.fbx",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 9,
@@ -2069,7 +2069,7 @@
         },
         {
             "Address": "",
-            "AssetPath": "Assets/Bundles/Mesh/Player/Weapons/Shield03.fbx",
+            "AssetPath": "Assets/Bundles/Meshes/Player/Weapons/Shield03.fbx",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 9,
@@ -2077,7 +2077,7 @@
         },
         {
             "Address": "",
-            "AssetPath": "Assets/Bundles/Mesh/Player/Weapons/Shield04.fbx",
+            "AssetPath": "Assets/Bundles/Meshes/Player/Weapons/Shield04.fbx",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 9,
@@ -2085,7 +2085,7 @@
         },
         {
             "Address": "",
-            "AssetPath": "Assets/Bundles/Mesh/Player/Weapons/Shield05.fbx",
+            "AssetPath": "Assets/Bundles/Meshes/Player/Weapons/Shield05.fbx",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 9,
@@ -2093,7 +2093,7 @@
         },
         {
             "Address": "",
-            "AssetPath": "Assets/Bundles/Mesh/Player/Weapons/Stage.fbx",
+            "AssetPath": "Assets/Bundles/Meshes/Player/Weapons/Stage.fbx",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 9,
@@ -2101,7 +2101,7 @@
         },
         {
             "Address": "",
-            "AssetPath": "Assets/Bundles/Mesh/Player/Weapons/Sword01.fbx",
+            "AssetPath": "Assets/Bundles/Meshes/Player/Weapons/Sword01.fbx",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 9,
@@ -2109,7 +2109,7 @@
         },
         {
             "Address": "",
-            "AssetPath": "Assets/Bundles/Mesh/Player/Weapons/Sword02.fbx",
+            "AssetPath": "Assets/Bundles/Meshes/Player/Weapons/Sword02.fbx",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 9,
@@ -2117,7 +2117,7 @@
         },
         {
             "Address": "",
-            "AssetPath": "Assets/Bundles/Mesh/Player/Weapons/Sword03.fbx",
+            "AssetPath": "Assets/Bundles/Meshes/Player/Weapons/Sword03.fbx",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 9,
@@ -2125,7 +2125,7 @@
         },
         {
             "Address": "",
-            "AssetPath": "Assets/Bundles/Mesh/Player/Weapons/Sword04.fbx",
+            "AssetPath": "Assets/Bundles/Meshes/Player/Weapons/Sword04.fbx",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 9,
@@ -2133,7 +2133,7 @@
         },
         {
             "Address": "",
-            "AssetPath": "Assets/Bundles/Mesh/Player/Weapons/Wand01.fbx",
+            "AssetPath": "Assets/Bundles/Meshes/Player/Weapons/Wand01.fbx",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 9,
@@ -2141,7 +2141,7 @@
         },
         {
             "Address": "",
-            "AssetPath": "Assets/Bundles/Mesh/Player/Weapons/Wand02.fbx",
+            "AssetPath": "Assets/Bundles/Meshes/Player/Weapons/Wand02.fbx",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 9,
@@ -2586,6 +2586,30 @@
             "AssetTags": [],
             "BundleID": 16,
             "DependBundleIDs": []
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundles/Textures/Mask.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 17,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundles/Textures/PolyArt.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 17,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "",
+            "AssetPath": "Assets/Bundles/Textures/PolyArtMaskBase.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 17,
+            "DependBundleIDs": []
         }
     ],
     "BundleList": [
@@ -2670,9 +2694,9 @@
             "DependBundleIDs": []
         },
         {
-            "BundleName": "defaultpackage_assets_bundles_mesh_player.bundle",
+            "BundleName": "defaultpackage_assets_bundles_meshes_player.bundle",
             "UnityCRC": 0,
-            "FileHash": "7111400e9c2a0ba873b3a238088ccecf",
+            "FileHash": "6adc5836efaca9d03b0a2068048ae918",
             "FileCRC": 0,
             "FileSize": 6985312,
             "Encrypted": false,
@@ -2680,9 +2704,9 @@
             "DependBundleIDs": []
         },
         {
-            "BundleName": "defaultpackage_assets_bundles_mesh_player_weapons.bundle",
+            "BundleName": "defaultpackage_assets_bundles_meshes_player_weapons.bundle",
             "UnityCRC": 0,
-            "FileHash": "8c5d871dcbf83456004afa4123f01333",
+            "FileHash": "33dedcb5dd21e1f34f9c56fa352b535a",
             "FileCRC": 0,
             "FileSize": 688512,
             "Encrypted": false,
@@ -2755,6 +2779,16 @@
             "FileHash": "a5bdbf4de0f856be9408f10b7d38e301",
             "FileCRC": 0,
             "FileSize": 47907,
+            "Encrypted": false,
+            "Tags": [],
+            "DependBundleIDs": []
+        },
+        {
+            "BundleName": "defaultpackage_assets_bundles_textures.bundle",
+            "UnityCRC": 0,
+            "FileHash": "bfb958165adb4a1e425093f716df4afd",
+            "FileCRC": 0,
+            "FileSize": 2972985,
             "Encrypted": false,
             "Tags": [],
             "DependBundleIDs": []

@@ -4,7 +4,6 @@ using System.Linq;
 using System.Reflection;
 using Attribute;
 using Cysharp.Threading.Tasks;
-using Dream;
 using Interface;
 using UnityEngine;
 using YooAsset;
@@ -34,7 +33,7 @@ namespace DreamManager
         /// <para>Value: 配置实例对象（继承自 Config 基类）</para>
         /// <para>用途：游戏运行时通过 GetConfig&lt;T&gt;() 快速获取已加载的配置，避免重复加载。</para>
         /// </summary>
-        private readonly Dictionary<Type, Config> _configs = new Dictionary<Type, Config>();
+        private readonly Dictionary<Type, Config.Config> _configs = new Dictionary<Type, Config.Config>();
 
         /// <summary>
         /// 构造函数。
@@ -252,7 +251,7 @@ namespace DreamManager
 
                     // 将实例强制转换为 Config 基类类型
                     // 注意：如果类型不继承自 Config，此转换会返回 null
-                    var config = instance as Config;
+                    var config = instance as Config.Config;
 
                     // 调用配置实例的异步加载方法（从文件/网络加载配置数据）
                     await config.LoadConfig();
@@ -286,10 +285,10 @@ namespace DreamManager
         /// }
         /// </code>
         /// </example>
-        public T GetConfig<T>() where T : Config
+        public T GetConfig<T>() where T : Config.Config
         {
             // 从缓存字典中查找指定类型的配置实例
-            if (_configs.TryGetValue(typeof(T), out Config config))
+            if (_configs.TryGetValue(typeof(T), out Config.Config config))
             {
                 // 将基类引用强制转换为具体的配置类型并返回
                 return config as T;

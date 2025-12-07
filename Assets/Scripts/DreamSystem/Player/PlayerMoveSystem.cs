@@ -42,10 +42,8 @@ namespace DreamSystem.Player
             {
                 return;
             }
-            else
-            {
-                _cameraTransform = Camera.main.transform;
-            }
+            
+            _cameraTransform = Camera.main.transform;
 
             if (_playerCharacterController == null)
             {
@@ -66,13 +64,13 @@ namespace DreamSystem.Player
         public override void LateTick()
         {
             if (_cameraTransform == null || _playerCharacterController == null) return;
-
-            // 性能优化：如果没有输入（玩家没按键），直接返回，不进行复杂的数学运算
+            
             if (_moveInput.sqrMagnitude < 0.01f) return;
 
-            // 1. 获取相机的方向向量
-            // forward 是相机正前方，right 是相机正右方
+            // 获取相机的方向向量
+            // forward 是相机正前方
             Vector3 camForward = _cameraTransform.forward;
+            //right 是相机正右方
             Vector3 camRight = _cameraTransform.right;
 
             // 2. 压平 Y 轴（重要！）
@@ -85,13 +83,12 @@ namespace DreamSystem.Player
             camForward.Normalize();
             camRight.Normalize();
 
-            // 3. 混合输入方向与相机方向
-            // 数学原理：
+            // 混合输入方向与相机方向
             // 最终方向 = (相机前方 * 玩家前后输入) + (相机右方 * 玩家左右输入)
             // 举例：相机朝北，玩家按左(A)。targetDirection = 北*0 + 东*-1 = 西。
             Vector3 targetDirection = (camForward * _moveInput.y + camRight * _moveInput.x).normalized;
 
-            // 4. 移动角色 (位移)
+            // 移动角色 (位移)
             // Move 方法接受：方向 * 速度 * 时间增量
             _playerCharacterController.Move(targetDirection * moveSpeed * Time.deltaTime);
 
@@ -108,14 +105,10 @@ namespace DreamSystem.Player
                 // 平滑旋转 (原神手感)
                 // RotateTowards：以恒定的角速度（rotateSpeed）向目标角度转动
                 // 相比 Slerp，RotateTowards 更线性、更干脆，没有那种“粘滞”感
-                _player.transform.rotation = Quaternion.RotateTowards(
-                    _player.transform.rotation,
-                    targetRotation,
-                    rotateSpeed * Time.deltaTime
-                );
+                _player.transform.rotation = Quaternion.RotateTowards(_player.transform.rotation, targetRotation, rotateSpeed * Time.deltaTime);
             }
         }
-
+        
         public override void Dispose()
         {
             _events.Unsubscribe<Vector2>(GameEvents.PLAYER_MOVE_PERFORMED, OnMovePerformed).Forget();
