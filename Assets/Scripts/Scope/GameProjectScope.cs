@@ -27,16 +27,11 @@ namespace Scope
 
 
             builder.Register<GameManger>(Lifetime.Singleton)
-                .As<IUniTaskStartable>();
+                .As<IUniTaskStartable>()
+                .AsSelf();
             
             // 它是唯一的 EntryPoint，VContainer 会运行它，它再去运行上面那个列表
             builder.RegisterEntryPoint<AsyncLifecycleExecutor>();
         }
-
-
-   
     }
-
-
-        
 }

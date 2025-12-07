@@ -1,5 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
-namespace Dream
+namespace Config
 {
     public abstract class Config
     {
