@@ -127,6 +127,24 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""ZoomView"",
+                    ""type"": ""PassThrough"",
+                    ""id"": ""fb17cd07-ae12-421a-be01-3b1df0882de5"",
+                    ""expectedControlType"": ""Axis"",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""Jump"",
+                    ""type"": ""Button"",
+                    ""id"": ""c16f1428-6126-4d5d-b642-c01f00e7628b"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -415,6 +433,39 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
                     ""action"": ""AngleView"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b391af62-70ae-482a-8f60-d4c1a1e0fc71"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ZoomView"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""2181e15f-a2aa-4bd1-92a4-153b976a1d35"",
+                    ""path"": ""<Gamepad>/rightStick/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ZoomView"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""94bfeda3-6e0d-4dad-aa21-5a6def70297e"",
+                    ""path"": ""<Keyboard>/space"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -427,6 +478,8 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
         m_PlayerControl_Dodge = m_PlayerControl.FindAction("Dodge", throwIfNotFound: true);
         m_PlayerControl_AngleView = m_PlayerControl.FindAction("AngleView", throwIfNotFound: true);
         m_PlayerControl_Behavior = m_PlayerControl.FindAction("Behavior", throwIfNotFound: true);
+        m_PlayerControl_ZoomView = m_PlayerControl.FindAction("ZoomView", throwIfNotFound: true);
+        m_PlayerControl_Jump = m_PlayerControl.FindAction("Jump", throwIfNotFound: true);
     }
 
     ~@GameInputManager()
@@ -511,6 +564,8 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerControl_Dodge;
     private readonly InputAction m_PlayerControl_AngleView;
     private readonly InputAction m_PlayerControl_Behavior;
+    private readonly InputAction m_PlayerControl_ZoomView;
+    private readonly InputAction m_PlayerControl_Jump;
     /// <summary>
     /// Provides access to input actions defined in input action map "PlayerControl".
     /// </summary>
@@ -538,6 +593,14 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "PlayerControl/Behavior".
         /// </summary>
         public InputAction @Behavior => m_Wrapper.m_PlayerControl_Behavior;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerControl/ZoomView".
+        /// </summary>
+        public InputAction @ZoomView => m_Wrapper.m_PlayerControl_ZoomView;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerControl/Jump".
+        /// </summary>
+        public InputAction @Jump => m_Wrapper.m_PlayerControl_Jump;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -576,6 +639,12 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
             @Behavior.started += instance.OnBehavior;
             @Behavior.performed += instance.OnBehavior;
             @Behavior.canceled += instance.OnBehavior;
+            @ZoomView.started += instance.OnZoomView;
+            @ZoomView.performed += instance.OnZoomView;
+            @ZoomView.canceled += instance.OnZoomView;
+            @Jump.started += instance.OnJump;
+            @Jump.performed += instance.OnJump;
+            @Jump.canceled += instance.OnJump;
         }
 
         /// <summary>
@@ -599,6 +668,12 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
             @Behavior.started -= instance.OnBehavior;
             @Behavior.performed -= instance.OnBehavior;
             @Behavior.canceled -= instance.OnBehavior;
+            @ZoomView.started -= instance.OnZoomView;
+            @ZoomView.performed -= instance.OnZoomView;
+            @ZoomView.canceled -= instance.OnZoomView;
+            @Jump.started -= instance.OnJump;
+            @Jump.performed -= instance.OnJump;
+            @Jump.canceled -= instance.OnJump;
         }
 
         /// <summary>
@@ -667,5 +742,19 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnBehavior(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "ZoomView" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnZoomView(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "Jump" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnJump(InputAction.CallbackContext context);
     }
 }
