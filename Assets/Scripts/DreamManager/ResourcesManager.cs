@@ -58,113 +58,96 @@ namespace DreamManager
             await LoadAllConfig();
             Debug.Log("[ResourcesManager] 资源加载完毕");
         }
-        
+
         /// <summary>
         /// 初始化 YooAsset 资源包。
-        /// <para>根据编译平台选择不同的初始化策略：</para>
-        /// <para>- Unity 编辑器：优先使用 EditorSimulateMode（模拟真实打包后的资源结构），失败则回退到 OfflinePlayMode</para>
-        /// <para>- 发布平台：直接使用 OfflinePlayMode（从 StreamingAssets 加载资源）</para>
         /// </summary>
         public async UniTask InitializeAsync()
         {
-            // 初始化 YooAsset 框架（全局单例）
-            YooAssets.Initialize();
+            // 1. 初始化 YooAsset 框架
+            if (!YooAssets.Initialized)
+            {
+                YooAssets.Initialize();
+            }
 
-            // 获取或创建名为 "DefaultPackage" 的默认资源包
-            // 如果包不存在，则创建新包并设置为默认包
-            var package = YooAssets.TryGetPackage("DefaultPackage");
+            // 注意：这里的名字 "DefaultPackage" 必须和你 AssetBundle Collector 面板里的 "Package Name" 完全一致！
+            string packageName = "DefaultPackage";
+
+            // 2. 获取或创建资源包
+            var package = YooAssets.TryGetPackage(packageName);
             if (package == null)
             {
-                package = YooAssets.CreatePackage("DefaultPackage");
+                package = YooAssets.CreatePackage(packageName);
                 YooAssets.SetDefaultPackage(package);
             }
 
+            // 3. 根据运行模式选择初始化方式
+            InitializationOperation initializationOperation = null;
+
 #if UNITY_EDITOR
-            // ========== 编辑器模式：优先尝试模拟构建模式 ==========
-            try
-            {
-                // 模拟构建：生成一个模拟的资源包结构（包含资源清单、版本信息等）
-                // 这允许在编辑器中测试真实的资源加载流程，而无需真正打包
-                var buildResult = EditorSimulateModeHelper.SimulateBuild("DefaultPackage");
+            // ==================== 编辑器模式 (Editor Simulate Mode) ====================
+            // 说明：在编辑器下，我们总是希望使用模拟模式，这样不需要每次改资源都打包
+            Debug.Log($"[ResourcesManager] 正在使用编辑器模拟模式初始化包: {packageName}...");
 
-                // 获取模拟构建后的资源包根目录路径
-                var packageRoot = buildResult.PackageRootDirectory;
+            var buildResult = EditorSimulateModeHelper.SimulateBuild(packageName);
+            var packageRoot = buildResult.PackageRootDirectory;
+            var editorFileSystemParams = FileSystemParameters.CreateDefaultEditorFileSystemParameters(packageRoot);
+            var initParameters = new EditorSimulateModeParameters();
+            initParameters.EditorFileSystemParameters = editorFileSystemParams;
 
-                // 创建编辑器文件系统参数（指定资源从哪里读取）
-                var editorFileSystemParams = FileSystemParameters.CreateDefaultEditorFileSystemParameters(packageRoot);
-
-                // 创建编辑器模拟模式的初始化参数
-                var initParameters = new EditorSimulateModeParameters();
-                initParameters.EditorFileSystemParameters = editorFileSystemParams;
-
-                // 异步初始化资源包（加载资源清单、验证资源完整性等）
-                var initOperation = package.InitializeAsync(initParameters);
-                await initOperation;
-
-                // 获取资源包的版本号（用于后续热更新检查）
-                var op = package.RequestPackageVersionAsync();
-                await op;
-                
-                // 更新资源清单（同步最新的资源索引信息）
-                await package.UpdatePackageManifestAsync(op.PackageVersion);
-
-                // 如果初始化成功，直接返回，不再执行后续的离线模式回退逻辑
-                if (initOperation.Status == EOperationStatus.Succeed)
-                {
-                    Debug.Log("资源包初始化成功（EditorSimulateMode）");
-                    return;
-                }
-                else
-                {
-                    Debug.LogWarning("资源包初始化失败（EditorSimulateMode），将回退到 Offline 模式");
-                }
-            }
-            catch (Exception e)
-            {
-                // 如果模拟模式初始化过程中抛出异常（如资源路径不存在、清单文件损坏等），捕获异常并回退
-                Debug.LogWarning($"EditorSimulate 初始化失败：{e.Message}\n回退到 Offline 模式");
-            }
-
-            // ========== 回退方案：使用离线模式 ==========
-            // 当模拟模式失败时，使用离线模式作为兜底方案
-            // 离线模式直接从 StreamingAssets 文件夹读取资源，无需网络连接
-            {
-                // 创建内置文件系统参数（指向 StreamingAssets 目录）
-                var buildinFileSystemParams = FileSystemParameters.CreateDefaultBuildinFileSystemParameters();
-                
-                // 创建离线模式的初始化参数
-                var initParameters = new OfflinePlayModeParameters();
-                initParameters.BuildinFileSystemParameters = buildinFileSystemParams;
-                
-                // 使用离线模式重新初始化资源包
-                await package.InitializeAsync(initParameters);
-                
-                // 获取版本号并更新清单（流程与模拟模式相同）
-                var op = package.RequestPackageVersionAsync();
-                await op;
-                await package.UpdatePackageManifestAsync(op.PackageVersion);
-                
-                Debug.Log("资源包初始化成功（OfflinePlayMode 回退）");
-            }
+            initializationOperation = package.InitializeAsync(initParameters);
 #else
-            // ========== 发布平台：直接使用离线模式 ==========
-            // 在打包后的游戏中，资源已经内置在 StreamingAssets 中，无需模拟模式
-            
-            // 创建内置文件系统参数（指向 StreamingAssets 目录）
+            // ==================== 真机/发布模式 (Offline Play Mode) ====================
+            // 说明：打包出来后，资源都在 StreamingAssets 里，使用离线模式
+            Debug.Log($"[ResourcesManager] 正在使用离线模式初始化包: {packageName}...");
+
             var buildinFileSystemParams = FileSystemParameters.CreateDefaultBuildinFileSystemParameters();
-            
-            // 创建离线模式的初始化参数
             var initParameters = new OfflinePlayModeParameters();
             initParameters.BuildinFileSystemParameters = buildinFileSystemParams;
 
-            // 异步初始化离线资源包
-            await package.InitializeAsync(initParameters);
-
-            // 获取版本号并更新资源清单
-            var op = package.RequestPackageVersionAsync();
-            await op;
-            await package.UpdatePackageManifestAsync(op.PackageVersion);
+            initializationOperation = package.InitializeAsync(initParameters);
 #endif
+
+            // 4. 等待初始化完成
+            await initializationOperation;
+
+            if (initializationOperation.Status == EOperationStatus.Succeed)
+            {
+                Debug.Log($"[ResourcesManager] 资源包 '{packageName}' 初始化成功！");
+
+                // 5. 获取资源版本并更新清单
+                // 注意：模拟模式和离线模式都需要这一步来确认资源版本
+                var versionOperation = package.RequestPackageVersionAsync();
+                await versionOperation;
+
+                if (versionOperation.Status == EOperationStatus.Succeed)
+                {
+                    string packageVersion = versionOperation.PackageVersion;
+                    Debug.Log($"[ResourcesManager] 资源版本: {packageVersion}");
+
+                    var manifestOperation = package.UpdatePackageManifestAsync(packageVersion);
+                    await manifestOperation;
+
+                    if (manifestOperation.Status == EOperationStatus.Succeed)
+                    {
+                        Debug.Log("[ResourcesManager] 资源清单更新完成。");
+                    }
+                    else
+                    {
+                        Debug.LogError($"[ResourcesManager] 更新资源清单失败: {manifestOperation.Error}");
+                    }
+                }
+                else
+                {
+                    Debug.LogError($"[ResourcesManager] 获取资源版本失败: {versionOperation.Error}");
+                }
+            }
+            else
+            {
+                // 如果初始化失败，直接抛出错误，不要尝试回退
+                // 这样你能清楚地知道是配置错了，而不是报莫名其妙的 404
+                Debug.LogError($"[ResourcesManager] 资源包初始化失败！错误信息: {initializationOperation.Error}");
+            }
         }
 
         /// <summary>
