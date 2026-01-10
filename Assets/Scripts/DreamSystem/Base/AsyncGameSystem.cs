@@ -1,7 +1,6 @@
 using Cysharp.Threading.Tasks;
 using Interface;
-
-namespace DreamSystem
+namespace DreamSystem.Base
 {
     /// <summary>
     /// 异步游戏系统基类。

@@ -7,7 +7,7 @@ namespace DreamManager
 {
     public class EventManager
     {
-        // 多线程安全的字典，存储事件主题和对应的委托集合
+        /// 多线程安全的字典，存储事件主题和对应的委托集合
         private readonly ConcurrentDictionary<string, HashSet<Delegate>> _eventConcurrentDictionary = new ConcurrentDictionary<string, HashSet<Delegate>>();
 
         /// <summary>
@@ -106,7 +106,7 @@ namespace DreamManager
         {
             // 延迟一帧，保证当前帧的 Publish 循环能安全完成
             await UniTask.DelayFrame(1);
-
+    
             if (string.IsNullOrWhiteSpace(topic) || callback == null)
             {
                 return;

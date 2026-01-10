@@ -9,7 +9,7 @@
     "BuildPipeline": "EditorSimulateBuildPipeline",
     "PackageName": "DefaultPackage",
     "PackageVersion": "Simulate",
-    "PackageNote": "2025/12/22 2:47:07",
+    "PackageNote": "2026/1/11 2:04:13",
     "AssetList": [
         {
             "Address": "Attack01_Bow",
@@ -1973,7 +1973,15 @@
         },
         {
             "Address": "Bow",
-            "AssetPath": "Assets/Bundles/Animators/Player/Bow.controller",
+            "AssetPath": "Assets/Bundles/Animators/Player/Bow.overrideController",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Bow_Initial",
+            "AssetPath": "Assets/Bundles/Animators/Player/Bow_Initial.controller",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 1,
@@ -1981,7 +1989,15 @@
         },
         {
             "Address": "DoubleSwords",
-            "AssetPath": "Assets/Bundles/Animators/Player/DoubleSwords.controller",
+            "AssetPath": "Assets/Bundles/Animators/Player/DoubleSwords.overrideController",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "DoubleSwords_Initial",
+            "AssetPath": "Assets/Bundles/Animators/Player/DoubleSwords_Initial.controller",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 1,
@@ -1989,15 +2005,31 @@
         },
         {
             "Address": "MagicWand",
-            "AssetPath": "Assets/Bundles/Animators/Player/MagicWand.controller",
+            "AssetPath": "Assets/Bundles/Animators/Player/MagicWand.overrideController",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 1,
             "DependBundleIDs": []
         },
         {
-            "Address": "NoWeapon",
-            "AssetPath": "Assets/Bundles/Animators/Player/NoWeapon.controller",
+            "Address": "MagicWand_Initial",
+            "AssetPath": "Assets/Bundles/Animators/Player/MagicWand_Initial.controller",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "NoWeapon_Initial",
+            "AssetPath": "Assets/Bundles/Animators/Player/NoWeapon_Initial.controller",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "PlayerBaseAnimator",
+            "AssetPath": "Assets/Bundles/Animators/Player/PlayerBaseAnimator.controller",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 1,
@@ -2005,7 +2037,15 @@
         },
         {
             "Address": "SingleTwoHandSword",
-            "AssetPath": "Assets/Bundles/Animators/Player/SingleTwoHandSword.controller",
+            "AssetPath": "Assets/Bundles/Animators/Player/SingleTwoHandSword.overrideController",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "SingleTwoHandSword_Initial",
+            "AssetPath": "Assets/Bundles/Animators/Player/SingleTwoHandSword_Initial.controller",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 1,
@@ -2013,7 +2053,15 @@
         },
         {
             "Address": "SwordShield",
-            "AssetPath": "Assets/Bundles/Animators/Player/SwordShield.controller",
+            "AssetPath": "Assets/Bundles/Animators/Player/SwordShield.overrideController",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 1,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "SwordShield_Initial",
+            "AssetPath": "Assets/Bundles/Animators/Player/SwordShield_Initial.controller",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 1,
@@ -10120,7 +10168,7 @@
         {
             "BundleName": "defaultpackage_assets_bundles_animations_player.bundle",
             "UnityCRC": 0,
-            "FileHash": "de0ead0e4bb9300dbfb0e76b78a9b439",
+            "FileHash": "0a501416bf3e7526e6633446156fa70c",
             "FileCRC": 0,
             "FileSize": 231855107,
             "Encrypted": false,
@@ -10130,9 +10178,9 @@
         {
             "BundleName": "defaultpackage_assets_bundles_animators.bundle",
             "UnityCRC": 0,
-            "FileHash": "6b44ef72a015a643b1e5e0bdb08ff7be",
+            "FileHash": "f7ecef0e6548fbdd76f72a4a8178f591",
             "FileCRC": 0,
-            "FileSize": 343947,
+            "FileSize": 394881,
             "Encrypted": false,
             "Tags": [],
             "DependBundleIDs": []
@@ -10140,7 +10188,7 @@
         {
             "BundleName": "defaultpackage_assets_bundles_characters_enemies.bundle",
             "UnityCRC": 0,
-            "FileHash": "31e2e216af8b57728534b4b292c27c13",
+            "FileHash": "791db34b5040dedb5c70779d878033f1",
             "FileCRC": 0,
             "FileSize": 3958895,
             "Encrypted": false,
@@ -10150,7 +10198,7 @@
         {
             "BundleName": "defaultpackage_assets_bundles_characters_player.bundle",
             "UnityCRC": 0,
-            "FileHash": "ae05695f78a7729c9a0d2bdf9de5ba3e",
+            "FileHash": "9bf96503d43efd6ac2fb6e87b328d046",
             "FileCRC": 0,
             "FileSize": 13445042,
             "Encrypted": false,
@@ -10160,7 +10208,7 @@
         {
             "BundleName": "defaultpackage_assets_bundles_environment_dungeon.bundle",
             "UnityCRC": 0,
-            "FileHash": "834463c2c94b16adbc27ab687903d342",
+            "FileHash": "f749b08e223d74fb62eb438ff1e8a8e5",
             "FileCRC": 0,
             "FileSize": 1326648,
             "Encrypted": false,
@@ -10170,7 +10218,7 @@
         {
             "BundleName": "defaultpackage_assets_bundles_environment_test.bundle",
             "UnityCRC": 0,
-            "FileHash": "f962860afb1e079704b7552fa5b686c7",
+            "FileHash": "91b69578681b717b13e067dd7a9f9bcc",
             "FileCRC": 0,
             "FileSize": 22310,
             "Encrypted": false,
@@ -10180,7 +10228,7 @@
         {
             "BundleName": "defaultpackage_assets_bundles_items_pickups.bundle",
             "UnityCRC": 0,
-            "FileHash": "6ad4e743b09a2ebe123061c27ad981d4",
+            "FileHash": "d01b9b39e869416b2e8eb49895507426",
             "FileCRC": 0,
             "FileSize": 34901,
             "Encrypted": false,
@@ -10190,7 +10238,7 @@
         {
             "BundleName": "defaultpackage_assets_bundles_items_props.bundle",
             "UnityCRC": 0,
-            "FileHash": "5b862baaf107d3bfa9768fabababa3d9",
+            "FileHash": "3940bd5904c5dc5ef9d4c5e7df9598b7",
             "FileCRC": 0,
             "FileSize": 1268672,
             "Encrypted": false,
@@ -10200,7 +10248,7 @@
         {
             "BundleName": "defaultpackage_assets_bundles_items_weapons.bundle",
             "UnityCRC": 0,
-            "FileHash": "474d9ccd7ada3ab3524ecc416e897967",
+            "FileHash": "810982f2374319a13a4b4935220f6883",
             "FileCRC": 0,
             "FileSize": 244322,
             "Encrypted": false,
@@ -10210,9 +10258,9 @@
         {
             "BundleName": "defaultpackage_assets_bundles_shared.bundle",
             "UnityCRC": 0,
-            "FileHash": "3523109f299b2844b6e6c28fa7bdaa57",
+            "FileHash": "38b0578367f7881b79b81adf0e876a15",
             "FileCRC": 0,
-            "FileSize": 21997880,
+            "FileSize": 21988347,
             "Encrypted": false,
             "Tags": [],
             "DependBundleIDs": []
@@ -10220,7 +10268,7 @@
         {
             "BundleName": "defaultpackage_assets_bundles_vfx_dungeon.bundle",
             "UnityCRC": 0,
-            "FileHash": "3b4b1dc614cef9673136780749d6cac6",
+            "FileHash": "97a4368aaffb8ca6b734cddb049824e0",
             "FileCRC": 0,
             "FileSize": 1602866,
             "Encrypted": false,
@@ -10230,7 +10278,7 @@
         {
             "BundleName": "defaultpackage_assets_bundles_vfx_sword.bundle",
             "UnityCRC": 0,
-            "FileHash": "2b5d457e659b9f0e902206fd06509d37",
+            "FileHash": "12ce80c8a0083d539f6adae74acf2bbf",
             "FileCRC": 0,
             "FileSize": 52662591,
             "Encrypted": false,
@@ -10240,9 +10288,9 @@
         {
             "BundleName": "defaultpackage_unityshaders.bundle",
             "UnityCRC": 0,
-            "FileHash": "ca4df20bd4a2ec856af438849200526d",
+            "FileHash": "964a750bdd6bab590e2989e1b3ceb542",
             "FileCRC": 0,
-            "FileSize": 6703,
+            "FileSize": 6808,
             "Encrypted": false,
             "Tags": [],
             "DependBundleIDs": []
