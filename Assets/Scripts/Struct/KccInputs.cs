@@ -6,13 +6,19 @@ namespace Struct
     /// </summary>
     public struct KccInputs
     {
-        // 世界坐标下的移动方向 (长度为1，或者长度为0)
+        /// 世界坐标下的移动方向 (长度为1，或者长度为0)
         public Vector3 moveDirection; 
         
-        // 相机的朝向 (用于计算相对方向)
+        /// 相机的朝向 (用于计算相对方向)
         public Quaternion cameraRotation;
         
-        // 是否按下了跳跃键 (这一帧)
+        /// 是否按下了跳跃键 (这一帧)
         public bool jumpDown;
+        /// 是否按下了攻击 (这一帧)
+        public bool isAttack;
+        /// 是否处于索敌 (这一帧)
+        public bool isLockedOn; 
+        
+        public bool isDodge;
     }
 }

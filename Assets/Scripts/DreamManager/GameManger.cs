@@ -4,12 +4,12 @@ using UnityEngine;
 using UnityEngine.SceneManagement;
 namespace DreamManager
 {
-    public class GameManger : IUniTaskStartable 
+    public class GameManger : IUniTaskStartable
     {
         public async UniTask AsyncStart()
         {
             Debug.Log("[GameFlow] 所有前置系统已就绪，请求进入 Main 场景...");
-            
+
             // 加载场景
             var handle = SceneManager.LoadSceneAsync("Main");
             await handle;

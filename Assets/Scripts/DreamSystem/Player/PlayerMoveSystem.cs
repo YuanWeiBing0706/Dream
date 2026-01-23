@@ -9,15 +9,16 @@ namespace DreamSystem.Player
 {
     public class PlayerMoveSystem : GameSystem
     {
-
         /// 玩家移动的基础速度
         public float moveSpeed = 6f;
-        
+
         /// 当前帧的移动输入向量
         private Vector2 _moveInput;
         /// 当前是否按下了跳跃键
         private bool _isJumpDown;
-        
+        /// 当前是否按下了回避键
+        private bool _isDodgeDown;
+
         /// 事件管理器引用
         private readonly EventManager _eventManager;
         /// KCC 移动控制器引用
@@ -46,6 +47,7 @@ namespace DreamSystem.Player
             _eventManager.Subscribe<Vector2>(GameEvents.PLAYER_MOVE_PERFORMED, OnMovePerformed);
             _eventManager.Subscribe<Vector2>(GameEvents.PLAYER_MOVE_CANCELED, OnMoveCanceled);
             _eventManager.Subscribe<bool>(GameEvents.PLAYER_JUMP_PERFROMED, OnJumpPerformed);
+            _eventManager.Subscribe(GameEvents.PLAYER_DODGE_PERFORMED, OnDodgePerformed);
         }
 
         /// <summary>
@@ -67,11 +69,10 @@ namespace DreamSystem.Player
         private void OnJumpPerformed(bool isJumpDown) => _isJumpDown = isJumpDown;
 
         /// <summary>
-        /// 当跳跃输入取消时的回调
+        /// 当接收到回避输入时的回调
         /// </summary>
-        /// <param name="isJumpDown">是否按下跳跃键</param>
-        private void OnJumpCanceled(bool isJumpDown) => _isJumpDown = isJumpDown;
-        
+        private void OnDodgePerformed() => _isDodgeDown = true;
+
         /// <summary>
         /// 每一帧的后期更新逻辑，处理输入数据包的组装与发送
         /// </summary>
@@ -86,8 +87,13 @@ namespace DreamSystem.Player
             {
                 moveDirection = worldMoveVelocity.normalized, // 计算朝向 (通常就是移动方向，或者是锁定的目标方向)
                 cameraRotation = _cameraTransform.rotation,
-                jumpDown = _isJumpDown // TODO: 此处尚未完全对接 Unity Input System 的 Jump Action，需后续确认按键映射
+                jumpDown = _isJumpDown,
+                isDodge = _isDodgeDown
             };
+
+            // 发送完立即重置 (实现单次按下效果)
+            _isJumpDown = false;
+            _isDodgeDown = false;
 
             _eventManager.Publish(GameEvents.SET_INPUTS, inputsPacket);
         }
@@ -121,7 +127,7 @@ namespace DreamSystem.Player
             _eventManager.Unsubscribe<Vector2>(GameEvents.PLAYER_MOVE_PERFORMED, OnMovePerformed).Forget();
             _eventManager.Unsubscribe<Vector2>(GameEvents.PLAYER_MOVE_CANCELED, OnMoveCanceled).Forget();
             _eventManager.Unsubscribe<bool>(GameEvents.PLAYER_JUMP_PERFROMED, OnJumpPerformed).Forget();
-            _eventManager.Unsubscribe<bool>(GameEvents.PLAYER_JUMP_CANCELED, OnJumpCanceled).Forget();
+            _eventManager.Unsubscribe(GameEvents.PLAYER_DODGE_PERFORMED, OnDodgePerformed).Forget();
         }
 
 

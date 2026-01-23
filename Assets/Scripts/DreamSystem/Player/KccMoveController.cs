@@ -1,9 +1,13 @@
 ﻿using Cysharp.Threading.Tasks;
 using DreamManager;
 using Events;
+using Fsm;
+using Fsm.State;
+using Fsm.State.Airborne;
+using Fsm.State.Base;
+using Fsm.State.Grounded;
 using KinematicCharacterController;
-using StateMachine;
-using StateMachine.State;
+using Sirenix.OdinInspector;
 using Struct;
 using UnityEngine;
 
@@ -18,13 +22,42 @@ namespace DreamSystem.Player
         private readonly EventManager _eventManager;
 
         /// 移动状态机实例
-        public MovementStateMachine StateMachine { get; private set; }
+        public StateMachine StateMachine { get; private set; }
 
-        /// 默认移动状态实例
-        public DefaultState defaultState;
+        public MoveState moveState;
+        public JumpState jumpState;
+        public FallState fallState;
+        public RollState rollState;
+        public DashState dashState;
 
         /// 当前帧的输入数据缓存。
         public KccInputs currentInputs;
+
+        // ================= Debug Dashboard =================
+        [Title("Debug Dashboard")]
+        [LabelText("Print State Logs")]
+        [OnValueChanged("UpdateLogSetting")]
+        public bool enableLogs = true;
+
+        [ShowInInspector]
+        [DisplayAsString(false)]
+        [LabelText("Current State")]
+        public string DebugCurrentState => StateMachine?.CurrentStateName ?? "None";
+
+        [ShowInInspector]
+        [DisplayAsString]
+        [LabelText("Velocity Y")]
+        public float DebugVerticalSpeed => kinematicCharacterMotor?.Velocity.y ?? 0f;
+
+        [ShowInInspector]
+        [DisplayAsString]
+        [LabelText("Is Grounded")]
+        public bool DebugIsGrounded => kinematicCharacterMotor?.GroundingStatus.IsStableOnGround ?? false;
+
+        [ShowInInspector]
+        [DisplayAsString]
+        [LabelText("Speed (m/s)")]
+        public float DebugSpeed => kinematicCharacterMotor?.Velocity.magnitude ?? 0f;
 
         /// 地面最大移动速度
         public float maxStableMoveSpeed = 10f;
@@ -51,6 +84,14 @@ namespace DreamSystem.Player
         /// 全局重力向量
         public Vector3 gravity = new Vector3(0, -30f, 0);
 
+        public float rollSpeed = 10f;
+        public float dashSpeed = 15f;
+        public float dashDuration = 0.25f;
+        public float rollDuration = 0.8f;
+        [Header("State Flags")]
+        // 这个变量用来记录：这次起跳后，用过空中冲刺了吗？
+        public bool hasUsedAirDash = false;
+        public bool hasUsedJump = false;
 
         /// <summary>
         /// 构造函数，注入依赖项
@@ -74,13 +115,22 @@ namespace DreamSystem.Player
             _eventManager.Subscribe<KccInputs>(GameEvents.SET_INPUTS, OnSetInputs);
 
             // 初始化状态机
-            StateMachine = new MovementStateMachine();
+            StateMachine = new StateMachine();
+            moveState = new MoveState(this, _eventManager);
+            fallState = new FallState(this, _eventManager);
+            jumpState = new JumpState(this, _eventManager);
+            rollState = new RollState(this, _eventManager);
+            dashState = new DashState(this, _eventManager);
+            StateMachine.Initialize(moveState);
+            
+            // 初始化日志开关
+            StateMachine.ShowDebugLog = enableLogs;
+        }
 
-            // 创建具体的 State 实例，将 'this' (Controller本身) 传进去，这样 State 就能访问上面的配置和 Motor
-            defaultState = new DefaultState(this);
-
-            // 启动默认状态
-            StateMachine.Initialize(defaultState);
+        /// 同步日志开关到状态机
+        private void UpdateLogSetting()
+        {
+            if (StateMachine != null) StateMachine.ShowDebugLog = enableLogs;
         }
 
         /// <summary>

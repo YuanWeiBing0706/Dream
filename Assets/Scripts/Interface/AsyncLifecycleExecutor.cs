@@ -4,7 +4,7 @@ using VContainer.Unity;
 
 namespace Interface
 {
-    // 它是 VContainer 唯一的 EntryPoint，负责调度别人
+    /// 收集所有继承了“IUniTaskStartable”接口的类，并且因为继承了IStartable，所有会在游戏一开始异步执行收集到的类的AsyncStart方法。
     public class AsyncLifecycleExecutor : IStartable
     {
         readonly IEnumerable<IUniTaskStartable> _asyncSystems;
@@ -23,13 +23,12 @@ namespace Interface
             {
                 var name = system.GetType().Name;
                 Debug.Log($"-> 正在启动: {name} ...");
-                
+
                 // 关键：串行等待！
                 await system.AsyncStart();
-                
+
                 Debug.Log($"<- {name} 启动完成");
             }
-
             Debug.Log(">>> [Executor] 所有系统就绪，游戏正式运行 <<<");
         }
     }

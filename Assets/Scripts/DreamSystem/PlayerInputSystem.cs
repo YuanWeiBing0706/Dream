@@ -37,8 +37,13 @@ namespace DreamSystem
             _gameInputManager.PlayerControl.Move.performed += OnMovementPerformed;
             _gameInputManager.PlayerControl.Move.canceled += OnMovementCanceled;
             _gameInputManager.PlayerControl.Jump.performed += OnJumpPerformed;
-            _gameInputManager.PlayerControl.Jump.canceled += OnJumpCanceled;
             _gameInputManager.PlayerControl.ZoomView.performed += OnZoomViewPerformed;
+            _gameInputManager.PlayerControl.Dodge.performed += OnDodgePerformed;
+        }
+
+        private void OnDodgePerformed(InputAction.CallbackContext obj)
+        {
+            _eventManager.Publish(GameEvents.PLAYER_DODGE_PERFORMED);
         }
 
         /// <summary>
@@ -60,23 +65,11 @@ namespace DreamSystem
             _eventManager.Publish(GameEvents.PLAYER_MOVE_CANCELED, Vector2.zero);
         }
 
-        /// <summary>
-        /// 当跳跃按键按下时的回调
-        /// </summary>
-        /// <param name="obj">输入上下文</param>
         private void OnJumpPerformed(InputAction.CallbackContext obj)
         {
-            _eventManager.Publish<bool>(GameEvents.PLAYER_JUMP_PERFROMED, true);
+            _eventManager.Publish(GameEvents.PLAYER_JUMP_PERFROMED, true);
         }
 
-        /// <summary>
-        /// 当跳跃按键松开时的回调
-        /// </summary>
-        /// <param name="obj">输入上下文</param>
-        private void OnJumpCanceled(InputAction.CallbackContext obj)
-        {
-            _eventManager.Publish<bool>(GameEvents.PLAYER_JUMP_PERFROMED, false);
-        }
 
         /// <summary>
         /// 当缩放视图（鼠标滚轮）操作时的回调
@@ -101,7 +94,7 @@ namespace DreamSystem
             _gameInputManager.PlayerControl.Move.canceled -= OnMovementCanceled;
 
             _gameInputManager.PlayerControl.Jump.performed -= OnJumpPerformed;
-            _gameInputManager.PlayerControl.Jump.canceled -= OnJumpCanceled;
+            _gameInputManager.PlayerControl.Dodge.performed -= OnDodgePerformed;
 
             _gameInputManager.PlayerControl.ZoomView.performed -= OnZoomViewPerformed;
         }

@@ -1,9 +1,10 @@
-﻿using Cinemachine;
+﻿using Animancer;
+using Cinemachine;
 using DreamSystem.Camera;
 using DreamSystem.Player;
 using KinematicCharacterController;
 using Model.Player;
-using StateMachine;
+using SO;
 using UnityEngine;
 using VContainer;
 using VContainer.Unity;
@@ -27,6 +28,11 @@ namespace Scope
         [SerializeField]
         KinematicCharacterMotor kinematicCharacterMotor;
 
+        [SerializeField]
+        AnimancerComponent animancer;
+        [SerializeField]
+        CharacterAnimationSo characterAnimationSo;
+        
         protected override void Configure(IContainerBuilder builder)
         {
             // 2. 注册 View 组件
@@ -35,10 +41,12 @@ namespace Scope
             builder.RegisterComponent(cameraFreeLook);
             builder.RegisterComponent(mianCameraTransform);
             builder.RegisterComponent(kinematicCharacterMotor);
-
+            builder.RegisterComponent(animancer);
+            builder.RegisterComponent(characterAnimationSo);
             // 3. 注册只属于这个场景的 System (EntryPoint)
             builder.RegisterEntryPoint<KccMoveController>().AsSelf();
             builder.RegisterEntryPoint<PlayerMoveSystem>();
+            builder.RegisterEntryPoint<PlayerAnimationSystem>();
             builder.RegisterEntryPoint<CinemachineProportionalZoom>();
         }
     }
