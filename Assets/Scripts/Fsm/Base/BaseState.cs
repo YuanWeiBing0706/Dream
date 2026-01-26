@@ -1,73 +1,71 @@
 ﻿using DreamManager;
 using DreamSystem.Player;
+using Interface;
 using UnityEngine;
+
 namespace Fsm.Base
 {
     public abstract class BaseState
     {
-        /// <summary>
-        /// KCC 移动控制器引用，供子类访问
-        /// </summary>
-        protected readonly KccMoveController kccMoveController;
+        /// 移动上下文，提供物理引擎和移动参数
+        protected readonly IPlayerMoveContext moveContext;
+
+        /// 事件管理器，用于发布动画事件
         protected readonly EventManager eventManager;
 
-        /// <summary>
-        /// 构造函数
-        /// </summary>
-        /// <param name="kccMoveController">控制器实例</param>
-        /// <param name="eventManager">事件控制器</param>
-        protected BaseState(KccMoveController kccMoveController,EventManager eventManager)
+        /// 玩家状态机，用于状态切换
+        protected readonly PlayerStateMachine playerStateMachine;
+
+        protected BaseState(IPlayerMoveContext moveContext, EventManager eventManager, PlayerStateMachine playerStateMachine)
         {
-            this.kccMoveController = kccMoveController;
+            this.moveContext = moveContext;
             this.eventManager = eventManager;
+            this.playerStateMachine = playerStateMachine;
         }
 
         /// <summary>
-        /// 进入状态时调用一次
+        /// 进入状态时调用。
         /// </summary>
         public virtual void OnEnter()
         {
-            
+            // TODO: 子类可重写以实现进入逻辑
         }
 
         /// <summary>
-        /// 退出状态时调用一次
+        /// 退出状态时调用。
         /// </summary>
         public virtual void OnExit()
         {
-            
+            // TODO: 子类可重写以实现退出逻辑
         }
 
         /// <summary>
-        /// 用于处理输入检测、状态切换判断。
+        /// 每帧更新，由 KccMoveController.LateTick 驱动。
         /// </summary>
-        /// <param name="deltaTime">时间步长</param>
+        /// <param name="deltaTime">帧间隔时间</param>
         public virtual void OnUpdate(float deltaTime)
         {
-            
+            // TODO: 子类可重写以实现帧更新逻辑
         }
 
         /// <summary>
-        /// 对应 KCC 的 UpdateVelocity。
-        /// 在这里编写具体的移动逻辑 (重力、摩擦力、阻力)。
+        /// 更新速度，由 KCC 物理系统调用。
         /// </summary>
-        /// <param name="currentVelocity">当前速度向量（引用）</param>
-        /// <param name="deltaTime">时间步长</param>
+        /// <param name="currentVelocity">当前速度 (引用传递)</param>
+        /// <param name="deltaTime">帧间隔时间</param>
         public virtual void OnUpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
         {
-           
+            // TODO: 子类可重写以实现速度更新逻辑
         }
 
         /// <summary>
-        /// 对应 KCC 的 UpdateRotation。
-        /// 在这里编写具体的旋转逻辑。
+        /// 更新旋转，由 KCC 物理系统调用。
         /// </summary>
-        /// <param name="currentRotation">当前旋转四元数（引用）</param>
-        /// <param name="deltaTime">时间步长</param>
+        /// <param name="currentRotation">当前旋转 (引用传递)</param>
+        /// <param name="deltaTime">帧间隔时间</param>
         public virtual void OnUpdateRotation(ref Quaternion currentRotation, float deltaTime)
         {
-          
+            // TODO: 子类可重写以实现旋转更新逻辑
         }
-
     }
 }

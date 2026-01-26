@@ -1,7 +1,7 @@
 ﻿using DreamManager;
 using DreamSystem;
 using DreamSystem.Debug;
-using Interface;
+using Function.Initialize;
 using VContainer;
 using VContainer.Unity;
 namespace Scope
@@ -13,7 +13,7 @@ namespace Scope
             builder.Register<EventManager>(Lifetime.Singleton);
             builder.Register<GameInputManager>(Lifetime.Singleton);
             builder.Register<SuggestionService>(Lifetime.Singleton);
-            
+            builder.Register<DamageManager>(Lifetime.Singleton);
             builder.Register<ResourcesManager>(Lifetime.Singleton)
                 .As<IUniTaskStartable>() // 贴上标签：我是要异步启动的
                 .AsSelf();

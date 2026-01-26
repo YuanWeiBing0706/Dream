@@ -1,7 +1,6 @@
 ﻿using Cysharp.Threading.Tasks;
 using DreamManager;
 using Events;
-using Model.Player;
 using Struct;
 using UnityEngine;
 
@@ -9,29 +8,27 @@ namespace DreamSystem.Player
 {
     public class PlayerMoveSystem : GameSystem
     {
-        /// 玩家移动的基础速度
+        /// 玩家基础移动速度
         public float moveSpeed = 6f;
 
-        /// 当前帧的移动输入向量
+        /// 当前帧移动输入
         private Vector2 _moveInput;
-        /// 当前是否按下了跳跃键
+
+        /// 当前帧跳跃输入
         private bool _isJumpDown;
-        /// 当前是否按下了回避键
+
+        /// 当前帧闪避输入
         private bool _isDodgeDown;
 
-        /// 事件管理器引用
+        /// 事件管理器
         private readonly EventManager _eventManager;
+
         /// KCC 移动控制器引用
         private readonly KccMoveController _kccController;
-        /// 相机变换组件引用
+
+        /// 相机 Transform (用于计算相对方向)
         private Transform _cameraTransform;
 
-        /// <summary>
-        /// 构造函数，注入依赖项
-        /// </summary>
-        /// <param name="eventManager">事件管理器实例</param>
-        /// <param name="kccController">KCC 移动控制器实例</param>
-        /// <param name="cameraTransform">主相机 Transform</param>
         public PlayerMoveSystem(EventManager eventManager, KccMoveController kccController, Transform cameraTransform)
         {
             _eventManager = eventManager;
@@ -40,7 +37,7 @@ namespace DreamSystem.Player
         }
 
         /// <summary>
-        /// 系统启动时的初始化逻辑
+        /// 系统启动：订阅输入事件。
         /// </summary>
         public override void Start()
         {
@@ -50,48 +47,32 @@ namespace DreamSystem.Player
             _eventManager.Subscribe(GameEvents.PLAYER_DODGE_PERFORMED, OnDodgePerformed);
         }
 
-        /// <summary>
-        /// 当接收到移动输入时的回调
-        /// </summary>
-        /// <param name="input">输入的二维向量</param>
         private void OnMovePerformed(Vector2 input) => _moveInput = input;
-
-        /// <summary>
-        /// 当移动输入取消时的回调
-        /// </summary>
-        /// <param name="input">输入的二维向量（通常为零）</param>
         private void OnMoveCanceled(Vector2 input) => _moveInput = Vector2.zero;
-
-        /// <summary>
-        /// 当接收到跳跃输入时的回调
-        /// </summary>
-        /// <param name="isJumpDown">是否按下跳跃键</param>
         private void OnJumpPerformed(bool isJumpDown) => _isJumpDown = isJumpDown;
-
-        /// <summary>
-        /// 当接收到回避输入时的回调
-        /// </summary>
         private void OnDodgePerformed() => _isDodgeDown = true;
 
         /// <summary>
-        /// 每一帧的后期更新逻辑，处理输入数据包的组装与发送
+        /// 每帧后期更新：组装输入数据并发布。
         /// </summary>
         public override void LateTick()
         {
             if (_kccController == null) return;
+            if (_cameraTransform == null) return;
 
-            // 计算世界坐标下的移动向量
+            // 计算世界坐标下的移动方向
             Vector3 worldMoveVelocity = CalculateMoveVelocity();
 
-            KccInputs inputsPacket = new KccInputs
+            // 组装输入数据包
+            MoveInputs inputsPacket = new MoveInputs
             {
-                moveDirection = worldMoveVelocity.normalized, // 计算朝向 (通常就是移动方向，或者是锁定的目标方向)
+                moveDirection = worldMoveVelocity.normalized,
                 cameraRotation = _cameraTransform.rotation,
                 jumpDown = _isJumpDown,
                 isDodge = _isDodgeDown
             };
 
-            // 发送完立即重置 (实现单次按下效果)
+            // 重置单帧输入
             _isJumpDown = false;
             _isDodgeDown = false;
 
@@ -99,28 +80,30 @@ namespace DreamSystem.Player
         }
 
         /// <summary>
-        /// 根据输入计算相对于相机的移动向量
+        /// 根据输入计算相对于相机的移动向量。
         /// </summary>
-        /// <returns>计算后的世界坐标移动向量</returns>
+        /// <returns>世界坐标下的移动方向向量</returns>
         private Vector3 CalculateMoveVelocity()
         {
             if (_moveInput.sqrMagnitude < 0.01f) return Vector3.zero;
 
+            // 获取相机前后左右方向
             Vector3 camForward = _cameraTransform.forward;
             Vector3 camRight = _cameraTransform.right;
 
+            // 投影到水平面
             camForward.y = 0;
             camRight.y = 0;
             camForward.Normalize();
             camRight.Normalize();
 
-            // 方向 * 速度
+            // 计算移动方向
             Vector3 targetDirection = (camForward * _moveInput.y + camRight * _moveInput.x).normalized;
             return targetDirection * moveSpeed;
         }
 
         /// <summary>
-        /// 释放资源，取消事件订阅
+        /// 释放资源，取消事件订阅。
         /// </summary>
         public override void Dispose()
         {
@@ -129,7 +112,5 @@ namespace DreamSystem.Player
             _eventManager.Unsubscribe<bool>(GameEvents.PLAYER_JUMP_PERFROMED, OnJumpPerformed).Forget();
             _eventManager.Unsubscribe(GameEvents.PLAYER_DODGE_PERFORMED, OnDodgePerformed).Forget();
         }
-
-
     }
 }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Reflection;
 using Attribute;
 using Cysharp.Threading.Tasks;
-using Interface;
+using Function.Initialize;
 using UnityEngine;
 using YooAsset;
 

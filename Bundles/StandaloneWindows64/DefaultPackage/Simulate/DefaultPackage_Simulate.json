@@ -9,7 +9,7 @@
     "BuildPipeline": "EditorSimulateBuildPipeline",
     "PackageName": "DefaultPackage",
     "PackageVersion": "Simulate",
-    "PackageNote": "2026/1/23 23:49:28",
+    "PackageNote": "2026/1/27 4:00:20",
     "AssetList": [
         {
             "Address": "Attack01_Bow",
@@ -2321,6 +2321,14 @@
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "TestDummy",
+            "AssetPath": "Assets/Bundles/Characters/Player/Prefabs/TestDummy.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 3,
             "DependBundleIDs": []
         },
         {
@@ -10208,7 +10216,7 @@
             "UnityCRC": 0,
             "FileHash": "9bf96503d43efd6ac2fb6e87b328d046",
             "FileCRC": 0,
-            "FileSize": 13445042,
+            "FileSize": 13448114,
             "Encrypted": false,
             "Tags": [],
             "DependBundleIDs": []

@@ -2,52 +2,49 @@
 using DreamSystem.Player;
 using Events;
 using Fsm.Base;
+using Interface;
 using UnityEngine;
 
 namespace Fsm.State.Airborne
 {
     public class JumpState : AirborneState
     {
+        public JumpState(IPlayerMoveContext moveContext, EventManager eventManager, PlayerStateMachine playerStateMachine) : base(moveContext, eventManager, playerStateMachine) { }
 
-        public JumpState(KccMoveController kccMoveController, EventManager eventManager) : base(kccMoveController, eventManager)
-        {
-
-        }
-
+        /// <summary>
+        /// 进入跳跃状态：施加跳跃力并播放动画。
+        /// </summary>
         public override void OnEnter()
         {
-            // 虽然你可能没写逻辑，但保留调用父类是个好习惯
             base.OnEnter();
-            kccMoveController.hasUsedJump = true;
-            // 1. 强制离地 (必须有)
-            kccMoveController.kinematicCharacterMotor.ForceUnground(0.1f);
+            moveContext.HasUsedJump = true;
 
-            // 2. 获取当前速度
-            Vector3 currentVelocity = kccMoveController.kinematicCharacterMotor.BaseVelocity;
-            Vector3 jumpDir = kccMoveController.kinematicCharacterMotor.CharacterUp; // 通常是 Vector3.up
+            // 强制脱离地面 (土狼时间支持)
+            moveContext.Motor.ForceUnground(0.1f);
 
-            // ProjectOnPlane 意思是：把 currentVel 拍扁在水平面上，去掉 Y 轴分量
+            // 计算跳跃速度：保留水平速度，叠加垂直跳跃
+            Vector3 currentVelocity = moveContext.Motor.BaseVelocity;
+            Vector3 jumpDir = moveContext.Motor.CharacterUp;
             Vector3 planarVel = Vector3.ProjectOnPlane(currentVelocity, jumpDir);
 
-            // 4. 重新赋值：水平速度(保留) + 新的跳跃速度
-            kccMoveController.kinematicCharacterMotor.BaseVelocity = planarVel + (jumpDir * kccMoveController.jumpSpeed);
+            moveContext.Motor.BaseVelocity = planarVel + (jumpDir * moveContext.JumpSpeed);
 
             eventManager.Publish(GameEvents.PLAYER_JUMP_ANIMATION);
         }
 
+        /// <summary>
+        /// 每帧检测空中闪避和下落转换。
+        /// </summary>
+        /// <param name="deltaTime">帧间隔时间</param>
         public override void OnUpdate(float deltaTime)
         {
-            // 绝不调用 CheckLanding() - 防止起跳瞬间被检测为落地
-
-            // 允许空中冲刺
             if (CheckAirDash()) return;
 
-            // 检测到达顶点 (开始下落)
-            float verticalSpeed = kccMoveController.kinematicCharacterMotor.Velocity.y;
-
+            // 垂直速度 <= 0 时切换到下落状态
+            float verticalSpeed = moveContext.Motor.Velocity.y;
             if (verticalSpeed <= 0f)
             {
-                kccMoveController.StateMachine.TransitionTo(kccMoveController.fallState);
+                playerStateMachine.TransitionTo(playerStateMachine.FallState);
             }
         }
     }

@@ -2,51 +2,62 @@
 using DreamSystem.Player;
 using Events;
 using Fsm.Base;
+using Interface;
 using UnityEngine;
 
 namespace Fsm.State.Grounded
 {
     public class RollState : GroundedState
     {
+        /// 翻滚计时器
         private float _timer;
+
+        /// 翻滚方向
         private Vector3 _rollDir;
 
-        public RollState(KccMoveController kccMoveController, EventManager eventManager) : base(kccMoveController, eventManager) { }
+        public RollState(IPlayerMoveContext moveContext, EventManager eventManager, PlayerStateMachine playerStateMachine) : base(moveContext, eventManager, playerStateMachine) { }
 
+        /// <summary>
+        /// 进入翻滚状态：确定翻滚方向并播放动画。
+        /// </summary>
         public override void OnEnter()
         {
             base.OnEnter();
             _timer = 0;
 
-            _rollDir = kccMoveController.currentInputs.moveDirection.normalized;
-            // 防呆：没按键就朝脸滚
+            // 根据输入确定翻滚方向，无输入则向前
+            _rollDir = moveContext.MoveInputs.moveDirection.normalized;
             if (_rollDir == Vector3.zero)
             {
-                _rollDir = kccMoveController.kinematicCharacterMotor.CharacterForward;
+                _rollDir = moveContext.Motor.CharacterForward;
             }
 
             eventManager.Publish(GameEvents.PLAYER_ROLL_ANIMATION);
         }
 
+        /// <summary>
+        /// 以翻滚速度沿翻滚方向移动。
+        /// </summary>
+        /// <param name="velocity">当前速度 (引用传递)</param>
+        /// <param name="deltaTime">帧间隔时间</param>
         public override void OnUpdateVelocity(ref Vector3 velocity, float deltaTime)
         {
-            // 物理层：还是要让父类帮忙算坡度，不然下坡会飞出去
             base.OnUpdateVelocity(ref velocity, deltaTime);
-
-            // 强行覆盖速度，无视玩家输入
-            velocity = _rollDir * kccMoveController.rollSpeed;
+            velocity = _rollDir * moveContext.RollSpeed;
         }
 
+        /// <summary>
+        /// 每帧检测跌落和翻滚结束。
+        /// </summary>
+        /// <param name="deltaTime">帧间隔时间</param>
         public override void OnUpdate(float deltaTime)
         {
-            // 只检测物理跌落（禁止跳跃/闪避打断）
             if (CheckFalling()) return;
 
-            // 计时器逻辑
             _timer += deltaTime;
-            if (_timer > kccMoveController.rollDuration)
+            if (_timer > moveContext.RollDuration)
             {
-                kccMoveController.StateMachine.TransitionTo(kccMoveController.moveState);
+                playerStateMachine.TransitionTo(playerStateMachine.MoveState);
             }
         }
     }

@@ -2,8 +2,8 @@
 using Cysharp.Threading.Tasks;
 using DreamManager;
 using Events;
-using Fsm.State.Airborne;
 using Fsm.State.Grounded;
+using Interface;
 using SO;
 using UnityEngine;
 
@@ -11,25 +11,37 @@ namespace DreamSystem.Player
 {
     public class PlayerAnimationSystem : GameSystem
     {
+        /// Animancer 动画控制组件
         private readonly AnimancerComponent _animancer;
-        private readonly KccMoveController _kccMoveController;
-        private readonly EventManager _eventManager;
-        private readonly CharacterAnimationSo _animSoData; // 你的动画数据
-        private readonly Transform _playerTransform;
-        
-        // 缓存当前的 Mixer 状态 (为了在 LateTick 更新参数)
-        private LinearMixerState _freeMoveState;
-        private MixerState<Vector2> _lockedMoveState;
 
-        public PlayerAnimationSystem(AnimancerComponent animancer, KccMoveController kccMoveController, EventManager eventManager, CharacterAnimationSo animSoData)
+        /// 移动上下文 (提供输入和物理数据)
+        private readonly IPlayerMoveContext _moveContext;
+
+        /// 玩家状态机 (用于判断当前状态)
+        private readonly PlayerStateMachine _playerStateMachine;
+
+        /// 事件管理器
+        private readonly EventManager _eventManager;
+
+        /// 角色动画配置数据
+        private readonly CharacterAnimationSo _animSoData;
+
+        /// 玩家 Transform (用于计算本地方向)
+        private readonly Transform _playerTransform;
+
+        public PlayerAnimationSystem(AnimancerComponent animancer, IPlayerMoveContext moveContext, PlayerStateMachine playerStateMachine, EventManager eventManager, CharacterAnimationSo animSoData)
         {
             _animancer = animancer;
-            _kccMoveController = kccMoveController;
+            _moveContext = moveContext;
+            _playerStateMachine = playerStateMachine;
             _eventManager = eventManager;
             _animSoData = animSoData;
-            _playerTransform = kccMoveController.kinematicCharacterMotor.transform; 
+            _playerTransform = moveContext.Motor.transform;
         }
 
+        /// <summary>
+        /// 系统启动：订阅动画事件。
+        /// </summary>
         public override void Start()
         {
             _eventManager.Subscribe(GameEvents.PLAYER_JUMP_ANIMATION, PlayJump);
@@ -38,87 +50,90 @@ namespace DreamSystem.Player
             _eventManager.Subscribe(GameEvents.PLAYER_FALL_ANIMATION, PlayFall);
         }
 
+        /// <summary>
+        /// 每帧后期更新：根据当前状态更新动画。
+        /// </summary>
+        /// <remarks>
+        /// 注意：攻击动画在 LightAttackState 内部直接播放，
+        /// 因为连招系统需要追踪动画进度 (NormalizedTime)。
+        /// </remarks>
         public override void LateTick()
         {
-            // 这是核心循环！
-            // 我们根据 Controller 当前在哪种 State，来决定如何更新动画
+            var currentState = _playerStateMachine.StateMachine?.CurrentState;
 
-            var currentState = _kccMoveController.StateMachine.CurrentState;
-
-            // 如果当前在 MoveState (地面移动)
+            // 只在 MoveState 时更新 Locomotion 动画
             if (currentState is MoveState)
             {
                 UpdateLocomotion();
             }
         }
 
+        /// <summary>
+        /// 更新移动动画 (自由移动/锁定移动)。
+        /// </summary>
         private void UpdateLocomotion()
         {
-            // 1. 准备数据
-            bool isLocked = _kccMoveController.currentInputs.isLockedOn; // 假设你有这个
-            float speed = _kccMoveController.kinematicCharacterMotor.Velocity.magnitude;
+            bool isLocked = _moveContext.MoveInputs.isLockedOn;
+            float speed = _moveContext.Motor.Velocity.magnitude;
 
-            // 把输入转换成相对相机的本地坐标 (用于 2D 混合树)
-            // 这里简化写，你需要确保 KccInputs 里有这个，或者在这里现算
-            Vector3 worldDir = _kccMoveController.currentInputs.moveDirection;
+            // 计算相对于角色的输入方向
+            Vector3 worldDir = _moveContext.MoveInputs.moveDirection;
             Vector3 localDir = _playerTransform.InverseTransformDirection(worldDir);
-            Vector2 input2D = new Vector2(localDir.x, localDir.z); // x=Right, z=Forward
+            Vector2 input2D = new Vector2(localDir.x, localDir.z);
 
-            // 2. 播放逻辑
             if (isLocked)
             {
-                // 播放 2D 锁定移动
+                // 锁定状态：使用 2D 混合树
                 var state = _animancer.Play(_animSoData.LockedMoveMixer);
                 if (state is MixerState<Vector2> mixer)
                 {
-                    // 传入 Vector2，控制前后左右
-                    // 这里可能需要根据 speed 做一个映射，保证动画幅度匹配
                     mixer.Parameter = input2D * (speed > 0.1f ? 1f : 0f);
                 }
             }
             else
             {
-                // 播放 1D 自由移动
+                // 自由状态：使用 1D 混合树
                 var state = _animancer.Play(_animSoData.FreeMoveMixer);
                 if (state is LinearMixerState mixer)
                 {
-                    // 传入 Float，控制 Idle-Walk-Run
                     mixer.Parameter = speed;
                 }
             }
         }
 
+        /// <summary>
+        /// 播放跳跃动画。
+        /// </summary>
+        private void PlayJump() => _animancer.Play(_animSoData.JumpStart);
 
-        private void PlayJump()
-        {
-            _animancer.Play(_animSoData.JumpStart);
-        }
+        /// <summary>
+        /// 播放冲刺动画。
+        /// </summary>
+        private void PlayDash() => _animancer.Play(_animSoData.Dash);
 
-        private void PlayDash()
-        {
-            _animancer.Play(_animSoData.Dash); 
-        }
+        /// <summary>
+        /// 播放下落动画。
+        /// </summary>
+        private void PlayFall() => _animancer.Play(_animSoData.Fall);
 
-        private void PlayFall()
-        {
-            _animancer.Play(_animSoData.Fall);
-        }
-
+        /// <summary>
+        /// 播放翻滚动画 (根据输入方向选择动画)。
+        /// </summary>
         private void PlayRoll()
         {
-            // 锁定翻滚 (需要判断方向)
-            // 1. 获取相对输入方向
-            Vector3 worldDir = _kccMoveController.currentInputs.moveDirection;
+            // 计算相对于角色的输入方向
+            Vector3 worldDir = _moveContext.MoveInputs.moveDirection;
             Vector3 localDir = _playerTransform.InverseTransformDirection(worldDir);
             Vector2 input2D = new Vector2(localDir.x, localDir.z);
 
-            // 2. 从我们写的 DirectionalSet 里取动画
+            // 根据方向获取对应的翻滚动画
             var clip = _animSoData.RollAnimations.GetClipByDirection(input2D);
-
-            // 3. 播放
             _animancer.Play(clip);
         }
 
+        /// <summary>
+        /// 释放资源，取消事件订阅。
+        /// </summary>
         public override void Dispose()
         {
             _eventManager.Unsubscribe(GameEvents.PLAYER_JUMP_ANIMATION, PlayJump).Forget();

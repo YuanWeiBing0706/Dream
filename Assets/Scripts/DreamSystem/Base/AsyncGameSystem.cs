@@ -1,5 +1,5 @@
 using Cysharp.Threading.Tasks;
-using Interface;
+using Function.Initialize;
 namespace DreamSystem.Base
 {
     /// <summary>

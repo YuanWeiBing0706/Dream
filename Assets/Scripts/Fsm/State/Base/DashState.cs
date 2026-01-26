@@ -2,83 +2,103 @@
 using DreamSystem.Player;
 using Events;
 using Fsm.Base;
+using Interface;
 using UnityEngine;
+
 namespace Fsm.State.Base
 {
     public class DashState : BaseState
     {
+        /// 冲刺计时器
         private float _timer;
+
+        /// 冲刺方向
         private Vector3 _dashDir;
+
+        /// 是否从地面开始冲刺
         private bool _startedOnGround;
 
-        public DashState(KccMoveController kccMoveController,EventManager eventManager) : base(kccMoveController,eventManager) { }
+        public DashState(IPlayerMoveContext moveContext, EventManager eventManager, PlayerStateMachine playerStateMachine) : base(moveContext, eventManager, playerStateMachine) { }
 
+        /// <summary>
+        /// 进入冲刺状态：确定方向、标记空中使用、播放动画。
+        /// </summary>
         public override void OnEnter()
         {
             base.OnEnter();
             _timer = 0f;
-            
-            _startedOnGround = kccMoveController.kinematicCharacterMotor.GroundingStatus.IsStableOnGround;
-            
+
+            _startedOnGround = moveContext.Motor.GroundingStatus.IsStableOnGround;
+
+            // 空中冲刺标记已使用并强制脱离地面
             if (!_startedOnGround)
             {
-                kccMoveController.hasUsedAirDash = true;
-                kccMoveController.kinematicCharacterMotor.ForceUnground(); 
+                moveContext.HasUsedAirDash = true;
+                moveContext.Motor.ForceUnground();
             }
 
-            // 确定方向 (有输入往输入冲，没输入往脸冲)
-            Vector3 inputDir = kccMoveController.currentInputs.moveDirection;
+            // 根据输入确定冲刺方向，无输入则向前
+            Vector3 inputDir = moveContext.MoveInputs.moveDirection;
             if (inputDir.sqrMagnitude > 0.01f)
             {
                 _dashDir = inputDir.normalized;
-                kccMoveController.kinematicCharacterMotor.SetRotation(Quaternion.LookRotation(_dashDir, Vector3.up));
+                moveContext.Motor.SetRotation(Quaternion.LookRotation(_dashDir, Vector3.up));
             }
             else
             {
-                _dashDir = kccMoveController.kinematicCharacterMotor.CharacterForward;
+                _dashDir = moveContext.Motor.CharacterForward;
             }
-            
-            // 播放动画
-            eventManager.Publish(GameEvents.PLAYER_DODGE_CANCELED);
+
+            eventManager.Publish(GameEvents.PLAYER_DASH_ANIMATION);
         }
 
+        /// <summary>
+        /// 每帧检测跳跃取消和冲刺结束。
+        /// </summary>
+        /// <param name="deltaTime">帧间隔时间</param>
         public override void OnUpdate(float deltaTime)
         {
-            if (kccMoveController.currentInputs.jumpDown)
+            // 冲刺中可以跳跃取消
+            if (moveContext.MoveInputs.jumpDown)
             {
-                if (kccMoveController.kinematicCharacterMotor.GroundingStatus.IsStableOnGround || _startedOnGround)
+                if (moveContext.Motor.GroundingStatus.IsStableOnGround || _startedOnGround)
                 {
-                    kccMoveController.StateMachine.TransitionTo(kccMoveController.jumpState);
+                    playerStateMachine.TransitionTo(playerStateMachine.JumpState);
                     return;
                 }
             }
-            
+
             _timer += deltaTime;
-            if (_timer > kccMoveController.dashDuration)
+            if (_timer > moveContext.DashDuration)
             {
-                if (kccMoveController.kinematicCharacterMotor.GroundingStatus.IsStableOnGround)
+                // 根据是否在地面决定切换目标
+                if (moveContext.Motor.GroundingStatus.IsStableOnGround)
                 {
-                    kccMoveController.StateMachine.TransitionTo(kccMoveController.moveState);
+                    playerStateMachine.TransitionTo(playerStateMachine.MoveState);
                 }
                 else
                 {
-                    kccMoveController.StateMachine.TransitionTo(kccMoveController.fallState);
+                    playerStateMachine.TransitionTo(playerStateMachine.FallState);
                 }
             }
         }
 
+        /// <summary>
+        /// 以冲刺速度沿冲刺方向移动，地面时贴合斜面。
+        /// </summary>
+        /// <param name="currentVelocity">当前速度 (引用传递)</param>
+        /// <param name="deltaTime">帧间隔时间</param>
         public override void OnUpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
         {
-            // 这一帧在地上，就贴地跑；下一帧飞出去了，就直线飞。
-            // 不需要切换状态，只需要切换公式。
-            if (kccMoveController.kinematicCharacterMotor.GroundingStatus.IsStableOnGround)
+            if (moveContext.Motor.GroundingStatus.IsStableOnGround)
             {
-                Vector3 slopeDir = kccMoveController.kinematicCharacterMotor.GetDirectionTangentToSurface(_dashDir, kccMoveController.kinematicCharacterMotor.GroundingStatus.GroundNormal);
-                currentVelocity = slopeDir * kccMoveController.dashSpeed;
+                // 投影到斜面
+                Vector3 slopeDir = moveContext.Motor.GetDirectionTangentToSurface(_dashDir, moveContext.Motor.GroundingStatus.GroundNormal);
+                currentVelocity = slopeDir * moveContext.DashSpeed;
             }
             else
             {
-                currentVelocity = _dashDir * kccMoveController.dashSpeed;
+                currentVelocity = _dashDir * moveContext.DashSpeed;
             }
         }
     }

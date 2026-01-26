@@ -41,7 +41,15 @@ namespace SO
         // ============================================
         [TabGroup("Animations", "Combat")]
         [DrawWithUnity]
-        public ClipTransition[] Attacks;
+        public List<ClipTransition> LightAttacks = new List<ClipTransition>();
+
+        [TabGroup("Animations", "Combat")]
+        [DrawWithUnity]
+        public List<ClipTransition> HeavyAttacks = new List<ClipTransition>();
+
+        [TabGroup("Animations", "Combat")]
+        [DrawWithUnity]
+        public List<ClipTransition> JumpAttacks = new List<ClipTransition>();
 
         [TabGroup("Animations", "Combat")]
         [Searchable]
@@ -52,7 +60,10 @@ namespace SO
         [DrawWithUnity]
         public ClipTransition Defend;
 
-        // ... (Evasion, Status 保持你现在的样子) ...
+        [TabGroup("Animations", "Combat")]
+        [DrawWithUnity]
+        public ClipTransition DefendHit;
+        
         // ============================================
         // 闪避系统 (Evasion)
         // ============================================
@@ -79,7 +90,11 @@ namespace SO
         [DrawWithUnity]
         public ClipTransition Victory;
 
-        // 【修改点 3】：添加辅助方法供外部获取，隐藏 Wrapper 的存在
+        [TabGroup("Animations", "Status")]
+        [DrawWithUnity]
+        public ClipTransition Dizzy;
+
+        // 添加辅助方法供外部获取，隐藏 Wrapper 的存在
         public ClipTransition GetSkill(string key)
         {
             if (Skills.TryGetValue(key, out var wrapper))
@@ -90,8 +105,7 @@ namespace SO
             return null;
         }
     }
-
-    // 【修改点 2】: 新增包装类
+    
     [Serializable]
     public class SkillTransition
     {

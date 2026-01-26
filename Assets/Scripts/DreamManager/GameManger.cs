@@ -1,5 +1,5 @@
 ﻿using Cysharp.Threading.Tasks;
-using Interface;
+using Function.Initialize;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 namespace DreamManager
@@ -13,7 +13,6 @@ namespace DreamManager
             // 加载场景
             var handle = SceneManager.LoadSceneAsync("Main");
             await handle;
-
             Debug.Log("[GameFlow] Main 场景加载完毕！");
         }
     }

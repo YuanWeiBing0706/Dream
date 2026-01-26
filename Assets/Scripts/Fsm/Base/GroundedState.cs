@@ -1,74 +1,83 @@
 ﻿using DreamManager;
 using DreamSystem.Player;
+using Interface;
 using UnityEngine;
+
 namespace Fsm.Base
 {
     public abstract class GroundedState : BaseState
     {
-        protected GroundedState(KccMoveController kccMoveController,EventManager eventManager) : base(kccMoveController,eventManager) { }
+        protected GroundedState(IPlayerMoveContext moveContext, EventManager eventManager, PlayerStateMachine playerStateMachine)
+            : base(moveContext, eventManager, playerStateMachine) { }
 
+        /// <summary>
+        /// 进入地面状态时重置空中技能标记。
+        /// </summary>
         public override void OnEnter()
         {
             base.OnEnter();
-            kccMoveController.hasUsedAirDash = false;
-            kccMoveController.hasUsedJump=false;
+            moveContext.HasUsedAirDash = false;
+            moveContext.HasUsedJump = false;
         }
-        
+
         /// <summary>
-        /// 检测是否失去地面稳定性（跌落）
+        /// 检测是否离开地面，是则切换到下落状态。
         /// </summary>
-        /// <returns>如果发生状态切换返回 true</returns>
+        /// <returns>是否已切换状态</returns>
         protected bool CheckFalling()
         {
-            if (!kccMoveController.kinematicCharacterMotor.GroundingStatus.IsStableOnGround)
+            if (!moveContext.Motor.GroundingStatus.IsStableOnGround)
             {
-                kccMoveController.StateMachine.TransitionTo(kccMoveController.fallState);
+                playerStateMachine.TransitionTo(playerStateMachine.FallState);
                 return true;
             }
             return false;
         }
 
         /// <summary>
-        /// 检测跳跃输入
+        /// 检测跳跃输入，是则切换到跳跃状态。
         /// </summary>
-        /// <returns>如果发生状态切换返回 true</returns>
+        /// <returns>是否已切换状态</returns>
         protected bool CheckJump()
         {
-            if (kccMoveController.currentInputs.jumpDown)
+            if (moveContext.MoveInputs.jumpDown)
             {
-                kccMoveController.StateMachine.TransitionTo(kccMoveController.jumpState);
+                playerStateMachine.TransitionTo(playerStateMachine.JumpState);
                 return true;
             }
             return false;
         }
 
         /// <summary>
-        /// 检测闪避输入（Dash 或 Roll）
+        /// 检测闪避输入，根据是否锁定切换到翻滚或冲刺状态。
         /// </summary>
-        /// <returns>如果发生状态切换返回 true</returns>
+        /// <returns>是否已切换状态</returns>
         protected bool CheckDodge()
         {
-            if (kccMoveController.currentInputs.isDodge)
+            if (moveContext.MoveInputs.isDodge)
             {
-                if (kccMoveController.currentInputs.isLockedOn)
+                if (moveContext.MoveInputs.isLockedOn)
                 {
-                    kccMoveController.StateMachine.TransitionTo(kccMoveController.rollState);
+                    playerStateMachine.TransitionTo(playerStateMachine.RollState);
                 }
                 else
                 {
-                    kccMoveController.StateMachine.TransitionTo(kccMoveController.dashState);
+                    playerStateMachine.TransitionTo(playerStateMachine.DashState);
                 }
                 return true;
             }
             return false;
         }
-        
+
+        /// <summary>
+        /// 将速度投影到地面法线方向，保持在斜面上的稳定移动。
+        /// </summary>
+        /// <param name="currentVelocity">当前速度 (引用传递)</param>
+        /// <param name="deltaTime">帧间隔时间</param>
         public override void OnUpdateVelocity(ref Vector3 currentVelocity, float deltaTime)
         {
-            // 只要在地上，咱们就得算坡度，不能直接向前飞
-            var motor = kccMoveController.kinematicCharacterMotor;
+            var motor = moveContext.Motor;
             currentVelocity = motor.GetDirectionTangentToSurface(currentVelocity, motor.GroundingStatus.GroundNormal) * currentVelocity.magnitude;
         }
-        
     }
 }

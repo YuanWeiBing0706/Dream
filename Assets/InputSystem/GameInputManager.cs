@@ -145,6 +145,15 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""LightAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""6e591efd-2931-4db9-9ca2-5ee52c1b2fe3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -466,6 +475,39 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
                     ""action"": ""Jump"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""676b376b-7a17-4fb0-b04a-e73f9e5957c2"",
+                    ""path"": ""<Gamepad>/buttonSouth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Jump"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""a392505a-b52c-43aa-960b-a95b3b689dce"",
+                    ""path"": ""<Gamepad>/buttonWest"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LightAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""7a32f57f-d926-4ae7-b67c-41dd669f30bd"",
+                    ""path"": ""<Mouse>/leftButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""LightAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -480,6 +522,7 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
         m_PlayerControl_Behavior = m_PlayerControl.FindAction("Behavior", throwIfNotFound: true);
         m_PlayerControl_ZoomView = m_PlayerControl.FindAction("ZoomView", throwIfNotFound: true);
         m_PlayerControl_Jump = m_PlayerControl.FindAction("Jump", throwIfNotFound: true);
+        m_PlayerControl_LightAttack = m_PlayerControl.FindAction("LightAttack", throwIfNotFound: true);
     }
 
     ~@GameInputManager()
@@ -566,6 +609,7 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerControl_Behavior;
     private readonly InputAction m_PlayerControl_ZoomView;
     private readonly InputAction m_PlayerControl_Jump;
+    private readonly InputAction m_PlayerControl_LightAttack;
     /// <summary>
     /// Provides access to input actions defined in input action map "PlayerControl".
     /// </summary>
@@ -601,6 +645,10 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "PlayerControl/Jump".
         /// </summary>
         public InputAction @Jump => m_Wrapper.m_PlayerControl_Jump;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerControl/LightAttack".
+        /// </summary>
+        public InputAction @LightAttack => m_Wrapper.m_PlayerControl_LightAttack;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -645,6 +693,9 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
             @Jump.started += instance.OnJump;
             @Jump.performed += instance.OnJump;
             @Jump.canceled += instance.OnJump;
+            @LightAttack.started += instance.OnLightAttack;
+            @LightAttack.performed += instance.OnLightAttack;
+            @LightAttack.canceled += instance.OnLightAttack;
         }
 
         /// <summary>
@@ -674,6 +725,9 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
             @Jump.started -= instance.OnJump;
             @Jump.performed -= instance.OnJump;
             @Jump.canceled -= instance.OnJump;
+            @LightAttack.started -= instance.OnLightAttack;
+            @LightAttack.performed -= instance.OnLightAttack;
+            @LightAttack.canceled -= instance.OnLightAttack;
         }
 
         /// <summary>
@@ -756,5 +810,12 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnJump(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "LightAttack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnLightAttack(InputAction.CallbackContext context);
     }
 }
