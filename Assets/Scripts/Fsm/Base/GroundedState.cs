@@ -7,8 +7,7 @@ namespace Fsm.Base
 {
     public abstract class GroundedState : BaseState
     {
-        protected GroundedState(IPlayerMoveContext moveContext, EventManager eventManager, PlayerStateMachine playerStateMachine)
-            : base(moveContext, eventManager, playerStateMachine) { }
+        protected GroundedState(IPlayerMoveContext moveContext, EventManager eventManager, PlayerStateMachine playerStateMachine) : base(moveContext, eventManager, playerStateMachine) { }
 
         /// <summary>
         /// 进入地面状态时重置空中技能标记。

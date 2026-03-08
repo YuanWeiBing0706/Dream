@@ -25,11 +25,27 @@ namespace DreamSystem
             _gameInputManager.PlayerControl.Move.performed += OnMovementPerformed;
             _gameInputManager.PlayerControl.Move.canceled += OnMovementCanceled;
             _gameInputManager.PlayerControl.Jump.performed += OnJumpPerformed;
+            _gameInputManager.PlayerControl.Jump.canceled += OnJumpCanceled;
             _gameInputManager.PlayerControl.ZoomView.performed += OnZoomViewPerformed;
             _gameInputManager.PlayerControl.Dodge.performed += OnDodgePerformed;
+            _gameInputManager.PlayerControl.Dodge.canceled += OnDodgeCanceled;
             _gameInputManager.PlayerControl.LightAttack.performed += OnLightAttackPerformed;
             _gameInputManager.PlayerControl.LightAttack.canceled += OnLightAttackCanceled;
+            _gameInputManager.PlayerControl.HeavyAttack.performed += OnHeavyAttackPerformed;
+            _gameInputManager.PlayerControl.HeavyAttack.canceled += OnHeavyAttackCanceled;
+
         }
+
+        private void OnHeavyAttackCanceled(InputAction.CallbackContext obj)
+        {
+            _eventManager.Publish(GameEvents.PLAYER_HEAVYATTACK_CANCELED, false);
+        }
+        private void OnHeavyAttackPerformed(InputAction.CallbackContext obj)
+        {
+            _eventManager.Publish(GameEvents.PLAYER_HEAVYATTACK_PERFROMED, true);
+        }
+
+
 
         private void OnLightAttackPerformed(InputAction.CallbackContext obj)
         {
@@ -38,12 +54,16 @@ namespace DreamSystem
 
         private void OnLightAttackCanceled(InputAction.CallbackContext obj)
         {
-            _eventManager.Publish(GameEvents.PLAYER_LIGHTATTACK_PERFROMED, false);
+            _eventManager.Publish(GameEvents.PLAYER_LIGHTATTACK_CANCELED, false);
         }
 
         private void OnDodgePerformed(InputAction.CallbackContext obj)
         {
-            _eventManager.Publish(GameEvents.PLAYER_DODGE_PERFORMED);
+            _eventManager.Publish(GameEvents.PLAYER_DODGE_PERFORMED, true);
+        }
+        private void OnDodgeCanceled(InputAction.CallbackContext obj)
+        {
+            _eventManager.Publish(GameEvents.PLAYER_DODGE_CANCELED, false);
         }
 
         private void OnMovementPerformed(InputAction.CallbackContext obj)
@@ -62,6 +82,11 @@ namespace DreamSystem
             _eventManager.Publish(GameEvents.PLAYER_JUMP_PERFROMED, true);
         }
 
+        private void OnJumpCanceled(InputAction.CallbackContext obj)
+        {
+            _eventManager.Publish(GameEvents.PLAYER_JUMP_CANCELED, false);
+        }
+
         private void OnZoomViewPerformed(InputAction.CallbackContext obj)
         {
             float rawValue = obj.ReadValue<float>();
@@ -71,14 +96,16 @@ namespace DreamSystem
 
         public override void Dispose()
         {
-            _gameInputManager.PlayerControl.Disable();
+            _gameInputManager.PlayerControl.Enable();
             _gameInputManager.PlayerControl.Move.performed -= OnMovementPerformed;
             _gameInputManager.PlayerControl.Move.canceled -= OnMovementCanceled;
             _gameInputManager.PlayerControl.Jump.performed -= OnJumpPerformed;
+            _gameInputManager.PlayerControl.Jump.canceled -= OnJumpCanceled;
+            _gameInputManager.PlayerControl.ZoomView.performed -= OnZoomViewPerformed;
             _gameInputManager.PlayerControl.Dodge.performed -= OnDodgePerformed;
+            _gameInputManager.PlayerControl.Dodge.canceled -= OnDodgeCanceled;
             _gameInputManager.PlayerControl.LightAttack.performed -= OnLightAttackPerformed;
             _gameInputManager.PlayerControl.LightAttack.canceled -= OnLightAttackCanceled;
-            _gameInputManager.PlayerControl.ZoomView.performed -= OnZoomViewPerformed;
         }
     }
 }

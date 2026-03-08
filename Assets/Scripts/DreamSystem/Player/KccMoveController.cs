@@ -8,6 +8,12 @@ using UnityEngine;
 
 namespace DreamSystem.Player
 {
+    /// <summary>
+    /// KCC 移动控制器。
+    /// <para>纯逻辑系统（非 MonoBehaviour），由 VContainer 注入生命周期。</para>
+    /// <para>职责：对接 KinematicCharacterController 物理引擎，将状态机的速度/旋转逻辑转发给 KCC Motor。</para>
+    /// <para>同时实现 IPlayerMoveContext，为状态机提供移动参数和输入数据。</para>
+    /// </summary>
     public class KccMoveController : GameSystem, ICharacterController, IPlayerMoveContext
     {
         /// KCC 物理引擎组件
@@ -103,10 +109,7 @@ namespace DreamSystem.Player
             _playerStateMachine = playerStateMachine;
             _attackContext = attackContext;
         }
-
-        /// <summary>
-        /// 系统启动：注册 KCC 回调、订阅输入事件、初始化状态机。
-        /// </summary>
+        
         public override void Start()
         {
             _motor.CharacterController = this;

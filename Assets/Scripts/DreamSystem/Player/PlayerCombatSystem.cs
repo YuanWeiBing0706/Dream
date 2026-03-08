@@ -1,26 +1,34 @@
 ﻿using System.Collections.Generic;
 using DreamManager;
+using DreamSystem.Damage;
 using Events;
-using Function.Damageable;
 using Model.Player;
+using Struct;
 using UnityEngine;
 
 namespace DreamSystem.Player
 {
+    /// <summary>
+    /// 玩家战斗系统。
+    /// <para>职责：监听攻击检测窗口事件、执行 HitBox 物理检测、发布伤害请求事件。</para>
+    /// </summary>
     public class PlayerCombatSystem : GameSystem
     {
-        private PlayerHitBox _playerHitBox;
-        private EventManager _eventManager;
-        private DamageManager _damageManager;
+        private readonly PlayerHitBox[] _playerHitBoxes;
+        private readonly EventManager _eventManager;
+        private readonly CharacterStats _characterStats;
+
+        /// 是否正在检测伤害
         private bool _isDetection;
 
-        private HashSet<int> _hitEnemyIds = new HashSet<int>();
+        /// 本次攻击已命中的目标去重集合（按 HitBox 独立计算）
+        private readonly HashSet<(int hitBoxIndex, int targetId)> _hitEnemyIds = new();
 
-        public PlayerCombatSystem(PlayerHitBox playerHitBox, EventManager eventManager,DamageManager damageManager)
+        public PlayerCombatSystem(PlayerHitBox[] playerHitBoxes, EventManager eventManager, CharacterStats characterStats)
         {
-            _playerHitBox = playerHitBox;
+            _playerHitBoxes = playerHitBoxes;
             _eventManager = eventManager;
-            _damageManager = damageManager;
+            _characterStats = characterStats;
         }
 
         public override void Start()
@@ -29,26 +37,28 @@ namespace DreamSystem.Player
             _eventManager.Subscribe(GameEvents.PLAYER_ATTACK_CLOSE_DETECTION, PlayerAttackCloseDetection);
         }
 
+        /// <summary>
+        /// 每帧后期更新：检测窗口开启时，遍历所有 HitBox 执行物理检测，命中后发布伤害请求。
+        /// </summary>
         public override void LateTick()
         {
-            if (_isDetection)
+            if (!_isDetection) return;
+
+            for (int h = 0; h < _playerHitBoxes.Length; h++)
             {
-                // 让 HitBox 进行物理检测
-                int hitCount = _playerHitBox.Detect(out Collider[] colliders);
-                
+                int hitCount = _playerHitBoxes[h].Detect(out Collider[] colliders);
+
                 for (int i = 0; i < hitCount; i++)
                 {
                     Collider target = colliders[i];
-                    int targetId = target.GetInstanceID(); // 刚体的唯一 ID
+                    int targetId = target.GetInstanceID();
+                    var hitKey = (h, targetId);
 
-                    // 检查去重：如果这个怪这次没被打过
-                    if (!_hitEnemyIds.Contains(targetId))
+                    if (!_hitEnemyIds.Contains(hitKey))
                     {
-                        UnityEngine.Debug.Log($"🔪 砍到了新敌人: {target.name}");
-                        _damageManager.TryGet(target, out IDamageable handler);
-                        handler?.TakeDamage(5);//测试用的伤害
-                        // 加入受害者名单，防止下一帧重复伤害
-                        _hitEnemyIds.Add(targetId);
+                        // 发布伤害请求，由 DamageManager 处理
+                        _eventManager.Publish(GameEvents.DAMAGE_REQUEST, new DamageRequest(_characterStats, target, 10f));
+                        _hitEnemyIds.Add(hitKey);
                     }
                 }
             }
@@ -57,19 +67,18 @@ namespace DreamSystem.Player
         private void PlayerAttackOpenDetection()
         {
             _isDetection = true;
-            _hitEnemyIds.Clear(); 
+            _hitEnemyIds.Clear();
         }
 
         private void PlayerAttackCloseDetection()
         {
             _isDetection = false;
         }
-        
+
         public override void Dispose()
         {
-            // 别忘了取消订阅
-             _eventManager.Unsubscribe(GameEvents.PLAYER_ATTACK_OPEN_DETECTION, PlayerAttackOpenDetection);
-             _eventManager.Unsubscribe(GameEvents.PLAYER_ATTACK_CLOSE_DETECTION, PlayerAttackCloseDetection);
+            _eventManager.Unsubscribe(GameEvents.PLAYER_ATTACK_OPEN_DETECTION, PlayerAttackOpenDetection);
+            _eventManager.Unsubscribe(GameEvents.PLAYER_ATTACK_CLOSE_DETECTION, PlayerAttackCloseDetection);
         }
     }
 }

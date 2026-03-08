@@ -2,6 +2,7 @@
 {
     public class GameEvents
     {
+
         /// 玩家移动被执行
         public const string PLAYER_MOVE_PERFORMED = nameof(PLAYER_MOVE_PERFORMED);
         /// 玩家移动被取消
@@ -10,19 +11,26 @@
         public const string PLAYER_CAMERA_ZOOM = nameof(PLAYER_CAMERA_ZOOM);
         /// 玩家跳跃被执行
         public const string PLAYER_JUMP_PERFROMED = nameof(PLAYER_JUMP_PERFROMED);
+        /// 玩家跳跃被取消
+        public const string PLAYER_JUMP_CANCELED = nameof(PLAYER_JUMP_CANCELED);
         /// 玩家闪避被执行
         public const string PLAYER_DODGE_PERFORMED = nameof(PLAYER_DODGE_PERFORMED);
+        /// 玩家闪避呗取消
+        public const string PLAYER_DODGE_CANCELED = nameof(PLAYER_DODGE_CANCELED);
         /// 玩家下落攻击被执行
         public const string PLAYER_FALLATTACK_PERFROMED = nameof(PLAYER_FALLATTACK_PERFROMED);
         /// 玩家轻攻击被执行
         public const string PLAYER_LIGHTATTACK_PERFROMED = nameof(PLAYER_LIGHTATTACK_PERFROMED);
         /// 玩家轻攻击被取消
         public const string PLAYER_LIGHTATTACK_CANCELED = nameof(PLAYER_LIGHTATTACK_CANCELED);
-        /// 玩家重攻击被执行
-        public const string PLAYER_SKILLATTACK_PERFROMED = nameof(PLAYER_SKILLATTACK_PERFROMED);
         /// 玩家技能攻击被执行
+        public const string PLAYER_SKILLATTACK_PERFROMED = nameof(PLAYER_SKILLATTACK_PERFROMED);
+
+        /// 玩家重攻击被执行
         public const string PLAYER_HEAVYATTACK_PERFROMED = nameof(PLAYER_HEAVYATTACK_PERFROMED);
-            
+        /// 玩家重攻击被取消
+        public const string PLAYER_HEAVYATTACK_CANCELED = nameof(PLAYER_HEAVYATTACK_CANCELED);
+
         /// 设置输入数据包
         public const string SET_INPUTS = nameof(SET_INPUTS);
 
@@ -48,7 +56,11 @@
 
         // 敌人事件
         public const string ENEMY_DAMAGED = nameof(ENEMY_DAMAGED);
-        public const string ENEMY_DEATH = nameof(ENEMY_DEATH);
+        public const string ENEMY_DEATH = nameof(ENEMY_DEATH);        // 伤害管道事件
+        /// 伤害请求（CombatSystem → DamageSystem）
+        public const string DAMAGE_REQUEST = nameof(DAMAGE_REQUEST);
+        /// 伤害结算结果（DamageSystem → 受击方）
+        public const string DAMAGE_RESULT = nameof(DAMAGE_RESULT);
 
 
     }

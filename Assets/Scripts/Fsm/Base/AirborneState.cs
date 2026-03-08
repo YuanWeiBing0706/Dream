@@ -7,8 +7,7 @@ namespace Fsm.Base
 {
     public abstract class AirborneState : BaseState
     {
-        protected AirborneState(IPlayerMoveContext moveContext, EventManager eventManager, PlayerStateMachine playerStateMachine)
-            : base(moveContext, eventManager, playerStateMachine) { }
+        protected AirborneState(IPlayerMoveContext moveContext, EventManager eventManager, PlayerStateMachine playerStateMachine) : base(moveContext, eventManager, playerStateMachine) { }
 
         /// <summary>
         /// 检测是否落地，是则切换到移动状态。

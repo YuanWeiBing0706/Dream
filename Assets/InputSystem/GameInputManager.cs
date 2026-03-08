@@ -154,6 +154,15 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": false
+                },
+                {
+                    ""name"": ""HeavyAttack"",
+                    ""type"": ""Button"",
+                    ""id"": ""004d4b5d-e7a0-4cd4-ba93-a51cf5e52ef6"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -508,6 +517,17 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
                     ""action"": ""LightAttack"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""9dd6f377-66da-45fb-bdb8-323defbb2caa"",
+                    ""path"": ""<Gamepad>/buttonNorth"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""HeavyAttack"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -523,6 +543,7 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
         m_PlayerControl_ZoomView = m_PlayerControl.FindAction("ZoomView", throwIfNotFound: true);
         m_PlayerControl_Jump = m_PlayerControl.FindAction("Jump", throwIfNotFound: true);
         m_PlayerControl_LightAttack = m_PlayerControl.FindAction("LightAttack", throwIfNotFound: true);
+        m_PlayerControl_HeavyAttack = m_PlayerControl.FindAction("HeavyAttack", throwIfNotFound: true);
     }
 
     ~@GameInputManager()
@@ -610,6 +631,7 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
     private readonly InputAction m_PlayerControl_ZoomView;
     private readonly InputAction m_PlayerControl_Jump;
     private readonly InputAction m_PlayerControl_LightAttack;
+    private readonly InputAction m_PlayerControl_HeavyAttack;
     /// <summary>
     /// Provides access to input actions defined in input action map "PlayerControl".
     /// </summary>
@@ -649,6 +671,10 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
         /// Provides access to the underlying input action "PlayerControl/LightAttack".
         /// </summary>
         public InputAction @LightAttack => m_Wrapper.m_PlayerControl_LightAttack;
+        /// <summary>
+        /// Provides access to the underlying input action "PlayerControl/HeavyAttack".
+        /// </summary>
+        public InputAction @HeavyAttack => m_Wrapper.m_PlayerControl_HeavyAttack;
         /// <summary>
         /// Provides access to the underlying input action map instance.
         /// </summary>
@@ -696,6 +722,9 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
             @LightAttack.started += instance.OnLightAttack;
             @LightAttack.performed += instance.OnLightAttack;
             @LightAttack.canceled += instance.OnLightAttack;
+            @HeavyAttack.started += instance.OnHeavyAttack;
+            @HeavyAttack.performed += instance.OnHeavyAttack;
+            @HeavyAttack.canceled += instance.OnHeavyAttack;
         }
 
         /// <summary>
@@ -728,6 +757,9 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
             @LightAttack.started -= instance.OnLightAttack;
             @LightAttack.performed -= instance.OnLightAttack;
             @LightAttack.canceled -= instance.OnLightAttack;
+            @HeavyAttack.started -= instance.OnHeavyAttack;
+            @HeavyAttack.performed -= instance.OnHeavyAttack;
+            @HeavyAttack.canceled -= instance.OnHeavyAttack;
         }
 
         /// <summary>
@@ -817,5 +849,12 @@ public partial class @GameInputManager: IInputActionCollection2, IDisposable
         /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
         /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
         void OnLightAttack(InputAction.CallbackContext context);
+        /// <summary>
+        /// Method invoked when associated input action "HeavyAttack" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+        /// </summary>
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+        /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+        void OnHeavyAttack(InputAction.CallbackContext context);
     }
 }

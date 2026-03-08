@@ -40,21 +40,21 @@ namespace SO
         // 战斗系统 (Combat)
         // ============================================
         [TabGroup("Animations", "Combat")]
-        [DrawWithUnity]
-        public List<ClipTransition> LightAttacks = new List<ClipTransition>();
+        [LabelText("轻攻击连招")]
+        public List<AttackClipData> LightAttacks = new List<AttackClipData>();
 
         [TabGroup("Animations", "Combat")]
-        [DrawWithUnity]
-        public List<ClipTransition> HeavyAttacks = new List<ClipTransition>();
+        [LabelText("重攻击连招")]
+        public List<AttackClipData> HeavyAttacks = new List<AttackClipData>();
 
         [TabGroup("Animations", "Combat")]
-        [DrawWithUnity]
-        public List<ClipTransition> JumpAttacks = new List<ClipTransition>();
+        [LabelText("跳跃攻击")]
+        public List<AttackClipData> JumpAttacks = new List<AttackClipData>();
 
         [TabGroup("Animations", "Combat")]
         [Searchable]
         [Tooltip("通过 Key 查找的特殊动作")]
-        public Dictionary<string, SkillTransition> Skills = new Dictionary<string, SkillTransition>();
+        public Dictionary<string, SkillAttackData> Skills = new Dictionary<string, SkillAttackData>();
 
         [TabGroup("Animations", "Combat")]
         [DrawWithUnity]
@@ -63,7 +63,7 @@ namespace SO
         [TabGroup("Animations", "Combat")]
         [DrawWithUnity]
         public ClipTransition DefendHit;
-        
+
         // ============================================
         // 闪避系统 (Evasion)
         // ============================================
@@ -94,26 +94,65 @@ namespace SO
         [DrawWithUnity]
         public ClipTransition Dizzy;
 
-        // 添加辅助方法供外部获取，隐藏 Wrapper 的存在
-        public ClipTransition GetSkill(string key)
+        /// <summary>
+        /// 通过 Key 获取技能攻击数据。
+        /// </summary>
+        /// <param name="key">技能键名</param>
+        /// <returns>技能攻击数据，不存在则返回 null</returns>
+        public SkillAttackData GetSkill(string key)
         {
-            if (Skills.TryGetValue(key, out var wrapper))
+            if (Skills.TryGetValue(key, out var data))
             {
-                // 如果 wrapper 不为空，返回里面的 Transition，否则返回 null
-                return wrapper?.Transition;
+                return data;
             }
             return null;
         }
     }
-    
+
+    /// <summary>
+    /// 攻击动画数据，包含动画片段和伤害窗口配置。
+    /// </summary>
     [Serializable]
-    public class SkillTransition
+    public class AttackClipData
     {
         [DrawWithUnity]
-        public ClipTransition Transition;
+        [LabelText("动画")]
+        public ClipTransition Clip;
 
-        // 方便隐式转换
-        public static implicit operator ClipTransition(SkillTransition wrapper) => wrapper?.Transition;
+        [PropertyRange(0f, 1f)]
+        [LabelText("伤害开始 (0-1)")]
+        [Tooltip("伤害检测开始的动画进度 (0 = 动画开始, 1 = 动画结束)")]
+        public float HitWindowStart = 0f;
+
+        [PropertyRange(0f, 1f)]
+        [LabelText("伤害结束 (0-1)")]
+        [Tooltip("伤害检测结束的动画进度")]
+        public float HitWindowEnd = 0.9f;
+
+        /// 隐式转换为 ClipTransition，方便兼容现有代码
+        public static implicit operator ClipTransition(AttackClipData data) => data?.Clip;
+    }
+
+    /// <summary>
+    /// 技能攻击数据，包含动画和伤害窗口配置。
+    /// </summary>
+    [Serializable]
+    public class SkillAttackData
+    {
+        [DrawWithUnity]
+        [LabelText("动画")]
+        public ClipTransition Clip;
+
+        [PropertyRange(0f, 1f)]
+        [LabelText("伤害开始 (0-1)")]
+        public float HitWindowStart = 0f;
+
+        [PropertyRange(0f, 1f)]
+        [LabelText("伤害结束 (0-1)")]
+        public float HitWindowEnd = 0.9f;
+
+        /// 隐式转换为 ClipTransition
+        public static implicit operator ClipTransition(SkillAttackData data) => data?.Clip;
     }
 
     [Serializable]
@@ -128,6 +167,11 @@ namespace SO
         [DrawWithUnity]
         public ClipTransition Right;
 
+        /// <summary>
+        /// 根据输入方向获取对应的翻滚动画。
+        /// </summary>
+        /// <param name="input">2D 输入方向</param>
+        /// <returns>对应方向的动画</returns>
         public ClipTransition GetClipByDirection(Vector2 input)
         {
             if (Mathf.Abs(input.x) > Mathf.Abs(input.y))

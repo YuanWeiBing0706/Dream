@@ -9,6 +9,12 @@ using UnityEngine;
 
 namespace DreamSystem.Player
 {
+    /// <summary>
+    /// 玩家动画系统。
+    /// <para>纯逻辑系统（非 MonoBehaviour），由 VContainer 注入生命周期。</para>
+    /// <para>职责：根据玩家当前状态播放对应的 Locomotion / 跳跃 / 摔倒 / 冒险等动画。</para>
+    /// <para>注：攻击动画由 AttackState 内部直接播放，因为连招系统需要跟踪 NormalizedTime。</para>
+    /// </summary>
     public class PlayerAnimationSystem : GameSystem
     {
         /// Animancer 动画控制组件
@@ -38,10 +44,7 @@ namespace DreamSystem.Player
             _animSoData = animSoData;
             _playerTransform = moveContext.Motor.transform;
         }
-
-        /// <summary>
-        /// 系统启动：订阅动画事件。
-        /// </summary>
+        
         public override void Start()
         {
             _eventManager.Subscribe(GameEvents.PLAYER_JUMP_ANIMATION, PlayJump);
@@ -130,10 +133,7 @@ namespace DreamSystem.Player
             var clip = _animSoData.RollAnimations.GetClipByDirection(input2D);
             _animancer.Play(clip);
         }
-
-        /// <summary>
-        /// 释放资源，取消事件订阅。
-        /// </summary>
+        
         public override void Dispose()
         {
             _eventManager.Unsubscribe(GameEvents.PLAYER_JUMP_ANIMATION, PlayJump).Forget();

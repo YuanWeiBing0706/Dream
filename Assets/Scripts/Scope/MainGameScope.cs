@@ -1,10 +1,13 @@
 ﻿using Animancer;
 using Cinemachine;
+using DreamManager;
 using DreamSystem.Camera;
+using DreamSystem.Damage;
 using DreamSystem.Enemy;
 using DreamSystem.Player;
 using Interface;
 using KinematicCharacterController;
+using Model.Enemy;
 using Model.Player;
 using SO;
 using UnityEngine;
@@ -22,7 +25,7 @@ namespace Scope
         [SerializeField] KinematicCharacterMotor kinematicCharacterMotor;
         [SerializeField] AnimancerComponent animancer;
         [SerializeField] CharacterAnimationSo characterAnimationSo;
-        [SerializeField] PlayerHitBox playerHitBox;
+        [SerializeField] PlayerHitBox[] playerHitBoxs;
 
         protected override void Configure(IContainerBuilder builder)
         {
@@ -34,23 +37,25 @@ namespace Scope
             builder.RegisterComponent(kinematicCharacterMotor);
             builder.RegisterComponent(animancer);
             builder.RegisterComponent(characterAnimationSo);
-            builder.RegisterComponent(playerHitBox);
+            builder.RegisterInstance(playerHitBoxs);
 
-            // 1. PlayerAttackSystem 实现 IPlayerAttackContext (先注册，无依赖于 StateMachine 构造)
+            // PlayerAttackSystem 实现 IPlayerAttackContext
             builder.RegisterEntryPoint<PlayerAttackSystem>().AsSelf().As<IPlayerAttackContext>();
 
-            // 2. PlayerStateMachine (不依赖 IPlayerAttackContext 构造)
             builder.Register<PlayerStateMachine>(Lifetime.Singleton);
+            builder.Register<CharacterStats>(Lifetime.Singleton);
 
-            // 3. KccMoveController (注入 PlayerStateMachine + IPlayerAttackContext)
             builder.RegisterEntryPoint<KccMoveController>().AsSelf().As<IPlayerMoveContext>();
+
+            // 玩家属性
+            builder.Register<DreamSystem.Damage.CharacterStats>(Lifetime.Singleton);
 
             // 其他 System
             builder.RegisterEntryPoint<PlayerMoveSystem>();
             builder.RegisterEntryPoint<PlayerAnimationSystem>();
             builder.RegisterEntryPoint<PlayerCombatSystem>();
-            builder.RegisterEntryPoint<PlayerDamageSystem>();
-            builder.RegisterEntryPoint<EnemyDamageSystem>();
+            builder.RegisterEntryPoint<PlayerInjuriedSystem>();
+            builder.RegisterEntryPoint<EnemyInjuriedSystem>();
             builder.RegisterEntryPoint<CinemachineProportionalZoom>();
         }
     }

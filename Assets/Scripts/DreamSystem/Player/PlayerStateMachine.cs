@@ -11,6 +11,10 @@ using SO;
 
 namespace DreamSystem.Player
 {
+    /// <summary>
+    /// 玩家状态机管理器。
+    /// <para>职责：创建和持有所有玩家状态实例，驱动 StateMachine 进行状态切换。</para>
+    /// </summary>
     public class PlayerStateMachine
     {
         /// 状态机核心驱动
@@ -34,6 +38,12 @@ namespace DreamSystem.Player
         /// 轻攻击状态
         public LightAttackState LightAttackState { get; private set; }
 
+        /// 重攻击状态
+        public HeavyAttackState HeavyAttackState { get; private set; }
+
+        /// 下落攻击状态
+        public FallAttackState FallAttackState { get; private set; }
+
         /// 事件管理器
         private readonly EventManager _eventManager;
 
@@ -47,9 +57,15 @@ namespace DreamSystem.Player
         public bool ShowDebugLog
         {
             get => StateMachine?.ShowDebugLog ?? false;
-            set { if (StateMachine != null) StateMachine.ShowDebugLog = value; }
+            set
+            {
+                if (StateMachine != null) StateMachine.ShowDebugLog = value;
+            }
         }
 
+        /// <summary>
+        /// 构造函数：注入事件管理器、Animancer 组件和角色动画数据。
+        /// </summary>
         public PlayerStateMachine(EventManager eventManager, AnimancerComponent animancer, CharacterAnimationSo animData)
         {
             _eventManager = eventManager;
@@ -66,14 +82,17 @@ namespace DreamSystem.Player
         {
             StateMachine = new StateMachine();
 
-            // 创建所有状态实例
+            // 创建移动相关状态实例 (不需要攻击上下文)
             MoveState = new MoveState(moveContext, _eventManager, this);
             RollState = new RollState(moveContext, _eventManager, this);
             DashState = new DashState(moveContext, _eventManager, this);
             JumpState = new JumpState(moveContext, _eventManager, this);
             FallState = new FallState(moveContext, _eventManager, this);
-            LightAttackState = new LightAttackState(moveContext, _eventManager, this, attackContext, _animancer, _animData);
 
+            // 创建攻击状态实例 (需要攻击上下文)
+            LightAttackState = new LightAttackState(moveContext, _eventManager, this, attackContext, _animancer, _animData);
+            HeavyAttackState = new HeavyAttackState(moveContext, _eventManager, this, attackContext, _animancer, _animData);
+            FallAttackState = new FallAttackState(moveContext, _eventManager, this, attackContext, _animancer, _animData);
             // 设置初始状态
             StateMachine.Initialize(MoveState);
         }

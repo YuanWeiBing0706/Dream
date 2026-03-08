@@ -1,0 +1,10 @@
+﻿角色ID,生命值,护盾值,攻击力,防御力,速度
+chr_player,150,0,18,10,6
+mob_cute_devil,50,0,10,3,7
+mob_explosive_bug,30,0,25,1,5
+mob_hell_creeper,70,0,12,5,4
+mob_rock_hurler,120,20,15,10,2
+mob_succubus,80,10,18,4,7
+boss_fire_demon,200,30,22,12,5
+boss_tentacle,400,50,28,15,3
+boss_fire_dragon,800,100,40,25,4

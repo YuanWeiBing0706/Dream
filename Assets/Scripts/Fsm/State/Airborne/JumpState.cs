@@ -3,7 +3,6 @@ using DreamSystem.Player;
 using Events;
 using Fsm.Base;
 using Interface;
-using UnityEngine;
 
 namespace Fsm.State.Airborne
 {
@@ -23,9 +22,9 @@ namespace Fsm.State.Airborne
             moveContext.Motor.ForceUnground(0.1f);
 
             // 计算跳跃速度：保留水平速度，叠加垂直跳跃
-            Vector3 currentVelocity = moveContext.Motor.BaseVelocity;
-            Vector3 jumpDir = moveContext.Motor.CharacterUp;
-            Vector3 planarVel = Vector3.ProjectOnPlane(currentVelocity, jumpDir);
+            UnityEngine.Vector3 currentVelocity = moveContext.Motor.BaseVelocity;
+            UnityEngine.Vector3 jumpDir = moveContext.Motor.CharacterUp;
+            UnityEngine.Vector3 planarVel = UnityEngine.Vector3.ProjectOnPlane(currentVelocity, jumpDir);
 
             moveContext.Motor.BaseVelocity = planarVel + (jumpDir * moveContext.JumpSpeed);
 

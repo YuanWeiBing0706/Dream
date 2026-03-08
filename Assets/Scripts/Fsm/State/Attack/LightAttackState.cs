@@ -1,19 +1,22 @@
 using Animancer;
 using DreamManager;
 using DreamSystem.Player;
-using Events;
 using Fsm.Base;
 using Interface;
 using SO;
 
 namespace Fsm.State.Attack
 {
+    /// <summary>
+    /// 轻攻击状态，继承 AttackState 并实现轻攻击特有的逻辑。
+    /// </summary>
     public class LightAttackState : AttackState
     {
-        /// 是否已开启伤害检测
-        private bool _isDetectionOpen;
+        public LightAttackState(IPlayerMoveContext moveContext, EventManager eventManager, PlayerStateMachine playerStateMachine, IPlayerAttackContext attackContext, AnimancerComponent animancerComponent, CharacterAnimationSo characterAnimationSo)
+            : base(moveContext, eventManager, playerStateMachine, attackContext, animancerComponent, characterAnimationSo) { }
 
-        public LightAttackState(IPlayerMoveContext moveContext, EventManager eventManager, PlayerStateMachine playerStateMachine, IPlayerAttackContext attackContext, AnimancerComponent animancerComponent, CharacterAnimationSo characterAnimationSo) : base(moveContext, eventManager, playerStateMachine, attackContext, animancerComponent, characterAnimationSo) { }
+        protected override string AttackTypeName => "LightAttack";
+        
 
         /// <summary>
         /// 进入状态时重置连招数据并播放第一段攻击。
@@ -21,30 +24,38 @@ namespace Fsm.State.Attack
         public override void OnEnter()
         {
             ResetComboState();
-            _isDetectionOpen = false;
+            ConsumeAttackInput();
             PlayCurrentAttack();
         }
-
+        
         /// <summary>
-        /// 每帧更新，处理连招缓冲、伤害检测和超时逻辑。
+        /// 每帧更新，处理伤害检测窗口、连招缓冲和超时逻辑。
         /// </summary>
-        /// <param name="deltaTime">帧间隔时间</param>
         public override void OnUpdate(float deltaTime)
         {
             base.OnUpdate(deltaTime);
 
-            if (currentAnimState == null) return;
+            if (currentAnimState == null || currentAttackData == null) return;
 
-            // 获取当前动画播放进度
             float progress = currentAnimState.NormalizedTime;
 
-            // 处理伤害检测窗口 (示例: 20%-60% 为有效打击帧)
             UpdateDetectionWindow(progress);
 
             if (!animationFinished)
             {
-                // 检查是否在可取消窗口内按下了闪避
-                if (CheckCancelWindow(progress)) return;
+                // 检查取消窗口 + 闪避输入
+                if (IsInCancelWindow(progress) && HasDodgeInput())
+                {
+                    if (IsLockedOn())
+                    {
+                        TransitionToRoll();
+                    }
+                    else
+                    {
+                        TransitionToDash();
+                    }
+                    return;
+                }
 
                 // 进入缓冲窗口后允许记录输入
                 if (progress >= BufferWindowStart)
@@ -53,7 +64,7 @@ namespace Fsm.State.Attack
                 }
 
                 // 检测攻击输入并记录缓冲
-                if (canBufferInput && attackContext.AttackInputs.isLightAttack)
+                if (canBufferInput && ConsumeAttackInput())
                 {
                     hasBufferedInput = true;
                 }
@@ -62,7 +73,7 @@ namespace Fsm.State.Attack
                 if (progress >= 1f)
                 {
                     animationFinished = true;
-                    ProcessComboTransition();
+                    HandleComboTransition();
                 }
             }
             else
@@ -71,110 +82,51 @@ namespace Fsm.State.Attack
                 timeoutTimer += deltaTime;
 
                 // 超时窗口内仍可接受输入
-                if (attackContext.AttackInputs.isLightAttack && !hasBufferedInput)
+                if (ConsumeAttackInput() && !hasBufferedInput)
                 {
                     hasBufferedInput = true;
-                    ProcessComboTransition();
+                    HandleComboTransition();
                 }
 
                 // 超时后返回待机
                 if (timeoutTimer >= ComboTimeout)
                 {
-                    ReturnToIdle();
+                    TransitionToIdle();
                 }
             }
         }
 
-        /// <summary>
-        /// 根据动画进度更新伤害检测窗口。
-        /// </summary>
-        /// <param name="progress">当前动画进度 (0-1)</param>
-        private void UpdateDetectionWindow(float progress)
+        protected override int GetAttackCount()
         {
-            // 伤害检测窗口: 20% - 60%
-            const float hitStart = 0.2f;
-            const float hitEnd = 0.6f;
-
-            bool shouldBeOpen = progress >= hitStart && progress < hitEnd;
-
-            if (shouldBeOpen && !_isDetectionOpen)
-            {
-                // 开启伤害检测
-                eventManager.Publish(GameEvents.PLAYER_ATTACK_OPEN_DETECTION);
-                _isDetectionOpen = true;
-            }
-            else if (!shouldBeOpen && _isDetectionOpen)
-            {
-                // 关闭伤害检测
-                eventManager.Publish(GameEvents.PLAYER_ATTACK_CLOSE_DETECTION);
-                _isDetectionOpen = false;
-            }
+            return characterAnimationSo.LightAttacks.Count;
         }
 
+        protected override AttackClipData GetAttackData(int index)
+        {
+            return characterAnimationSo.LightAttacks[index];
+        } 
+
+        protected override bool ConsumeAttackInput()
+        { 
+            return attackContext.ConsumeLightAttack();
+        } 
+        
+        
         /// <summary>
-        /// 处理连招转换逻辑：有缓冲输入则播放下一段，否则返回待机。
+        /// 处理连招转换：有缓冲输入则播放下一段，否则返回待机。
         /// </summary>
-        private void ProcessComboTransition()
+        private void HandleComboTransition()
         {
             if (hasBufferedInput && HasNextCombo())
             {
+                CloseDetectionIfOpen();
                 PrepareNextCombo();
                 PlayCurrentAttack();
             }
             else if (hasBufferedInput)
             {
-                ReturnToIdle();
+                TransitionToIdle();
             }
-        }
-
-        /// <summary>
-        /// 播放当前 comboIndex 对应的攻击动画。
-        /// </summary>
-        private void PlayCurrentAttack()
-        {
-            // 切换动画时关闭上一段的伤害检测
-            if (_isDetectionOpen)
-            {
-                eventManager.Publish(GameEvents.PLAYER_ATTACK_CLOSE_DETECTION);
-                _isDetectionOpen = false;
-            }
-
-            if (comboIndex < characterAnimationSo.LightAttacks.Count)
-            {
-                var clip = characterAnimationSo.LightAttacks[comboIndex];
-                currentAnimState = animancerComponent.Play(clip);
-                UnityEngine.Debug.Log($"[LightAttackState] 播放轻攻击第 {comboIndex + 1} 段");
-            }
-            else
-            {
-                ReturnToIdle();
-            }
-        }
-
-        /// <summary>
-        /// 判断是否还有下一段连招。
-        /// </summary>
-        /// <returns>有则返回 true</returns>
-        private bool HasNextCombo()
-        {
-            return comboIndex + 1 < characterAnimationSo.LightAttacks.Count;
-        }
-
-        /// <summary>
-        /// 退出状态时清理动画引用和连招数据，并确保关闭伤害检测。
-        /// </summary>
-        public override void OnExit()
-        {
-            // 确保退出时关闭伤害检测
-            if (_isDetectionOpen)
-            {
-                eventManager.Publish(GameEvents.PLAYER_ATTACK_CLOSE_DETECTION);
-                _isDetectionOpen = false;
-            }
-
-            currentAnimState = null;
-            comboIndex = 0;
-            hasBufferedInput = false;
         }
     }
 }

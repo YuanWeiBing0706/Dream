@@ -6,6 +6,10 @@ using UnityEngine;
 
 namespace DreamSystem.Player
 {
+    /// <summary>
+    /// 玩家移动输入系统。
+    /// <para>职责：接收原始输入事件、计算相机相对方向、组装 MoveInputs 并发布给 KccMoveController。</para>
+    /// </summary>
     public class PlayerMoveSystem : GameSystem
     {
         /// 玩家基础移动速度
@@ -28,30 +32,33 @@ namespace DreamSystem.Player
 
         /// 相机 Transform (用于计算相对方向)
         private Transform _cameraTransform;
-
+        
         public PlayerMoveSystem(EventManager eventManager, KccMoveController kccController, Transform cameraTransform)
         {
             _eventManager = eventManager;
             _kccController = kccController;
             _cameraTransform = cameraTransform;
         }
-
-        /// <summary>
-        /// 系统启动：订阅输入事件。
-        /// </summary>
+        
         public override void Start()
         {
             _eventManager.Subscribe<Vector2>(GameEvents.PLAYER_MOVE_PERFORMED, OnMovePerformed);
             _eventManager.Subscribe<Vector2>(GameEvents.PLAYER_MOVE_CANCELED, OnMoveCanceled);
             _eventManager.Subscribe<bool>(GameEvents.PLAYER_JUMP_PERFROMED, OnJumpPerformed);
-            _eventManager.Subscribe(GameEvents.PLAYER_DODGE_PERFORMED, OnDodgePerformed);
+            _eventManager.Subscribe<bool>(GameEvents.PLAYER_JUMP_CANCELED, OnJumpCanceled);
+            _eventManager.Subscribe<bool>(GameEvents.PLAYER_DODGE_PERFORMED, OnDodgePerformed);
+            _eventManager.Subscribe<bool>(GameEvents.PLAYER_DODGE_CANCELED, OnDodgeCanceled);
         }
 
+
+        // ===== 输入事件回调 =====
         private void OnMovePerformed(Vector2 input) => _moveInput = input;
         private void OnMoveCanceled(Vector2 input) => _moveInput = Vector2.zero;
         private void OnJumpPerformed(bool isJumpDown) => _isJumpDown = isJumpDown;
-        private void OnDodgePerformed() => _isDodgeDown = true;
-
+        private void OnJumpCanceled(bool isJumpDown) => _isJumpDown = isJumpDown;
+        private void OnDodgePerformed(bool isDodgeDown) => _isDodgeDown = isDodgeDown;
+        private void OnDodgeCanceled(bool isDodgeDown) => _isDodgeDown = isDodgeDown;
+        
         /// <summary>
         /// 每帧后期更新：组装输入数据并发布。
         /// </summary>
@@ -107,10 +114,12 @@ namespace DreamSystem.Player
         /// </summary>
         public override void Dispose()
         {
-            _eventManager.Unsubscribe<Vector2>(GameEvents.PLAYER_MOVE_PERFORMED, OnMovePerformed).Forget();
-            _eventManager.Unsubscribe<Vector2>(GameEvents.PLAYER_MOVE_CANCELED, OnMoveCanceled).Forget();
-            _eventManager.Unsubscribe<bool>(GameEvents.PLAYER_JUMP_PERFROMED, OnJumpPerformed).Forget();
-            _eventManager.Unsubscribe(GameEvents.PLAYER_DODGE_PERFORMED, OnDodgePerformed).Forget();
+            _eventManager.Unsubscribe<Vector2>(GameEvents.PLAYER_MOVE_PERFORMED, OnMovePerformed);
+            _eventManager.Unsubscribe<Vector2>(GameEvents.PLAYER_MOVE_CANCELED, OnMoveCanceled);
+            _eventManager.Unsubscribe<bool>(GameEvents.PLAYER_JUMP_PERFROMED, OnJumpPerformed);
+            _eventManager.Unsubscribe<bool>(GameEvents.PLAYER_JUMP_CANCELED, OnJumpCanceled);
+            _eventManager.Unsubscribe<bool>(GameEvents.PLAYER_DODGE_PERFORMED, OnDodgePerformed);
+            _eventManager.Unsubscribe<bool>(GameEvents.PLAYER_DODGE_CANCELED, OnDodgeCanceled);
         }
     }
 }
