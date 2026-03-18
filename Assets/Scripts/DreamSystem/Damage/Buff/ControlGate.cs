@@ -1,22 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
+using Enum.Buff;
 using UnityEngine;
 
 namespace DreamSystem.Damage.Buff
 {
-    /// <summary>
-    /// 控制锁定标志位（支持位运算组合）。
-    /// <para>用于标识角色可被锁定的行为类型。</para>
-    /// </summary>
-    [Flags]
-    public enum ControlLock
-    {
-        None = 0,
-        Move = 1 << 0,
-        Attack = 1 << 1,
-        Cast = 1 << 2
-    }
-
     /// <summary>
     /// 控制锁定门（引用计数）。
     /// <para>Buff 可以锁定玩家的特定行为（Move / Attack / Cast），移除时自动解锁。</para>

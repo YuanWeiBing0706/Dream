@@ -3,6 +3,7 @@ using DreamSystem;
 using DreamSystem.Damage;
 using DreamSystem.Debug;
 using Function.Initialize;
+using Model.Player;
 using VContainer;
 using VContainer.Unity;
 namespace Scope
@@ -21,7 +22,8 @@ namespace Scope
 
             builder.RegisterEntryPoint<PlayerInputSystem>().AsSelf();
 
-            // Debug 系统依赖资源，所以排在 Resource 后面
+            builder.RegisterEntryPoint<BuffManager>().AsSelf();
+            
             builder.RegisterEntryPoint<DebugConsoleSystem>()
                 .As<IUniTaskStartable>()
                 .AsSelf();

@@ -68,7 +68,7 @@ namespace DreamSystem.Debug
         //         case "ItemList":
         //             raw = _resources
         //                 .GetConfig<ItemConfig>()
-        //                 .GetAllItems()
+        //                 .GetAllItemList()
         //                 .Select(i => i.itemID)
         //                 .ToList();
         //             break;

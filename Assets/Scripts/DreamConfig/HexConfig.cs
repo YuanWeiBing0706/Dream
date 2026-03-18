@@ -1,9 +1,10 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
-using Attribute;
 using Cysharp.Threading.Tasks;
+using DreamAttribute;
 using DreamManager;
+using Enum.Hex;
 using Function;
 
 namespace DreamConfig
@@ -27,50 +28,26 @@ namespace DreamConfig
 
             for (int i = 0; i < data.Count; i++)
             {
-                // 解析参数列（第 8 列开始，格式同 ItemConfig：_fieldName[type]:value）
-                var properties = new List<HexProperty>();
-                for (int j = 8; j < data[i].Length; j++)
-                {
-                    var line = data[i][j];
-                    if (string.IsNullOrEmpty(line)) continue;
-
-                    string[] parts = line.Split(new[] { ':' }, 2);
-                    string definitionPart = parts[0];
-                    string value = parts.Length > 1 ? parts[1] : null;
-                    string pName = null;
-                    string type = null;
-
-                    int openBracket = definitionPart.IndexOf('[');
-                    int closeBracket = definitionPart.IndexOf(']');
-
-                    if (openBracket != -1 && closeBracket != -1 && openBracket < closeBracket)
-                    {
-                        pName = definitionPart.Substring(0, openBracket);
-                        type = definitionPart.Substring(openBracket + 1, closeBracket - openBracket - 1);
-                    }
-
-                    properties.Add(new HexProperty { name = pName, type = type, value = value });
-                }
-
                 var hexData = new HexData
                 {
                     hexId = data[i][0],
                     hexGroupId = data[i][1],
                     hexName = data[i][2],
-                    hexType = Type.GetType(data[i][3]),
-                    tier = data[i][4],
-                    weight = float.Parse(data[i][5]),
-                    prerequisiteHexId = data[i][6],
-                    description = data[i][7],
-                    properties = properties
+                    hexRarity = System.Enum.Parse<HexRarity>(data[i][3], true),
+                    weight = float.Parse(data[i][4]),
+                    prerequisiteHexId = data[i][5],
+                    buffId = data[i][6],
+                    description = data[i][7]
                 };
-                _dic.Add(hexData.hexId, hexData);
 
-                if (!_byTier.ContainsKey(hexData.tier))
+                // 经典 TryAdd 防崩大法
+                if (!_dic.TryAdd(hexData.hexId, hexData))
                 {
-                    _byTier[hexData.tier] = new List<HexData>();
+                    UnityEngine.Debug.LogError($"[HexConfig] 发现重复的海克斯ID: {hexData.hexId}");
+                    continue;
                 }
-                _byTier[hexData.tier].Add(hexData);
+    
+                // 如果你还需要按稀有度分组，也可以用我们刚刚讲过的 List 字典模板！
             }
 
             return UniTask.CompletedTask;
@@ -108,38 +85,25 @@ namespace DreamConfig
         /// 海克斯唯一 ID（如 "hex_money_w"）
         public string hexId;
 
-        /// 海克斯组 ID（同名不同等级共享，如 "hex_money"）
+        /// 海克斯组 ID（用于判定是否拿过同系列的，如 "hex_money"）
         public string hexGroupId;
 
         /// 显示名称
         public string hexName;
+    
+        /// 海克斯稀有度（白、金、彩）
+        public HexRarity hexRarity;
 
-        /// 海克斯逻辑类的类型（通过反射创建实例）
-        public Type hexType;
-
-        /// 等级：white / gold / rainbow
-        public string tier;
-
-        /// 同等级池子内的刷新权重
+        /// 刷新权重（控制随机出现的概率）
         public float weight;
-
+    
         /// 前置海克斯 ID（空 = 无前置，天生可刷新）
         public string prerequisiteHexId;
 
-        /// 描述
+        /// 对应的BuffId
+        public string buffId;
+    
+        /// UI 描述
         public string description;
-
-        /// 构造参数列表（反射注入到逻辑类的字段）
-        public List<HexProperty> properties;
-    }
-
-    /// <summary>
-    /// 海克斯参数（格式同骰子项目的 Property）。
-    /// </summary>
-    public struct HexProperty
-    {
-        public string name;
-        public string type;
-        public string value;
     }
 }

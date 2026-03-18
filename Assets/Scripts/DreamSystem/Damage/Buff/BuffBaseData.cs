@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Enum.Buff;
 using Interface;
 namespace DreamSystem.Damage.Buff
@@ -8,7 +8,7 @@ namespace DreamSystem.Damage.Buff
     /// <para>定义一个 Buff 的所有静态属性：持续时间、叠加规则、标签、优先级等。</para>
     /// <para>子类可扩展附加功能（如控制锁定、标签黑名单）。</para>
     /// </summary>
-    public abstract class BuffData
+    public abstract class BuffBaseData
     {
         /// Buff 唯一标识
         public string buffID;
@@ -36,32 +36,5 @@ namespace DreamSystem.Damage.Buff
 
         /// 层数溢出时的处理策略（已达最大层数时再次添加）
         public OverflowType overflowType = OverflowType.DontRefreshDuration;
-    }
-
-    /// <summary>
-    /// 基础 Buff 数据（无附加功能）。
-    /// </summary>
-    public class BasicBuffData : BuffData
-    {
-        
-    }
-
-    /// <summary>
-    /// 带控制锁定的 Buff 数据。
-    /// <para>Buff 生效时会锁定玩家的指定行为（如移动、攻击、施法）。</para>
-    /// </summary>
-    public class ControlLockBuffData : BuffData, IControlLockProvider
-    {
-        public ControlLock controlLocks = ControlLock.None;
-        public ControlLock ControlLocks => controlLocks;
-    }
-
-    /// <summary>
-    /// 带标签黑名单的 Buff 数据。
-    /// <para>Buff 生效时会阻止特定标签的其他 Buff 被添加。</para>
-    /// </summary>
-    public class TagBlacklistBuffData : BuffData
-    {
-        public List<BuffTag> blacklistTags = new List<BuffTag>();
     }
 }

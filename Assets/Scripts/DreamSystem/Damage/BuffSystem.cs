@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using System.Linq;
 using DreamManager;
 using DreamSystem.Damage.Buff;
+using DreamSystem.Damage.Buff.Data;
 using Enum.Buff;
 using Interface;
 using UnityEngine;
@@ -16,7 +17,7 @@ namespace DreamSystem.Damage
     {
         private readonly List<BuffInstance> _buffInstanceList = new List<BuffInstance>();
         private readonly BuffManager _buffManager;
-        private readonly GameObject _owner;
+        private readonly IBuffOwner _owner;
         private readonly ControlGate _controlGate;
 
         /// 标签黑名单引用计数（被黑名单的标签 → 引用计数）
@@ -28,15 +29,14 @@ namespace DreamSystem.Damage
         /// <summary>
         /// 构造函数。
         /// </summary>
-        /// <param name="owner">Buff 效果作用的目标 GameObject</param>
+        /// <param name="owner">Buff 效果作用的目标实体（实现 IBuffOwner 的玩家、怪物等）</param>
+        /// <param name="buffManager">Buff 工厂（从 DI 容器注入）</param>
         /// <param name="controlGate">控制锁定门（可为 null，不使用控制锁定）</param>
-        /// <param name="buffManager">Buff 工厂（可为 null，使用默认实例）</param>
-        public BuffSystem(GameObject owner, ControlGate controlGate = null, BuffManager buffManager = null)
+        public BuffSystem(IBuffOwner owner, BuffManager buffManager, ControlGate controlGate = null)
         {
             _owner = owner;
+            _buffManager = buffManager;
             _controlGate = controlGate;
-            _buffManager = buffManager ?? new BuffManager();
-            _buffManager.Init();
         }
 
         public void TickTurn()
@@ -73,16 +73,16 @@ namespace DreamSystem.Damage
 
         public void AddBuff(string buffGuid, object source)
         {
-            (BuffData data, BuffBase logic) = _buffManager.GetBuff(buffGuid);
+            (BuffBaseData data, BuffBaseLogic logic) = _buffManager.GetBuff(buffGuid);
             if (data == null || logic == null)
             {
                 return;
             }
-
+            
             AddBuff(data, logic, source);
         }
 
-        private void AddBuff(BuffData data, BuffBase logic, object source)
+        private void AddBuff(BuffBaseData data, BuffBaseLogic logic, object source)
         {
             // 检查标签黑名单
             if (IsBlockedByTagBlacklist(data))
@@ -104,12 +104,13 @@ namespace DreamSystem.Damage
             RegisterBlacklistTagsFromData(newBuff);
             RegisterControlLocksFromData(newBuff);
             logic.Initialize(_owner, newBuff);
+            UnityEngine.Debug.Log($"[BuffSystem] Buff '{data.buffID}' 已添加到 {_owner.GameObject.name}");
         }
 
         /// <summary>
         /// 检查 Buff 的标签是否在黑名单中。
         /// </summary>
-        private bool IsBlockedByTagBlacklist(BuffData data)
+        private bool IsBlockedByTagBlacklist(BuffBaseData data)
         {
             if (data == null || data.tags == null)
             {
@@ -142,7 +143,7 @@ namespace DreamSystem.Damage
             _buffInstanceList.Insert(insertIndex, buff);
         }
 
-        private BuffInstance FindStackTarget(BuffData data, object source)
+        private BuffInstance FindStackTarget(BuffBaseData data, object source)
         {
             if (data.stackType == StackType.None)
             {
@@ -218,7 +219,7 @@ namespace DreamSystem.Damage
             return RemoveBuffsByTag(tag);
         }
 
-        private bool HasTag(BuffData data, BuffTag tag)
+        private bool HasTag(BuffBaseData data, BuffTag tag)
         {
             if (data == null || data.tags == null)
             {
@@ -345,11 +346,9 @@ namespace DreamSystem.Damage
             }
         }
 
-        private static bool TryGetBlacklistTags(BuffData data, out List<BuffTag> blacklistTags)
+        private static bool TryGetBlacklistTags(BuffBaseData data, out List<BuffTag> blacklistTags)
         {
-            if (data is TagBlacklistBuffData blacklistData &&
-                blacklistData.blacklistTags != null &&
-                blacklistData.blacklistTags.Count > 0)
+            if (data is TagBlacklistBuffData blacklistData && blacklistData.blacklistTags != null && blacklistData.blacklistTags.Count > 0)
             {
                 blacklistTags = blacklistData.blacklistTags;
                 return true;

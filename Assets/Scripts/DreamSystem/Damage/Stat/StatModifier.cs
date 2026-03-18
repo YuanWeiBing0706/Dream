@@ -1,6 +1,6 @@
 using System;
 using Enum.Buff;
-namespace DreamSystem.Damage
+namespace DreamSystem.Damage.Stat
 {
     /// <summary>
     /// 属性修改器。
@@ -23,7 +23,7 @@ namespace DreamSystem.Damage
         public readonly object source;
 
         /// <summary>
-        /// 完整构造函数：指定值、类型、优先级和来源。
+        /// 完整构造函数：指定值、类型、优先级和来源。 
         /// </summary>
         public StatModifier(float value, StatModType type, int order, object source)
         {

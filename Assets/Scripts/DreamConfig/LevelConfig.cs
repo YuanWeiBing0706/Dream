@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using Attribute;
 using Cysharp.Threading.Tasks;
+using DreamAttribute;
 using DreamManager;
 using Function;
 
@@ -10,13 +10,13 @@ namespace DreamConfig
     /// 关卡配置表。
     /// <para>3 大关 × 3 小关 = 9 关。</para>
     /// <para>CSV 格式：LevelId,MajorStage,MinorStage,EnemyList,RewardGold,DropGroupId</para>
-    /// <para>EnemyList 用 | 分隔多个敌人 ID，DropGroupId 关联 DropConfig 的掉落组。</para>
+    /// <para>EnemyList 用 | 分隔多个敌人 ID，DropGroupId 关联 DropEntryConfig 的掉落组。</para>
     /// </summary>
     [Config]
     public class LevelConfig : Config
     {
-        private readonly Dictionary<string, LevelData> _dic = new();
-        private readonly List<LevelData> _allLevels = new();
+        private readonly Dictionary<string, LevelData> _levelDir = new();
+        private readonly List<LevelData> _allLevelList = new List<LevelData>();
 
         public override UniTask LoadConfig(ResourcesManager resourcesManager)
         {
@@ -39,8 +39,11 @@ namespace DreamConfig
                     rewardGold = int.Parse(data[i][4]),
                     dropGroupId = data[i][5]
                 };
-                _dic.Add(levelData.levelId, levelData);
-                _allLevels.Add(levelData);
+                if (!_levelDir.TryAdd(levelData.levelId, levelData)) {
+                    UnityEngine.Debug.LogError($"[LevelConfig] 发现重复等级ID: {levelData.levelId}");
+                    continue;
+                }
+                _allLevelList.Add(levelData);
             }
 
             return UniTask.CompletedTask;
@@ -49,14 +52,14 @@ namespace DreamConfig
         /// <summary>
         /// 按关卡 ID 查找。
         /// </summary>
-        public LevelData this[string levelId] => _dic[levelId];
+        public LevelData this[string levelId] => _levelDir[levelId];
 
-        public bool TryGet(string levelId, out LevelData data) => _dic.TryGetValue(levelId, out data);
+        public bool TryGet(string levelId, out LevelData data) => _levelDir.TryGetValue(levelId, out data);
 
         /// <summary>
         /// 获取所有关卡列表（按 CSV 顺序）。
         /// </summary>
-        public List<LevelData> GetAllLevels() => _allLevels;
+        public List<LevelData> GetAllLevels() => _allLevelList;
     }
 
     /// <summary>
@@ -79,7 +82,7 @@ namespace DreamConfig
         /// 通关奖励金币
         public int rewardGold;
 
-        /// 掉落组 ID（关联 DropConfig）
+        /// 掉落组 ID（关联 DropEntryConfig）
         public string dropGroupId;
     }
 }

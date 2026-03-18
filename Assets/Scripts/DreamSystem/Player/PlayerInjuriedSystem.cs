@@ -1,5 +1,6 @@
 ﻿using DreamManager;
 using DreamSystem.Damage;
+using DreamSystem.Damage.Stat;
 using Enum.Buff;
 using Events;
 using Struct;

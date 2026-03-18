@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using DreamManager;
+using DreamSystem.Damage.Stat;
 using Enum.Buff;
 using Events;
 using Struct;
@@ -47,8 +48,7 @@ namespace DreamSystem.Damage
         /// <summary>
         /// 根据 Collider 查找对应的 CharacterStats。
         /// </summary>
-        public bool TryGet(Collider collider, out CharacterStats characterStats)
-            => _characterStatsDir.TryGetValue(collider, out characterStats);
+        public bool TryGet(Collider collider, out CharacterStats characterStats) => _characterStatsDir.TryGetValue(collider, out characterStats);
 
         /// <summary>
         /// 伤害请求处理：查表 → 计算公式 → 扣血 → 发布结果。

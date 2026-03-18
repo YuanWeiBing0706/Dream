@@ -1,4 +1,5 @@
 ﻿using DreamSystem.Damage;
+using DreamSystem.Damage.Stat;
 namespace Struct
 {
     public struct DamageResult

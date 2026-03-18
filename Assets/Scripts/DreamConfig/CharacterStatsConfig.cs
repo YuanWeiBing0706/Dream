@@ -1,6 +1,6 @@
 ﻿using System.Collections.Generic;
-using Attribute;
 using Cysharp.Threading.Tasks;
+using DreamAttribute;
 using DreamManager;
 using Function;
 
@@ -13,8 +13,10 @@ namespace DreamConfig
     [Config]
     public class CharacterStatsConfig : Config
     {
-        private readonly Dictionary<string, CharacterStatsData> _dic = new();
-
+        private readonly Dictionary<string, CharacterStatsData> _characterStatsDir = new Dictionary<string, CharacterStatsData>();
+        
+        private readonly List<CharacterStatsData> _allCharacterStatsList = new List<CharacterStatsData>();
+        
         public override UniTask LoadConfig(ResourcesManager resourcesManager)
         {
             var textAsset = resourcesManager.LoadAsset<UnityEngine.TextAsset>(nameof(CharacterStatsConfig));
@@ -31,7 +33,11 @@ namespace DreamConfig
                     defense = float.Parse(data[i][4]),
                     speed = float.Parse(data[i][5])
                 };
-                _dic.Add(statsData.characterId, statsData);
+                if (!_characterStatsDir.TryAdd(statsData.characterId, statsData)) {
+                    UnityEngine.Debug.LogError($"[LevelConfig] 发现重复等级ID: {statsData.characterId}");
+                    continue;
+                }
+                _allCharacterStatsList.Add(statsData);
             }
 
             return UniTask.CompletedTask;
@@ -40,12 +46,14 @@ namespace DreamConfig
         /// <summary>
         /// 按角色 ID 查找属性数据。
         /// </summary>
-        public CharacterStatsData this[string characterId] => _dic[characterId];
+        public CharacterStatsData this[string characterId] => _characterStatsDir[characterId];
 
         /// <summary>
         /// 安全查找，不存在返回 false。
         /// </summary>
-        public bool TryGet(string characterId, out CharacterStatsData data) => _dic.TryGetValue(characterId, out data);
+        public bool TryGet(string characterId, out CharacterStatsData data) => _characterStatsDir.TryGetValue(characterId, out data);
+        
+        public List<CharacterStatsData> GetAllCharacterStatsList() => _allCharacterStatsList;
     }
 
     /// <summary>

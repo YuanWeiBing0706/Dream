@@ -1,8 +1,7 @@
 ﻿namespace Enum.Buff
 {
-    public enum BuffType
+    public enum BuffLogicType
     {
-        /// 修改属性类 Buff
         ModifyAttribute
     }
 }

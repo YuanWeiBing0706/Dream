@@ -1,6 +1,6 @@
 using System.Collections.Generic;
-using Attribute;
 using Cysharp.Threading.Tasks;
+using DreamAttribute;
 using DreamManager;
 using Function;
 
@@ -13,19 +13,19 @@ namespace DreamConfig
     /// <para>掉落权重越高，被选中的概率越大（权重/总权重 = 概率）。</para>
     /// </summary>
     [Config]
-    public class DropConfig : Config
+    public class DropEntryConfig : Config
     {
         /// 按 DropGroupId 分组的掉落条目列表
-        private readonly Dictionary<string, List<DropEntry>> _groups = new();
-
+        private readonly Dictionary<string, List<DropEntryData>> _dropEntryDir = new Dictionary<string, List<DropEntryData>>();
+        
         public override UniTask LoadConfig(ResourcesManager resourcesManager)
         {
-            var textAsset = resourcesManager.LoadAsset<UnityEngine.TextAsset>(nameof(DropConfig));
+            var textAsset = resourcesManager.LoadAsset<UnityEngine.TextAsset>(nameof(DropEntryConfig));
             var data = CsvHelper.ReadCsv(textAsset);
 
             for (int i = 0; i < data.Count; i++)
             {
-                var entry = new DropEntry
+                var dropEntryData = new DropEntryData
                 {
                     dropGroupId = data[i][0],
                     itemId = data[i][1],
@@ -33,12 +33,18 @@ namespace DreamConfig
                     minCount = int.Parse(data[i][3]),
                     maxCount = int.Parse(data[i][4])
                 };
-
-                if (!_groups.ContainsKey(entry.dropGroupId))
+                if (!_dropEntryDir.TryGetValue(dropEntryData.dropGroupId, out List<DropEntryData> groupList))
                 {
-                    _groups[entry.dropGroupId] = new List<DropEntry>();
+                    groupList = new List<DropEntryData>();
+                    _dropEntryDir.Add(dropEntryData.dropGroupId, groupList); 
                 }
-                _groups[entry.dropGroupId].Add(entry);
+                
+                if (groupList.Exists(entry => entry.itemId == dropEntryData.itemId))
+                {
+                    UnityEngine.Debug.LogWarning($"[DropConfig] 发现重复配置！掉落组 '{dropEntryData.dropGroupId}' 中已存在道具 '{dropEntryData.itemId}'，已跳过！");
+                    continue; 
+                }
+                groupList.Add(dropEntryData);
             }
 
             return UniTask.CompletedTask;
@@ -47,21 +53,22 @@ namespace DreamConfig
         /// <summary>
         /// 获取指定掉落组的所有条目。
         /// </summary>
-        public List<DropEntry> GetGroup(string dropGroupId)
+        public List<DropEntryData> GetGroup(string dropGroupId)
         {
-            return _groups.TryGetValue(dropGroupId, out var entries) ? entries : new List<DropEntry>();
+            return _dropEntryDir.TryGetValue(dropGroupId, out var entries) ? entries : new List<DropEntryData>();
         }
 
         /// <summary>
         /// 查询掉落组是否存在。
         /// </summary>
-        public bool HasGroup(string dropGroupId) => _groups.ContainsKey(dropGroupId);
+        public bool HasGroup(string dropGroupId) => _dropEntryDir.ContainsKey(dropGroupId);
+        
     }
 
     /// <summary>
     /// 单条掉落数据。
     /// </summary>
-    public struct DropEntry
+    public struct DropEntryData
     {
         /// 掉落组 ID（与 LevelConfig.dropGroupId 关联）
         public string dropGroupId;

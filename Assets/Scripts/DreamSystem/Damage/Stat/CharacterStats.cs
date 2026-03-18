@@ -1,11 +1,8 @@
 using System;
 using System.Collections.Generic;
-using DreamSystem.Damage.Stat;
-using Enum;
 using Enum.Buff;
 using UnityEngine;
-using UnityEngine.Serialization;
-namespace DreamSystem.Damage
+namespace DreamSystem.Damage.Stat
 {
     /// <summary>
     /// 角色属性初始化数据。
@@ -53,7 +50,9 @@ namespace DreamSystem.Damage
         /// 角色背包物品列表
         private readonly List<string> _inventoryItems = new List<string>();
 
+        /// 角色当前拥有的标记，只读视图
         public IReadOnlyList<string> Flags => _flags;
+        /// 角色当前包含在背包的物品ID列表，只读视图
         public IReadOnlyList<string> InventoryItems => _inventoryItems;
 
         /// <summary>
@@ -80,6 +79,9 @@ namespace DreamSystem.Damage
             });
         }
 
+        /// <summary>
+        /// 根据初始化数据配置基础属性字典并设定初始血量和护盾。
+        /// </summary>
         private void InitializeStats(CharacterStatsInitData data)
         {
             allStatDir.Add(StatType.Health, new BaseStat(StatType.Health, data.BaseHealth, 0, float.MaxValue, 0));
@@ -96,16 +98,25 @@ namespace DreamSystem.Damage
         // 数据变化通知
         // ============================================
 
+        /// <summary>
+        /// 触发数据变化事件（使用 StatType 作为标识）。
+        /// </summary>
         public void NotifyDataChanged(StatType statType)
         {
             NotifyDataChanged((int)statType);
         }
 
+        /// <summary>
+        /// 触发数据变化事件（使用 CharacterDataKey 作为标识）。
+        /// </summary>
         public void NotifyDataChanged(CharacterDataKey dataKey)
         {
             NotifyDataChanged((int)dataKey);
         }
 
+        /// <summary>
+        /// 触发底层数据变化事件（直接使用 int 作为标识）。
+        /// </summary>
         public void NotifyDataChanged(int refreshKey)
         {
             OnDataChanged?.Invoke(refreshKey);
@@ -115,6 +126,11 @@ namespace DreamSystem.Damage
         // 标记系统
         // ============================================
 
+        /// <summary>
+        /// 为角色添加指定标记。
+        /// </summary>
+        /// <param name="flag">需要添加的标记名称</param>
+        /// <returns>添加是否成功（若标记为空或已存在，返回 false）</returns>
         public bool AddFlag(string flag)
         {
             if (string.IsNullOrEmpty(flag) || _flags.Contains(flag))
@@ -127,6 +143,11 @@ namespace DreamSystem.Damage
             return true;
         }
 
+        /// <summary>
+        /// 为角色移除指定标记。
+        /// </summary>
+        /// <param name="flag">需要移除的标记名称</param>
+        /// <returns>移除是否成功（若标记不存在，返回 false）</returns>
         public bool RemoveFlag(string flag)
         {
             if (string.IsNullOrEmpty(flag))
@@ -143,6 +164,11 @@ namespace DreamSystem.Damage
             return removed;
         }
 
+        /// <summary>
+        /// 检查角色是否拥有指定标记。
+        /// </summary>
+        /// <param name="flag">需要检查的标记名称</param>
+        /// <returns>是否拥有该标记</returns>
         public bool HasFlag(string flag)
         {
             return _flags.Contains(flag);
@@ -152,6 +178,10 @@ namespace DreamSystem.Damage
         // 背包系统
         // ============================================
 
+        /// <summary>
+        /// 批量覆盖设置角色的背包物品列表。
+        /// </summary>
+        /// <param name="items">新的物品列表</param>
         public void SetInventoryItems(IEnumerable<string> items)
         {
             _inventoryItems.Clear();
@@ -163,6 +193,11 @@ namespace DreamSystem.Damage
             NotifyDataChanged(CharacterDataKey.InventoryItems);
         }
 
+        /// <summary>
+        /// 向角色背包添加一件物品。
+        /// </summary>
+        /// <param name="itemId">物品ID</param>
+        /// <returns>添加是否成功</returns>
         public bool AddInventoryItem(string itemId)
         {
             if (string.IsNullOrEmpty(itemId))
@@ -175,6 +210,11 @@ namespace DreamSystem.Damage
             return true;
         }
 
+        /// <summary>
+        /// 从角色背包中移除指定物品。
+        /// </summary>
+        /// <param name="itemId">物品ID</param>
+        /// <returns>移除是否成功（若背包无此物品，返回 false）</returns>
         public bool RemoveInventoryItem(string itemId)
         {
             if (string.IsNullOrEmpty(itemId))
@@ -195,6 +235,11 @@ namespace DreamSystem.Damage
         // 属性操作
         // ============================================
 
+        /// <summary>
+        /// 获取指定类型的属性对象（基础值和修饰器管理对象）。
+        /// </summary>
+        /// <param name="type">属性类型</param>
+        /// <returns>BaseStat 对象，若未注册该类型属性则返回 null</returns>
         public BaseStat GetStat(StatType type)
         {
             if (allStatDir.TryGetValue(type, out BaseStat stat))
@@ -206,6 +251,11 @@ namespace DreamSystem.Damage
             return null;
         }
 
+        /// <summary>
+        /// 向指定属性添加属性修改器（Buff / Debuff 的效果等），并通知事件。
+        /// </summary>
+        /// <param name="type">目标属性类型</param>
+        /// <param name="modifier">修饰器实例</param>
         public void AddStatModifier(StatType type, StatModifier modifier)
         {
             BaseStat stat = GetStat(type);
@@ -222,6 +272,11 @@ namespace DreamSystem.Damage
             }
         }
 
+        /// <summary>
+        /// 从指定属性移除对应的修饰器，并触发数值变动通知。
+        /// </summary>
+        /// <param name="type">目标属性类型</param>
+        /// <param name="modifier">待移除的修饰器实例</param>
         public void RemoveStatModifier(StatType type, StatModifier modifier)
         {
             BaseStat stat = GetStat(type);
@@ -242,6 +297,11 @@ namespace DreamSystem.Damage
         // 当前值操作
         // ============================================
 
+        /// <summary>
+        /// 获取某项属性的“当前”值（如当前血量、当前护盾）。不受动态追踪的属性将返回最终上限。
+        /// </summary>
+        /// <param name="type">属性类型</param>
+        /// <returns>当前值</returns>
         public float GetCurrentStatValue(StatType type)
         {
             if (_currentValues.TryGetValue(type, out float value))
@@ -253,6 +313,11 @@ namespace DreamSystem.Damage
             return stat != null ? stat.FinalValue : 0f;
         }
 
+        /// <summary>
+        /// 强制设置当前属性值，确保其被有效钳制在 [0, MaxValue] 之间，并在数值变动时抛出事件通知。
+        /// </summary>
+        /// <param name="type">目标属性</param>
+        /// <param name="value">设定的目标数值</param>
         public void SetCurrentStatValue(StatType type, float value)
         {
             float maxValue = type == StatType.Shield ? float.MaxValue : (GetStat(type)?.FinalValue ?? float.MaxValue);
@@ -267,6 +332,11 @@ namespace DreamSystem.Damage
             }
         }
 
+        /// <summary>
+        /// 以差值计算改变当前属性的值（负数代表扣减，正数代表回复）。
+        /// </summary>
+        /// <param name="type">目标属性</param>
+        /// <param name="delta">数值变动量</param>
         public void ChangeCurrentStatValue(StatType type, float delta)
         {
             SetCurrentStatValue(type, GetCurrentStatValue(type) + delta);
@@ -382,6 +452,11 @@ namespace DreamSystem.Damage
         // 内部方法
         // ============================================
 
+        /// <summary>
+        /// 内部执行消耗护盾的扣减计算。会优先按来源逐个抵消各自建立的护盾池。
+        /// </summary>
+        /// <param name="damage">需要被抵消的原始伤害值</param>
+        /// <returns>抵消护盾后剩余仍然未被吸收的溢出伤害</returns>
         private float ConsumeShield(float damage)
         {
             float shieldDamage = Mathf.Min(damage, GetCurrentStatValue(StatType.Shield));
@@ -414,6 +489,10 @@ namespace DreamSystem.Damage
             return damage - shieldDamage;
         }
 
+        /// <summary>
+        /// 修剪方法：通过检测确保某项属性内部的当前变动值不超过因为附带各种修饰器而变动的该属性最后上限。
+        /// </summary>
+        /// <param name="type">将受检的目标属性类型</param>
         private void ClampCurrentValueIfNeeded(StatType type)
         {
             if (type == StatType.Shield)

@@ -1,4 +1,5 @@
 ﻿using DreamSystem.Damage.Buff;
+using Enum.Buff;
 namespace Interface
 {
     /// <summary>

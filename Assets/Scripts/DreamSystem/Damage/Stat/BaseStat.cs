@@ -90,31 +90,38 @@ namespace DreamSystem.Damage.Stat
         private void CalculateFinalValue()
         {
             float value = BaseValue;
+            float sumPercentAdd = 0;
 
+            // 1. 遍历应用所有 Flat (因为已经按 order 排序，同为 Flat 的也会按顺序加)
             foreach (var mod in _modifierList)
             {
-                if (mod.type == StatModType.Flat && mod.order == 0)
+                if (mod.type == StatModType.Flat)
                 {
                     value += mod.value;
                 }
             }
 
-            float sumPercentAdd = 0;
+            // 2. 遍历收集所有的 PercentAdd
             foreach (var mod in _modifierList)
             {
-                if (mod.type == StatModType.PercentAdd && mod.order == 1)
+                if (mod.type == StatModType.PercentAdd)
                 {
                     sumPercentAdd += mod.value;
                 }
             }
+            // 将所有 PercentAdd 累加后，一次性乘上去
             value *= (1 + sumPercentAdd);
+
+            // 3. 遍历应用所有的 PercentMult（独立乘区）
             foreach (var mod in _modifierList)
             {
-                if (mod.type == StatModType.PercentMult && mod.order == 2)
+                if (mod.type == StatModType.PercentMult)
                 {
                     value *= (1 + mod.value);
                 }
             }
+
+            // 4. 限制范围与精度
             value = Math.Clamp(value, _minValue, _maxValue);
             float precision = (float)Math.Pow(10f, _decimalPlaces);
             _finalValue = (float)Math.Round(value * precision) / precision;

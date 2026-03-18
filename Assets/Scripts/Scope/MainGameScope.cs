@@ -1,8 +1,9 @@
-﻿using Animancer;
+using Animancer;
 using Cinemachine;
 using DreamManager;
 using DreamSystem.Camera;
 using DreamSystem.Damage;
+using DreamSystem.Damage.Stat;
 using DreamSystem.Enemy;
 using DreamSystem.Player;
 using Interface;
@@ -11,6 +12,7 @@ using Model.Enemy;
 using Model.Player;
 using SO;
 using UnityEngine;
+using UnityEngine.Serialization;
 using VContainer;
 using VContainer.Unity;
 
@@ -18,37 +20,34 @@ namespace Scope
 {
     public class MainGameScope : LifetimeScope
     {
-        [SerializeField] PlayerModel playerInScene;
-        [SerializeField] Camera mainCamera;
-        [SerializeField] CinemachineFreeLook cameraFreeLook;
-        [SerializeField] Transform mianCameraTransform;
-        [SerializeField] KinematicCharacterMotor kinematicCharacterMotor;
-        [SerializeField] AnimancerComponent animancer;
-        [SerializeField] CharacterAnimationSo characterAnimationSo;
-        [SerializeField] PlayerHitBox[] playerHitBoxs;
+        [SerializeField] PlayerModel PlayerInScene;
+        [SerializeField] Camera MainCamera;
+        [SerializeField] CinemachineFreeLook CameraFreeLook;
+        [SerializeField] Transform MianCameraTransform;
+        [SerializeField] KinematicCharacterMotor KinematicCharacterMotor;
+        [SerializeField] AnimancerComponent Animancer;
+        [SerializeField] CharacterAnimationSo CharacterAnimationSo;
+        [SerializeField] PlayerHitBox[] PlayerHitBoxList;
 
         protected override void Configure(IContainerBuilder builder)
         {
-            // View 组件
-            builder.RegisterComponent(playerInScene);
-            builder.RegisterComponent(mainCamera);
-            builder.RegisterComponent(cameraFreeLook);
-            builder.RegisterComponent(mianCameraTransform);
-            builder.RegisterComponent(kinematicCharacterMotor);
-            builder.RegisterComponent(animancer);
-            builder.RegisterComponent(characterAnimationSo);
-            builder.RegisterInstance(playerHitBoxs);
+            // View 组件（PlayerModel 同时作为 IBuffOwner 注册，供 BuffSystem 注入）
+            builder.RegisterComponent(PlayerInScene).As<IBuffOwner>();
+            builder.RegisterComponent(MainCamera);
+            builder.RegisterComponent(CameraFreeLook);
+            builder.RegisterComponent(MianCameraTransform);
+            builder.RegisterComponent(KinematicCharacterMotor);
+            builder.RegisterComponent(Animancer);
+            builder.RegisterComponent(CharacterAnimationSo);
+            builder.RegisterInstance(PlayerHitBoxList);
 
             // PlayerAttackSystem 实现 IPlayerAttackContext
             builder.RegisterEntryPoint<PlayerAttackSystem>().AsSelf().As<IPlayerAttackContext>();
 
             builder.Register<PlayerStateMachine>(Lifetime.Singleton);
             builder.Register<CharacterStats>(Lifetime.Singleton);
-
+            builder.Register<BuffSystem>(Lifetime.Singleton);
             builder.RegisterEntryPoint<KccMoveController>().AsSelf().As<IPlayerMoveContext>();
-
-            // 玩家属性
-            builder.Register<DreamSystem.Damage.CharacterStats>(Lifetime.Singleton);
 
             // 其他 System
             builder.RegisterEntryPoint<PlayerMoveSystem>();

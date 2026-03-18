@@ -8,10 +8,10 @@ namespace DreamSystem.Damage.Buff
     public class BuffInstance
     {
         /// Buff 配置数据
-        public BuffData data;
+        public BuffBaseData data;
 
         /// Buff 逻辑实例
-        public BuffBase logic;
+        public BuffBaseLogic logic;
 
         /// Buff 来源（用于按来源叠加区分）
         public object source;
@@ -28,7 +28,7 @@ namespace DreamSystem.Damage.Buff
         /// <summary>
         /// 构造函数：初始化 Buff 实例，设置持续时间和初始层数。
         /// </summary>
-        public BuffInstance(BuffData data, BuffBase logic, object source, BuffSystem buffSystem)
+        public BuffInstance(BuffBaseData data, BuffBaseLogic logic, object source, BuffSystem buffSystem)
         {
             this.data = data;
             this.logic = logic;
