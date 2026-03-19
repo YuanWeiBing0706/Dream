@@ -1,0 +1,47 @@
+﻿buffId,buffName,logicType,duration,maxStack,stackType,statType,modType,value,description
+buff_item_ring_01,铜戒之力,ModifyAttribute,0,1,None,Attack,Flat,3,
+buff_item_ring_02,骨戒之力,ModifyAttribute,0,1,None,Attack,Flat,8,
+buff_item_gem_01,红宝石生命,ModifyAttribute,0,1,None,Health,Flat,20,
+buff_item_gem_02,血钻生命,ModifyAttribute,0,1,None,Health,Flat,80,
+buff_item_book_01,学徒防御,ModifyAttribute,0,1,None,Defense,Flat,2,
+buff_item_book_02,魅魔日记,ModifyAttribute,0,1,None,Speed,PercentAdd,0.2,加速度
+buff_item_book_02,魅魔日记,ModifyAttribute,0,1,None,Attack,Flat,10,加攻击
+buff_item_scroll_01,治疗术,ModifyAttribute,0.1,1,None,Health,Flat,50,瞬间回血
+buff_item_scroll_02,狂暴,ModifyAttribute,10,1,None,Attack,PercentAdd,0.5,10秒狂暴
+buff_item_amulet_01,护盾护符,ModifyAttribute,0,1,None,Shield,Flat,30,
+buff_item_amulet_02,炎魔核心,ModifyAttribute,0,1,None,Attack,Flat,25,加攻击
+buff_item_amulet_02,炎魔核心,ModifyAttribute,0,1,None,Defense,Flat,15,加防御
+buff_item_boots_01,旅者靴,ModifyAttribute,0,1,None,Speed,Flat,3,
+buff_item_boots_02,疾风靴,ModifyAttribute,0,1,None,Speed,Flat,10,
+buff_item_potion_01,虫爆液,ModifyAttribute,15,1,None,Attack,Flat,40,高额攻击
+buff_item_potion_01,虫爆液,ModifyAttribute,15,1,None,Health,Flat,-10,扣除生命
+buff_item_potion_02,纯净水,ModifyAttribute,0.1,1,None,Health,Flat,9999,瞬间满血
+buff_item_relic_01,触手眼球,ModifyAttribute,0,1,None,Attack,PercentAdd,0.15,
+buff_item_relic_02,龙鳞碎片,ModifyAttribute,0,1,None,Defense,Flat,12,
+buff_item_relic_02,龙鳞碎片,ModifyAttribute,0,1,None,Health,Flat,50,
+buff_item_relic_03,深渊凝视,ModifyAttribute,0,1,None,Attack,PercentMult,0.2,独立乘区狂飙
+buff_item_crown_01,破败王冠,ModifyAttribute,0,1,None,Attack,Flat,30,
+buff_item_crown_01,破败王冠,ModifyAttribute,0,1,None,Defense,Flat,30,
+buff_item_crown_01,破败王冠,ModifyAttribute,0,1,None,Health,Flat,100,
+buff_item_crown_01,破败王冠,ModifyAttribute,0,1,None,Speed,Flat,10,
+buff_item_chalice_01,圣杯,ModifyAttribute,0,1,None,Health,PercentMult,1,血量翻倍
+buff_hex_mutant_1,变异 1,ModifyAttribute,0,1,None,Attack,Flat,5,
+buff_hex_mutant_2,变异 2,ModifyAttribute,0,1,None,Attack,Flat,10,
+buff_hex_mutant_2,变异 2,ModifyAttribute,0,1,None,Defense,Flat,15,
+buff_hex_mutant_3,变异 3,ModifyAttribute,0,1,None,Attack,PercentAdd,0.2,
+buff_hex_mutant_3,变异 3,ModifyAttribute,0,1,None,Defense,PercentAdd,0.2,
+buff_hex_mutant_3,变异 3,ModifyAttribute,0,1,None,Health,PercentAdd,0.2,
+buff_hex_mutant_3,变异 3,ModifyAttribute,0,1,None,Speed,PercentAdd,0.2,
+buff_hex_hell_1,地狱 1,ModifyAttribute,0,1,None,Health,Flat,30,
+buff_hex_hell_2,地狱 2,ModifyAttribute,0,1,None,Defense,Flat,20,
+buff_hex_hell_3,地狱 3,ModifyAttribute,0,1,None,Attack,Flat,50,
+buff_hex_hell_3,地狱 3,ModifyAttribute,0,1,None,Defense,Flat,30,
+buff_hex_blood_1,鲜血 1,ModifyAttribute,0,1,None,Attack,Flat,8,
+buff_hex_blood_1,鲜血 1,ModifyAttribute,0,1,None,Health,Flat,-10,
+buff_hex_blood_3,鲜血 3,ModifyAttribute,0,1,None,Health,PercentMult,-0.5,扣除一半生命
+buff_hex_blood_3,鲜血 3,ModifyAttribute,0,1,None,Attack,PercentMult,1,攻击翻倍
+buff_hex_glass_1,玻璃大炮,ModifyAttribute,0,1,None,Attack,PercentAdd,0.5,
+buff_hex_glass_1,玻璃大炮,ModifyAttribute,0,1,None,Defense,PercentMult,-1,防御清零
+buff_hex_dragon_1,巨龙之威,ModifyAttribute,0,1,None,Attack,Flat,50,
+buff_hex_dragon_1,巨龙之威,ModifyAttribute,0,1,None,Health,Flat,200,
+buff_hex_dragon_1,巨龙之威,ModifyAttribute,0,1,None,Defense,Flat,50,

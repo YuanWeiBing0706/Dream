@@ -1,24 +1,10 @@
 using System;
 using System.Collections.Generic;
 using Enum.Buff;
+using Struct;
 using UnityEngine;
 namespace DreamSystem.Damage.Stat
 {
-    /// <summary>
-    /// 角色属性初始化数据。
-    /// <para>用于构造 CharacterStats 时传入基础属性值。</para>
-    /// </summary>
-    [Serializable]
-    public class CharacterStatsInitData
-    {
-        public float BaseHealth = 100f;
-        public float BaseShield = 0f;
-        public float BaseAttack = 10f;
-        public float BaseDefense = 5f;
-        public float BaseSpeed = 5f;
-    }
-    
-
     /// <summary>
     /// 角色属性管理器。
     /// <para>纯逻辑类（不依赖 MonoBehaviour），可通过构造函数或 DI 创建。</para>
@@ -56,27 +42,19 @@ namespace DreamSystem.Damage.Stat
         public IReadOnlyList<string> InventoryItems => _inventoryItems;
 
         /// <summary>
-        /// 构造函数：通过初始化数据创建角色属性。
+        /// 无参构造函数：使用默认初始化数据。
         /// </summary>
-        public CharacterStats(CharacterStatsInitData initData = null)
+        public CharacterStats()
         {
-            CharacterStatsInitData data = initData ?? new CharacterStatsInitData();
-            InitializeStats(data);
+            InitializeStats(CharacterStatsInitData.Default);
         }
 
         /// <summary>
-        /// 构造函数：通过基础属性值直接创建角色属性（向后兼容）。
+        /// 构造函数：通过初始化数据创建角色属性。
         /// </summary>
-        public CharacterStats(float health, float shield = 0f, float attack = 10f, float defense = 5f, float speed = 5f)
+        public CharacterStats(CharacterStatsInitData initData)
         {
-            InitializeStats(new CharacterStatsInitData
-            {
-                BaseHealth = health,
-                BaseShield = shield,
-                BaseAttack = attack,
-                BaseDefense = defense,
-                BaseSpeed = speed
-            });
+            InitializeStats(initData);
         }
 
         /// <summary>
@@ -84,19 +62,15 @@ namespace DreamSystem.Damage.Stat
         /// </summary>
         private void InitializeStats(CharacterStatsInitData data)
         {
-            allStatDir.Add(StatType.Health, new BaseStat(StatType.Health, data.BaseHealth, 0, float.MaxValue, 0));
-            allStatDir.Add(StatType.Shield, new BaseStat(StatType.Shield, data.BaseShield, 0, float.MaxValue, 0));
-            allStatDir.Add(StatType.Attack, new BaseStat(StatType.Attack, data.BaseAttack, 0, float.MaxValue, 0));
-            allStatDir.Add(StatType.Defense, new BaseStat(StatType.Defense, data.BaseDefense, 0, float.MaxValue, 0));
-            allStatDir.Add(StatType.Speed, new BaseStat(StatType.Speed, data.BaseSpeed, 0, float.MaxValue, 0));
+            allStatDir.Add(StatType.Health, new BaseStat(StatType.Health, data.baseHealth, 0, float.MaxValue, 0));
+            allStatDir.Add(StatType.Shield, new BaseStat(StatType.Shield, data.baseShield, 0, float.MaxValue, 0));
+            allStatDir.Add(StatType.Attack, new BaseStat(StatType.Attack, data.baseAttack, 0, float.MaxValue, 0));
+            allStatDir.Add(StatType.Defense, new BaseStat(StatType.Defense, data.baseDefense, 0, float.MaxValue, 0));
+            allStatDir.Add(StatType.Speed, new BaseStat(StatType.Speed, data.baseSpeed, 0, float.MaxValue, 0));
 
             _currentValues[StatType.Health] = allStatDir[StatType.Health].FinalValue;
             _currentValues[StatType.Shield] = allStatDir[StatType.Shield].FinalValue;
         }
-
-        // ============================================
-        // 数据变化通知
-        // ============================================
 
         /// <summary>
         /// 触发数据变化事件（使用 StatType 作为标识）。

@@ -27,11 +27,11 @@ namespace DreamConfig
                 var statsData = new CharacterStatsData
                 {
                     characterId = data[i][0],
-                    health = float.Parse(data[i][1]),
-                    shield = float.Parse(data[i][2]),
-                    attack = float.Parse(data[i][3]),
-                    defense = float.Parse(data[i][4]),
-                    speed = float.Parse(data[i][5])
+                    baseMaxHealth = float.Parse(data[i][1]),
+                    baseShield = float.Parse(data[i][2]),
+                    baseAttack = float.Parse(data[i][3]),
+                    baseDefense = float.Parse(data[i][4]),
+                    baseSpeed = float.Parse(data[i][5])
                 };
                 if (!_characterStatsDir.TryAdd(statsData.characterId, statsData)) {
                     UnityEngine.Debug.LogError($"[LevelConfig] 发现重复等级ID: {statsData.characterId}");
@@ -55,17 +55,48 @@ namespace DreamConfig
         
         public List<CharacterStatsData> GetAllCharacterStatsList() => _allCharacterStatsList;
     }
-
+    
     /// <summary>
-    /// 单个角色的基础属性数据。
+    /// 角色基础属性配置数据。
+    /// 仅用于游戏启动或实体生成时的首次数据加载，不参与运行时的动态计算。
     /// </summary>
     public struct CharacterStatsData
     {
+        /// <summary>
+        /// 角色或怪物的唯一标识符（如 "player_01", "slime_01"）
+        /// 用于将配置数据与具体的预制体或实例进行绑定。
+        /// </summary>
         public string characterId;
-        public float health;
-        public float shield;
-        public float attack;
-        public float defense;
-        public float speed;
+
+        /// <summary>
+        /// 基础最大生命值。
+        /// 对应运行时的最大生命值上限（MaxHealth），而非当前血量。
+        /// </summary>
+        public float baseMaxHealth;
+
+        /// <summary>
+        /// 基础最大护盾容量 / 初始护盾值。
+        /// 如果游戏机制中护盾没有上限概念（可以无限叠加），此字段表示“出生自带的固定护盾值”；
+        /// 如果护盾有上限概念，此字段表示护盾条的上限。
+        /// </summary>
+        public float baseShield;
+
+        /// <summary>
+        /// 基础攻击力。
+        /// 没有任何 Buff 和装备加成时的初始物理/魔法伤害基数。
+        /// </summary>
+        public float baseAttack;
+
+        /// <summary>
+        /// 基础防御力。
+        /// 用于在伤害结算公式中进行减伤计算的基础值。
+        /// </summary>
+        public float baseDefense;
+
+        /// <summary>
+        /// 基础速度。
+        /// 影响移动速度或攻击频率的初始值。
+        /// </summary>
+        public float baseSpeed;
     }
 }

@@ -20,11 +20,14 @@ namespace DreamConfig
 
         public override UniTask LoadConfig(ResourcesManager resourcesManager)
         {
-            var textAsset = resourcesManager.LoadAsset<UnityEngine.TextAsset>(nameof(BuffConfig));
+            var textAsset = resourcesManager.LoadAsset<UnityEngine.TextAsset>("BuffConfig");
             var data = CsvHelper.ReadCsv(textAsset);
 
-            for (int i = 0; i < data.Count; i++)
+            for (int i = 1; i < data.Count; i++)
             {
+                // 如果空行跳过
+                if (data[i].Length < 10 || string.IsNullOrWhiteSpace(data[i][0])) continue;
+
                 var buffId = data[i][0];
 
                 // 1. 使用 TryGetValue 大法来处理“多行合并”

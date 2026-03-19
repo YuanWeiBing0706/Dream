@@ -1,8 +1,9 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using DreamManager;
 using DreamSystem.Damage;
 using DreamSystem.Damage.Stat;
 using Events;
+using Interface;
 using Model.Player;
 using Struct;
 using UnityEngine;
@@ -17,7 +18,7 @@ namespace DreamSystem.Player
     {
         private readonly PlayerHitBox[] _playerHitBoxes;
         private readonly EventManager _eventManager;
-        private readonly CharacterStats _characterStats;
+        private readonly IBuffOwner _player;
 
         /// 是否正在检测伤害
         private bool _isDetection;
@@ -25,11 +26,11 @@ namespace DreamSystem.Player
         /// 本次攻击已命中的目标去重集合（按 HitBox 独立计算）
         private readonly HashSet<(int hitBoxIndex, int targetId)> _hitEnemyIds = new();
 
-        public PlayerCombatSystem(PlayerHitBox[] playerHitBoxes, EventManager eventManager, CharacterStats characterStats)
+        public PlayerCombatSystem(PlayerHitBox[] playerHitBoxes, EventManager eventManager, IBuffOwner player)
         {
             _playerHitBoxes = playerHitBoxes;
             _eventManager = eventManager;
-            _characterStats = characterStats;
+            _player = player;
         }
 
         public override void Start()
@@ -58,7 +59,7 @@ namespace DreamSystem.Player
                     if (!_hitEnemyIds.Contains(hitKey))
                     {
                         // 发布伤害请求，由 DamageManager 处理
-                        _eventManager.Publish(GameEvents.DAMAGE_REQUEST, new DamageRequest(_characterStats, target, 10f));
+                        _eventManager.Publish(GameEvents.DAMAGE_REQUEST, new DamageRequest(_player.Stats, target, 10f));
                         _hitEnemyIds.Add(hitKey);
                     }
                 }

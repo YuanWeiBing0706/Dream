@@ -1,0 +1,31 @@
+﻿itemId,itemName,itemType,rarity,price,sellPrice,buffId,description
+item_ring_01,粗糙的铜戒,Passive,White,50,25,buff_item_ring_01,微微发热的戒指。攻击力+3
+item_ring_02,恶魔骨戒,Passive,Green,150,75,buff_item_ring_02,用Cute Devil的骨头打磨而成。攻击力+8
+item_gem_01,碎裂的红宝石,Passive,White,50,25,buff_item_gem_01,散发着微弱的生命气息。最大生命+20
+item_gem_02,璀璨血钻,Passive,Blue,300,150,buff_item_gem_02,仿佛在跳动的宝石。最大生命+80
+item_book_01,学徒法典,Passive,White,80,40,buff_item_book_01,记载着基础防御法术。防御力+2
+item_book_02,魅魔的日记,Passive,Purple,600,300,buff_item_book_02,翻开会让人头晕目眩。速度+20%，攻击力+10
+item_scroll_01,治疗卷轴,Active,White,100,50,buff_item_scroll_01,捏碎后立即恢复 50 点生命值。
+item_scroll_02,狂暴卷轴,Active,Green,200,100,buff_item_scroll_02,捏碎后10秒内攻击力剧增。
+item_amulet_01,护盾护符,Passive,Green,250,125,buff_item_amulet_01,进场时提供 30 点基础护盾。
+item_amulet_02,炎魔核心,Passive,Gold,1200,600,buff_item_amulet_02,击败Fire Demon的战利品。攻击力+25，防御+15
+item_boots_01,旅者皮靴,Passive,White,60,30,buff_item_boots_01,速度+3
+item_boots_02,疾风步履,Passive,Blue,350,175,buff_item_boots_02,速度+10
+item_potion_01,爆裂虫体液,Active,Green,150,75,buff_item_potion_01,饮用后对自身造成微量伤害，但大幅提升攻击。
+item_potion_02,纯净之水,Active,Blue,400,200,buff_item_potion_02,瞬间回满所有生命值与护盾。
+item_relic_01,触手怪的眼球,Passive,Purple,800,400,buff_item_relic_01,令人作呕但极其强大。攻击力提升 15%
+item_relic_02,龙鳞碎片,Passive,Blue,500,250,buff_item_relic_02,坚不可摧。防御力+12，生命+50
+item_relic_03,深渊凝视,Passive,Gold,1500,750,buff_item_relic_03,独立乘法计算，总攻击力狂飙 20%
+item_ring_03,荆棘指环,Passive,Green,200,100,buff_item_ring_03,防御力+5
+item_gem_03,绿松石,Passive,White,70,35,buff_item_gem_03,速度+2，生命+10
+item_book_03,岩石巨兽图鉴,Passive,Blue,450,225,buff_item_book_03,研究Rock Hurler的弱点。攻击力+15
+item_amulet_03,地狱藤蔓项链,Passive,Purple,750,375,buff_item_amulet_03,Hell Creeper的藤蔓编制。生命+150，速度-2
+item_crown_01,破败王冠,Passive,Gold,2000,1000,buff_item_crown_01,曾经的王之象征。全属性全面提升！
+item_cloak_01,阴影斗篷,Passive,Blue,400,200,buff_item_cloak_01,速度+8，防御+5
+item_scroll_03,钢铁屏障卷轴,Active,Blue,300,150,buff_item_scroll_03,获得 100 点临时护盾。
+item_idol_01,黄金神像,Passive,Purple,1000,500,buff_item_idol_01,生命+100，防御+10
+item_fang_01,火龙毒牙,Passive,Gold,1800,900,buff_item_fang_01,Fire Dragon的致命武器。攻击力+40
+item_heart_01,恶魔搏动之心,Passive,Purple,900,450,buff_item_heart_01,最大生命值提升 20%
+item_wing_01,残破双翼,Passive,Green,220,110,buff_item_wing_01,速度+5
+item_skull_01,诅咒头骨,Passive,Blue,350,175,buff_item_skull_01,攻击+20，防御-5
+item_chalice_01,圣杯,Passive,Gold,2500,1250,buff_item_chalice_01,生命值翻倍！（提升100%）

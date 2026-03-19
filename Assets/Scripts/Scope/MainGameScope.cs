@@ -10,6 +10,7 @@ using Interface;
 using KinematicCharacterController;
 using Model.Enemy;
 using Model.Player;
+using Providers;
 using SO;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -45,7 +46,7 @@ namespace Scope
             builder.RegisterEntryPoint<PlayerAttackSystem>().AsSelf().As<IPlayerAttackContext>();
 
             builder.Register<PlayerStateMachine>(Lifetime.Singleton);
-            builder.Register<CharacterStats>(Lifetime.Singleton);
+
             builder.Register<BuffSystem>(Lifetime.Singleton);
             builder.RegisterEntryPoint<KccMoveController>().AsSelf().As<IPlayerMoveContext>();
 

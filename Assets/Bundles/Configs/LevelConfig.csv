@@ -1,10 +1,11 @@
-﻿关卡ID,大章节,小关卡,敌人列表,奖励金币,掉落组ID
-stage_1_1,1,1,mob_cute_devil|mob_cute_devil|mob_cute_devil,80,drop_1_1
-stage_1_2,1,2,mob_cute_devil|mob_explosive_bug|mob_cute_devil,120,drop_1_2
-stage_1_3,1,3,mob_hell_creeper|mob_explosive_bug|boss_tentacle,250,drop_1_3
-stage_2_1,2,1,mob_hell_creeper|mob_rock_hurler,150,drop_2_1
-stage_2_2,2,2,mob_rock_hurler|mob_succubus|mob_succubus,200,drop_2_2
-stage_2_3,2,3,mob_succubus|mob_explosive_bug|boss_fire_demon,400,drop_2_3
-stage_3_1,3,1,mob_succubus|boss_fire_demon|mob_rock_hurler,300,drop_3_1
-stage_3_2,3,2,boss_fire_demon|mob_hell_creeper|mob_succubus|mob_explosive_bug,350,drop_3_2
-stage_3_3,3,3,boss_fire_demon|mob_succubus|mob_rock_hurler|boss_fire_dragon,600,drop_3_3
+﻿LevelId,LevelName,ExperienceReward,DropGroupId,MonsterList,Description
+level_01,烈焰边缘,50,chest_common,Cute Devil:3|Explosive Bug:2,这里的恶魔看起来还有点可爱。
+level_02,蠕动深渊,120,chest_common,Hell Creeper:5|Explosive Bug:3,地上爬满了令人不适的植物。
+level_03,碎石谷地,250,chest_rare,Rock Hurler:3|Cute Devil:4,小心头顶飞来的巨石！
+level_04,魅影回廊,400,chest_rare,Succubus:2|Hell Creeper:4,空气中弥漫着危险的香气。
+level_05,恶魔前哨,600,chest_elite,Fire Demon:1|Rock Hurler:3,一个高大的炎魔挡住了去路。
+level_06,触手泥潭,850,chest_elite,Tentacle Monster:2|Explosive Bug:5,沼泽里伸出了可怕的触手。
+level_07,痛苦刑房,1100,chest_epic,Succubus:3|Fire Demon:2,只有最坚强的勇士才能存活。
+level_08,狂暴深坑,1500,chest_epic,Rock Hurler:4|Tentacle Monster:3,怪物们陷入了彻底的疯狂。
+level_09,巨龙王座前,2000,chest_boss_prep,Fire Demon:4|Succubus:2,最后的守卫死死护住大门。
+level_10,炎龙之巢,5000,chest_boss,Fire Dragon:1,终极试炼，直面恐惧！

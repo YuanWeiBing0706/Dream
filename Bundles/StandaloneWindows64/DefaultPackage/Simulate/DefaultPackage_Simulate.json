@@ -9,7 +9,7 @@
     "BuildPipeline": "EditorSimulateBuildPipeline",
     "PackageName": "DefaultPackage",
     "PackageVersion": "Simulate",
-    "PackageNote": "2026/2/7 13:03:17",
+    "PackageNote": "2026/3/20 4:53:51",
     "AssetList": [
         {
             "Address": "Attack01_Bow",
@@ -2196,6 +2196,150 @@
             "DependBundleIDs": []
         },
         {
+            "Address": "Cute Devil-Purple",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Cute Devil/Prefabs/Cute Devil-Purple.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Cute Devil-Red",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Cute Devil/Prefabs/Cute Devil-Red.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Cute Devil-Yellow",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Cute Devil/Prefabs/Cute Devil-Yellow.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Explosive Bug-Blue",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Explosive Bug/Prefabs/Explosive Bug-Blue.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Explosive Bug-Green",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Explosive Bug/Prefabs/Explosive Bug-Green.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Explosive Bug-Orange",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Explosive Bug/Prefabs/Explosive Bug-Orange.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "FX-Burst-Blue",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Explosive Bug/Prefabs/FX-Burst-Blue.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "FX-Burst-Green",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Explosive Bug/Prefabs/FX-Burst-Green.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "FX-Burst-Orange",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Explosive Bug/Prefabs/FX-Burst-Orange.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Fire Demon-Orange",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Fire Demon/Prefabs/Fire Demon-Orange.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Fire Demon-Red",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Fire Demon/Prefabs/Fire Demon-Red.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Fire Demon-Yellow",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Fire Demon/Prefabs/Fire Demon-Yellow.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Fire Dragon-Black",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Fire Dragon/Prefabs/Fire Dragon-Black.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Fire Dragon-Purple",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Fire Dragon/Prefabs/Fire Dragon-Purple.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Fire Dragon-Red",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Fire Dragon/Prefabs/Fire Dragon-Red.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "FX-FireBall Impact",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Fire Dragon/Prefabs/FX-FireBall Impact.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "FX-FireBall Projectile",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Fire Dragon/Prefabs/FX-FireBall Projectile.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "FX-FireBreath",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Fire Dragon/Prefabs/FX-FireBreath.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
             "Address": "Character_Ghost_01_FixedScale",
             "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/FixedScale/Character_Ghost_01_FixedScale.prefab",
             "AssetGUID": "",
@@ -2318,6 +2462,174 @@
         {
             "Address": "Character_Tormented_Soul_FixedScale",
             "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/FixedScale/Character_Tormented_Soul_FixedScale.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Hell Creeper-Purple",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Hell Creeper/Prefabs/Hell Creeper-Purple.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Hell Creeper-Red",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Hell Creeper/Prefabs/Hell Creeper-Red.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Hell Creeper-Yellow",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Hell Creeper/Prefabs/Hell Creeper-Yellow.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Rock Hurler-Grey",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Rock Hurler/Prefabs/Rock Hurler-Grey.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Rock Hurler-Pink",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Rock Hurler/Prefabs/Rock Hurler-Pink.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Rock Hurler-Purple",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Rock Hurler/Prefabs/Rock Hurler-Purple.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Rock-Grey",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Rock Hurler/Prefabs/Rock-Grey.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Rock-Pink",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Rock Hurler/Prefabs/Rock-Pink.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Rock-Purple",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Rock Hurler/Prefabs/Rock-Purple.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "FX-Projectile Impact",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Succubus/Prefabs/FX-Projectile Impact.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "FX-Projectile",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Succubus/Prefabs/FX-Projectile.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Succubus-Green",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Succubus/Prefabs/Succubus-Green.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Succubus-Purple",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Succubus/Prefabs/Succubus-Purple.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Succubus-Red",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Succubus/Prefabs/Succubus-Red.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Projectile Orb",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Tentacle Monster/Prefabs/Projectile Orb.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Tentacle Monster-Orange",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Tentacle Monster/Prefabs/Tentacle Monster-Orange.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Tentacle Monster-Red",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Tentacle Monster/Prefabs/Tentacle Monster-Red.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Tentacle Monster-Yellow",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Tentacle Monster/Prefabs/Tentacle Monster-Yellow.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Tentacles-Orange",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Tentacle Monster/Prefabs/Tentacles-Orange.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Tentacles-Red",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Tentacle Monster/Prefabs/Tentacles-Red.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Tentacles-Yellow",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Tentacle Monster/Prefabs/Tentacles-Yellow.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
@@ -2620,8 +2932,48 @@
             "DependBundleIDs": []
         },
         {
-            "Address": "CharAnimConfig",
-            "AssetPath": "Assets/Bundles/Configs/CharAnimConfig.csv",
+            "Address": "BuffConfig",
+            "AssetPath": "Assets/Bundles/Configs/BuffConfig.csv",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 4,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "CharacterStatsConfig",
+            "AssetPath": "Assets/Bundles/Configs/CharacterStatsConfig.csv",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 4,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "DropConfig",
+            "AssetPath": "Assets/Bundles/Configs/DropConfig.csv",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 4,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "HexConfig",
+            "AssetPath": "Assets/Bundles/Configs/HexConfig.csv",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 4,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "ItemConfig",
+            "AssetPath": "Assets/Bundles/Configs/ItemConfig.csv",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 4,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "LevelConfig",
+            "AssetPath": "Assets/Bundles/Configs/LevelConfig.csv",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 4,
@@ -10206,7 +10558,7 @@
             "UnityCRC": 0,
             "FileHash": "791db34b5040dedb5c70779d878033f1",
             "FileCRC": 0,
-            "FileSize": 3958895,
+            "FileSize": 6947104,
             "Encrypted": false,
             "Tags": [],
             "DependBundleIDs": []
@@ -10226,7 +10578,7 @@
             "UnityCRC": 0,
             "FileHash": "af82851a89bee0d6c2974cc11f1cd989",
             "FileCRC": 0,
-            "FileSize": 7386,
+            "FileSize": 12908,
             "Encrypted": false,
             "Tags": [],
             "DependBundleIDs": []

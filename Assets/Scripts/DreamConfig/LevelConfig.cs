@@ -8,9 +8,8 @@ namespace DreamConfig
 {
     /// <summary>
     /// 关卡配置表。
-    /// <para>3 大关 × 3 小关 = 9 关。</para>
-    /// <para>CSV 格式：LevelId,MajorStage,MinorStage,EnemyList,RewardGold,DropGroupId</para>
-    /// <para>EnemyList 用 | 分隔多个敌人 ID，DropGroupId 关联 DropEntryConfig 的掉落组。</para>
+    /// <para>CSV 格式：LevelId,LevelName,ExperienceReward,DropGroupId,MonsterList,Description</para>
+    /// <para>MonsterList 用 | 分隔多个敌人 ID。</para>
     /// </summary>
     [Config]
     public class LevelConfig : Config
@@ -23,9 +22,13 @@ namespace DreamConfig
             var textAsset = resourcesManager.LoadAsset<UnityEngine.TextAsset>(nameof(LevelConfig));
             var data = CsvHelper.ReadCsv(textAsset);
 
-            for (int i = 0; i < data.Count; i++)
+            // 从 i = 1 开始遍历，跳过第一行表头
+            for (int i = 1; i < data.Count; i++)
             {
-                var enemyListStr = data[i][3];
+                // 如果空行或者数据不足，跳过
+                if (data[i].Length < 6 || string.IsNullOrWhiteSpace(data[i][0])) continue;
+
+                var enemyListStr = data[i][4]; // 第5列是 MonsterList
                 var enemies = string.IsNullOrEmpty(enemyListStr)
                     ? new string[0]
                     : enemyListStr.Split('|');
@@ -33,11 +36,11 @@ namespace DreamConfig
                 var levelData = new LevelData
                 {
                     levelId = data[i][0],
-                    majorStage = int.Parse(data[i][1]),
-                    minorStage = int.Parse(data[i][2]),
+                    levelName = data[i][1],
+                    experienceReward = int.Parse(data[i][2]),
+                    dropGroupId = data[i][3],
                     enemyList = enemies,
-                    rewardGold = int.Parse(data[i][4]),
-                    dropGroupId = data[i][5]
+                    description = data[i][5]
                 };
                 if (!_levelDir.TryAdd(levelData.levelId, levelData)) {
                     UnityEngine.Debug.LogError($"[LevelConfig] 发现重复等级ID: {levelData.levelId}");
@@ -67,22 +70,22 @@ namespace DreamConfig
     /// </summary>
     public struct LevelData
     {
-        /// 关卡 ID（如 "1-1"）
+        /// 关卡 ID（如 "level_01"）
         public string levelId;
 
-        /// 大关编号（1~3）
-        public int majorStage;
+        /// 关卡名称
+        public string levelName;
 
-        /// 小关编号（1~3）
-        public int minorStage;
+        /// 奖励经验
+        public int experienceReward;
+
+        /// 掉落组 ID（关联 DropEntryConfig）
+        public string dropGroupId;
 
         /// 该关需要刷出的敌人 ID 列表
         public string[] enemyList;
 
-        /// 通关奖励金币
-        public int rewardGold;
-
-        /// 掉落组 ID（关联 DropEntryConfig）
-        public string dropGroupId;
+        /// 关卡描述
+        public string description;
     }
 }

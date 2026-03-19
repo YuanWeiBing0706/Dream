@@ -20,11 +20,13 @@ namespace DreamConfig
         
         public override UniTask LoadConfig(ResourcesManager resourcesManager)
         {
-            var textAsset = resourcesManager.LoadAsset<UnityEngine.TextAsset>(nameof(DropEntryConfig));
+            var textAsset = resourcesManager.LoadAsset<UnityEngine.TextAsset>("DropConfig");
             var data = CsvHelper.ReadCsv(textAsset);
 
-            for (int i = 0; i < data.Count; i++)
+            for (int i = 1; i < data.Count; i++)
             {
+                if (data[i].Length < 5 || string.IsNullOrWhiteSpace(data[i][0])) continue;
+
                 var dropEntryData = new DropEntryData
                 {
                     dropGroupId = data[i][0],

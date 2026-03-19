@@ -1,9 +1,10 @@
-﻿using DreamManager;
+using DreamManager;
 using DreamSystem;
 using DreamSystem.Damage;
 using DreamSystem.Debug;
 using Function.Initialize;
 using Model.Player;
+using Providers;
 using VContainer;
 using VContainer.Unity;
 namespace Scope
@@ -15,6 +16,7 @@ namespace Scope
             builder.Register<EventManager>(Lifetime.Singleton);
             builder.Register<GameInputManager>(Lifetime.Singleton);
             builder.Register<SuggestionService>(Lifetime.Singleton);
+
             builder.RegisterEntryPoint<DamageSystem>().AsSelf();
             builder.Register<ResourcesManager>(Lifetime.Singleton)
                 .As<IUniTaskStartable>() // 贴上标签：我是要异步启动的
@@ -27,13 +29,12 @@ namespace Scope
             builder.RegisterEntryPoint<DebugConsoleSystem>()
                 .As<IUniTaskStartable>()
                 .AsSelf();
-
-
             builder.Register<GameManger>(Lifetime.Singleton)
                 .As<IUniTaskStartable>()
                 .AsSelf();
 
             builder.RegisterEntryPoint<AsyncLifecycleExecutor>();
+            builder.Register<CharacterStatsFactory>(Lifetime.Singleton);
         }
     }
 }

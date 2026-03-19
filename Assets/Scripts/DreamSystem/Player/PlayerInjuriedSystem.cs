@@ -1,4 +1,4 @@
-﻿using DreamManager;
+using DreamManager;
 using DreamSystem.Damage;
 using DreamSystem.Damage.Stat;
 using Enum.Buff;
@@ -14,12 +14,12 @@ namespace DreamSystem.Player
     public class PlayerInjuriedSystem : GameSystem
     {
         private readonly EventManager _eventManager;
-        private readonly CharacterStats _playerStats;
+        private readonly Interface.IBuffOwner _player;
 
-        public PlayerInjuriedSystem(EventManager eventManager, CharacterStats playerStats)
+        public PlayerInjuriedSystem(EventManager eventManager, Interface.IBuffOwner player)
         {
             _eventManager = eventManager;
-            _playerStats = playerStats;
+            _player = player;
         }
 
         public override void Start()
@@ -33,9 +33,9 @@ namespace DreamSystem.Player
         private void OnDamageResult(DamageResult result)
         {
             // 判断受击方是否是玩家（比较 CharacterStats 引用）
-            if (result.TargetStats != _playerStats) return;
+            if (result.TargetStats != _player.Stats) return;
 
-            UnityEngine.Debug.Log($"[PlayerDamageSystem] 玩家受到 {result.FinalDamage} 点伤害，当前血量: {_playerStats.GetCurrentStatValue(StatType.Health)}");
+            UnityEngine.Debug.Log($"[PlayerDamageSystem] 玩家受到 {result.FinalDamage} 点伤害，当前血量: {_player.Stats.GetCurrentStatValue(StatType.Health)}");
 
             if (result.IsDead)
             {

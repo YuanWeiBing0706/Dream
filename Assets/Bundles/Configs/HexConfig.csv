@@ -1,0 +1,31 @@
+﻿hexId,hexGroupId,hexName,hexRarity,weight,prerequisiteHexId,buffId,description
+hex_mutant_w1,hex_mutant,基础变异,White,100,,buff_hex_mutant_1,你的肌肉开始膨胀。攻击力+5
+hex_mutant_g2,hex_mutant,深度变异,Gold,50,hex_mutant_w1,buff_hex_mutant_2,你的骨骼变得坚硬。防御力+15，攻击力+10
+hex_mutant_r3,hex_mutant,完美生物,Iridescence,10,hex_mutant_g2,buff_hex_mutant_3,你超越了人类极限。全属性提升20%！
+hex_hell_w1,hex_hell,地狱适应,White,100,,buff_hex_hell_1,习惯了深渊的温度。生命上限+30
+hex_hell_g2,hex_hell,恶魔皮肤,Gold,50,hex_hell_w1,buff_hex_hell_2,皮肤长出类似Cute Devil的角质层。防御+20
+hex_hell_r3,hex_hell,炎魔化身,Iridescence,10,hex_hell_g2,buff_hex_hell_3,化身Fire Demon！攻击力+50，防御力+30
+hex_speed_w1,hex_speed,神经反射,White,100,,buff_hex_speed_1,速度+2
+hex_speed_g2,hex_speed,肾上腺素,Gold,50,hex_speed_w1,buff_hex_speed_2,速度+6
+hex_speed_r3,hex_speed,动态视力,Iridescence,10,hex_speed_g2,buff_hex_speed_3,速度提升 30%
+hex_blood_w1,hex_blood,鲜血渴望,White,90,,buff_hex_blood_1,攻击力+8，生命上限-10
+hex_blood_g2,hex_blood,沸腾之血,Gold,40,hex_blood_w1,buff_hex_blood_2,攻击力+25，生命上限-30
+hex_blood_r3,hex_blood,龙血献祭,Iridescence,5,hex_blood_g2,buff_hex_blood_3,献祭一半生命值，换取无与伦比的破坏力(攻击+100%)
+hex_stone_w1,hex_stone,顽石意志,White,90,,buff_hex_stone_1,防御力+5
+hex_stone_g2,hex_stone,岩石身躯,Gold,40,hex_stone_w1,buff_hex_stone_2,像Rock Hurler一样坚硬。防御力+18
+hex_eco_w1,hex_eco,赏金猎人,White,100,,buff_hex_eco_1,击杀怪物获得的金币微量提升（机制占位）
+hex_eco_g2,hex_eco,宝箱感应,Gold,40,,buff_hex_eco_2,宝箱出现高稀有度道具概率提升（机制占位）
+hex_bug_w1,hex_bug,虫群直觉,White,80,,buff_hex_bug_1,获得Explosive Bug的警觉。速度+4
+hex_bug_g2,hex_bug,爆炸反应,Gold,30,hex_bug_w1,buff_hex_bug_2,受伤时有概率触发爆炸反击（机制占位）
+hex_charm_g1,hex_charm,魅惑气息,Gold,40,,buff_hex_charm_1,散发Succubus的魅力。商店购买价格降低 20%
+hex_tent_r1,hex_tent,触手共生,Iridescence,8,,buff_hex_tent_1,背后长出无形的触手。攻击力+30，速度+10
+hex_giant_g1,hex_giant,巨人杀手,Gold,40,,buff_hex_giant_1,对Boss造成的伤害提升 15%
+hex_glass_r1,hex_glass,玻璃大炮,Iridescence,5,,buff_hex_glass_1,攻击力飙升 50%，但防御力降为 0
+hex_shd_w1,hex_shd,护盾专精,White,100,,buff_hex_shd_1,每次进入战斗获得 10 点护盾
+hex_shd_g2,hex_shd,能量屏障,Gold,40,hex_shd_w1,buff_hex_shd_2,每次进入战斗获得 50 点护盾
+hex_surv_w1,hex_surv,绝境求生,White,90,,buff_hex_surv_1,生命值+15，防御+2
+hex_surv_g2,hex_surv,破釜沉舟,Gold,30,hex_surv_w1,buff_hex_surv_2,生命值+40，防御+8
+hex_dragon_r1,hex_drg,巨龙之威,Iridescence,3,,buff_hex_dragon_1,面对Fire Dragon不再恐惧。全属性大幅增长
+hex_magic_w1,hex_mag,魔力感知,White,100,,buff_hex_magic_1,技能冷却略微降低（机制占位）
+hex_magic_g2,hex_mag,灵能涌动,Gold,40,hex_magic_w1,buff_hex_magic_2,技能伤害大幅提升（机制占位）
+hex_gamble_r1,hex_gmb,命运抛币,Iridescence,5,,buff_hex_gamble_1,极高风险。要么全属性+50%，要么扣除当前一半生命
