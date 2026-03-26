@@ -6,6 +6,7 @@ using Fsm.State.Airborne;
 using Fsm.State.Attack;
 using Fsm.State.Base;
 using Fsm.State.Grounded;
+using Fsm.State.Passivity;
 using Interface;
 using SO;
 
@@ -43,6 +44,10 @@ namespace DreamSystem.Player
 
         /// 下落攻击状态
         public FallAttackState FallAttackState { get; private set; }
+
+        public HitState HitState { get; private set; }
+
+        public DeadState DeadState { get; private set; }
 
         /// 事件管理器
         private readonly EventManager _eventManager;
@@ -93,6 +98,10 @@ namespace DreamSystem.Player
             LightAttackState = new LightAttackState(moveContext, _eventManager, this, attackContext, _animancer, _animData);
             HeavyAttackState = new HeavyAttackState(moveContext, _eventManager, this, attackContext, _animancer, _animData);
             FallAttackState = new FallAttackState(moveContext, _eventManager, this, attackContext, _animancer, _animData);
+
+            HitState = new HitState(moveContext, _eventManager, this, _animancer, _animData);
+            DeadState = new DeadState(moveContext, _eventManager, this, _animancer, _animData);
+
             // 设置初始状态
             StateMachine.Initialize(MoveState);
         }

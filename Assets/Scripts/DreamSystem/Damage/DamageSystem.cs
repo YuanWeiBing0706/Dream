@@ -15,8 +15,7 @@ namespace DreamSystem.Damage
     public class DamageSystem : GameSystem
     {
         private readonly EventManager _eventManager;
-
-        /// Collider → CharacterStats
+        
         private readonly Dictionary<Collider, CharacterStats> _characterStatsDir = new();
 
         public DamageSystem(EventManager eventManager)

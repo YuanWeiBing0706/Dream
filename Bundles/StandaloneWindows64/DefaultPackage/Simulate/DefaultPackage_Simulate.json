@@ -9,7 +9,7 @@
     "BuildPipeline": "EditorSimulateBuildPipeline",
     "PackageName": "DefaultPackage",
     "PackageVersion": "Simulate",
-    "PackageNote": "2026/3/20 4:53:51",
+    "PackageNote": "2026/3/26 23:47:33",
     "AssetList": [
         {
             "Address": "Attack01_Bow",
@@ -366,6 +366,14 @@
         {
             "Address": "Combo05_DoubleSword",
             "AssetPath": "Assets/Bundles/Animations/Player/DoubleSwords/Combo05_DoubleSword.fbx",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 0,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Convention",
+            "AssetPath": "Assets/Bundles/Animations/Player/DoubleSwords/Convention.controller",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 0,
@@ -10538,7 +10546,7 @@
             "UnityCRC": 0,
             "FileHash": "0a501416bf3e7526e6633446156fa70c",
             "FileCRC": 0,
-            "FileSize": 231855107,
+            "FileSize": 231857143,
             "Encrypted": false,
             "Tags": [],
             "DependBundleIDs": []
@@ -10558,7 +10566,7 @@
             "UnityCRC": 0,
             "FileHash": "791db34b5040dedb5c70779d878033f1",
             "FileCRC": 0,
-            "FileSize": 6947104,
+            "FileSize": 7071629,
             "Encrypted": false,
             "Tags": [],
             "DependBundleIDs": []

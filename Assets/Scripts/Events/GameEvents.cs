@@ -54,13 +54,16 @@
         public const string PLAYER_ATTACK_OPEN_DETECTION = nameof(PLAYER_ATTACK_OPEN_DETECTION);
         public const string PLAYER_ATTACK_CLOSE_DETECTION = nameof(PLAYER_ATTACK_CLOSE_DETECTION);
 
-        // 敌人事件
-        public const string ENEMY_DAMAGED = nameof(ENEMY_DAMAGED);
-        public const string ENEMY_DEATH = nameof(ENEMY_DEATH);        // 伤害管道事件
+        // // 敌人事件
+        // public const string ENEMY_DAMAGED = nameof(ENEMY_DAMAGED);
+        // public const string ENEMY_DEATH = nameof(ENEMY_DEATH); // 伤害管道事件
+        
         /// 伤害请求（CombatSystem → DamageSystem）
         public const string DAMAGE_REQUEST = nameof(DAMAGE_REQUEST);
         /// 伤害结算结果（DamageSystem → 受击方）
         public const string DAMAGE_RESULT = nameof(DAMAGE_RESULT);
+        
+        public const string PLAYER_DEAD = nameof(PLAYER_DEAD);
 
 
     }

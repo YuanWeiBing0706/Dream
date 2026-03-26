@@ -1,9 +1,12 @@
+
 using DreamManager;
-using DreamSystem.Damage;
-using DreamSystem.Damage.Stat;
 using Enum.Buff;
 using Events;
+using Interface;
 using Struct;
+using DreamSystem.Damage;
+using Cysharp.Threading.Tasks;
+using UnityEngine;
 
 namespace DreamSystem.Player
 {
@@ -14,17 +17,41 @@ namespace DreamSystem.Player
     public class PlayerInjuriedSystem : GameSystem
     {
         private readonly EventManager _eventManager;
-        private readonly Interface.IBuffOwner _player;
+        private readonly IBuffOwner _player;
+        private readonly PlayerStateMachine _playerStateMachine;
+        private readonly DamageSystem _damageSystem;
 
-        public PlayerInjuriedSystem(EventManager eventManager, Interface.IBuffOwner player)
+        public PlayerInjuriedSystem(EventManager eventManager, IBuffOwner player, PlayerStateMachine playerStateMachine, DamageSystem damageSystem)
         {
             _eventManager = eventManager;
             _player = player;
+            _playerStateMachine = playerStateMachine;
+            _damageSystem = damageSystem;
         }
 
         public override void Start()
         {
             _eventManager.Subscribe<DamageResult>(GameEvents.DAMAGE_RESULT, OnDamageResult);
+
+            RegisterPlayerAsync().Forget();
+        }
+
+        private async UniTaskVoid RegisterPlayerAsync()
+        {
+            // 等待 PlayerModel 异步加载完属性
+            await UniTask.WaitUntil(() => _player.Stats != null);
+
+            // 拿到玩家身上的 Collider 并注册到 DamageSystem
+            var playerMono = _player as MonoBehaviour;
+            if (playerMono != null)
+            {
+                var col = playerMono.GetComponentInChildren<Collider>();
+                if (col != null)
+                {
+                    _damageSystem.Register(col, _player.Stats);
+                    UnityEngine.Debug.Log("[PlayerInjuriedSystem] 玩家已注册到伤害系统！");
+                }
+            }
         }
 
         /// <summary>
@@ -40,15 +67,28 @@ namespace DreamSystem.Player
             if (result.IsDead)
             {
                 UnityEngine.Debug.Log("[PlayerDamageSystem] 玩家死亡！");
-                // TODO: 播放死亡动画、显示 Game Over 等
+                _playerStateMachine.TransitionTo(_playerStateMachine.DeadState);
+                return;
             }
+            // 受击动画播放
+            _playerStateMachine.TransitionTo(_playerStateMachine.HitState);
 
-            // TODO: 播放受击动画、屏幕闪红、更新血条 UI 等
+            // TODO: 屏幕闪红、更新血条 UI 等
         }
 
         public override void Dispose()
         {
             _eventManager.Unsubscribe<DamageResult>(GameEvents.DAMAGE_RESULT, OnDamageResult);
+
+            var playerMono = _player as UnityEngine.MonoBehaviour;
+            if (playerMono != null)
+            {
+                var col = playerMono.GetComponentInChildren<UnityEngine.Collider>();
+                if (col != null)
+                {
+                    _damageSystem.Unregister(col);
+                }
+            }
         }
     }
 }

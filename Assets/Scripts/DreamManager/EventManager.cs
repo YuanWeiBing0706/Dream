@@ -15,7 +15,7 @@ namespace DreamManager
         /// </summary>
         static EventManager()
         {
-            
+
         }
 
         /// <summary>
@@ -36,7 +36,7 @@ namespace DreamManager
                 throw new ArgumentNullException(nameof(callback));
             }
 
-            _eventConcurrentDictionary.AddOrUpdate(topic, new HashSet<Delegate> {callback},
+            _eventConcurrentDictionary.AddOrUpdate(topic, new HashSet<Delegate> { callback },
                 (_, callbacks) =>
                 {
                     callbacks.Add(callback);
@@ -62,7 +62,7 @@ namespace DreamManager
             }
 
             _eventConcurrentDictionary.AddOrUpdate(topic,
-                new HashSet<Delegate> {callback},
+                new HashSet<Delegate> { callback },
                 (_, callbacks) =>
                 {
                     callbacks.Add(callback);
@@ -89,7 +89,7 @@ namespace DreamManager
             }
 
             _eventConcurrentDictionary.AddOrUpdate(topic,
-                new HashSet<Delegate> {callback},
+                new HashSet<Delegate> { callback },
                 (_, callbacks) =>
                 {
                     callbacks.Add(callback);
@@ -106,7 +106,7 @@ namespace DreamManager
         {
             // 延迟一帧，保证当前帧的 Publish 循环能安全完成
             await UniTask.DelayFrame(1);
-    
+
             if (string.IsNullOrWhiteSpace(topic) || callback == null)
             {
                 return;

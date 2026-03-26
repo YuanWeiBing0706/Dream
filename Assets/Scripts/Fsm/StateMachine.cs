@@ -1,4 +1,4 @@
-﻿using Fsm.Base;
+using Fsm.Base;
 using UnityEngine;
 namespace Fsm
 {
@@ -32,6 +32,8 @@ namespace Fsm
             if (newState == null) return;
             // 已经在该状态就不切了
             if (newState == CurrentState) return;
+            // 当前状态不允许退出（如死亡终态）
+            if (!CurrentState.CanExit) return;
 
             // 彩色日志埋点
             if (ShowDebugLog)

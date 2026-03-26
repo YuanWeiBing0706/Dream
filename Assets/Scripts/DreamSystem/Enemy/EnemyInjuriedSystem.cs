@@ -1,9 +1,11 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
+using Animancer;
 using DreamManager;
 using DreamSystem.Damage;
 using DreamSystem.Damage.Stat;
 using Enum.Buff;
 using Events;
+using SO;
 using Struct;
 using UnityEngine;
 
@@ -23,6 +25,9 @@ namespace DreamSystem.Enemy
 
         /// 存储每个敌人 GameObject 对应的 Collider（避免重复查找）
         private readonly Dictionary<GameObject, Collider> _enemyColliders = new();
+
+        /// 存储每个敌人 CharacterStats 对应的 EnemyStatusSystem（用于受击/死亡状态设值）
+        private readonly Dictionary<CharacterStats, EnemyStatusSystem> _enemyStatusSystems = new();
 
         public EnemyInjuriedSystem(EventManager eventManager, DamageSystem damageSystem)
         {
@@ -78,6 +83,13 @@ namespace DreamSystem.Enemy
                 combatSystem.Initialize(characterStats, _eventManager);
             }
 
+            // 获取并缓存该敌人自己的 EnemyStatusSystem
+            var statusSystem = enemyGo.GetComponentInChildren<EnemyStatusSystem>();
+            if (statusSystem != null)
+            {
+                _enemyStatusSystems[characterStats] = statusSystem;
+            }
+
             // 存储引用
             _enemyStats[enemyGo] = characterStats;
             _enemyColliders[enemyGo] = collider;
@@ -96,7 +108,12 @@ namespace DreamSystem.Enemy
                 _enemyColliders.Remove(enemyGo);
             }
 
-            _enemyStats.Remove(enemyGo);
+            if (_enemyStats.TryGetValue(enemyGo, out var stats))
+            {
+                _enemyStatusSystems.Remove(stats);
+                _enemyStats.Remove(enemyGo);
+            }
+
             UnityEngine.Debug.Log($"[EnemyDamageSystem] 敌人 {enemyGo.name} 已从伤害系统注销");
         }
 
@@ -110,13 +127,17 @@ namespace DreamSystem.Enemy
 
             UnityEngine.Debug.Log($"[EnemyDamageSystem] 敌人受到 {result.FinalDamage} 点伤害，当前血量: {result.TargetStats.GetCurrentStatValue(StatType.Health)}");
 
+            // 通过 TargetStats 找到该敌人的 StatusSystem，设置行为树条件标志
+            if (!_enemyStatusSystems.TryGetValue(result.TargetStats, out var statusSystem)) return;
+
             if (result.IsDead)
             {
                 UnityEngine.Debug.Log("[EnemyDamageSystem] 敌人死亡！");
-                // TODO: 播放死亡动画、销毁/回收对象等
+                statusSystem.SetDead(true);
+                return;
             }
 
-            // TODO: 播放受击动画、显示受击特效等
+            statusSystem.SetHit(true);
         }
 
         public override void Dispose()
@@ -133,6 +154,7 @@ namespace DreamSystem.Enemy
 
             _enemyStats.Clear();
             _enemyColliders.Clear();
+            _enemyStatusSystems.Clear();
         }
     }
-}
+}

@@ -55,8 +55,7 @@ namespace Fsm.Base
         /// 可取消窗口结束时机 (动画进度百分比)
         protected virtual float CancelWindowEnd => 0.8f;
 
-        protected AttackState(IPlayerMoveContext moveContext, EventManager eventManager, PlayerStateMachine playerStateMachine, IPlayerAttackContext attackContext, AnimancerComponent animancerComponent,
-            CharacterAnimationSo characterAnimationSo)
+        protected AttackState(IPlayerMoveContext moveContext, EventManager eventManager, PlayerStateMachine playerStateMachine, IPlayerAttackContext attackContext, AnimancerComponent animancerComponent, CharacterAnimationSo characterAnimationSo)
             : base(moveContext, eventManager, playerStateMachine)
         {
             this.attackContext = attackContext;
@@ -282,6 +281,9 @@ namespace Fsm.Base
             hasBufferedInput = false;
         }
 
+        
+
+        
         /// <summary>
         /// 退出状态时清理数据，并确保关闭伤害检测。
         /// </summary>

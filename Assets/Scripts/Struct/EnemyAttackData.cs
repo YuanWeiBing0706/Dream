@@ -2,6 +2,7 @@
 using Animancer;
 using Sirenix.OdinInspector;
 using UnityEngine;
+using UnityEngine.Serialization;
 namespace Struct
 {
     /// <summary>
@@ -13,20 +14,20 @@ namespace Struct
     {
         /// 攻击动画
         [DrawWithUnity]
-        public ClipTransition clip;
+        public ClipTransition Clip;
 
         /// 本次攻击激活的 HitBox 索引（对应 _enemyHitBoxes 数组下标）
-        public int[] activeHitBoxIndices;
+        public int[] ActiveHitBoxIndices;
 
         /// 伤害窗口开始时机（动画进度百分比，0~1）
         [Range(0f, 1f)]
-        public float hitWindowStart;
+        public float HitWindowStart;
 
         /// 伤害窗口结束时机（动画进度百分比，0~1）
         [Range(0f, 1f)]
-        public float hitWindowEnd;
+        public float HitWindowEnd;
 
         /// 攻击伤害值
-        public float damage;
+        public float Damage;
     }
 }

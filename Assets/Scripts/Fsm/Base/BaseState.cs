@@ -1,4 +1,4 @@
-﻿using DreamManager;
+using DreamManager;
 using DreamSystem.Player;
 using Interface;
 using UnityEngine;
@@ -7,6 +7,11 @@ namespace Fsm.Base
 {
     public abstract class BaseState
     {
+        /// <summary>
+        /// 是否允许从当前状态退出。默认 true，DeadState 等终态应重写为 false。
+        /// </summary>
+        public virtual bool CanExit => true;
+
         /// 移动上下文，提供物理引擎和移动参数
         protected readonly IPlayerMoveContext moveContext;
 
