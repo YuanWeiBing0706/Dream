@@ -1,8 +1,8 @@
 using System.Collections.Generic;
+using Const;
 using DreamManager;
 using DreamSystem.Damage;
 using DreamSystem.Damage.Stat;
-using Events;
 using Interface;
 using Model.Player;
 using Struct;

@@ -1,9 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
+using Const;
 using DreamManager;
 using DreamSystem.Damage.Stat;
 using Enum.Buff;
-using Events;
 using Struct;
 using UnityEngine;
 namespace DreamSystem.Damage

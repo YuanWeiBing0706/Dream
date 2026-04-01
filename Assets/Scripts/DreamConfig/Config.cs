@@ -3,7 +3,7 @@ using DreamManager;
 
 namespace DreamConfig
 {
-    public abstract class Config
+    public abstract class Config 
     {
         /// <summary>
         /// 异步加载配置数据。

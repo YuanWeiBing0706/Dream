@@ -1,10 +1,10 @@
 using System.Collections.Generic;
 using Animancer;
+using Const;
 using DreamManager;
 using DreamSystem.Damage;
 using DreamSystem.Damage.Stat;
 using Enum.Buff;
-using Events;
 using SO;
 using Struct;
 using UnityEngine;
@@ -157,4 +157,4 @@ namespace DreamSystem.Enemy
             _enemyStatusSystems.Clear();
         }
     }
-}
+}

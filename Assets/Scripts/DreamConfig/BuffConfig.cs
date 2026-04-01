@@ -4,6 +4,7 @@ using DreamAttribute;
 using DreamManager;
 using Enum.Buff;
 using Function;
+using UnityEngine;
 
 namespace DreamConfig
 {
@@ -20,7 +21,7 @@ namespace DreamConfig
 
         public override UniTask LoadConfig(ResourcesManager resourcesManager)
         {
-            var textAsset = resourcesManager.LoadAsset<UnityEngine.TextAsset>("BuffConfig");
+            var textAsset = resourcesManager.LoadAsset<TextAsset>("BuffConfig");
             var data = CsvHelper.ReadCsv(textAsset);
 
             for (int i = 1; i < data.Count; i++)

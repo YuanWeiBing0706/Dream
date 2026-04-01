@@ -3,6 +3,7 @@ using Cysharp.Threading.Tasks;
 using DreamAttribute;
 using DreamManager;
 using Function;
+using UnityEngine;
 
 namespace DreamConfig
 {
@@ -19,7 +20,7 @@ namespace DreamConfig
         
         public override UniTask LoadConfig(ResourcesManager resourcesManager)
         {
-            var textAsset = resourcesManager.LoadAsset<UnityEngine.TextAsset>(nameof(CharacterStatsConfig));
+            var textAsset = resourcesManager.LoadAsset<TextAsset>(nameof(CharacterStatsConfig));
             var data = CsvHelper.ReadCsv(textAsset);
 
             for (int i = 0; i < data.Count; i++)

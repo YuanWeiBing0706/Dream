@@ -6,6 +6,7 @@ using DreamAttribute;
 using DreamManager;
 using Enum.Hex;
 using Function;
+using UnityEngine;
 
 namespace DreamConfig
 {
@@ -23,7 +24,7 @@ namespace DreamConfig
 
         public override UniTask LoadConfig(ResourcesManager resourcesManager)
         {
-            var textAsset = resourcesManager.LoadAsset<UnityEngine.TextAsset>(nameof(HexConfig));
+            var textAsset = resourcesManager.LoadAsset<TextAsset>(nameof(HexConfig));
             var data = CsvHelper.ReadCsv(textAsset);
 
             for (int i = 0; i < data.Count; i++)

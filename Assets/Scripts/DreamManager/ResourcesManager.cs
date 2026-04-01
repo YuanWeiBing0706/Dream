@@ -2,8 +2,10 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Reflection;
+using System.Threading;
 using Cysharp.Threading.Tasks;
 using DreamAttribute;
+using DreamConfig;
 using Function.Initialize;
 using UnityEngine;
 using YooAsset;
@@ -251,7 +253,21 @@ namespace DreamManager
                 }
             }
         }
+        
+        public async UniTask<T> LoadAssetAsync<T>(string assetPath, CancellationToken cancellationToken = default) where T : UnityEngine.Object
+        {
+            // 告诉 YooAsset，去这个路径找包并开始异步加载
+            var handle = YooAssets.LoadAssetAsync<T>(assetPath);
+    
 
+            // 只要外面触发了 Cancel()，代码执行到这行就会直接抛异常中断，不会往下走了！
+            await handle.ToUniTask(cancellationToken: cancellationToken);
+    
+            var resource = handle.GetAssetObject<T>();
+            return resource;
+        }
+
+        
         /// <summary>
         /// 获取指定类型的配置对象（已加载的）。
         /// <para>使用场景：游戏运行时需要读取配置数据时调用此方法。</para>
@@ -259,16 +275,7 @@ namespace DreamManager
         /// </summary>
         /// <typeparam name="T">配置类型，必须继承自 Config 基类</typeparam>
         /// <returns>配置实例对象。如果配置未加载或类型不存在，返回 null</returns>
-        /// <example>
-        /// <code>
-        /// var playerConfig = resourcesManager.GetConfig&lt;PlayerConfig&gt;();
-        /// if (playerConfig != null)
-        /// {
-        ///     Debug.Log($"玩家最大血量: {playerConfig.MaxHp}");
-        /// }
-        /// </code>
-        /// </example>
-        public T GetConfig<T>() where T : DreamConfig.Config
+        public T GetConfig<T>() where T : Config
         {
             // 从缓存字典中查找指定类型的配置实例
             if (_configs.TryGetValue(typeof(T), out DreamConfig.Config config))

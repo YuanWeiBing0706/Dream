@@ -9,7 +9,7 @@
     "BuildPipeline": "EditorSimulateBuildPipeline",
     "PackageName": "DefaultPackage",
     "PackageVersion": "Simulate",
-    "PackageNote": "2026/3/26 23:47:33",
+    "PackageNote": "2026/3/30 17:45:12",
     "AssetList": [
         {
             "Address": "Attack01_Bow",
@@ -10546,7 +10546,7 @@
             "UnityCRC": 0,
             "FileHash": "0a501416bf3e7526e6633446156fa70c",
             "FileCRC": 0,
-            "FileSize": 231857143,
+            "FileSize": 231857145,
             "Encrypted": false,
             "Tags": [],
             "DependBundleIDs": []

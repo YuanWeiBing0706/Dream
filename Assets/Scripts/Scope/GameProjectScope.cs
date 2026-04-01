@@ -1,3 +1,4 @@
+using Data;
 using DreamManager;
 using DreamSystem;
 using DreamSystem.Damage;
@@ -16,7 +17,10 @@ namespace Scope
             builder.Register<EventManager>(Lifetime.Singleton);
             builder.Register<GameInputManager>(Lifetime.Singleton);
             builder.Register<SuggestionService>(Lifetime.Singleton);
-
+            builder.Register<SceneFlowManager>(Lifetime.Singleton);
+            builder.Register<GameSessionData>(Lifetime.Singleton);
+            
+            
             builder.RegisterEntryPoint<DamageSystem>().AsSelf();
             builder.Register<ResourcesManager>(Lifetime.Singleton)
                 .As<IUniTaskStartable>() // 贴上标签：我是要异步启动的

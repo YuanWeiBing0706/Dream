@@ -3,6 +3,7 @@ using Cysharp.Threading.Tasks;
 using DreamAttribute;
 using DreamManager;
 using Function;
+using UnityEngine;
 
 namespace DreamConfig
 {
@@ -19,7 +20,7 @@ namespace DreamConfig
 
         public override UniTask LoadConfig(ResourcesManager resourcesManager)
         {
-            var textAsset = resourcesManager.LoadAsset<UnityEngine.TextAsset>(nameof(LevelConfig));
+            var textAsset = resourcesManager.LoadAsset<TextAsset>(nameof(LevelConfig));
             var data = CsvHelper.ReadCsv(textAsset);
 
             // 从 i = 1 开始遍历，跳过第一行表头
