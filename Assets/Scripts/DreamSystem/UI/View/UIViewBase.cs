@@ -1,9 +1,8 @@
 using System;
+using DreamSystem.UI.ViewModel;
 using Enum.UI;
-using Test.Scripts.UISystem.ViewModel;
 using UnityEngine;
-
-namespace Test.Scripts.UISystem.View
+namespace DreamSystem.UI.View
 {
     public abstract class UIViewBase : MonoBehaviour
     {
@@ -51,7 +50,8 @@ namespace Test.Scripts.UISystem.View
             OnClose();
             // 解绑模型减少底层泄漏
             UnbindViewModel();
-            RequestClose(); 
+            // 委托给UIManager进行处理回收
+            RequestClose();
         }
 
         /// <summary>

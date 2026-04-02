@@ -1,4 +1,4 @@
-﻿using Const;
+using Const;
 using DreamManager;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -18,9 +18,6 @@ namespace DreamSystem
 
         public override void Start()
         {
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
-
             _gameInputManager.PlayerControl.Enable();
             _gameInputManager.PlayerControl.Move.performed += OnMovementPerformed;
             _gameInputManager.PlayerControl.Move.canceled += OnMovementCanceled;

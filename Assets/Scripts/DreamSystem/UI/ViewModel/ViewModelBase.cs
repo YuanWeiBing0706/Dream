@@ -1,7 +1,6 @@
 using System;
 using System.Collections.Generic;
-
-namespace Test.Scripts.UISystem.ViewModel
+namespace DreamSystem.UI.ViewModel
 {
     public abstract class ViewModelBase : IViewModel
     {

@@ -1,10 +1,6 @@
-
-using Const;
 using DreamManager;
-using DreamSystem.Damage.Stat;
 using UnityEngine;
-
-namespace Test.Scripts.UISystem.Bootstrap
+namespace DreamSystem.UI.Bootstrap
 {
     public class PlayerStatusUIBootstrap : MonoBehaviour
     {

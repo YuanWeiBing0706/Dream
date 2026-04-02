@@ -10,6 +10,7 @@ using Interface;
 using KinematicCharacterController;
 using Model.Enemy;
 using Model.Player;
+using Model.UI;
 using Providers;
 using SO;
 using UnityEngine;
@@ -21,6 +22,7 @@ namespace Scope
 {
     public class MainGameScope : LifetimeScope
     {
+        [SerializeField] UIModel SceneUIModel;
         [SerializeField] PlayerModel PlayerInScene;
         [SerializeField] Camera MainCamera;
         [SerializeField] CinemachineFreeLook CameraFreeLook;
@@ -41,6 +43,13 @@ namespace Scope
             builder.RegisterComponent(Animancer);
             builder.RegisterComponent(CharacterAnimationSo);
             builder.RegisterInstance(PlayerHitBoxList);
+
+            // 场景构建完毕瞬间，动态绑定 UI 画布给全局大管家
+            builder.RegisterBuildCallback(resolver =>
+            {
+                var uiManager = resolver.Resolve<UIManager>();
+                uiManager.BindUIRoot(SceneUIModel);
+            });
 
             // PlayerAttackSystem 实现 IPlayerAttackContext
             builder.RegisterEntryPoint<PlayerAttackSystem>().AsSelf().As<IPlayerAttackContext>();

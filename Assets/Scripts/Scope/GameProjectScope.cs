@@ -1,5 +1,6 @@
 using Data;
 using DreamManager;
+using DreamPool;
 using DreamSystem;
 using DreamSystem.Damage;
 using DreamSystem.Debug;
@@ -19,7 +20,8 @@ namespace Scope
             builder.Register<SuggestionService>(Lifetime.Singleton);
             builder.Register<SceneFlowManager>(Lifetime.Singleton);
             builder.Register<GameSessionData>(Lifetime.Singleton);
-            
+            builder.Register<UIManager>(Lifetime.Singleton);
+            builder.Register<PoolManager>(Lifetime.Singleton);
             
             builder.RegisterEntryPoint<DamageSystem>().AsSelf();
             builder.Register<ResourcesManager>(Lifetime.Singleton)

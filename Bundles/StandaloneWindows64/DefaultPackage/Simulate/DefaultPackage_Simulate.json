@@ -9,7 +9,7 @@
     "BuildPipeline": "EditorSimulateBuildPipeline",
     "PackageName": "DefaultPackage",
     "PackageVersion": "Simulate",
-    "PackageNote": "2026/3/30 17:45:12",
+    "PackageNote": "2026/4/2 23:19:36",
     "AssetList": [
         {
             "Address": "Attack01_Bow",
@@ -2982,6 +2982,14 @@
         {
             "Address": "LevelConfig",
             "AssetPath": "Assets/Bundles/Configs/LevelConfig.csv",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 4,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "UIConfig",
+            "AssetPath": "Assets/Bundles/Configs/UIConfig.csv",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 4,
@@ -9352,7 +9360,7 @@
             "AssetPath": "Assets/Bundles/Shaders/Heroes/PolyArtMaskTint.shader",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 13,
+            "BundleID": 14,
             "DependBundleIDs": []
         },
         {
@@ -10164,11 +10172,155 @@
             "DependBundleIDs": []
         },
         {
+            "Address": "BowImg",
+            "AssetPath": "Assets/Bundles/UI/Lobby/_Res/BowImg.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "BuyImg",
+            "AssetPath": "Assets/Bundles/UI/Lobby/_Res/BuyImg.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "CloseImg",
+            "AssetPath": "Assets/Bundles/UI/Lobby/_Res/CloseImg.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "ConfirmImg",
+            "AssetPath": "Assets/Bundles/UI/Lobby/_Res/ConfirmImg.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "DoubleSwordImg",
+            "AssetPath": "Assets/Bundles/UI/Lobby/_Res/DoubleSwordImg.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "EnterGameImg",
+            "AssetPath": "Assets/Bundles/UI/Lobby/_Res/EnterGameImg.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "ExitGameImg",
+            "AssetPath": "Assets/Bundles/UI/Lobby/_Res/ExitGameImg.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "LobbyImg",
+            "AssetPath": "Assets/Bundles/UI/Lobby/_Res/LobbyImg.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "MagicWandImg",
+            "AssetPath": "Assets/Bundles/UI/Lobby/_Res/MagicWandImg.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "ReceiveImg",
+            "AssetPath": "Assets/Bundles/UI/Lobby/_Res/ReceiveImg.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "ReturnImg",
+            "AssetPath": "Assets/Bundles/UI/Lobby/_Res/ReturnImg.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "SelectImg",
+            "AssetPath": "Assets/Bundles/UI/Lobby/_Res/SelectImg.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "SettingsImg",
+            "AssetPath": "Assets/Bundles/UI/Lobby/_Res/SettingsImg.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "StartGameImg",
+            "AssetPath": "Assets/Bundles/UI/Lobby/_Res/StartGameImg.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "SwordShieldImg",
+            "AssetPath": "Assets/Bundles/UI/Lobby/_Res/SwordShieldImg.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "TwoHandsSwordImg",
+            "AssetPath": "Assets/Bundles/UI/Lobby/_Res/TwoHandsSwordImg.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "LobbyMainInterface",
+            "AssetPath": "Assets/Bundles/UI/Lobby/Prefabs/LobbyMainInterface.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "LobbyStartGameInterface",
+            "AssetPath": "Assets/Bundles/UI/Lobby/Prefabs/LobbyStartGameInterface.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
             "Address": "FX_CandleFlame",
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_CandleFlame.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10176,7 +10328,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_Dust_Large_Cube.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10184,7 +10336,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_Dust_Large_Soft.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10192,7 +10344,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_Dust_Small_Cube.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10200,7 +10352,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_Electricity.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10208,7 +10360,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_Fire.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10216,7 +10368,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_Fire_02.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10224,7 +10376,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_Ghost_Dust.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10232,7 +10384,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_Glow_Cube.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10240,7 +10392,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_Glow_Soft.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10248,7 +10400,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_LightRayCube.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10256,7 +10408,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_Magic_Swirl.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10264,7 +10416,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_Ring.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10272,7 +10424,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_SkeletonSpawn.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10280,7 +10432,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_Sparkles.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10288,7 +10440,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_Spiral.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10296,7 +10448,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_Sword_Fire.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10304,7 +10456,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_Trap_AcidHead_Acid.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10312,7 +10464,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_Trap_FlameHead_Fire.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10320,7 +10472,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Prick 1.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10328,7 +10480,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Prick 2.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10336,7 +10488,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Prick 3.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10344,7 +10496,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Spikes attack.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10352,7 +10504,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 1.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10360,7 +10512,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 10.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10368,7 +10520,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 11.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10376,7 +10528,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 12.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10384,7 +10536,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 13.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10392,7 +10544,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 14.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10400,7 +10552,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 15.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10408,7 +10560,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 16.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10416,7 +10568,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 17.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10424,7 +10576,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 2.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10432,7 +10584,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 3.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10440,7 +10592,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 4.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10448,7 +10600,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 5.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10456,7 +10608,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 6.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10464,7 +10616,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 7.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10472,7 +10624,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 8.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10480,7 +10632,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 9.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10488,7 +10640,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash Combo 1.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10496,7 +10648,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash Combo 2.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10504,7 +10656,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash Combo 3.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10512,7 +10664,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash Combo 4.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10520,7 +10672,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash Combo 5.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10528,7 +10680,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash Combo 6.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10536,7 +10688,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash Combo 7.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         }
     ],
@@ -10586,7 +10738,7 @@
             "UnityCRC": 0,
             "FileHash": "af82851a89bee0d6c2974cc11f1cd989",
             "FileCRC": 0,
-            "FileSize": 12908,
+            "FileSize": 13070,
             "Encrypted": false,
             "Tags": [],
             "DependBundleIDs": []
@@ -10647,6 +10799,16 @@
             "FileHash": "38b0578367f7881b79b81adf0e876a15",
             "FileCRC": 0,
             "FileSize": 21988347,
+            "Encrypted": false,
+            "Tags": [],
+            "DependBundleIDs": []
+        },
+        {
+            "BundleName": "defaultpackage_assets_bundles_ui_lobby.bundle",
+            "UnityCRC": 0,
+            "FileHash": "ff711e007f66d1b1a28ea1dd091df8c0",
+            "FileCRC": 0,
+            "FileSize": 49342532,
             "Encrypted": false,
             "Tags": [],
             "DependBundleIDs": []

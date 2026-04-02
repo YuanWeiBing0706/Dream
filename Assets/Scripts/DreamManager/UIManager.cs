@@ -4,8 +4,9 @@ using System.Threading;
 using Cysharp.Threading.Tasks;
 using DreamConfig;
 using Enum.UI;
-using Test.Scripts.UISystem.View;
-using Test.Scripts.UISystem.ViewModel;
+using Model.UI;
+using DreamSystem.UI.View;
+using DreamSystem.UI.ViewModel;
 using UnityEngine;
 using UnityEngine.UI;
 using VContainer;
@@ -16,17 +17,19 @@ namespace DreamManager
     {
         private readonly ResourcesManager _resourcesManager;
         private readonly IObjectResolver _resolver;
-        private readonly UIConfig _uiConfig;
-        
+        private UIConfig _uiConfig => _resourcesManager.GetConfig<UIConfig>();
+
         private readonly Dictionary<string, UIViewBase> _uiCachePool = new Dictionary<string, UIViewBase>();
-        
+
         /// 记录正在处于“异步加载中”的面板令牌
         private readonly Dictionary<string, CancellationTokenSource> _loadingTokens = new Dictionary<string, CancellationTokenSource>();
 
         /// 当前正在展示的全屏视图界面
         private UIViewBase _currentView;
+
         /// 已打开的弹窗界面字典，Key: panelId
         private readonly Dictionary<string, UIViewBase> _openedWindows = new Dictionary<string, UIViewBase>();
+
         /// 已打开的弹窗界面栈，用于管理层级与关闭逻辑
         private readonly List<UIViewBase> _windowStack = new List<UIViewBase>();
 
@@ -50,46 +53,20 @@ namespace DreamManager
             _resourcesManager = resMgr;
             _resolver = resolver;
             _nextWindowOrder = _windowOrderStart;
-
-            // 获取刚建好的纯数据 UIConfig
-            _uiConfig = _resourcesManager.GetConfig<UIConfig>();
-            
-            // 初始化画布层级
-            InitializeUIRoot();
         }
 
         /// <summary>
-        /// 确保场景中有一个供挂载 UI 的全局 Canvas 根节点
+        /// 当进入到一个新的场景（子 Scope）时，由场景的 Scope 负责把本地的 UI 画布绑定进大管家体内
         /// </summary>
-        private void InitializeUIRoot()
+        public void BindUIRoot(UIModel uiModel)
         {
-            GameObject rootObj = GameObject.Find("UIRoot");
-            if (rootObj == null)
+            if (uiModel == null)
             {
-                rootObj = new GameObject("UIRoot");
-                var canvas = rootObj.AddComponent<Canvas>();
-                canvas.renderMode = RenderMode.ScreenSpaceOverlay;
-                // 注意：由于脱离了 MonoBehaviour，此处纯代码建布，如果在实战项目中建议用一个固定的预制体加载
-                rootObj.AddComponent<CanvasScaler>().uiScaleMode = CanvasScaler.ScaleMode.ScaleWithScreenSize;
-                rootObj.AddComponent<GraphicRaycaster>();
-                GameObject.DontDestroyOnLoad(rootObj);
+                Debug.LogError("[UIManager] 转交的 UIModel 为空！");
+                return;
             }
-
-            Transform vRoot = rootObj.transform.Find("ViewRoot");
-            if (vRoot == null)
-            {
-                vRoot = new GameObject("ViewRoot").transform;
-                vRoot.SetParent(rootObj.transform, false);
-            }
-            _viewRoot = vRoot;
-
-            Transform wRoot = rootObj.transform.Find("WindowRoot");
-            if (wRoot == null)
-            {
-                wRoot = new GameObject("WindowRoot").transform;
-                wRoot.SetParent(rootObj.transform, false);
-            }
-            _windowRoot = wRoot;
+            _viewRoot = uiModel.ViewRoot;
+            _windowRoot = uiModel.WindowRoot;
         }
 
         /// <summary>
@@ -162,12 +139,12 @@ namespace DreamManager
             if (_uiCachePool.TryGetValue(panelId, out var cachedUI))
             {
                 cachedUI.transform.SetParent(parentRoot, false);
-                
+
                 // 从配置中获取种类
                 if (_uiConfig.TryGet(panelId, out var data))
                 {
                     // 重新接驳 ViewModel 和生命周期红线
-                    cachedUI.Initialize(panelId, data.uiKind, viewModel, OnPanelCloseRequested);
+                    cachedUI.Initialize(panelId, data.kind, viewModel, OnPanelCloseRequested);
                     cachedUI.Open(); // 内部会执行 gameObject.SetActive(true)
                 }
                 return cachedUI;
@@ -200,6 +177,18 @@ namespace DreamManager
 
                 // 5. 实例化并组装
                 GameObject panelObject = GameObject.Instantiate(prefab, parentRoot);
+                panelObject.name = panelId;
+                
+                // 自动重置 RectTransform 锚点与尺寸，确保全屏铺满
+                if (panelObject.transform is RectTransform rect)
+                {
+                    rect.anchorMin = Vector2.zero;
+                    rect.anchorMax = Vector2.one;
+                    rect.offsetMin = Vector2.zero;
+                    rect.offsetMax = Vector2.zero;
+                    rect.localScale = Vector3.one;
+                }
+
                 UIViewBase instance = panelObject.GetComponent<UIViewBase>();
                 if (instance == null)
                 {
@@ -207,14 +196,14 @@ namespace DreamManager
                     GameObject.Destroy(panelObject);
                     return null;
                 }
-                
+
                 instance.name = panelId;
 
                 // 6. 放入常驻对象池！下一次就不用 await 加载了
                 _uiCachePool[panelId] = instance;
 
                 // 7. VContainer 装配 ViewModel 的手动绑定：
-                instance.Initialize(panelId, uiData.uiKind, viewModel, OnPanelCloseRequested);
+                instance.Initialize(panelId, uiData.kind, viewModel, OnPanelCloseRequested);
                 instance.Open();
 
                 return instance;
@@ -252,12 +241,12 @@ namespace DreamManager
         /// <returns>如果是合法窗口并成功隐藏则返回 true，否则返回 false</returns>
         public bool CloseWindow(string panelId)
         {
-            // 查：是否属于“正在异步路上还没显示”出来的幽灵面版？
+            // 是否属于“正在异步路上还没显示”出来的幽灵面版？
             if (_loadingTokens.TryGetValue(panelId, out var cts))
             {
-                cts.Cancel(); 
+                cts.Cancel();
                 _loadingTokens.Remove(panelId);
-                return true; 
+                return true;
             }
 
             if (!_openedWindows.TryGetValue(panelId, out UIViewBase window))
@@ -268,9 +257,19 @@ namespace DreamManager
             _openedWindows.Remove(panelId);
             _windowStack.Remove(window);
 
-            // 绝不 Destroy！而是把游戏物体隐藏，送回对象池黑暗的角落保存
-            window.gameObject.SetActive(false);
-            
+            // 3. 执行生命周期 OnClose 和解绑
+            if (_uiConfig != null && _uiConfig.TryGet(panelId, out var uiData) && !uiData.isCacheable)
+            {
+                // 如果配置为不可缓存，直接摧毁并移除缓存池
+                GameObject.Destroy(window.gameObject);
+                _uiCachePool.Remove(panelId);
+            }
+            else
+            {
+                // 默认缓存策略：隐藏回对象池
+                window.gameObject.SetActive(false);
+            }
+
             return true;
         }
 
@@ -291,8 +290,18 @@ namespace DreamManager
         public void CloseCurrentView()
         {
             if (_currentView == null) return;
-            // 隐藏入池
-            _currentView.gameObject.SetActive(false);
+
+            string panelId = _currentView.PanelId;
+            if (_uiConfig != null && _uiConfig.TryGet(panelId, out var uiData) && !uiData.isCacheable)
+            {
+                GameObject.Destroy(_currentView.gameObject);
+                _uiCachePool.Remove(panelId);
+            }
+            else
+            {
+                _currentView.gameObject.SetActive(false);
+            }
+
             _currentView = null;
         }
 

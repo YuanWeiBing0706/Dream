@@ -236,7 +236,7 @@ namespace DreamManager
 
                     // 将实例强制转换为 Config 基类类型
                     // 注意：如果类型不继承自 Config，此转换会返回 null
-                    var config = instance as DreamConfig.Config;
+                    var config = instance as Config;
 
                     // 调用配置实例的异步加载方法（从文件/网络加载配置数据）
                     await config.LoadConfig(this);
@@ -253,21 +253,21 @@ namespace DreamManager
                 }
             }
         }
-        
+
         public async UniTask<T> LoadAssetAsync<T>(string assetPath, CancellationToken cancellationToken = default) where T : UnityEngine.Object
         {
             // 告诉 YooAsset，去这个路径找包并开始异步加载
             var handle = YooAssets.LoadAssetAsync<T>(assetPath);
-    
+
 
             // 只要外面触发了 Cancel()，代码执行到这行就会直接抛异常中断，不会往下走了！
             await handle.ToUniTask(cancellationToken: cancellationToken);
-    
+
             var resource = handle.GetAssetObject<T>();
             return resource;
         }
 
-        
+
         /// <summary>
         /// 获取指定类型的配置对象（已加载的）。
         /// <para>使用场景：游戏运行时需要读取配置数据时调用此方法。</para>

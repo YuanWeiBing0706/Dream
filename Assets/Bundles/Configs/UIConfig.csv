@@ -1,0 +1,3 @@
+﻿PanelId,AssetPath,Kind,BaseSortOrder,IsCacheable
+LOBBY_MAIN_VIEW,LobbyMainInterface,View,0,True
+CHARACTER_SELECT_VIEW,LobbyStartGameInterface,Window,0,True

@@ -1,18 +1,32 @@
-﻿using DreamSystem;
+﻿using Cysharp.Threading.Tasks;
+using DreamSystem;
+using UnityEngine.SceneManagement;
+using VContainer;
 namespace DreamManager
 {
     public class SceneFlowManager
     {
-        public bool LoadLobby()
+        private readonly UIManager _uiManager;
+
+        [Inject]
+        public SceneFlowManager(UIManager uiManager)
         {
-            
-            return true;
+            _uiManager = uiManager;
+        }
+
+        public async UniTask LoadLobbyScenes()
+        {
+            _uiManager.CloseCurrentView();
+            _uiManager.CloseAllWindows();
+            await SceneManager.LoadSceneAsync("LobbyScene").ToUniTask();
         }
 
 
-        public bool LoadBattleCore()
+        public async UniTask LoadBattleScenes()
         {
-            return true;
+            _uiManager.CloseCurrentView();
+            _uiManager.CloseAllWindows();
+            await SceneManager.LoadSceneAsync("BattleScene").ToUniTask();
         }
     }
 }

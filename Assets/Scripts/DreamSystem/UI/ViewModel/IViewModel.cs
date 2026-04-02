@@ -1,6 +1,5 @@
 using System;
-
-namespace Test.Scripts.UISystem.ViewModel
+namespace DreamSystem.UI.ViewModel
 {
     public interface IViewModel
     {
