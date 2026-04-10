@@ -9,7 +9,7 @@
     "BuildPipeline": "EditorSimulateBuildPipeline",
     "PackageName": "DefaultPackage",
     "PackageVersion": "Simulate",
-    "PackageNote": "2026/4/2 23:19:36",
+    "PackageNote": "2026/4/10 15:50:56",
     "AssetList": [
         {
             "Address": "Attack01_Bow",
@@ -2204,86 +2204,6 @@
             "DependBundleIDs": []
         },
         {
-            "Address": "Cute Devil-Purple",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Cute Devil/Prefabs/Cute Devil-Purple.prefab",
-            "AssetGUID": "",
-            "AssetTags": [],
-            "BundleID": 2,
-            "DependBundleIDs": []
-        },
-        {
-            "Address": "Cute Devil-Red",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Cute Devil/Prefabs/Cute Devil-Red.prefab",
-            "AssetGUID": "",
-            "AssetTags": [],
-            "BundleID": 2,
-            "DependBundleIDs": []
-        },
-        {
-            "Address": "Cute Devil-Yellow",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Cute Devil/Prefabs/Cute Devil-Yellow.prefab",
-            "AssetGUID": "",
-            "AssetTags": [],
-            "BundleID": 2,
-            "DependBundleIDs": []
-        },
-        {
-            "Address": "Explosive Bug-Blue",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Explosive Bug/Prefabs/Explosive Bug-Blue.prefab",
-            "AssetGUID": "",
-            "AssetTags": [],
-            "BundleID": 2,
-            "DependBundleIDs": []
-        },
-        {
-            "Address": "Explosive Bug-Green",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Explosive Bug/Prefabs/Explosive Bug-Green.prefab",
-            "AssetGUID": "",
-            "AssetTags": [],
-            "BundleID": 2,
-            "DependBundleIDs": []
-        },
-        {
-            "Address": "Explosive Bug-Orange",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Explosive Bug/Prefabs/Explosive Bug-Orange.prefab",
-            "AssetGUID": "",
-            "AssetTags": [],
-            "BundleID": 2,
-            "DependBundleIDs": []
-        },
-        {
-            "Address": "FX-Burst-Blue",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Explosive Bug/Prefabs/FX-Burst-Blue.prefab",
-            "AssetGUID": "",
-            "AssetTags": [],
-            "BundleID": 2,
-            "DependBundleIDs": []
-        },
-        {
-            "Address": "FX-Burst-Green",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Explosive Bug/Prefabs/FX-Burst-Green.prefab",
-            "AssetGUID": "",
-            "AssetTags": [],
-            "BundleID": 2,
-            "DependBundleIDs": []
-        },
-        {
-            "Address": "FX-Burst-Orange",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Explosive Bug/Prefabs/FX-Burst-Orange.prefab",
-            "AssetGUID": "",
-            "AssetTags": [],
-            "BundleID": 2,
-            "DependBundleIDs": []
-        },
-        {
-            "Address": "Fire Demon-Orange",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Fire Demon/Prefabs/Fire Demon-Orange.prefab",
-            "AssetGUID": "",
-            "AssetTags": [],
-            "BundleID": 2,
-            "DependBundleIDs": []
-        },
-        {
             "Address": "Fire Demon-Red",
             "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Fire Demon/Prefabs/Fire Demon-Red.prefab",
             "AssetGUID": "",
@@ -2292,355 +2212,387 @@
             "DependBundleIDs": []
         },
         {
-            "Address": "Fire Demon-Yellow",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Fire Demon/Prefabs/Fire Demon-Yellow.prefab",
+            "Address": "BatPADefault",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/BatPADefault.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Fire Dragon-Black",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Fire Dragon/Prefabs/Fire Dragon-Black.prefab",
+            "Address": "BattleBeePADefault",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/BattleBeePADefault.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Fire Dragon-Purple",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Fire Dragon/Prefabs/Fire Dragon-Purple.prefab",
+            "Address": "BeholderPADefault",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/BeholderPADefault.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Fire Dragon-Red",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Fire Dragon/Prefabs/Fire Dragon-Red.prefab",
+            "Address": "BlackKnightPADefault",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/BlackKnightPADefault.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "FX-FireBall Impact",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Fire Dragon/Prefabs/FX-FireBall Impact.prefab",
+            "Address": "CactusPADefault",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/CactusPADefault.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "FX-FireBall Projectile",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Fire Dragon/Prefabs/FX-FireBall Projectile.prefab",
+            "Address": "ChestMonsterPADefault",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/ChestMonsterPADefault.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "FX-FireBreath",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Fire Dragon/Prefabs/FX-FireBreath.prefab",
+            "Address": "CyclopsPADefault",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/CyclopsPADefault.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Character_Ghost_01_FixedScale",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/FixedScale/Character_Ghost_01_FixedScale.prefab",
+            "Address": "DemonKingPADefault",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/DemonKingPADefault.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Character_Ghost_02_FixedScale",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/FixedScale/Character_Ghost_02_FixedScale.prefab",
+            "Address": "DragonPADefault",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/DragonPADefault.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Character_Goblin_Female_FixedScale",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/FixedScale/Character_Goblin_Female_FixedScale.prefab",
+            "Address": "EvilMagePADefault",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/EvilMagePADefault.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Character_Goblin_Male_FixedScale",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/FixedScale/Character_Goblin_Male_FixedScale.prefab",
+            "Address": "FishmanPADefault",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/FishmanPADefault.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Character_Goblin_Shaman_FixedScale",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/FixedScale/Character_Goblin_Shaman_FixedScale.prefab",
+            "Address": "FylingDemonPADefault",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/FylingDemonPADefault.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Character_Goblin_WarChief_FixedScale",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/FixedScale/Character_Goblin_WarChief_FixedScale.prefab",
+            "Address": "GolemPADefault",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/GolemPADefault.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Character_Goblin_Warrior_Female_FixedScale",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/FixedScale/Character_Goblin_Warrior_Female_FixedScale.prefab",
+            "Address": "LizardWarriorPADefault",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/LizardWarriorPADefault.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Character_Goblin_Warrior_Male_FixedScale",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/FixedScale/Character_Goblin_Warrior_Male_FixedScale.prefab",
+            "Address": "MonsterPlantPADefault",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/MonsterPlantPADefault.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Character_Hero_Knight_Female_FixedScale",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/FixedScale/Character_Hero_Knight_Female_FixedScale.prefab",
+            "Address": "NagaWizardPADefault",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/NagaWizardPADefault.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Character_Hero_Knight_Male_FixedScale",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/FixedScale/Character_Hero_Knight_Male_FixedScale.prefab",
+            "Address": "BishopKnightPADefault",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/Play/BishopKnightPADefault.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Character_Rock_Golem_FixedScale",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/FixedScale/Character_Rock_Golem_FixedScale.prefab",
+            "Address": "CrabMonsterPADefault",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/Play/CrabMonsterPADefault.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Character_Skeleton_Knight_FixedScale",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/FixedScale/Character_Skeleton_Knight_FixedScale.prefab",
+            "Address": "MushroomSmilePADefault",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/Play/MushroomSmilePADefault.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Character_Skeleton_Slave_01_FixedScale",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/FixedScale/Character_Skeleton_Slave_01_FixedScale.prefab",
+            "Address": "OrcPADefault",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/Play/OrcPADefault.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Character_Skeleton_Soldier_01_FixedScale",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/FixedScale/Character_Skeleton_Soldier_01_FixedScale.prefab",
+            "Address": "SalamanderPADefault",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/Play/SalamanderPADefault.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Character_Skeleton_Soldier_02_FixedScale",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/FixedScale/Character_Skeleton_Soldier_02_FixedScale.prefab",
+            "Address": "SkeletonPADefault",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/Play/SkeletonPADefault.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Character_Tormented_Soul_FixedScale",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/FixedScale/Character_Tormented_Soul_FixedScale.prefab",
+            "Address": "RatAssassinPADefault",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/RatAssassinPADefault.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Hell Creeper-Purple",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Hell Creeper/Prefabs/Hell Creeper-Purple.prefab",
+            "Address": "SlimePADefault",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/SlimePADefault.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Hell Creeper-Red",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Hell Creeper/Prefabs/Hell Creeper-Red.prefab",
+            "Address": "SpecterPADefault",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/SpecterPADefault.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Hell Creeper-Yellow",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Hell Creeper/Prefabs/Hell Creeper-Yellow.prefab",
+            "Address": "SpiderPADefault",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/SpiderPADefault.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Rock Hurler-Grey",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Rock Hurler/Prefabs/Rock Hurler-Grey.prefab",
+            "Address": "StingRayPADefault",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/StingRayPADefault.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Rock Hurler-Pink",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Rock Hurler/Prefabs/Rock Hurler-Pink.prefab",
+            "Address": "TurtleShellPA",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/TurtleShellPA.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Rock Hurler-Purple",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Rock Hurler/Prefabs/Rock Hurler-Purple.prefab",
+            "Address": "Bishop_Shield",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/Weapons/Bishop_Shield.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Rock-Grey",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Rock Hurler/Prefabs/Rock-Grey.prefab",
+            "Address": "Bishop_Spear",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/Weapons/Bishop_Spear.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Rock-Pink",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Rock Hurler/Prefabs/Rock-Pink.prefab",
+            "Address": "BlackKnightAxe",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/Weapons/BlackKnightAxe.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Rock-Purple",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Rock Hurler/Prefabs/Rock-Purple.prefab",
+            "Address": "BlackKnightShield",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/Weapons/BlackKnightShield.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "FX-Projectile Impact",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Succubus/Prefabs/FX-Projectile Impact.prefab",
+            "Address": "Cyclops_BigArrow",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/Weapons/Cyclops_BigArrow.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "FX-Projectile",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Succubus/Prefabs/FX-Projectile.prefab",
+            "Address": "Cyclops_SmallArrow",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/Weapons/Cyclops_SmallArrow.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Succubus-Green",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Succubus/Prefabs/Succubus-Green.prefab",
+            "Address": "DemonKing_Blade",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/Weapons/DemonKing_Blade.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Succubus-Purple",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Succubus/Prefabs/Succubus-Purple.prefab",
+            "Address": "EvilMageStaff",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/Weapons/EvilMageStaff.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Succubus-Red",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Succubus/Prefabs/Succubus-Red.prefab",
+            "Address": "Fishman_Harpoon",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/Weapons/Fishman_Harpoon.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Projectile Orb",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Tentacle Monster/Prefabs/Projectile Orb.prefab",
+            "Address": "LizardWarriorBlade",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/Weapons/LizardWarriorBlade.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Tentacle Monster-Orange",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Tentacle Monster/Prefabs/Tentacle Monster-Orange.prefab",
+            "Address": "LizardWarriorShield",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/Weapons/LizardWarriorShield.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Tentacle Monster-Red",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Tentacle Monster/Prefabs/Tentacle Monster-Red.prefab",
+            "Address": "NagaWizard_Staff",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/Weapons/NagaWizard_Staff.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Tentacle Monster-Yellow",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Tentacle Monster/Prefabs/Tentacle Monster-Yellow.prefab",
+            "Address": "OrcMaul",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/Weapons/OrcMaul.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Tentacles-Orange",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Tentacle Monster/Prefabs/Tentacles-Orange.prefab",
+            "Address": "RatAssasinDagger",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/Weapons/RatAssasinDagger.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Tentacles-Red",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Tentacle Monster/Prefabs/Tentacles-Red.prefab",
+            "Address": "SkeletonShield",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/Weapons/SkeletonShield.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
             "DependBundleIDs": []
         },
         {
-            "Address": "Tentacles-Yellow",
-            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Tentacle Monster/Prefabs/Tentacles-Yellow.prefab",
+            "Address": "SkeletonSword",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/Weapons/SkeletonSword.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "SpecterBlade",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/Weapons/SpecterBlade.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "WerewolfPADefault",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/WerewolfPADefault.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "WormMonsterPADefault",
+            "AssetPath": "Assets/Bundles/Characters/Enemies/Prefabs/Monster/WormMonsterPADefault.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 2,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Player",
+            "AssetPath": "Assets/Bundles/Characters/Player/Prefabs/Player.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 3,
             "DependBundleIDs": []
         },
         {
@@ -3196,6 +3148,14 @@
             "DependBundleIDs": []
         },
         {
+            "Address": "Floor",
+            "AssetPath": "Assets/Bundles/Environment/Dungeon/Prefabs/Floors/Floor.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 5,
+            "DependBundleIDs": []
+        },
+        {
             "Address": "SM_Env_CrackedRock_01",
             "AssetPath": "Assets/Bundles/Environment/Dungeon/Prefabs/Floors/SM_Env_CrackedRock_01.prefab",
             "AssetGUID": "",
@@ -3574,6 +3534,14 @@
         {
             "Address": "SM_Env_Tiles_Rune_05",
             "AssetPath": "Assets/Bundles/Environment/Dungeon/Prefabs/Floors/SM_Env_Tiles_Rune_05.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 5,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Battlefield",
+            "AssetPath": "Assets/Bundles/Environment/Dungeon/Prefabs/Game/Battlefield.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 5,
@@ -6556,6 +6524,14 @@
             "DependBundleIDs": []
         },
         {
+            "Address": "Wall",
+            "AssetPath": "Assets/Bundles/Environment/Dungeon/Prefabs/Walls/Wall.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 5,
+            "DependBundleIDs": []
+        },
+        {
             "Address": "SM_Env_Basement_Ceiling_01",
             "AssetPath": "Assets/Bundles/Environment/Dungeon/Prefabs/Wood/SM_Env_Basement_Ceiling_01.prefab",
             "AssetGUID": "",
@@ -6852,8 +6828,8 @@
             "DependBundleIDs": []
         },
         {
-            "Address": "Level",
-            "AssetPath": "Assets/Bundles/Environment/Test/Level.prefab",
+            "Address": "Level_2",
+            "AssetPath": "Assets/Bundles/Environment/Test/Level_2.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 6,
@@ -6961,6 +6937,14 @@
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 7,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Chest",
+            "AssetPath": "Assets/Bundles/Items/Props/Prefabs/Chest.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 8,
             "DependBundleIDs": []
         },
         {
@@ -7502,14 +7486,6 @@
         {
             "Address": "SM_Prop_Chest_02",
             "AssetPath": "Assets/Bundles/Items/Props/Prefabs/SM_Prop_Chest_02.prefab",
-            "AssetGUID": "",
-            "AssetTags": [],
-            "BundleID": 8,
-            "DependBundleIDs": []
-        },
-        {
-            "Address": "SM_Prop_Chest_03",
-            "AssetPath": "Assets/Bundles/Items/Props/Prefabs/SM_Prop_Chest_03.prefab",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 8,
@@ -9360,7 +9336,23 @@
             "AssetPath": "Assets/Bundles/Shaders/Heroes/PolyArtMaskTint.shader",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 14,
+            "BundleID": 15,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "PAMaskTint",
+            "AssetPath": "Assets/Bundles/Shaders/PAMaskTint.shader",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 15,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Standard",
+            "AssetPath": "Assets/Bundles/Shaders/Standard.shader",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 15,
             "DependBundleIDs": []
         },
         {
@@ -9700,6 +9692,54 @@
             "DependBundleIDs": []
         },
         {
+            "Address": "PAMaskTint01",
+            "AssetPath": "Assets/Bundles/Shared/Dungeon/Materials/Monster/PAMaskTint01.mat",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 10,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "PAMaskTint02",
+            "AssetPath": "Assets/Bundles/Shared/Dungeon/Materials/Monster/PAMaskTint02.mat",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 10,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "PAMaskTint03",
+            "AssetPath": "Assets/Bundles/Shared/Dungeon/Materials/Monster/PAMaskTint03.mat",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 10,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "PolyartDefault",
+            "AssetPath": "Assets/Bundles/Shared/Dungeon/Materials/Monster/PolyartDefault.mat",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 10,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Skybox_Mat",
+            "AssetPath": "Assets/Bundles/Shared/Dungeon/Materials/Monster/Skybox_Mat.mat",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 10,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Stage",
+            "AssetPath": "Assets/Bundles/Shared/Dungeon/Materials/Monster/Stage.mat",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 10,
+            "DependBundleIDs": []
+        },
+        {
             "Address": "Dungeons_Texture_01_A",
             "AssetPath": "Assets/Bundles/Shared/Dungeon/Textures/Alternatives/Dungeons_Texture_01_A.png",
             "AssetGUID": "",
@@ -9828,6 +9868,22 @@
             "DependBundleIDs": []
         },
         {
+            "Address": "Albedo",
+            "AssetPath": "Assets/Bundles/Shared/Dungeon/Textures/DefaultPA/Albedo.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 10,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Emission",
+            "AssetPath": "Assets/Bundles/Shared/Dungeon/Textures/DefaultPA/Emission.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 10,
+            "DependBundleIDs": []
+        },
+        {
             "Address": "Dungeons_Texture_01",
             "AssetPath": "Assets/Bundles/Shared/Dungeon/Textures/Dungeons_Texture_01.png",
             "AssetGUID": "",
@@ -9886,6 +9942,38 @@
         {
             "Address": "Emmisive_04",
             "AssetPath": "Assets/Bundles/Shared/Dungeon/Textures/Emmisive/Emmisive_04.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 10,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Mask01",
+            "AssetPath": "Assets/Bundles/Shared/Dungeon/Textures/MaskTintPA/Mask01.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 10,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Mask02",
+            "AssetPath": "Assets/Bundles/Shared/Dungeon/Textures/MaskTintPA/Mask02.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 10,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Mask03",
+            "AssetPath": "Assets/Bundles/Shared/Dungeon/Textures/MaskTintPA/Mask03.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 10,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "MaskTintAlbedo",
+            "AssetPath": "Assets/Bundles/Shared/Dungeon/Textures/MaskTintPA/MaskTintAlbedo.png",
             "AssetGUID": "",
             "AssetTags": [],
             "BundleID": 10,
@@ -10172,11 +10260,1499 @@
             "DependBundleIDs": []
         },
         {
+            "Address": "Clouds 05 B",
+            "AssetPath": "Assets/Bundles/Shared/SkyBox/Clouds 05 B.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 10,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Noise 01",
+            "AssetPath": "Assets/Bundles/Shared/SkyBox/Noise 01.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 10,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Sky 05",
+            "AssetPath": "Assets/Bundles/Shared/SkyBox/Sky 05.mat",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 10,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Stars 5Corners",
+            "AssetPath": "Assets/Bundles/Shared/SkyBox/Stars 5Corners.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 10,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Sun 01",
+            "AssetPath": "Assets/Bundles/Shared/SkyBox/Sun 01.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 10,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Buff",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/Buff.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_mckj_fy",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_mckj_fy.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_mckj_gj",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_mckj_gj.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_mckj_gongj",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_mckj_gongj.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_mckj_hy",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_mckj_hy.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_mckj_mcsj",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_mckj_mcsj.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_mikj_gijl",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_mikj_gijl.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_mikj_gisc",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_mikj_gisc.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_mikj_gmsj",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_mikj_gmsj.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_mikj_hzjl",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_mikj_hzjl.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_mikj_hzsc",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_mikj_hzsc.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_mikj_hzsx",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_mikj_hzsx.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_mikj_idcs",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_mikj_idcs.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_100101",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_100101.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_100102",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_100102.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_200101",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_200101.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_200102",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_200102.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_200201",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_200201.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_200202",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_200202.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_200301",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_200301.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_200302",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_200302.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_200401",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_200401.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_200402",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_200402.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_200501",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_200501.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_200502",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_200502.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_300101",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_300101.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_300102",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_300102.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_300103",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_300103.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_300201",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_300201.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_300202",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_300202.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_300203",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_300203.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_300301",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_300301.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_300302",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_300302.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_300303",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_300303.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_300401",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_300401.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_300402",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_300402.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_300403",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_300403.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_300501",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_300501.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_300502",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_300502.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_300503",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_300503.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_300601",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_300601.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_300602",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_300602.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_300603",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_300603.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_300701",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_300701.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_300702",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_300702.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_300703",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_300703.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_300801",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_300801.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_300802",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_300802.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_300803",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_300803.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_300901",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_300901.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_300902",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_300902.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_300903",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_300903.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_400101",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_400101.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_400102",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_400102.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_400103",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_400103.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_400201",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_400201.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_400202",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_400202.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_400203",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_400203.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_400301",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_400301.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_400302",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_400302.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_400303",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_400303.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_400401",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_400401.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_400402",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_400402.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_400403",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_400403.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_400501",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_400501.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_400502",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_400502.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_400503",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_400503.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_400601",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_400601.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_400602",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_400602.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_400603",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_400603.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_400701",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_400701.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_400702",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_400702.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_400703",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_400703.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_400801",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_400801.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_400802",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_400802.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_400803",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_400803.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_400901",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_400901.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_400902",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_400902.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_400903",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_400903.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_401001",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_401001.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_401002",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_401002.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_401003",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_401003.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_401101",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_401101.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_401102",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_401102.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_401103",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_401103.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_401201",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_401201.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_401202",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_401202.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_401203",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_401203.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_401301",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_401301.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_401302",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_401302.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_401303",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_401303.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_500201",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_500201.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_500202",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_500202.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "icon_petskill_500203",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/icon_petskill_500203.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Icon_Stat_Attack_Icon",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/Icon_Stat_Attack_Icon.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Icon_Stat_Defense_Icon",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/Icon_Stat_Defense_Icon.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Icon_Stat_Health_Icon",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/Icon_Stat_Health_Icon.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Icon_Stat_Shield_Icon",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/Icon_Stat_Shield_Icon.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Icon_Stat_Speed_Icon",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffIcon/Icon_Stat_Speed_Icon.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "BuffList",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/BuffList.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Buy",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/Buy.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "CurrentCoins",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/CurrentCoins.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "GameOver",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/GameOver.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "GoldCoins",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/GoldCoins.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Hex",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/Hex.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "HexList",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/HexList.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Item",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/Item.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Ancient_Minotaur_Totem_Stone",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Ancient_Minotaur_Totem_Stone.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Apprentice_Code",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Apprentice_Code.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Blade_of_Coronal_Radiance",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Blade_of_Coronal_Radiance.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Bloodthirsty_Golden_Armor_Piercer",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Bloodthirsty_Golden_Armor_Piercer.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Bracers_of_the_Astral_Rift",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Bracers_of_the_Astral_Rift.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Brilliant_Blood_Diamond",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Brilliant_Blood_Diamond.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Broken_Ruby",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Broken_Ruby.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Bursting_Wildfire_Runestone",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Bursting_Wildfire_Runestone.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Celestial_Stargazers_Lunar_Talisman",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Celestial_Stargazers_Lunar_Talisman.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Crimson_Ward_Mystic_Card",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Crimson_Ward_Mystic_Card.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Cross_Star_of_the_Inquisition",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Cross_Star_of_the_Inquisition.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Cyclops_Mana_Seeker_Pickaxe",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Cyclops_Mana_Seeker_Pickaxe.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Dark_Iron_Heavy_Horned_Helm",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Dark_Iron_Heavy_Horned_Helm.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Demon_BoneRing",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Demon_BoneRing.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Earthen_Aegis_Runestone",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Earthen_Aegis_Runestone.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Elixir_of_the_Deathspeakers_Grip",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Elixir_of_the_Deathspeakers_Grip.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Emerald_Sylvansong_Harp",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Emerald_Sylvansong_Harp.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Fateweavers_Divination_Dice",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Fateweavers_Divination_Dice.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Firewing_Griffins_True_Feather_Quill",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Firewing_Griffins_True_Feather_Quill.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Flawless_Arcane_Prism",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Flawless_Arcane_Prism.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Glacial_Marsh_Runestone",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Glacial_Marsh_Runestone.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Grand_Alchemists_Vitality_Concentrate",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Grand_Alchemists_Vitality_Concentrate.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Grand_Astrologers_Orrery",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Grand_Astrologers_Orrery.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Guardian_Signet_of_the_Dawn_Church",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Guardian_Signet_of_the_Dawn_Church.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Guiding_Lodestone_of_the_Arctic_Blizzard",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Guiding_Lodestone_of_the_Arctic_Blizzard.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Healing_Scroll",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Healing_Scroll.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Hellfire_Wraith_Crest",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Hellfire_Wraith_Crest.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Holy_Maidens_Prayer_Chalice",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Holy_Maidens_Prayer_Chalice.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Icon_mnzb_1210",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Icon_mnzb_1210.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Iridescent_Astral_Runestone",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Iridescent_Astral_Runestone.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Mithril_Aquamarine_Betrothal_Ring",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Mithril_Aquamarine_Betrothal_Ring.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Molten_Storm_Shard",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Molten_Storm_Shard.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Necromancers_Charred_Battlerobes",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Necromancers_Charred_Battlerobes.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Nether_Soulstone",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Nether_Soulstone.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Nightfall_Bloodbat_Cuirass",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Nightfall_Bloodbat_Cuirass.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Oracle_Crystal_of_the_All_Seeing_Eye",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Oracle_Crystal_of_the_All_Seeing_Eye.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Radiant_Crown_of_the_Fallen_Emperor",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Radiant_Crown_of_the_Fallen_Emperor.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Rough_Copper_Ring",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Rough_Copper_Ring.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Royal_Arcane_Cipher",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Royal_Arcane_Cipher.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Scrollof_Rage",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Scrollof_Rage.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Severed_Tentacle_of_the_Abyssal_Kraken",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Severed_Tentacle_of_the_Abyssal_Kraken.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Shattered_Magma_Core",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Shattered_Magma_Core.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Shield_Amulet",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Shield_Amulet.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Signet_of_the_Crimson_Dragon_Tyrant",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Signet_of_the_Crimson_Dragon_Tyrant.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Stormbringers_Scourge_of_Retribution",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Stormbringers_Scourge_of_Retribution.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Succubus_Diary",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Succubus_Diary.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Tear_of_the_Tide_Lord",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Tear_of_the_Tide_Lord.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Toxic_Brew_of_the_Sewer_Rat_King",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Toxic_Brew_of_the_Sewer_Rat_King.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Winterbrand_Snow_Wraith_Colossus",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemIcon/Winterbrand_Snow_Wraith_Colossus.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "ItemList",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemList.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "ItemYes",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ItemYes.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Leave",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/Leave.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Level_Png",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/Level_Png.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "NotoSansSC-VariableFont_wght SDF",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/NotoSansSC-VariableFont_wght SDF.asset",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "NotoSansSC-VariableFont_wght",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/NotoSansSC-VariableFont_wght.ttf",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Open",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/Open.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "ReturnToLobby",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/ReturnToLobby.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Shop",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/Shop.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Wave",
+            "AssetPath": "Assets/Bundles/UI/Battle/_Res/Wave.png",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "BattleHUDInterface",
+            "AssetPath": "Assets/Bundles/UI/Battle/Prefabs/BattleHUDInterface.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "GameResultInterface",
+            "AssetPath": "Assets/Bundles/UI/Battle/Prefabs/GameResultInterface.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "HealthBar_Root",
+            "AssetPath": "Assets/Bundles/UI/Battle/Prefabs/HealthBar_Root.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "HexCardNode",
+            "AssetPath": "Assets/Bundles/UI/Battle/Prefabs/HexCardNode.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "HexSelectInterface",
+            "AssetPath": "Assets/Bundles/UI/Battle/Prefabs/HexSelectInterface.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Icon_Stat_Attack",
+            "AssetPath": "Assets/Bundles/UI/Battle/Prefabs/Icon_Stat_Attack.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Icon_Stat_Defense",
+            "AssetPath": "Assets/Bundles/UI/Battle/Prefabs/Icon_Stat_Defense.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Icon_Stat_Health",
+            "AssetPath": "Assets/Bundles/UI/Battle/Prefabs/Icon_Stat_Health.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Icon_Stat_Shield",
+            "AssetPath": "Assets/Bundles/UI/Battle/Prefabs/Icon_Stat_Shield.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "Icon_Stat_Speed",
+            "AssetPath": "Assets/Bundles/UI/Battle/Prefabs/Icon_Stat_Speed.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "ItemCardNode",
+            "AssetPath": "Assets/Bundles/UI/Battle/Prefabs/ItemCardNode.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "ItemInfo",
+            "AssetPath": "Assets/Bundles/UI/Battle/Prefabs/ItemInfo.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "ItemSelectInterface",
+            "AssetPath": "Assets/Bundles/UI/Battle/Prefabs/ItemSelectInterface.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "ItemShopInfoPrefab",
+            "AssetPath": "Assets/Bundles/UI/Battle/Prefabs/ItemShopInfoPrefab.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
+            "Address": "ShopSelectInterface",
+            "AssetPath": "Assets/Bundles/UI/Battle/Prefabs/ShopSelectInterface.prefab",
+            "AssetGUID": "",
+            "AssetTags": [],
+            "BundleID": 11,
+            "DependBundleIDs": []
+        },
+        {
             "Address": "BowImg",
             "AssetPath": "Assets/Bundles/UI/Lobby/_Res/BowImg.png",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10184,7 +11760,7 @@
             "AssetPath": "Assets/Bundles/UI/Lobby/_Res/BuyImg.png",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10192,7 +11768,7 @@
             "AssetPath": "Assets/Bundles/UI/Lobby/_Res/CloseImg.png",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10200,7 +11776,7 @@
             "AssetPath": "Assets/Bundles/UI/Lobby/_Res/ConfirmImg.png",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10208,7 +11784,7 @@
             "AssetPath": "Assets/Bundles/UI/Lobby/_Res/DoubleSwordImg.png",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10216,7 +11792,7 @@
             "AssetPath": "Assets/Bundles/UI/Lobby/_Res/EnterGameImg.png",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10224,7 +11800,7 @@
             "AssetPath": "Assets/Bundles/UI/Lobby/_Res/ExitGameImg.png",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10232,7 +11808,7 @@
             "AssetPath": "Assets/Bundles/UI/Lobby/_Res/LobbyImg.png",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10240,7 +11816,7 @@
             "AssetPath": "Assets/Bundles/UI/Lobby/_Res/MagicWandImg.png",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10248,7 +11824,7 @@
             "AssetPath": "Assets/Bundles/UI/Lobby/_Res/ReceiveImg.png",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10256,7 +11832,7 @@
             "AssetPath": "Assets/Bundles/UI/Lobby/_Res/ReturnImg.png",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10264,7 +11840,7 @@
             "AssetPath": "Assets/Bundles/UI/Lobby/_Res/SelectImg.png",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10272,7 +11848,7 @@
             "AssetPath": "Assets/Bundles/UI/Lobby/_Res/SettingsImg.png",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10280,7 +11856,7 @@
             "AssetPath": "Assets/Bundles/UI/Lobby/_Res/StartGameImg.png",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10288,7 +11864,7 @@
             "AssetPath": "Assets/Bundles/UI/Lobby/_Res/SwordShieldImg.png",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10296,7 +11872,7 @@
             "AssetPath": "Assets/Bundles/UI/Lobby/_Res/TwoHandsSwordImg.png",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10304,7 +11880,7 @@
             "AssetPath": "Assets/Bundles/UI/Lobby/Prefabs/LobbyMainInterface.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10312,7 +11888,7 @@
             "AssetPath": "Assets/Bundles/UI/Lobby/Prefabs/LobbyStartGameInterface.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 11,
+            "BundleID": 12,
             "DependBundleIDs": []
         },
         {
@@ -10320,7 +11896,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_CandleFlame.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10328,7 +11904,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_Dust_Large_Cube.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10336,7 +11912,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_Dust_Large_Soft.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10344,7 +11920,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_Dust_Small_Cube.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10352,7 +11928,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_Electricity.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10360,7 +11936,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_Fire.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10368,7 +11944,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_Fire_02.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10376,7 +11952,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_Ghost_Dust.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10384,7 +11960,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_Glow_Cube.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10392,7 +11968,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_Glow_Soft.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10400,7 +11976,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_LightRayCube.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10408,7 +11984,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_Magic_Swirl.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10416,7 +11992,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_Ring.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10424,7 +12000,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_SkeletonSpawn.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10432,7 +12008,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_Sparkles.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10440,7 +12016,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_Spiral.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10448,7 +12024,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_Sword_Fire.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10456,7 +12032,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_Trap_AcidHead_Acid.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10464,7 +12040,7 @@
             "AssetPath": "Assets/Bundles/VFX/Dungeon/Prefabs/FX_Trap_FlameHead_Fire.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 12,
+            "BundleID": 13,
             "DependBundleIDs": []
         },
         {
@@ -10472,7 +12048,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Prick 1.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 13,
+            "BundleID": 14,
             "DependBundleIDs": []
         },
         {
@@ -10480,7 +12056,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Prick 2.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 13,
+            "BundleID": 14,
             "DependBundleIDs": []
         },
         {
@@ -10488,7 +12064,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Prick 3.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 13,
+            "BundleID": 14,
             "DependBundleIDs": []
         },
         {
@@ -10496,7 +12072,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Spikes attack.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 13,
+            "BundleID": 14,
             "DependBundleIDs": []
         },
         {
@@ -10504,7 +12080,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 1.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 13,
+            "BundleID": 14,
             "DependBundleIDs": []
         },
         {
@@ -10512,7 +12088,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 10.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 13,
+            "BundleID": 14,
             "DependBundleIDs": []
         },
         {
@@ -10520,7 +12096,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 11.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 13,
+            "BundleID": 14,
             "DependBundleIDs": []
         },
         {
@@ -10528,7 +12104,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 12.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 13,
+            "BundleID": 14,
             "DependBundleIDs": []
         },
         {
@@ -10536,7 +12112,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 13.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 13,
+            "BundleID": 14,
             "DependBundleIDs": []
         },
         {
@@ -10544,7 +12120,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 14.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 13,
+            "BundleID": 14,
             "DependBundleIDs": []
         },
         {
@@ -10552,7 +12128,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 15.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 13,
+            "BundleID": 14,
             "DependBundleIDs": []
         },
         {
@@ -10560,7 +12136,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 16.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 13,
+            "BundleID": 14,
             "DependBundleIDs": []
         },
         {
@@ -10568,7 +12144,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 17.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 13,
+            "BundleID": 14,
             "DependBundleIDs": []
         },
         {
@@ -10576,7 +12152,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 2.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 13,
+            "BundleID": 14,
             "DependBundleIDs": []
         },
         {
@@ -10584,7 +12160,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 3.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 13,
+            "BundleID": 14,
             "DependBundleIDs": []
         },
         {
@@ -10592,7 +12168,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 4.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 13,
+            "BundleID": 14,
             "DependBundleIDs": []
         },
         {
@@ -10600,7 +12176,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 5.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 13,
+            "BundleID": 14,
             "DependBundleIDs": []
         },
         {
@@ -10608,7 +12184,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 6.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 13,
+            "BundleID": 14,
             "DependBundleIDs": []
         },
         {
@@ -10616,7 +12192,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 7.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 13,
+            "BundleID": 14,
             "DependBundleIDs": []
         },
         {
@@ -10624,7 +12200,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 8.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 13,
+            "BundleID": 14,
             "DependBundleIDs": []
         },
         {
@@ -10632,7 +12208,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash 9.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 13,
+            "BundleID": 14,
             "DependBundleIDs": []
         },
         {
@@ -10640,7 +12216,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash Combo 1.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 13,
+            "BundleID": 14,
             "DependBundleIDs": []
         },
         {
@@ -10648,7 +12224,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash Combo 2.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 13,
+            "BundleID": 14,
             "DependBundleIDs": []
         },
         {
@@ -10656,7 +12232,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash Combo 3.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 13,
+            "BundleID": 14,
             "DependBundleIDs": []
         },
         {
@@ -10664,7 +12240,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash Combo 4.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 13,
+            "BundleID": 14,
             "DependBundleIDs": []
         },
         {
@@ -10672,7 +12248,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash Combo 5.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 13,
+            "BundleID": 14,
             "DependBundleIDs": []
         },
         {
@@ -10680,7 +12256,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash Combo 6.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 13,
+            "BundleID": 14,
             "DependBundleIDs": []
         },
         {
@@ -10688,7 +12264,7 @@
             "AssetPath": "Assets/Bundles/VFX/Sword/Prefabs/Sword Slash Combo 7.prefab",
             "AssetGUID": "",
             "AssetTags": [],
-            "BundleID": 13,
+            "BundleID": 14,
             "DependBundleIDs": []
         }
     ],
@@ -10718,7 +12294,7 @@
             "UnityCRC": 0,
             "FileHash": "791db34b5040dedb5c70779d878033f1",
             "FileCRC": 0,
-            "FileSize": 7071629,
+            "FileSize": 3873820,
             "Encrypted": false,
             "Tags": [],
             "DependBundleIDs": []
@@ -10728,7 +12304,7 @@
             "UnityCRC": 0,
             "FileHash": "9bf96503d43efd6ac2fb6e87b328d046",
             "FileCRC": 0,
-            "FileSize": 13448114,
+            "FileSize": 13459942,
             "Encrypted": false,
             "Tags": [],
             "DependBundleIDs": []
@@ -10738,7 +12314,7 @@
             "UnityCRC": 0,
             "FileHash": "af82851a89bee0d6c2974cc11f1cd989",
             "FileCRC": 0,
-            "FileSize": 13070,
+            "FileSize": 35731,
             "Encrypted": false,
             "Tags": [],
             "DependBundleIDs": []
@@ -10748,7 +12324,7 @@
             "UnityCRC": 0,
             "FileHash": "f749b08e223d74fb62eb438ff1e8a8e5",
             "FileCRC": 0,
-            "FileSize": 1326648,
+            "FileSize": 1572875,
             "Encrypted": false,
             "Tags": [],
             "DependBundleIDs": []
@@ -10758,7 +12334,7 @@
             "UnityCRC": 0,
             "FileHash": "91b69578681b717b13e067dd7a9f9bcc",
             "FileCRC": 0,
-            "FileSize": 22310,
+            "FileSize": 22312,
             "Encrypted": false,
             "Tags": [],
             "DependBundleIDs": []
@@ -10778,7 +12354,7 @@
             "UnityCRC": 0,
             "FileHash": "3940bd5904c5dc5ef9d4c5e7df9598b7",
             "FileCRC": 0,
-            "FileSize": 1268672,
+            "FileSize": 1269851,
             "Encrypted": false,
             "Tags": [],
             "DependBundleIDs": []
@@ -10798,7 +12374,17 @@
             "UnityCRC": 0,
             "FileHash": "38b0578367f7881b79b81adf0e876a15",
             "FileCRC": 0,
-            "FileSize": 21988347,
+            "FileSize": 28805656,
+            "Encrypted": false,
+            "Tags": [],
+            "DependBundleIDs": []
+        },
+        {
+            "BundleName": "defaultpackage_assets_bundles_ui_battle.bundle",
+            "UnityCRC": 0,
+            "FileHash": "afa8012c7a1fd8a01c3f10fbd9cb5f22",
+            "FileCRC": 0,
+            "FileSize": 74311524,
             "Encrypted": false,
             "Tags": [],
             "DependBundleIDs": []
@@ -10838,7 +12424,7 @@
             "UnityCRC": 0,
             "FileHash": "964a750bdd6bab590e2989e1b3ceb542",
             "FileCRC": 0,
-            "FileSize": 6808,
+            "FileSize": 133330,
             "Encrypted": false,
             "Tags": [],
             "DependBundleIDs": []

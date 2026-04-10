@@ -1,31 +1,48 @@
-﻿itemId,itemName,itemType,rarity,price,sellPrice,buffId,description
-item_ring_01,粗糙的铜戒,Passive,White,50,25,buff_item_ring_01,微微发热的戒指。攻击力+3
-item_ring_02,恶魔骨戒,Passive,Green,150,75,buff_item_ring_02,用Cute Devil的骨头打磨而成。攻击力+8
-item_gem_01,碎裂的红宝石,Passive,White,50,25,buff_item_gem_01,散发着微弱的生命气息。最大生命+20
-item_gem_02,璀璨血钻,Passive,Blue,300,150,buff_item_gem_02,仿佛在跳动的宝石。最大生命+80
-item_book_01,学徒法典,Passive,White,80,40,buff_item_book_01,记载着基础防御法术。防御力+2
-item_book_02,魅魔的日记,Passive,Purple,600,300,buff_item_book_02,翻开会让人头晕目眩。速度+20%，攻击力+10
-item_scroll_01,治疗卷轴,Active,White,100,50,buff_item_scroll_01,捏碎后立即恢复 50 点生命值。
-item_scroll_02,狂暴卷轴,Active,Green,200,100,buff_item_scroll_02,捏碎后10秒内攻击力剧增。
-item_amulet_01,护盾护符,Passive,Green,250,125,buff_item_amulet_01,进场时提供 30 点基础护盾。
-item_amulet_02,炎魔核心,Passive,Gold,1200,600,buff_item_amulet_02,击败Fire Demon的战利品。攻击力+25，防御+15
-item_boots_01,旅者皮靴,Passive,White,60,30,buff_item_boots_01,速度+3
-item_boots_02,疾风步履,Passive,Blue,350,175,buff_item_boots_02,速度+10
-item_potion_01,爆裂虫体液,Active,Green,150,75,buff_item_potion_01,饮用后对自身造成微量伤害，但大幅提升攻击。
-item_potion_02,纯净之水,Active,Blue,400,200,buff_item_potion_02,瞬间回满所有生命值与护盾。
-item_relic_01,触手怪的眼球,Passive,Purple,800,400,buff_item_relic_01,令人作呕但极其强大。攻击力提升 15%
-item_relic_02,龙鳞碎片,Passive,Blue,500,250,buff_item_relic_02,坚不可摧。防御力+12，生命+50
-item_relic_03,深渊凝视,Passive,Gold,1500,750,buff_item_relic_03,独立乘法计算，总攻击力狂飙 20%
-item_ring_03,荆棘指环,Passive,Green,200,100,buff_item_ring_03,防御力+5
-item_gem_03,绿松石,Passive,White,70,35,buff_item_gem_03,速度+2，生命+10
-item_book_03,岩石巨兽图鉴,Passive,Blue,450,225,buff_item_book_03,研究Rock Hurler的弱点。攻击力+15
-item_amulet_03,地狱藤蔓项链,Passive,Purple,750,375,buff_item_amulet_03,Hell Creeper的藤蔓编制。生命+150，速度-2
-item_crown_01,破败王冠,Passive,Gold,2000,1000,buff_item_crown_01,曾经的王之象征。全属性全面提升！
-item_cloak_01,阴影斗篷,Passive,Blue,400,200,buff_item_cloak_01,速度+8，防御+5
-item_scroll_03,钢铁屏障卷轴,Active,Blue,300,150,buff_item_scroll_03,获得 100 点临时护盾。
-item_idol_01,黄金神像,Passive,Purple,1000,500,buff_item_idol_01,生命+100，防御+10
-item_fang_01,火龙毒牙,Passive,Gold,1800,900,buff_item_fang_01,Fire Dragon的致命武器。攻击力+40
-item_heart_01,恶魔搏动之心,Passive,Purple,900,450,buff_item_heart_01,最大生命值提升 20%
-item_wing_01,残破双翼,Passive,Green,220,110,buff_item_wing_01,速度+5
-item_skull_01,诅咒头骨,Passive,Blue,350,175,buff_item_skull_01,攻击+20，防御-5
-item_chalice_01,圣杯,Passive,Gold,2500,1250,buff_item_chalice_01,生命值翻倍！（提升100%）
+itemId,itemGroupId,itemName,itemRarity,weight,prerequisiteItemId,buffId,description,iconPath
+Apprentice_Code,group_book,残缺的学徒魔典,White,100,None,buff_item_apprentice,破损的羊皮纸法术书。[攻击力+8],Apprentice_Code
+Brilliant_Blood_Diamond,group_gem,璀璨的猩红血钻,Legendary,20,None,buff_item_blood_diamond,蕴含高阶血族精粹的完美红宝石。[生命上限+150],Brilliant_Blood_Diamond
+Broken_Ruby,group_gem,黯淡的碎裂红宝石,White,100,None,buff_item_broken_ruby,魔力流失的黯淡红宝石。[攻击力+5],Broken_Ruby
+Healing_Scroll,group_scroll,神圣复苏卷轴,Rare,80,None,buff_item_heal_scroll,印有十字印记的治愈秘卷。[生命上限+50],Healing_Scroll
+Cyclops_Mana_Seeker_Pickaxe,group_weapon,独眼巨人的探魔镐,Epic,40,None,buff_item_cyclops_pick,镶嵌恶魔之眼的精金矿镐。[攻击力+25，速度-5],Cyclops_Mana_Seeker_Pickaxe
+Glacial_Marsh_Runestone,group_rune,极寒水泽符文石,Rare,60,None,buff_item_glacial_rune,散发刺骨寒意的多面体蓝宝石。[防御力+20，速度-8],Glacial_Marsh_Runestone
+Earthen_Aegis_Runestone,group_rune,大地庇护符文石,Epic,40,None,buff_item_earthen_rune,蕴含土元素法则的黄色澄澈晶石。[防御力+35],Earthen_Aegis_Runestone
+Bursting_Wildfire_Runestone,group_rune,爆裂流火符文石,Epic,40,None,buff_item_wildfire_rune,随时会喷薄爆裂火焰的红色魔石。[攻击力+35，防御力-15],Bursting_Wildfire_Runestone
+Iridescent_Astral_Runestone,group_rune,幻彩星界符文石,Legendary,15,None,buff_item_astral_rune,折射奇异光芒的空间晶体。[速度+12],Iridescent_Astral_Runestone
+Grand_Astrologers_Orrery,group_artifact,大星术师的星轨仪,Epic,30,None,buff_item_orrery,倒映星辰轨迹的恒金精密仪器。[速度+6，攻击力+12],Grand_Astrologers_Orrery
+Radiant_Crown_of_the_Fallen_Emperor,group_head,陨落帝王的辉耀王冠,Legendary,10,None,buff_item_radiant_crown,象征旧日王权的奢华金冠。[生命上限+120，防御力+30],Radiant_Crown_of_the_Fallen_Emperor
+Nightfall_Bloodbat_Cuirass,group_armor,堕夜血蝠胸甲,Epic,30,None,buff_item_bloodbat_armor,暗金打造的邪道血蝠护具。[防御力+40],Nightfall_Bloodbat_Cuirass
+Emerald_Sylvansong_Harp,group_artifact,翡翠林歌竖琴,Rare,50,None,buff_item_emerald_harp,世界树枯枝制成的魔法竖琴。[速度+8，生命上限+30],Emerald_Sylvansong_Harp
+Oracle_Crystal_of_the_All_Seeing_Eye,group_artifact,全视之眼预言水晶,Legendary,20,None,buff_item_oracle_crystal,睁着诡异魔眼的紫水晶球。[全局攻击力乘区+15%，生命上限-40],Oracle_Crystal_of_the_All_Seeing_Eye
+Tear_of_the_Tide_Lord,group_gem,潮汐领主的泪滴,Epic,40,None,buff_item_tide_tear,纯净水元素环绕的魔法冰晶。[生命上限+80],Tear_of_the_Tide_Lord
+Signet_of_the_Crimson_Dragon_Tyrant,group_ring,赤龙暴君的权戒,Legendary,15,None,buff_item_dragon_signet,镶嵌巨大红龙魔核的纯金戒指。[攻击力+25，防御力+20],Signet_of_the_Crimson_Dragon_Tyrant
+Royal_Arcane_Cipher,group_scroll,皇室魔法密信,Rare,70,None,buff_item_royal_cipher,加盖王室火漆印章的绝密信件。[攻击力+15],Royal_Arcane_Cipher
+Severed_Tentacle_of_the_Abyssal_Kraken,group_artifact,深渊海怪的断腕,Epic,35,None,buff_item_kraken_tentacle,布满坚硬吸盘的深渊紫色触须。[攻击力+35，速度-10],Severed_Tentacle_of_the_Abyssal_Kraken
+Flawless_Arcane_Prism,group_gem,高纯度奥术棱晶,Epic,40,None,buff_item_arcane_prism,高纯度的粉紫色奥术晶体。[攻击力+25],Flawless_Arcane_Prism
+Firewing_Griffins_True_Feather_Quill,group_artifact,火翼狮鹫真羽笔,Rare,60,None,buff_item_griffin_quill,狮鹫翎羽与黄金制成的魔法羽毛笔。[速度+10],Firewing_Griffins_True_Feather_Quill
+Holy_Maidens_Prayer_Chalice,group_artifact,圣女的祈祷金杯,Epic,30,None,buff_item_prayer_chalice,长有金色双翼的神圣金杯。[生命上限+60，防御力+15],Holy_Maidens_Prayer_Chalice
+Guiding_Lodestone_of_the_Arctic_Blizzard,group_artifact,极北风雪引路石,Rare,70,None,buff_item_arctic_lodestone,封印着指南符文的淡蓝色矿石。[防御力+15，速度+5],Guiding_Lodestone_of_the_Arctic_Blizzard
+Mithril_Aquamarine_Betrothal_Ring,group_ring,秘银水钻订婚戒,Rare,60,None,buff_item_mithril_ring,扭曲秘银打造的蓝色宝石指环。[速度+6，防御力+12],Mithril_Aquamarine_Betrothal_Ring
+Stormbringers_Scourge_of_Retribution,group_weapon,风暴使者的惩戒之鞭,Legendary,20,None,buff_item_storm_whip,束缚着纯粹雷电的狂暴长鞭。[攻击力+45，防御力-20],Stormbringers_Scourge_of_Retribution
+Grand_Alchemists_Vitality_Concentrate,group_potion,大炼金师的生命浓缩液,Legendary,25,None,buff_item_vitality_potion,黄铜加固瓶装的高浓度猩红药水。[生命上限+180],Grand_Alchemists_Vitality_Concentrate
+Ancient_Minotaur_Totem_Stone,group_artifact,远古牛头人图腾石,Epic,35,None,buff_item_minotaur_totem,粗犷雕刻的坚硬岩石图腾。[攻击力+25，防御力+25，速度-15],Ancient_Minotaur_Totem_Stone
+Toxic_Brew_of_the_Sewer_Rat_King,group_potion,下水道鼠王的毒酿,Rare,50,None,buff_item_rat_brew,地下刺客专用的见血封喉毒酿。[速度+9，生命上限-25],Toxic_Brew_of_the_Sewer_Rat_King
+Crimson_Ward_Mystic_Card,group_artifact,猩红结界秘术牌,Rare,60,None,buff_item_crimson_card,绘有空间反制符文的魔法卡牌。[防御力+18],Crimson_Ward_Mystic_Card
+Cross_Star_of_the_Inquisition,group_artifact,异端审判庭十字星,Epic,40,None,buff_item_inquisition_star,沉重的四芒星白银审判法器。[攻击力+28],Cross_Star_of_the_Inquisition
+Fateweavers_Divination_Dice,group_artifact,命运织网者的占卜骰子,Epic,35,None,buff_item_fate_dice,刻着星象与古神符文的多面体骰子。[攻击力+10，防御力+10，速度+5],Fateweavers_Divination_Dice
+Winterbrand_Snow_Wraith_Colossus,group_artifact,凛冬雪魂巨像,Legendary,15,None,buff_item_snow_colossus,极寒坚冰构筑的魔法元素造物。[防御力+65，速度-25],Winterbrand_Snow_Wraith_Colossus
+Dark_Iron_Heavy_Horned_Helm,group_head,黑铁重甲角盔,Epic,45,None,buff_item_dark_iron_helm,工艺粗犷的黑铁重甲兽角战盔。[防御力+35],Dark_Iron_Heavy_Horned_Helm
+Guardian_Signet_of_the_Dawn_Church,group_ring,晨曦教廷守护印戒,Legendary,20,None,buff_item_dawn_signet,散发温暖光辉的神圣印戒。[生命上限+45，防御力+35],Guardian_Signet_of_the_Dawn_Church
+Bracers_of_the_Astral_Rift,group_armor,星辰裂隙护腕,Epic,35,None,buff_item_astral_bracers,镶嵌星辰碎片的虚空重金属护腕。[攻击力+22，防御力+18],Bracers_of_the_Astral_Rift
+Hellfire_Wraith_Crest,group_artifact,狱炎恶灵徽记,Epic,30,None,buff_item_hellfire_crest,深渊狱火包裹的惨白骷髅徽记。[攻击力+35，生命上限-35],Hellfire_Wraith_Crest
+Necromancers_Charred_Battlerobes,group_armor,死灵法师的焦枯战袍,Epic,40,None,buff_item_necro_robes,燃烧着残破怨魂的死灵战袍。[生命上限+60，速度+4],Necromancers_Charred_Battlerobes
+Elixir_of_the_Deathspeakers_Grip,group_potion,亡语者之握魔药,Rare,50,None,buff_item_death_elixir,幽蓝液体不断哀嚎的诡异魔药。[生命上限+40，攻击力+15],Elixir_of_the_Deathspeakers_Grip
+Shattered_Magma_Core,group_artifact,崩坏的熔岩石核,Epic,35,None,buff_item_magma_core,流淌着高温岩浆的崩坏石核。[攻击力+40，防御力-15],Shattered_Magma_Core
+Bloodthirsty_Golden_Armor_Piercer,group_weapon,嗜血黄金破甲锥,Epic,30,None,buff_item_armor_piercer,疯狂吸食血液的黄金奇门短兵。[攻击力+45，防御力-25],Bloodthirsty_Golden_Armor_Piercer
+Molten_Storm_Shard,group_artifact,熔火风暴残片,Rare,60,None,buff_item_molten_shard,剥落自远古岩石巨兽的坚硬甲壳。[防御力+20，攻击力+15],Molten_Storm_Shard
+Celestial_Stargazers_Lunar_Talisman,group_artifact,苍穹观星者月符,Epic,45,None,buff_item_lunar_talisman,以星砂绣制星座轨迹的新月护符。[速度+12],Celestial_Stargazers_Lunar_Talisman
+Nether_Soulstone,group_gem,幽冥灵魂石,Rare,55,None,buff_item_nether_soulstone,燃烧着青色灵魂火焰的菱形冰晶。[生命上限+50，速度+6],Nether_Soulstone
+Blade_of_Coronal_Radiance,group_weapon,日冕光辉之刃,Epic,40,None,buff_item_coronal_blade,形似金色羽毛的烈日短剑。[攻击力+38],Blade_of_Coronal_Radiance
+Rough_Copper_Ring,group_ring,粗制黄铜指环,White,100,None,buff_item_rough_ring,毫无魔法附加的粗制铁疙瘩。[防御力+5],Rough_CopperRing
+Scrollof_Rage,group_scroll,野蛮狂暴卷轴,Epic,30,None,buff_item_rage_scroll,使人丧失理智的猩红战拳卷轴。[攻击力+60，防御力-40],Scrollof_Rage
+Shield_Amulet,group_artifact,庇护所铁卫项链,Rare,65,None,buff_item_shield_amulet,精钢盾牌造型的魔法护符。[防御力+30],Shield_Amulet
+Succubus_Diary,group_book,魅魔的禁忌魔典,Epic,25,None,buff_item_succubus_diary,带有恶魔双翼标志的禁忌厚皮书。[全局速度乘区+8%，攻击力+20，生命上限-45],Succubus_Diary

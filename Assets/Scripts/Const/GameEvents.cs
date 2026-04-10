@@ -1,4 +1,4 @@
-﻿namespace Const
+namespace Const
 {
     public class GameEvents
     {
@@ -15,7 +15,7 @@
         public const string PLAYER_JUMP_CANCELED = nameof(PLAYER_JUMP_CANCELED);
         /// 玩家闪避被执行
         public const string PLAYER_DODGE_PERFORMED = nameof(PLAYER_DODGE_PERFORMED);
-        /// 玩家闪避呗取消
+        /// 玩家闪避被取消
         public const string PLAYER_DODGE_CANCELED = nameof(PLAYER_DODGE_CANCELED);
         /// 玩家下落攻击被执行
         public const string PLAYER_FALLATTACK_PERFROMED = nameof(PLAYER_FALLATTACK_PERFROMED);
@@ -54,9 +54,10 @@
         public const string PLAYER_ATTACK_OPEN_DETECTION = nameof(PLAYER_ATTACK_OPEN_DETECTION);
         public const string PLAYER_ATTACK_CLOSE_DETECTION = nameof(PLAYER_ATTACK_CLOSE_DETECTION);
 
-        // // 敌人事件
-        // public const string ENEMY_DAMAGED = nameof(ENEMY_DAMAGED);
-        // public const string ENEMY_DEATH = nameof(ENEMY_DEATH); // 伤害管道事件
+        // 敌人事件
+        public const string ENEMY_DEATH = nameof(ENEMY_DEATH);
+        /// 敌人从对象池生成，EnemyInjuriedSystem 订阅后完成注册
+        public const string ENEMY_SPAWNED = nameof(ENEMY_SPAWNED);
         
         /// 伤害请求（CombatSystem → DamageSystem）
         public const string DAMAGE_REQUEST = nameof(DAMAGE_REQUEST);
@@ -64,7 +65,38 @@
         public const string DAMAGE_RESULT = nameof(DAMAGE_RESULT);
         
         public const string PLAYER_DEAD = nameof(PLAYER_DEAD);
+        
+        /// 请求开始普通波次（LevelManager -> WaveManager，参数：string[] enemyPool）
+        public const string START_WAVE_REQUEST = nameof(START_WAVE_REQUEST);
+        /// 请求开始 Boss 波次（LevelManager -> WaveManager，参数：string[] bossPool）
+        public const string START_BOSS_WAVE_REQUEST = nameof(START_BOSS_WAVE_REQUEST);
+        /// 波次完成事件（WaveManager -> LevelManager）
+        public const string WAVE_COMPLETED = nameof(WAVE_COMPLETED);
+        
+        /// 场景卸载通知（LevelManager -> Scene/UI 清理链路）
+        public const string SCENE_UNLOADED = nameof(SCENE_UNLOADED);
+        /// 请求加载大厅场景（LevelManager -> SceneFlowManager）
+        public const string SCENE_LOAD_LOBBY_REQUEST = nameof(SCENE_LOAD_LOBBY_REQUEST);
+        /// 请求显示常驻视图（LevelManager -> UIManager）
+        public const string UI_SHOW_VIEW_REQUEST = nameof(UI_SHOW_VIEW_REQUEST);
+        /// 请求显示窗口（LevelManager -> UIManager）
+        public const string UI_SHOW_WINDOW_REQUEST = nameof(UI_SHOW_WINDOW_REQUEST);
+        /// 关卡掉落计算请求（LevelManager -> DropSystem）
+        public const string STAGE_DROP_ROLL_REQUEST = nameof(STAGE_DROP_ROLL_REQUEST);
+        /// 掉落结果就绪（LevelManager -> ItemSelect）
+        public const string ITEM_REWARDS_READY = nameof(ITEM_REWARDS_READY);
+        /// 道具选择阶段开始
+        public const string ITEM_SELECTION_BEGIN = nameof(ITEM_SELECTION_BEGIN);
+        /// 海克斯选择阶段开始
+        public const string HEX_SELECTION_BEGIN = nameof(HEX_SELECTION_BEGIN);
+        /// 下一层倒计时 Tick（参数：剩余秒数）
+        public const string LEVEL_COUNTDOWN_TICK = nameof(LEVEL_COUNTDOWN_TICK);
+        /// 请求刷新会话信息（层数/金币等）
+        public const string SESSION_INFO_REFRESH_REQUEST = nameof(SESSION_INFO_REFRESH_REQUEST);
 
-
+        /// UI 选择界面打开时广播（LevelManager → PlayerInputSystem），锁定玩家输入
+        public const string GAME_INPUT_LOCKED = nameof(GAME_INPUT_LOCKED);
+        /// UI 选择界面关闭时广播（LevelManager → PlayerInputSystem），恢复玩家输入
+        public const string GAME_INPUT_UNLOCKED = nameof(GAME_INPUT_UNLOCKED);
     }
 }

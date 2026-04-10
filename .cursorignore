@@ -1,0 +1,31 @@
+# Add directories or file patterns to ignore during indexing (e.g. foo/ or *.csv)
+# 排除 Unity 自动生成的缓存和编译文件夹
+[Ll]ibrary/
+[Tt]emp/
+[Oo]bj/
+[Bb]uild/
+[Bb]uilds/
+[Ll]ogs/
+[Mm]emoryCaptures/
+
+# 排除所有元数据文件和非代码资产
+*.meta
+*.unity
+*.prefab
+*.asset
+*.mat
+*.anim
+*.controller
+*.physicMaterial
+*.physicsMaterial2D
+*.renderTexture
+*.tga
+*.png
+*.jpg
+*.fbx
+*.obj
+*.wav
+*.mp3
+
+# 可选：如果你不需要 AI 阅读庞大的第三方插件源码，可以取消下面这行的注释
+# Packages/

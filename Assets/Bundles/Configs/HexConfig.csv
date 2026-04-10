@@ -1,31 +1,38 @@
-﻿hexId,hexGroupId,hexName,hexRarity,weight,prerequisiteHexId,buffId,description
-hex_mutant_w1,hex_mutant,基础变异,White,100,,buff_hex_mutant_1,你的肌肉开始膨胀。攻击力+5
-hex_mutant_g2,hex_mutant,深度变异,Gold,50,hex_mutant_w1,buff_hex_mutant_2,你的骨骼变得坚硬。防御力+15，攻击力+10
-hex_mutant_r3,hex_mutant,完美生物,Iridescence,10,hex_mutant_g2,buff_hex_mutant_3,你超越了人类极限。全属性提升20%！
-hex_hell_w1,hex_hell,地狱适应,White,100,,buff_hex_hell_1,习惯了深渊的温度。生命上限+30
-hex_hell_g2,hex_hell,恶魔皮肤,Gold,50,hex_hell_w1,buff_hex_hell_2,皮肤长出类似Cute Devil的角质层。防御+20
-hex_hell_r3,hex_hell,炎魔化身,Iridescence,10,hex_hell_g2,buff_hex_hell_3,化身Fire Demon！攻击力+50，防御力+30
-hex_speed_w1,hex_speed,神经反射,White,100,,buff_hex_speed_1,速度+2
-hex_speed_g2,hex_speed,肾上腺素,Gold,50,hex_speed_w1,buff_hex_speed_2,速度+6
-hex_speed_r3,hex_speed,动态视力,Iridescence,10,hex_speed_g2,buff_hex_speed_3,速度提升 30%
-hex_blood_w1,hex_blood,鲜血渴望,White,90,,buff_hex_blood_1,攻击力+8，生命上限-10
-hex_blood_g2,hex_blood,沸腾之血,Gold,40,hex_blood_w1,buff_hex_blood_2,攻击力+25，生命上限-30
-hex_blood_r3,hex_blood,龙血献祭,Iridescence,5,hex_blood_g2,buff_hex_blood_3,献祭一半生命值，换取无与伦比的破坏力(攻击+100%)
-hex_stone_w1,hex_stone,顽石意志,White,90,,buff_hex_stone_1,防御力+5
-hex_stone_g2,hex_stone,岩石身躯,Gold,40,hex_stone_w1,buff_hex_stone_2,像Rock Hurler一样坚硬。防御力+18
-hex_eco_w1,hex_eco,赏金猎人,White,100,,buff_hex_eco_1,击杀怪物获得的金币微量提升（机制占位）
-hex_eco_g2,hex_eco,宝箱感应,Gold,40,,buff_hex_eco_2,宝箱出现高稀有度道具概率提升（机制占位）
-hex_bug_w1,hex_bug,虫群直觉,White,80,,buff_hex_bug_1,获得Explosive Bug的警觉。速度+4
-hex_bug_g2,hex_bug,爆炸反应,Gold,30,hex_bug_w1,buff_hex_bug_2,受伤时有概率触发爆炸反击（机制占位）
-hex_charm_g1,hex_charm,魅惑气息,Gold,40,,buff_hex_charm_1,散发Succubus的魅力。商店购买价格降低 20%
-hex_tent_r1,hex_tent,触手共生,Iridescence,8,,buff_hex_tent_1,背后长出无形的触手。攻击力+30，速度+10
-hex_giant_g1,hex_giant,巨人杀手,Gold,40,,buff_hex_giant_1,对Boss造成的伤害提升 15%
-hex_glass_r1,hex_glass,玻璃大炮,Iridescence,5,,buff_hex_glass_1,攻击力飙升 50%，但防御力降为 0
-hex_shd_w1,hex_shd,护盾专精,White,100,,buff_hex_shd_1,每次进入战斗获得 10 点护盾
-hex_shd_g2,hex_shd,能量屏障,Gold,40,hex_shd_w1,buff_hex_shd_2,每次进入战斗获得 50 点护盾
-hex_surv_w1,hex_surv,绝境求生,White,90,,buff_hex_surv_1,生命值+15，防御+2
-hex_surv_g2,hex_surv,破釜沉舟,Gold,30,hex_surv_w1,buff_hex_surv_2,生命值+40，防御+8
-hex_dragon_r1,hex_drg,巨龙之威,Iridescence,3,,buff_hex_dragon_1,面对Fire Dragon不再恐惧。全属性大幅增长
-hex_magic_w1,hex_mag,魔力感知,White,100,,buff_hex_magic_1,技能冷却略微降低（机制占位）
-hex_magic_g2,hex_mag,灵能涌动,Gold,40,hex_magic_w1,buff_hex_magic_2,技能伤害大幅提升（机制占位）
-hex_gamble_r1,hex_gmb,命运抛币,Iridescence,5,,buff_hex_gamble_1,极高风险。要么全属性+50%，要么扣除当前一半生命
+hexId,hexGroupId,hexName,hexRarity,weight,prerequisiteHexId,buffId,description
+hex_mutant_1,hex_mutant,基础变异,White,100,None,buff_hex_mutant_1,变异阶段 I：攻击力+5，生命上限+20
+hex_mutant_2,hex_mutant,深度变异,Gold,50,hex_mutant_1,buff_hex_mutant_2,变异阶段 II：攻击力+15，防御力+10
+hex_mutant_3,hex_mutant,完美生物,Iridescence,10,hex_mutant_2,buff_hex_mutant_3,变异阶段 III：全基础属性（攻、防、血、速）独立乘区提升10%
+hex_blood_1,hex_blood,鲜血汲取,White,90,None,buff_hex_blood_1,血契阶段 I：生命上限-10，换取攻击力+10
+hex_blood_2,hex_blood,血之契约,Gold,40,hex_blood_1,buff_hex_blood_2,血契阶段 II：生命上限-40，换取攻击力+35
+hex_blood_3,hex_blood,龙血献祭,Iridescence,5,hex_blood_2,buff_hex_blood_3,血契阶段 III：生命上限独立乘区减半，换取攻击力独立乘区提升100%
+hex_kin_1,hex_kin,顺风起步,White,80,None,buff_hex_kin_1,动能阶段 I：移动速度+3
+hex_kin_2,hex_kin,动能转化,Gold,30,hex_kin_1,buff_hex_kin_2,动能阶段 II：将自身20%的移动速度转化为额外的攻击力
+hex_kin_3,hex_kin,光速引擎,Iridescence,5,hex_kin_2,buff_hex_kin_3a|buff_hex_kin_3b,动能阶段 III：移动速度提升15%，且速度转化为攻击力的比例提升至50%
+hex_heavy_1,hex_heavy,负重训练,White,90,None,buff_hex_heavy_1,装甲阶段 I：防御力+10，但移动速度-2
+hex_heavy_2,hex_heavy,舍弃回避,Gold,30,hex_heavy_1,buff_hex_heavy_2a|buff_hex_heavy_2b,装甲阶段 II：禁用[冲刺/闪避]功能，获得攻击力+50，防御力+40
+hex_heavy_3,hex_heavy,不动要塞,Iridescence,5,hex_heavy_2,buff_hex_heavy_3a|buff_hex_heavy_3b,装甲阶段 III：玩家无法移动，防御力提升150%，最大生命值提升100%
+hex_eco_1,hex_eco,赏金猎人,White,100,None,buff_hex_eco_1,经济阶段 I：击杀怪物获得的金币量提升
+hex_eco_2,hex_eco,宝箱感应,Gold,40,hex_eco_1,buff_hex_eco_2,经济阶段 II：结算金币再提升
+hex_eco_3,hex_eco,黄金律法,Iridescence,10,hex_eco_2,buff_hex_eco_3a|buff_hex_eco_3b,经济阶段 III：结算金币翻倍，且根据当前持有的金币数量增加攻击力
+hex_charm_1,hex_charm,魅惑气息,White,80,None,buff_hex_charm_1,魅力阶段 I：商店道具购买价格降低10%
+hex_charm_2,hex_charm,绝代风华,Gold,30,hex_charm_1,buff_hex_charm_2,魅力阶段 II：商店刷新价格减半
+hex_charm_3,hex_charm,贪婪魅魔,Iridescence,5,hex_charm_2,buff_hex_charm_3,魅力阶段 III：商店购买有几率不再消耗金币
+hex_giant_1,hex_giant,弱点洞察,White,90,None,buff_hex_giant_1,特攻阶段 I：对Boss造成的伤害提升10%
+hex_giant_2,hex_giant,巨人杀手,Gold,40,hex_giant_1,buff_hex_giant_2,特攻阶段 II：对Boss造成的伤害提升30%
+hex_giant_3,hex_giant,泰坦陨落,Iridescence,10,hex_giant_2,buff_hex_giant_3,特攻阶段 III：对Boss的伤害变为真实伤害（无视防御）
+hex_bug_1,hex_bug,虫群直觉,White,80,None,buff_hex_bug_1,虫化阶段 I：速度+4，但生命上限-15
+hex_bug_2,hex_bug,极速蜕壳,Gold,30,hex_bug_1,buff_hex_bug_2,虫化阶段 II：速度+10，但防御力-15
+hex_bug_3,hex_bug,掠星虫神,Iridescence,5,hex_bug_2,buff_hex_bug_3,虫化阶段 III：速度乘区提升30%，攻击力提升40%，但生命上限强制锁定为1点
+hex_tent_1,hex_tent,触手共生,White,90,None,buff_hex_tent_1,旧日阶段 I：攻击力+12，速度-3
+hex_tent_2,hex_tent,深海缠绕,Gold,40,hex_tent_1,buff_hex_tent_2,旧日阶段 II：攻击力+35，速度-10
+hex_tent_3,hex_tent,旧日支配,Iridescence,10,hex_tent_2,buff_hex_tent_3,旧日阶段 III：攻击力乘区提升120%，但速度乘区降低70%
+hex_react_1,hex_react,激痛反应,White,85,None,buff_hex_react_1,反应阶段 I：受击后 3 秒内移速+5（冷却 2 秒）
+hex_react_2,hex_react,血怒爆发,Gold,35,hex_react_1,buff_hex_react_2,反应阶段 II：受击后 4 秒内攻击力+20（冷却 2 秒）
+hex_react_3,hex_react,怒血狂涌,Iridescence,8,hex_react_2,buff_hex_react_3a|buff_hex_react_3b,反应阶段 III：受击后 5 秒内攻击力+30 且速度+4（冷却 2 秒）
+hex_react_4,hex_react,闪身蓄力,White,80,None,buff_hex_react_4,反应阶段 I（闪避）：闪避后 3 秒内攻击力+15（冷却 1 秒）
+hex_react_5,hex_react,残影冲刺,Gold,30,hex_react_4,buff_hex_react_5,反应阶段 II（闪避）：闪避后 4 秒内速度乘区+10%（冷却 1 秒）
+hex_hunt_1,hex_hunt,猎人本能,White,90,None,buff_hex_hunt_1,猎手阶段 I：击杀敌人后 3 秒内攻击力+12（冷却 0.5 秒）
+hex_hunt_2,hex_hunt,嗜血追猎,Gold,40,hex_hunt_1,buff_hex_hunt_2,猎手阶段 II：击杀后 4 秒内速度+8（冷却 0.5 秒）
+hex_hunt_3,hex_hunt,死亡共鸣,Iridescence,8,hex_hunt_2,buff_hex_hunt_3a|buff_hex_hunt_3b,猎手阶段 III：击杀后 5 秒内攻击力+25 且防御+15（冷却 0.5 秒）
+hex_guard_1,hex_guard,灵活防御,White,80,None,buff_hex_guard_1,灵盾阶段 I：闪避后 3 秒内防御+20（冷却 1 秒）
+hex_guard_2,hex_guard,铸铁反击,Gold,35,hex_guard_1,buff_hex_guard_2,灵盾阶段 II：受击后 4 秒内防御+35（冷却 2 秒）

@@ -6,61 +6,13 @@
 敌人刷怪：在一个开放的战斗场地中，怪物从四周生成，无视地形直线追击玩家。
 2. 系统流程 (Game Loop)
 关卡结构：(优先做出一个大关就行)
-大关 (Level)：共 4 个。
-小关 (Stage)：每个大关含 3 个小关。
+大关 (Level)：共 3 个。
+小关 (Stage)：每个大关含 4 个小关，3个小怪关卡，一个Boss关卡。
 波次 (Wave)：每个小关含 2 波怪，每波 6 只。
 Boss 战：每个大关最后打 Boss。
 局内成长 (Roguelite)：
-小关结算：三选一 Hex（海克斯）。
-掉落：金币（货币）、道具（数值 Buff/Debuff）。
+小关结算：场景中刷新出一个宝箱，玩家按键交互，弹出第一个UI面板（道具UI面板），通过UI图标的形式展示道具Item和金币，玩家可以通过点击勾选是否收获此道具，选择完毕后，关闭此面板，弹出第二个面板(海克斯三选一面板), 晚间通过点击Hex卡片直接选择。然后结束此小关流程，进入下一关。
 跨场景：大厅选人 -> 进入战斗 -> 关卡切换 -> 结算回大厅。数据需要保留。
 3. 角色与 AI
 玩家：单人，大厅可选不同职业（Prefab变体），局内不换人。(目前只做一个角色，后续补充，最终成功只需要实现一个就行。)
-AI：行为简单的群怪（追击+攻击），以及有阶段转换的 Boss。
-二、 核心功能与技术栈映射 (The "How-To")
-这是你需要编写的具体系统和用到的技术。
-1. 玩家控制与物理 (Player Controller)
-技术栈：KCC (Kinematic Character Controller) + HFSM (分层状态机)
-KccMoveController.cs：核心宿主，持有状态机。
-States：GroundedState (父), AirborneState (父), DashState (混合), AttackState (动作)。
-关键逻辑：
-移动：复用现有的 KCC 逻辑。
-冲刺：使用全能 DashState，地面贴坡，空中直线飞。
-2. 玩家动画 (Player Animation)
-技术栈：Animancer + ScriptableObject
-CharacterAnimationData (SO)：存储所有动画（包括未解锁的连招）。
-PlayerAnimationSystem：每帧读取 KCC 速度更新 Mixer，监听事件播放 Clip。
-3. 战斗判定 (Combat Logic)
-技术栈：Animancer Events + Physics.OverlapBox + Interface
-实现细节：
-在 SO 的 ClipTransition 里，在挥刀的那一帧添加 Event。
-监听 Event，调用 Physics.OverlapBoxNonAlloc 检测身前区域。
-获取敌人的 IDamageable 接口，调用 TakeDamage(damage)。
-连招解锁：
-在 PlayerCombatSystem 里维护一个 int currentMaxComboIndex = 2 (初始值)。
-获得 Hex 后，currentMaxComboIndex++。
-4. 敌人 AI (Enemy AI)
-技术栈：NodeCanvas (Behaviour Tree) + KCC (简化版)
-实现细节：
-移动：由于无障碍物，不需要 NavMesh。直接在 NodeCanvas Action 里计算 (PlayerPos - MyPos).normalized，赋值给 KCC 的 Velocity。
-行为树：
-小怪：Sequence (CheckDistance -> Move -> Attack)。
-Boss：Selector (Phase 1 / Phase 2)。
-5. 数值与 Buff 系统 (Stats & Items)
-技术栈：Observer Pattern (观察者模式) + Strategy Pattern (策略模式)
-实现细节：
-Stat 类：BaseValue (100) + List<Modifier>。
-Hex/道具：本质上是一个 Modifier 对象。
-动态计算：GetDamage() 方法遍历所有 Modifier 计算最终值（例如：Base + (100 - CurrentHP) * 0.5）。
-6. 跨场景数据持久化 (Persistence)
-技术栈：VContainer ProjectScope + C# Class
-实现细节：
-创建一个纯 C# 类 GameSessionData。
-在 GameProjectScope (VContainer 的全局作用域) 里注册为 Singleton。
-在里面存：CurrentGold, CurrentHP, UnlockedHexesList。
-切场景时，这个类不会被销毁。新场景的 PlayerModel Start 时读取这个类的数据初始化自己。
-7. 关卡流程 (Level Flow)
-技术栈：Simple FSM (简易状态机) + Object Pooling (对象池)
-实现细节：
-LevelManager 脚本控制刷怪节奏。
-使用 Queue<GameObject> 或 VContainer 的池化功能管理 12 只小怪（6只场上，死一只补一只）。
+AI：行为简单的群怪（追击+攻击），以及有阶段转换的 Boss（只需要预留转换阶段的接口，目前不实现转换阶段）。

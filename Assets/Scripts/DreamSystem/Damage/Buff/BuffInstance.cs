@@ -48,10 +48,11 @@ namespace DreamSystem.Damage.Buff
         }
 
         /// <summary>
-        /// 判断 Buff 是否已到期。
+        /// 判断 Buff 是否已到期。duration &lt;= 0 视为永久 Buff，永不过期。
         /// </summary>
         public bool IsFinished()
         {
+            if (data.duration <= 0) return false;
             return remainingTime <= 0;
         }
 

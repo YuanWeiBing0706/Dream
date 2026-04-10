@@ -65,6 +65,20 @@ namespace DreamSystem.Enemy
             PlayIdle();
         }
 
+        /// <summary>
+        /// 从对象池重新激活时重置动画状态。
+        /// 死亡动画是终态（_isActionPlaying 永不自动重置），若不在此清除，
+        /// 死亡的根运动会继续将角色压入地面，且 PlayMove/PlayIdle 全部被拦截。
+        /// </summary>
+        private void OnEnable()
+        {
+            _isActionPlaying = false;
+            _currentActionState = null;
+            // 强制切回 Idle，覆盖死亡姿态，使角色回到站立位置
+            if (Animancer != null && IdleClip != null && IdleClip.Clip != null)
+                Animancer.Play(IdleClip);
+        }
+
         private void Update()
         {
             // 唯一职责：检查高优先级动画是否播完，播完后自动归还控制权

@@ -45,7 +45,8 @@ namespace DreamPool
                 var go = _resourcesManager.LoadAsset<GameObject>(objectID);
                 if (go == null)
                 {
-                    Debug.LogWarning($"Object is not Exist {objectID}");
+                    Debug.LogWarning($"[PoolManager] 资源不存在，无法创建对象池: {objectID}");
+                    return null;
                 }
 
                 int poolSize = 1;
@@ -84,7 +85,8 @@ namespace DreamPool
                 var go = _resourcesManager.LoadAsset<GameObject>(objectID);
                 if (go == null)
                 {
-                    Debug.LogWarning($"Object is not Exist {objectID}");
+                    Debug.LogWarning($"[PoolManager] 资源不存在，无法创建对象池: {objectID}");
+                    return null;
                 }
 
                 int poolSize = 1;

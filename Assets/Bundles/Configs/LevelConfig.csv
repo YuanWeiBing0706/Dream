@@ -1,11 +1,10 @@
-﻿LevelId,LevelName,ExperienceReward,DropGroupId,MonsterList,Description
-level_01,烈焰边缘,50,chest_common,Cute Devil:3|Explosive Bug:2,这里的恶魔看起来还有点可爱。
-level_02,蠕动深渊,120,chest_common,Hell Creeper:5|Explosive Bug:3,地上爬满了令人不适的植物。
-level_03,碎石谷地,250,chest_rare,Rock Hurler:3|Cute Devil:4,小心头顶飞来的巨石！
-level_04,魅影回廊,400,chest_rare,Succubus:2|Hell Creeper:4,空气中弥漫着危险的香气。
-level_05,恶魔前哨,600,chest_elite,Fire Demon:1|Rock Hurler:3,一个高大的炎魔挡住了去路。
-level_06,触手泥潭,850,chest_elite,Tentacle Monster:2|Explosive Bug:5,沼泽里伸出了可怕的触手。
-level_07,痛苦刑房,1100,chest_epic,Succubus:3|Fire Demon:2,只有最坚强的勇士才能存活。
-level_08,狂暴深坑,1500,chest_epic,Rock Hurler:4|Tentacle Monster:3,怪物们陷入了彻底的疯狂。
-level_09,巨龙王座前,2000,chest_boss_prep,Fire Demon:4|Succubus:2,最后的守卫死死护住大门。
-level_10,炎龙之巢,5000,chest_boss,Fire Dragon:1,终极试炼，直面恐惧！
+LevelId,LevelName,ExperienceReward,DropGroupId,MonsterList,IsBoss,Description
+level_01,地牢外环,80,chest_common,OrcPADefault:3|SkeletonPADefault:2,false,第一章第1关：清理外围杂兵。
+level_02,骸骨走廊,180,chest_rare,SkeletonPADefault:3|MushroomSmilePADefault:2,false,第一章第2关：骸骨与孢子怪混编推进。
+level_03,熔岩前厅,700,chest_boss,SalamanderPADefault:1,true,第一章Boss：Salamander 登场。
+level_04,潮湿石窟,450,chest_rare,OrcPADefault:2|SkeletonPADefault:3,false,第二章第1关：敌群数量提升。
+level_05,碎甲地道,950,chest_elite,SkeletonPADefault:3|MushroomSmilePADefault:3,false,第二章第2关：远近混合压制。
+level_06,深潮王庭,1700,chest_boss,CrabMonsterPADefault:1,true,第二章Boss：CrabMonster 登场。
+level_07,禁卫前线,1600,chest_boss_prep,OrcPADefault:3|SkeletonPADefault:2,false,第三章第1关：刷资源与构筑。
+level_08,审判长廊,2600,chest_boss_prep,SkeletonPADefault:3|MushroomSmilePADefault:2,false,第三章第2关：高密度小怪压制。
+level_09,终焉圣堂,9000,chest_boss,BishopKnightPADefault:1,true,第三章Boss：BishopKnight 最终决战。

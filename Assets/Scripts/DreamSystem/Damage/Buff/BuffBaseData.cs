@@ -1,4 +1,4 @@
-﻿using System.Collections.Generic;
+using System.Collections.Generic;
 using Enum.Buff;
 using Interface;
 namespace DreamSystem.Damage.Buff
@@ -36,5 +36,8 @@ namespace DreamSystem.Damage.Buff
 
         /// 层数溢出时的处理策略（已达最大层数时再次添加）
         public OverflowType overflowType = OverflowType.DontRefreshDuration;
+
+        /// 通用字符串参数（AddFlag 存标记名；AddControlLock 存锁定名；其他逻辑留空）
+        public string stringParam = "";
     }
 }

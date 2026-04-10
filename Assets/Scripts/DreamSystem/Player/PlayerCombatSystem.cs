@@ -58,8 +58,8 @@ namespace DreamSystem.Player
 
                     if (!_hitEnemyIds.Contains(hitKey))
                     {
-                        // 发布伤害请求，由 DamageManager 处理
-                        _eventManager.Publish(GameEvents.DAMAGE_REQUEST, new DamageRequest(_player.Stats, target, 10f));
+                        // 发布伤害请求（BaseDamage = 0，实际伤害由攻击力与防御力差值决定）
+                        _eventManager.Publish(GameEvents.DAMAGE_REQUEST, new DamageRequest(_player.Stats, target, 0f));
                         _hitEnemyIds.Add(hitKey);
                     }
                 }

@@ -135,22 +135,32 @@ namespace DreamManager
         /// <returns>加载成功返回 UIViewBase 实例，失败则返回 null</returns>
         private async UniTask<UIViewBase> InternalLoadAndCreateUI(string panelId, Transform parentRoot, IViewModel viewModel)
         {
-            // 1. 尝试从常驻对象池“秒开”
+            // 尝试从常驻对象池“秒开”
             if (_uiCachePool.TryGetValue(panelId, out var cachedUI))
             {
-                cachedUI.transform.SetParent(parentRoot, false);
-
-                // 从配置中获取种类
-                if (_uiConfig.TryGet(panelId, out var data))
+                // Unity 伪 null 检查：场景切换销毁 GO 后，C# 引用仍存在但 Unity 侧已失效
+                if (cachedUI == null)
                 {
-                    // 重新接驳 ViewModel 和生命周期红线
-                    cachedUI.Initialize(panelId, data.kind, viewModel, OnPanelCloseRequested);
-                    cachedUI.Open(); // 内部会执行 gameObject.SetActive(true)
+                    _uiCachePool.Remove(panelId);
+                    Debug.LogWarning($"[UIManager] 缓存面板 {panelId} 已随场景销毁，重新加载。");
+                    // fall through → 走下方异步重建流程
                 }
-                return cachedUI;
+                else
+                {
+                    cachedUI.transform.SetParent(parentRoot, false);
+
+                    // 从配置中获取种类
+                    if (_uiConfig.TryGet(panelId, out var data))
+                    {
+                        // 重新接驳 ViewModel 和生命周期红线
+                        cachedUI.Initialize(panelId, data.kind, viewModel, OnPanelCloseRequested);
+                        cachedUI.Open(); // 内部会执行 gameObject.SetActive(true)
+                    }
+                    return cachedUI;
+                }
             }
 
-            // 2. 防连击切断旧加载
+            // 防连击切断旧加载
             if (_loadingTokens.TryGetValue(panelId, out var existingCts))
             {
                 // 取消先前的加载
@@ -164,7 +174,6 @@ namespace DreamManager
 
             try
             {
-                // 3. 从只读配置中查寻址路径
                 if (_uiConfig == null || !_uiConfig.TryGet(panelId, out var uiData))
                 {
                     Debug.LogError($"[UIManager] 从 UIConfig 中找不到面板配置: {panelId}");
@@ -178,7 +187,7 @@ namespace DreamManager
                 // 5. 实例化并组装
                 GameObject panelObject = GameObject.Instantiate(prefab, parentRoot);
                 panelObject.name = panelId;
-                
+
                 // 自动重置 RectTransform 锚点与尺寸，确保全屏铺满
                 if (panelObject.transform is RectTransform rect)
                 {
@@ -199,10 +208,10 @@ namespace DreamManager
 
                 instance.name = panelId;
 
-                // 6. 放入常驻对象池！下一次就不用 await 加载了
+                // 放入常驻对象池！下一次就不用 await 加载了
                 _uiCachePool[panelId] = instance;
 
-                // 7. VContainer 装配 ViewModel 的手动绑定：
+                // VContainer 装配 ViewModel 的手动绑定：
                 instance.Initialize(panelId, uiData.kind, viewModel, OnPanelCloseRequested);
                 instance.Open();
 
@@ -224,6 +233,31 @@ namespace DreamManager
         }
 
         /// <summary>
+        /// 场景卸载时调用：清空所有可能随场景销毁的 UI 状态，防止下一个场景拿到过期引用。
+        /// </summary>
+        public void OnSceneUnloaded()
+        {
+            // 清空 _currentView（不 Destroy，Unity 场景卸载会自动销毁 GO）
+            _currentView = null;
+
+            // 清空弹窗栈
+            _openedWindows.Clear();
+            _windowStack.Clear();
+
+            // 移除缓存池中所有已被销毁的条目（== null 捕获 Unity 伪 null）
+            var deadKeys = new System.Collections.Generic.List<string>();
+            foreach (var kv in _uiCachePool)
+            {
+                if (kv.Value == null)
+                    deadKeys.Add(kv.Key);
+            }
+            foreach (var key in deadKeys)
+                _uiCachePool.Remove(key);
+
+            _nextWindowOrder = _windowOrderStart;
+        }
+
+        /// <summary>
         /// 当面板触发关闭请求时的回调
         /// </summary>
         /// <param name="panel">请求关闭的面板实体</param>
@@ -238,7 +272,7 @@ namespace DreamManager
         /// 根据指定的 ID 关闭相应的弹窗界面
         /// </summary>
         /// <param name="panelId">待关闭的弹窗标识 ID</param>
-        /// <returns>如果是合法窗口并成功隐藏则返回 true，否则返回 false</returns>
+        /// <returns>如果是合法的窗口并成功隐藏则返回 true，否则返回 false</returns>
         public bool CloseWindow(string panelId)
         {
             // 是否属于“正在异步路上还没显示”出来的幽灵面版？

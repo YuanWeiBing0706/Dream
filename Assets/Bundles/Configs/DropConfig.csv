@@ -1,8 +1,8 @@
-﻿DropGroupId,ItemId,Weight,MinCount,MaxCount,Description
+DropGroupId,ItemId,Weight,MinCount,MaxCount,Description
 chest_common,item_ring_01,50,1,1,普通宝箱：粗糙铜戒
 chest_common,item_gem_01,50,1,1,普通宝箱：碎裂红宝石
 chest_common,item_book_01,40,1,1,普通宝箱：学徒法典
-chest_common,item_scroll_01,60,1,2,普通宝箱：易出治疗卷轴
+chest_common,item_scroll_01,60,1,2,普通宝箱：治疗卷轴
 chest_common,item_ring_02,10,1,1,普通宝箱：小概率爆绿装
 chest_rare,item_ring_02,40,1,1,稀有宝箱：恶魔骨戒
 chest_rare,item_amulet_01,40,1,1,稀有宝箱：护盾护符
@@ -16,6 +16,10 @@ chest_epic,item_book_02,40,1,1,史诗宝箱：魅魔的日记
 chest_epic,item_relic_01,40,1,1,史诗宝箱：触手怪眼球
 chest_epic,item_idol_01,40,1,1,史诗宝箱：黄金神像
 chest_epic,item_amulet_02,5,1,1,史诗宝箱：极小概率爆金装
+chest_boss_prep,item_relic_01,30,1,1,Boss前宝箱：触手眼球
+chest_boss_prep,item_relic_02,30,1,1,Boss前宝箱：龙鳞碎片
+chest_boss_prep,item_amulet_02,25,1,1,Boss前宝箱：炎魔核心
+chest_boss_prep,item_book_02,15,1,1,Boss前宝箱：魅魔日记
 chest_boss,item_amulet_02,30,1,1,BOSS宝箱：炎魔核心
 chest_boss,item_crown_01,30,1,1,BOSS宝箱：破败王冠
 chest_boss,item_fang_01,30,1,1,BOSS宝箱：火龙毒牙

@@ -29,6 +29,9 @@ namespace DreamSystem.UI
             Cursor.lockState = CursorLockMode.None;
             Cursor.visible = true;
 
+            // 清理上一个场景遗留的 UI 缓存引用，防止 MissingReferenceException
+            _uiManager.OnSceneUnloaded();
+
             // 一进入场景，自动打开大厅全屏主界面
             _uiManager.ShowViewAsync(UIPanelIds.LOBBY_MAIN_VIEW, _lobbyVm).Forget();
         }

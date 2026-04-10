@@ -68,6 +68,7 @@ namespace DreamSystem.Player
             {
                 UnityEngine.Debug.Log("[PlayerDamageSystem] 玩家死亡！");
                 _playerStateMachine.TransitionTo(_playerStateMachine.DeadState);
+                _eventManager.Publish(GameEvents.PLAYER_DEAD, true);
                 return;
             }
             // 受击动画播放

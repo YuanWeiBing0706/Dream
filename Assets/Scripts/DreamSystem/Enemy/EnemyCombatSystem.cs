@@ -107,10 +107,17 @@ namespace DreamSystem.Enemy
             if (_isDetecting)
             {
                 int[] activeIndices = _currentAttack.ActiveHitBoxIndices;
+                if (activeIndices == null || EnemyHitBoxes == null || EnemyHitBoxes.Length == 0)
+                    return;
 
                 for (int a = 0; a < activeIndices.Length; a++)
                 {
                     int h = activeIndices[a];
+                    if (h < 0 || h >= EnemyHitBoxes.Length || EnemyHitBoxes[h] == null)
+                    {
+                        UnityEngine.Debug.LogWarning($"[EnemyCombat] ActiveHitBoxIndices 包含非法索引: {h}，EnemyHitBoxes.Length={EnemyHitBoxes.Length}");
+                        continue;
+                    }
                     int hitCount = EnemyHitBoxes[h].Detect(out Collider[] colliders);
 
                     for (int i = 0; i < hitCount; i++)

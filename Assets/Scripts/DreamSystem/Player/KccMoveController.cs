@@ -1,8 +1,10 @@
 using Const;
 using Cysharp.Threading.Tasks;
 using DreamManager;
+using Enum.Buff;
 using Interface;
 using KinematicCharacterController;
+using Model.Player;
 using Struct;
 using UnityEngine;
 
@@ -27,6 +29,9 @@ namespace DreamSystem.Player
 
         /// 攻击上下文 (用于传递给状态机初始化)
         private readonly IPlayerAttackContext _attackContext;
+        
+        /// 玩家属性模型（用于读取实时 Speed）
+        private readonly PlayerModel _playerModel;
 
         /// 移动输入缓存
         private MoveInputs _moveInputs;
@@ -102,12 +107,18 @@ namespace DreamSystem.Player
         public bool HasUsedAirDash { get => _hasUsedAirDash; set => _hasUsedAirDash = value; }
         public bool HasUsedJump { get => _hasUsedJump; set => _hasUsedJump = value; }
 
-        public KccMoveController(KinematicCharacterMotor motor, EventManager eventManager, PlayerStateMachine playerStateMachine, IPlayerAttackContext attackContext)
+        public KccMoveController(
+            KinematicCharacterMotor motor,
+            EventManager eventManager,
+            PlayerStateMachine playerStateMachine,
+            IPlayerAttackContext attackContext,
+            PlayerModel playerModel)
         {
             _motor = motor;
             _eventManager = eventManager;
             _playerStateMachine = playerStateMachine;
             _attackContext = attackContext;
+            _playerModel = playerModel;
         }
         
         public override void Start()
@@ -135,6 +146,12 @@ namespace DreamSystem.Player
         /// </summary>
         public override void LateTick()
         {
+            // 速度属性实时映射到移动速度，确保 Speed Buff/Debuff 立即影响手感
+            if (_playerModel?.Stats != null)
+            {
+                float speedStat = _playerModel.Stats.GetStat(StatType.Speed)?.FinalValue ?? maxStableMoveSpeed;
+                maxStableMoveSpeed = Mathf.Max(0.1f, speedStat);
+            }
             _playerStateMachine.StateMachine?.CurrentState?.OnUpdate(Time.deltaTime);
         }
 

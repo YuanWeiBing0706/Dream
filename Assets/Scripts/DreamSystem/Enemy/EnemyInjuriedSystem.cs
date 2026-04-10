@@ -1,11 +1,11 @@
 using System.Collections.Generic;
-using Animancer;
 using Const;
+using Cysharp.Threading.Tasks;
 using DreamManager;
 using DreamSystem.Damage;
 using DreamSystem.Damage.Stat;
 using Enum.Buff;
-using SO;
+using Providers;
 using Struct;
 using UnityEngine;
 
@@ -13,127 +13,158 @@ namespace DreamSystem.Enemy
 {
     /// <summary>
     /// 敌人受伤系统。
-    /// <para>职责：注册/注销敌人到伤害系统、订阅伤害结算结果、处理敌人受伤反馈。</para>
+    /// <para>职责：订阅 ENEMY_SPAWNED 事件，将新生成的敌人注册到伤害系统；
+    /// 订阅 DAMAGE_RESULT 事件，处理受伤反馈与死亡广播。</para>
     /// </summary>
     public class EnemyInjuriedSystem : GameSystem
     {
         private readonly EventManager _eventManager;
         private readonly DamageSystem _damageSystem;
+        private readonly CharacterStatsFactory _statsFactory;
 
-        /// 存储每个敌人 GameObject 对应的 CharacterStats
+        /// GameObject → 所有已注册 Collider（用于注销时批量清理）
+        private readonly Dictionary<GameObject, Collider[]> _enemyColliders = new();
+        /// GameObject → CharacterStats
         private readonly Dictionary<GameObject, CharacterStats> _enemyStats = new();
-
-        /// 存储每个敌人 GameObject 对应的 Collider（避免重复查找）
-        private readonly Dictionary<GameObject, Collider> _enemyColliders = new();
-
-        /// 存储每个敌人 CharacterStats 对应的 EnemyStatusSystem（用于受击/死亡状态设值）
+        /// CharacterStats → GameObject（O(1) 反向查找）
+        private readonly Dictionary<CharacterStats, GameObject> _statsToGo = new();
+        /// CharacterStats → EnemyStatusSystem
         private readonly Dictionary<CharacterStats, EnemyStatusSystem> _enemyStatusSystems = new();
+        /// CharacterStats → EnemyHealthBar
+        private readonly Dictionary<CharacterStats, EnemyHealthBar> _enemyHealthBars = new();
 
-        public EnemyInjuriedSystem(EventManager eventManager, DamageSystem damageSystem)
+        public EnemyInjuriedSystem(EventManager eventManager, DamageSystem damageSystem, CharacterStatsFactory statsFactory)
         {
             _eventManager = eventManager;
             _damageSystem = damageSystem;
+            _statsFactory = statsFactory;
         }
 
         public override void Start()
         {
+            _eventManager.Subscribe<EnemySpawnedData>(GameEvents.ENEMY_SPAWNED, OnEnemySpawned);
             _eventManager.Subscribe<DamageResult>(GameEvents.DAMAGE_RESULT, OnDamageResult);
-
-            // [测试用] 扫描场景中已存在的敌人并注册
-            ScanSceneEnemies();
         }
 
-        private void ScanSceneEnemies()
+        private void OnEnemySpawned(EnemySpawnedData data)
         {
-            var enemies = GameObject.FindGameObjectsWithTag("Enemy");
-            UnityEngine.Debug.Log($"[EnemyDamageSystem] 扫描到 {enemies.Length} 个场景敌人");
-
-            foreach (var enemyGo in enemies)
+            if (data.EnemyGo == null)
             {
-                RegisterEnemy(enemyGo);
+                UnityEngine.Debug.LogWarning($"[EnemyInjuriedSystem] 收到 ENEMY_SPAWNED 但 EnemyGo 为 null（characterId={data.CharacterId}），跳过注册");
+                return;
             }
+            RegisterEnemy(data.EnemyGo, data.CharacterId);
         }
 
         /// <summary>
-        /// 注册敌人到伤害系统。
-        /// <para>创建 CharacterStats、注册到 DamageManager、初始化 EnemyCombatSystem。</para>
+        /// 将敌人注册到伤害系统，并通过工厂按 characterId 初始化属性。
         /// </summary>
-        public void RegisterEnemy(GameObject enemyGo)
+        public void RegisterEnemy(GameObject enemyGo, string characterId = "OrcPADefault")
         {
-            // 从预制体上的 [SerializeField] 引用获取 Collider
-            var enemyModel = enemyGo.GetComponentInChildren<Collider>();
-            if (enemyModel == null)
+            if (enemyGo == null)
             {
-                UnityEngine.Debug.LogWarning($"[EnemyDamageSystem] 敌人 {enemyGo.name} 没有 Collider，无法注册");
+                UnityEngine.Debug.LogWarning("[EnemyInjuriedSystem] RegisterEnemy 传入 null GO，跳过");
+                return;
+            }
+            if (_enemyStats.ContainsKey(enemyGo))
+            {
+                UnityEngine.Debug.LogWarning($"[EnemyInjuriedSystem] 敌人 {enemyGo.name} 已注册，跳过重复注册");
                 return;
             }
 
-            var collider = enemyModel;
+            // 注册所有子 Collider（含根节点），保证无论玩家打到哪个碰撞体都能查到 Stats
+            var colliders = enemyGo.GetComponentsInChildren<Collider>(true);
+            if (colliders == null || colliders.Length == 0)
+            {
+                UnityEngine.Debug.LogWarning($"[EnemyInjuriedSystem] 敌人 {enemyGo.name} 缺少 Collider，无法注册");
+                return;
+            }
 
-            // 创建属性
-            CharacterStats characterStats = new CharacterStats();
+            // 通过工厂按 characterId 创建属性，找不到时回退到 "OrcPADefault"
+            var stats = _statsFactory.Create(characterId);
+            if (stats == null)
+            {
+                UnityEngine.Debug.LogWarning($"[EnemyInjuriedSystem] 找不到 {characterId} 的属性配置，使用 OrcPADefault 兜底");
+                stats = _statsFactory.Create("OrcPADefault");
+            }
 
-            // 注册到 DamageManager 查找表
-            _damageSystem.Register(collider, characterStats);
+            foreach (var col in colliders)
+                _damageSystem.Register(col, stats);
 
-            // 初始化 EnemyCombatSystem（传递 CharacterStats 和 EventManager）
             var combatSystem = enemyGo.GetComponentInChildren<EnemyCombatSystem>();
             if (combatSystem != null)
             {
-                combatSystem.Initialize(characterStats, _eventManager);
+                combatSystem.Initialize(stats, _eventManager);
             }
 
-            // 获取并缓存该敌人自己的 EnemyStatusSystem
             var statusSystem = enemyGo.GetComponentInChildren<EnemyStatusSystem>();
             if (statusSystem != null)
+                _enemyStatusSystems[stats] = statusSystem;
+
+            var healthBar = enemyGo.GetComponentInChildren<EnemyHealthBar>();
+            if (healthBar != null)
             {
-                _enemyStatusSystems[characterStats] = statusSystem;
+                float maxHp = stats.GetStat(StatType.Health).FinalValue;
+                healthBar.UpdateHp(maxHp, maxHp);
+                _enemyHealthBars[stats] = healthBar;
             }
 
-            // 存储引用
-            _enemyStats[enemyGo] = characterStats;
-            _enemyColliders[enemyGo] = collider;
+            _enemyColliders[enemyGo] = colliders;
+            _enemyStats[enemyGo] = stats;
+            _statsToGo[stats] = enemyGo;
 
-            UnityEngine.Debug.Log($"[EnemyDamageSystem] 敌人 {enemyGo.name} 已注册到伤害系统");
+            UnityEngine.Debug.Log($"[EnemyInjuriedSystem] 敌人 {enemyGo.name} ({characterId}) 已注册到伤害系统");
         }
 
         /// <summary>
-        /// 从伤害系统注销敌人。
+        /// 从伤害系统注销敌人（怪物归还对象池前调用）。
         /// </summary>
         public void UnregisterEnemy(GameObject enemyGo)
         {
-            if (_enemyColliders.TryGetValue(enemyGo, out var collider))
+            if (_enemyColliders.TryGetValue(enemyGo, out var colliders))
             {
-                _damageSystem.Unregister(collider);
+                foreach (var col in colliders)
+                    _damageSystem.Unregister(col);
                 _enemyColliders.Remove(enemyGo);
             }
 
             if (_enemyStats.TryGetValue(enemyGo, out var stats))
             {
+                _statsToGo.Remove(stats);
                 _enemyStatusSystems.Remove(stats);
+                _enemyHealthBars.Remove(stats);
                 _enemyStats.Remove(enemyGo);
             }
 
-            UnityEngine.Debug.Log($"[EnemyDamageSystem] 敌人 {enemyGo.name} 已从伤害系统注销");
+            UnityEngine.Debug.Log($"[EnemyInjuriedSystem] 敌人 {enemyGo.name} 已从伤害系统注销");
         }
 
-        /// <summary>
-        /// 伤害结算结果回调：判断是否是敌人受伤，处理反馈。
-        /// </summary>
         private void OnDamageResult(DamageResult result)
         {
-            // 检查受击方是否是我们管理的敌人
-            if (!_enemyStats.ContainsValue(result.TargetStats)) return;
+            if (!_statsToGo.TryGetValue(result.TargetStats, out var enemyGo)) return;
 
-            UnityEngine.Debug.Log($"[EnemyDamageSystem] 敌人受到 {result.FinalDamage} 点伤害，当前血量: {result.TargetStats.GetCurrentStatValue(StatType.Health)}");
+            // 已死亡的敌人不再处理（防止尸体被反复命中产生重复事件）
+            if (_enemyStatusSystems.TryGetValue(result.TargetStats, out var statusSystem) && statusSystem.IsDead)
+                return;
 
-            // 通过 TargetStats 找到该敌人的 StatusSystem，设置行为树条件标志
-            if (!_enemyStatusSystems.TryGetValue(result.TargetStats, out var statusSystem)) return;
+            float currentHp = result.TargetStats.GetCurrentStatValue(StatType.Health);
+            float maxHp = result.TargetStats.GetStat(StatType.Health).FinalValue;
+
+            UnityEngine.Debug.Log($"[EnemyInjuriedSystem] 敌人 {enemyGo.name} 受到 {result.FinalDamage} 点伤害，" +
+                                  $"剩余血量: {currentHp} / {maxHp}");
+
+            if (_enemyHealthBars.TryGetValue(result.TargetStats, out var healthBar))
+                healthBar.UpdateHp(currentHp, maxHp);
+
+            if (statusSystem == null) return;
 
             if (result.IsDead)
             {
-                UnityEngine.Debug.Log("[EnemyDamageSystem] 敌人死亡！");
+                UnityEngine.Debug.Log($"[EnemyInjuriedSystem] 敌人 {enemyGo.name} 死亡！");
+                // 先标记死亡、发布事件，再注销（避免事件处理时找不到数据）
                 statusSystem.SetDead(true);
+                _eventManager.Publish(GameEvents.ENEMY_DEATH, enemyGo);
+                UnregisterEnemy(enemyGo);
                 return;
             }
 
@@ -142,19 +173,21 @@ namespace DreamSystem.Enemy
 
         public override void Dispose()
         {
-            _eventManager.Unsubscribe<DamageResult>(GameEvents.DAMAGE_RESULT, OnDamageResult);
+            _eventManager.Unsubscribe<EnemySpawnedData>(GameEvents.ENEMY_SPAWNED, OnEnemySpawned).Forget();
+            _eventManager.Unsubscribe<DamageResult>(GameEvents.DAMAGE_RESULT, OnDamageResult).Forget();
 
             foreach (var kvp in _enemyColliders)
             {
-                if (kvp.Value != null)
-                {
-                    _damageSystem.Unregister(kvp.Value);
-                }
+                if (kvp.Value == null) continue;
+                foreach (var col in kvp.Value)
+                    if (col != null) _damageSystem.Unregister(col);
             }
 
-            _enemyStats.Clear();
             _enemyColliders.Clear();
+            _enemyStats.Clear();
+            _statsToGo.Clear();
             _enemyStatusSystems.Clear();
+            _enemyHealthBars.Clear();
         }
     }
 }

@@ -231,6 +231,12 @@ namespace DreamSystem.Damage.Stat
                 stat.AddModifier(modifier);
                 if (!Mathf.Approximately(oldValue, stat.FinalValue))
                 {
+                    if (type == StatType.Shield)
+                    {
+                        // 护盾属性变化时，同步调整当前护盾值，确保护盾 Buff 立即体现在受伤结算中
+                        float delta = stat.FinalValue - oldValue;
+                        ChangeCurrentStatValue(StatType.Shield, delta);
+                    }
                     ClampCurrentValueIfNeeded(type);
                     OnStatChanged?.Invoke(type, stat.FinalValue);
                     NotifyDataChanged(type);
@@ -252,6 +258,12 @@ namespace DreamSystem.Damage.Stat
                 stat.RemoveModifier(modifier);
                 if (!Mathf.Approximately(oldValue, stat.FinalValue))
                 {
+                    if (type == StatType.Shield)
+                    {
+                        // 移除护盾属性修改时，同步扣减对应的当前护盾值
+                        float delta = stat.FinalValue - oldValue;
+                        ChangeCurrentStatValue(StatType.Shield, delta);
+                    }
                     ClampCurrentValueIfNeeded(type);
                     OnStatChanged?.Invoke(type, stat.FinalValue);
                     NotifyDataChanged(type);

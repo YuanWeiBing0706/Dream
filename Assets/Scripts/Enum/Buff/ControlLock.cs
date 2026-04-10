@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 
 namespace Enum.Buff
 {
@@ -9,9 +9,11 @@ namespace Enum.Buff
     [Flags]
     public enum ControlLock
     {
-        None = 0,
-        Move = 1 << 0,
+        None   = 0,
+        Move   = 1 << 0,
         Attack = 1 << 1,
-        Cast = 1 << 2
+        Cast   = 1 << 2,
+        /// 禁用冲刺/闪避（对应 Hex"舍弃回避"系列）
+        Dash   = 1 << 3,
     }
 }

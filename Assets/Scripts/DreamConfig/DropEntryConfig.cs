@@ -24,7 +24,8 @@ namespace DreamConfig
             var textAsset = resourcesManager.LoadAsset<TextAsset>("DropConfig");
             var data = CsvHelper.ReadCsv(textAsset);
 
-            for (int i = 1; i < data.Count; i++)
+            // CsvHelper 已跳过标题行，从 i=0 开始遍历数据行
+            for (int i = 0; i < data.Count; i++)
             {
                 if (data[i].Length < 5 || string.IsNullOrWhiteSpace(data[i][0])) continue;
 

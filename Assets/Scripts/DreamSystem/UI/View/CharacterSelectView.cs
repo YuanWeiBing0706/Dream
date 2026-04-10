@@ -15,7 +15,8 @@ namespace DreamSystem.UI.View
         [SerializeField] private CharacterSelectItem[] CharacterItems;
 
         /// 当前选中的英雄唯一ID
-        private string _selectedHeroId = "Hero_Knight"; // 默认选中骑士，防止报错
+        private string _selectedHeroId;
+        private CharacterSelectItem _selectedItem;
 
         protected override void OnBindTyped(CharacterSelectViewModel viewModel)
         {
@@ -40,10 +41,11 @@ namespace DreamSystem.UI.View
             }
 
             // 每次打开面板时，恢复按钮可交互状态
-            if (ConfirmBtn != null) ConfirmBtn.interactable = true;
+            if (ConfirmBtn != null) ConfirmBtn.interactable = false; // 必须先选一个职业
             if (CloseBtn != null) CloseBtn.interactable = true;
 
-            // 初始显示第一个英雄的高亮状态 (可选)
+            _selectedHeroId = null;
+            _selectedItem = null;
             UpdateSelectionVisual();
         }
 
@@ -56,11 +58,41 @@ namespace DreamSystem.UI.View
         /// 当任何一个英雄项被点击时触发
         private void OnCharacterSelected(string heroId)
         {
+            if (string.IsNullOrWhiteSpace(heroId))
+            {
+                UnityEngine.Debug.LogWarning("[CharacterSelect] 该卡片未配置 CharacterId。");
+                return;
+            }
+
+            CharacterSelectItem clickedItem = null;
+            if (CharacterItems != null)
+            {
+                foreach (var item in CharacterItems)
+                {
+                    if (item != null && item.CharacterId == heroId)
+                    {
+                        clickedItem = item;
+                        break;
+                    }
+                }
+            }
+
+            // 先还原旧选中，再应用新选中，避免旧卡残留高亮
+            if (_selectedItem != null && _selectedItem != clickedItem)
+                _selectedItem.SetSelected(false);
+
             _selectedHeroId = heroId;
+            _selectedItem = clickedItem;
             UnityEngine.Debug.Log($"[CharacterSelect] 玩家选择了: {heroId}");
 
-            // 更新所有项的高亮状态
-            UpdateSelectionVisual();
+            if (_selectedItem != null)
+                _selectedItem.SetSelected(true);
+            else
+                // 若未找到对应项（例如 CharacterId 重复/未配），降级为全量刷新
+                UpdateSelectionVisual();
+
+            if (ConfirmBtn != null)
+                ConfirmBtn.interactable = true;
         }
 
         /// 更新子项的视觉选中状态

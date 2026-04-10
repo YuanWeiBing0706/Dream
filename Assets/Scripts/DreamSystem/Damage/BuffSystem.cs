@@ -13,12 +13,15 @@ namespace DreamSystem.Damage
     /// <para>管理角色身上所有 Buff 的生命周期，不依赖 MonoBehaviour。</para>
     /// <para>职责：Buff 的添加/移除/叠层/到期处理/标签查询/标签黑名单/控制锁定/优先级排序。</para>
     /// </summary>
-    public class BuffSystem
+    public class BuffSystem : System.IDisposable
     {
         private readonly List<BuffInstance> _buffInstanceList = new List<BuffInstance>();
         private readonly BuffManager _buffManager;
-        private readonly IBuffOwner _owner;
-        private readonly ControlGate _controlGate;
+        private IBuffOwner _owner;
+        private ControlGate _controlGate;
+
+        /// <summary>全局事件总线，供 TriggerOnEventBuffLogic 等触发型逻辑订阅事件使用。</summary>
+        public EventManager EventManager { get; }
 
         /// 标签黑名单引用计数（被黑名单的标签 → 引用计数）
         private readonly Dictionary<BuffTag, int> _tagBlacklistRefCounts = new Dictionary<BuffTag, int>();
@@ -27,16 +30,32 @@ namespace DreamSystem.Damage
         private readonly Dictionary<BuffInstance, Dictionary<BuffTag, int>> _blacklistContributionsByBuff = new Dictionary<BuffInstance, Dictionary<BuffTag, int>>();
 
         /// <summary>
-        /// 构造函数。
+        /// 构造函数。ControlGate 是 MonoBehaviour，不能由 VContainer 用 new 创建，
+        /// 因此不在此注入，可通过 SetControlGate() 在场景中手动绑定（可选）。
         /// </summary>
-        /// <param name="owner">Buff 效果作用的目标实体（实现 IBuffOwner 的玩家、怪物等）</param>
         /// <param name="buffManager">Buff 工厂（从 DI 容器注入）</param>
-        /// <param name="controlGate">控制锁定门（可为 null，不使用控制锁定）</param>
-        public BuffSystem(IBuffOwner owner, BuffManager buffManager, ControlGate controlGate = null)
+        /// <param name="eventManager">全局事件总线（供触发型 Buff 逻辑订阅事件）</param>
+        public BuffSystem(BuffManager buffManager, EventManager eventManager)
+        {
+            _buffManager = buffManager;
+            EventManager = eventManager;
+        }
+
+        /// <summary>
+        /// 可选：绑定 ControlGate MonoBehaviour（控制锁定功能）。
+        /// 若不调用，所有控制锁定效果将静默跳过。
+        /// </summary>
+        public void SetControlGate(ControlGate controlGate)
+        {
+            _controlGate = controlGate;
+        }
+
+        /// <summary>
+        /// 设置 Buff 作用的目标实体。由 PlayerModel.Start() 在 DI 完成后调用。
+        /// </summary>
+        public void SetOwner(IBuffOwner owner)
         {
             _owner = owner;
-            _buffManager = buffManager;
-            _controlGate = controlGate;
         }
 
         public void TickTurn()
@@ -290,6 +309,17 @@ namespace DreamSystem.Damage
             {
                 RemoveBuffAt(i);
             }
+            _tagBlacklistRefCounts.Clear();
+            _blacklistContributionsByBuff.Clear();
+        }
+
+        /// <summary>
+        /// VContainer 在 LifetimeScope 销毁（场景卸载）时自动调用。
+        /// 确保所有 Buff 的 OnRemove 被执行，彻底清理事件订阅与属性修改器，防止内存泄漏。
+        /// </summary>
+        public void Dispose()
+        {
+            ClearAllBuff();
         }
 
         // ============================================

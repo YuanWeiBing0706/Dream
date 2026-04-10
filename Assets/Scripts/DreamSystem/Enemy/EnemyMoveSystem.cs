@@ -1,3 +1,4 @@
+using Cysharp.Threading.Tasks;
 using UnityEngine;
 using UnityEngine.AI;
 
@@ -42,6 +43,53 @@ namespace DreamSystem.Enemy
         private float Speed;
 
         /// <summary>
+        /// 从对象池重新激活时，异步强制将 NavMeshAgent 传送到正确出生点。
+        /// <para>NavMesh 系统在同帧内不会完成 Agent 的重新放置（isOnNavMesh 仍为 false），
+        /// 必须等一帧让引擎完成初始化后再 Warp，否则 Agent 会用旧位置导致卡墙。</para>
+        /// </summary>
+        private void OnEnable()
+        {
+            if (NavMeshAgent == null) return;
+            _playerGameObject = null; // 清除玩家缓存，避免引用上一局已销毁的玩家
+
+            // 不能 disable NavMeshAgent：行为树在同帧就会调用 SetDestination，
+            // 若 Agent 被禁用则静默失败，行为树进入"等待寻路"状态不再重试，
+            // 导致怪物卡在出生点直到下一次状态机重新评估。
+            //
+            // NavMeshAgent 自身的 OnEnable 会在本组件的 OnEnable 之前运行，
+            // 它已将 Agent 放置到 transform.position（PoolManager 出生点），
+            // 我们只需清除旧路径，并在同帧或下一帧 Warp 到精确采样点即可。
+
+            NavMeshAgent.ResetPath(); // 清除上一局残留路径
+
+            if (NavMeshAgent.isOnNavMesh)
+            {
+                WarpToSpawnPosition();
+            }
+            else
+            {
+                // 极少数情况：NavMesh 尚未在本帧完成绑定，保持 Agent 启用，
+                // 下一帧再 Warp（行为树此时也只刚开始运行，不影响指令）
+                DeferredWarpAsync().Forget();
+            }
+        }
+
+        private void WarpToSpawnPosition()
+        {
+            Vector3 target = transform.position;
+            if (NavMesh.SamplePosition(target, out NavMeshHit hit, 5f, NavMesh.AllAreas))
+                target = hit.position;
+            NavMeshAgent.Warp(target);
+        }
+
+        private async UniTaskVoid DeferredWarpAsync()
+        {
+            var ct = this.GetCancellationTokenOnDestroy();
+            await UniTask.NextFrame(ct);
+            if (ct.IsCancellationRequested || NavMeshAgent == null) return;
+            WarpToSpawnPosition();
+        }
+
         /// 追击目标：设置 NavMesh 目的地为目标位置。
         /// </summary>
         /// <param name="target">追击目标的 Transform</param>

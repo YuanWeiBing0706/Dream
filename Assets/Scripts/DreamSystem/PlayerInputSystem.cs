@@ -19,6 +19,8 @@ namespace DreamSystem
         public override void Start()
         {
             _gameInputManager.PlayerControl.Enable();
+            _eventManager.Subscribe(GameEvents.GAME_INPUT_LOCKED, OnInputLocked);
+            _eventManager.Subscribe(GameEvents.GAME_INPUT_UNLOCKED, OnInputUnlocked);
             _gameInputManager.PlayerControl.Move.performed += OnMovementPerformed;
             _gameInputManager.PlayerControl.Move.canceled += OnMovementCanceled;
             _gameInputManager.PlayerControl.Jump.performed += OnJumpPerformed;
@@ -31,6 +33,16 @@ namespace DreamSystem
             _gameInputManager.PlayerControl.HeavyAttack.performed += OnHeavyAttackPerformed;
             _gameInputManager.PlayerControl.HeavyAttack.canceled += OnHeavyAttackCanceled;
 
+        }
+
+        private void OnInputLocked()
+        {
+            _gameInputManager.PlayerControl.Disable();
+        }
+
+        private void OnInputUnlocked()
+        {
+            _gameInputManager.PlayerControl.Enable();
         }
 
         private void OnHeavyAttackCanceled(InputAction.CallbackContext obj)
@@ -93,6 +105,8 @@ namespace DreamSystem
 
         public override void Dispose()
         {
+            _eventManager.Unsubscribe(GameEvents.GAME_INPUT_LOCKED, OnInputLocked);
+            _eventManager.Unsubscribe(GameEvents.GAME_INPUT_UNLOCKED, OnInputUnlocked);
             _gameInputManager.PlayerControl.Enable();
             _gameInputManager.PlayerControl.Move.performed -= OnMovementPerformed;
             _gameInputManager.PlayerControl.Move.canceled -= OnMovementCanceled;

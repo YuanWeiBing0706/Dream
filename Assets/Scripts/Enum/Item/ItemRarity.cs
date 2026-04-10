@@ -1,11 +1,10 @@
-﻿namespace Enum.Item
+namespace Enum.Item
 {
     public enum ItemRarity
     {
-        White = 1,
-        Green = 2,
-        Blue = 3,
-        Purple = 4,
-        Gold = 5
+        White      = 1,
+        Rare       = 2,
+        Epic       = 3,
+        Legendary  = 4
     }
 }

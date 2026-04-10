@@ -13,17 +13,22 @@ namespace DreamSystem.Camera
         private const float ZOOM_DAMPING = 5f;
         private const float MIN_SCALE = 0.5f;
         private const float MAX_SCALE = 3.0f; 
+        private const float INITIAL_SCALE = 1.35f; // 初始镜头距离倍率（>1 更远）
 
         // State
-        private float _targetScale = 1f; 
-        private float _currentScale = 1f; 
+        private float _targetScale = INITIAL_SCALE; 
+        private float _currentScale = INITIAL_SCALE; 
         
         private OrbitSettings[] _originalOrbits = new OrbitSettings[3];
 
         // Dependencies
         private readonly CinemachineFreeLook _cinemachineFreeLook;
         private readonly EventManager _eventManager;
-        
+
+        // 保存 UI 阶段前的轴速度上限，以便解锁时恢复
+        private float _savedXMaxSpeed;
+        private float _savedYMaxSpeed;
+
         public CinemachineProportionalZoom(CinemachineFreeLook cinemachineFreeLook, EventManager eventManager)
         {
             _cinemachineFreeLook = cinemachineFreeLook;
@@ -41,7 +46,36 @@ namespace DreamSystem.Camera
                 _originalOrbits[i].radius = _cinemachineFreeLook.m_Orbits[i].m_Radius;
             }
 
+            // 保存原始轴速度上限，解锁时恢复
+            _savedXMaxSpeed = _cinemachineFreeLook.m_XAxis.m_MaxSpeed;
+            _savedYMaxSpeed = _cinemachineFreeLook.m_YAxis.m_MaxSpeed;
+
             _eventManager.Subscribe<float>(GameEvents.PLAYER_CAMERA_ZOOM, OnCameraZoom);
+            _eventManager.Subscribe(GameEvents.GAME_INPUT_LOCKED, OnInputLocked);
+            _eventManager.Subscribe(GameEvents.GAME_INPUT_UNLOCKED, OnInputUnlocked);
+        }
+
+        /// <summary>
+        /// 进入 UI 阶段：将轴速度上限清零。
+        /// Cinemachine 内部 AxisState.Update() 每帧用 m_MaxSpeed 乘以输入量计算新值，
+        /// 设为 0 后无论任何输入源（Legacy / New Input System / CinemachineInputProvider）
+        /// 均无法改变轴值，不存在 LateTick 与 LateUpdate 执行顺序带来的一帧抖动。
+        /// </summary>
+        private void OnInputLocked()
+        {
+            if (_cinemachineFreeLook == null) return;
+            _cinemachineFreeLook.m_XAxis.m_MaxSpeed = 0f;
+            _cinemachineFreeLook.m_YAxis.m_MaxSpeed = 0f;
+        }
+
+        /// <summary>
+        /// 离开 UI 阶段：恢复轴速度上限。
+        /// </summary>
+        private void OnInputUnlocked()
+        {
+            if (_cinemachineFreeLook == null) return;
+            _cinemachineFreeLook.m_XAxis.m_MaxSpeed = _savedXMaxSpeed;
+            _cinemachineFreeLook.m_YAxis.m_MaxSpeed = _savedYMaxSpeed;
         }
         
         private void OnCameraZoom(float scrollAmount)
@@ -58,7 +92,6 @@ namespace DreamSystem.Camera
         public override void LateTick()
         {
             if (_cinemachineFreeLook == null) return;
-            
             ZoomCameraView();
         }
 
@@ -79,6 +112,8 @@ namespace DreamSystem.Camera
         public override void Dispose()
         {
             _eventManager.Unsubscribe<float>(GameEvents.PLAYER_CAMERA_ZOOM, OnCameraZoom).Forget();
+            _eventManager.Unsubscribe(GameEvents.GAME_INPUT_LOCKED, OnInputLocked).Forget();
+            _eventManager.Unsubscribe(GameEvents.GAME_INPUT_UNLOCKED, OnInputUnlocked).Forget();
         }
     }
     

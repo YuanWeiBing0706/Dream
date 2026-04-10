@@ -78,7 +78,7 @@ namespace DreamSystem.UI.View
 
         private void OnExitGameClicked()
         {
-            UnityEngine.Debug.Log("OnExitGameClicked");
+            this.Vm?.RequestExitGame();
         }
     }
 }

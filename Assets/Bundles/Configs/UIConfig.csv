@@ -1,3 +1,8 @@
-﻿PanelId,AssetPath,Kind,BaseSortOrder,IsCacheable
+PanelId,AssetPath,Kind,BaseSortOrder,IsCacheable
 LOBBY_MAIN_VIEW,LobbyMainInterface,View,0,True
 CHARACTER_SELECT_VIEW,LobbyStartGameInterface,Window,0,True
+PLAYER_STATUS_VIEW,BattleHUDInterface,View,0,True
+HEX_SELECT_VIEW,HexSelectInterface,Window,100,True
+ITEM_SELECT_VIEW,ItemSelectInterface,Window,90,True
+SHOP_VIEW,ShopSelectInterface,Window,95,True
+GAME_RESULT_VIEW,GameResultInterface,Window,150,True

@@ -125,6 +125,11 @@ namespace DreamSystem.Damage.Stat
             value = Math.Clamp(value, _minValue, _maxValue);
             float precision = (float)Math.Pow(10f, _decimalPlaces);
             _finalValue = (float)Math.Round(value * precision) / precision;
+
+            // 5. 浮点精度归零：防止 PercentMult = -1.0 后残留 1e-7 级误差穿透外部判断逻辑
+            //    阈值取 0.5 个精度单位，低于此值必然会被四舍五入为零
+            if (_finalValue != 0f && UnityEngine.Mathf.Abs(_finalValue) < 0.5f / precision)
+                _finalValue = 0f;
         }
     }
 }

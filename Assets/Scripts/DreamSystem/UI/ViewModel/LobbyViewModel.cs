@@ -33,5 +33,17 @@ namespace DreamSystem.UI.ViewModel
             // 3. 阻塞等待：直到玩家在选角界面点了“确定”或“取消”
             await selectionTask;
         }
+
+        /// <summary>
+        /// 退出游戏。
+        /// </summary>
+        public void RequestExitGame()
+        {
+#if UNITY_EDITOR
+            UnityEditor.EditorApplication.isPlaying = false;
+#else
+            UnityEngine.Application.Quit();
+#endif
+        }
     }
 }

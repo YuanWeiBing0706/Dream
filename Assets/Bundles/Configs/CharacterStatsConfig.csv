@@ -1,4 +1,9 @@
-﻿characterId,baseMaxHealth,baseShield,baseAttack,baseDefense,baseSpeed
+characterId,baseMaxHealth,baseShield,baseAttack,baseDefense,baseSpeed
 player,200,0,10,5,5
-slime,30,0,3,1,2
-dragon,5000,500,150,80,10
+DoubleSword,200,0,20,4,7
+OrcPADefault,70,0,9,5,3
+SkeletonPADefault,50,0,11,2,5
+MushroomSmilePADefault,90,0,8,8,2
+SalamanderPADefault,400,50,25,12,4
+CrabMonsterPADefault,650,100,20,20,2
+BishopKnightPADefault,900,150,30,16,3

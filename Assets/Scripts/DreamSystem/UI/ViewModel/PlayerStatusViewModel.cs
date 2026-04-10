@@ -1,91 +1,139 @@
+using System;
+using System.Collections.Generic;
+using Data;
+using DreamConfig;
+using DreamManager;
 using DreamSystem.Damage.Stat;
 using Enum.Buff;
+using Model.Player;
+using VContainer;
 
 namespace DreamSystem.UI.ViewModel
 {
     public sealed class PlayerStatusViewModel : ViewModelBase
     {
-        /// 玩家核心属性状态引用
-        private readonly CharacterStats _characterStats;
+        private readonly PlayerModel _playerModel;
+        private readonly GameSessionData _sessionData;
+        private readonly ResourcesManager _resources;
 
-        /// <summary>
-        /// 初始化状态拦截模型，注册底层状态依赖
-        /// </summary>
-        /// <param name="characterStats">包含最新数据和事件的属性对象</param>
-        public PlayerStatusViewModel(CharacterStats characterStats)
+        public ResourcesManager Resources => _resources;
+
+        public float CurrentHpFill
         {
-            _characterStats = characterStats;
+            get
+            {
+                if (_playerModel?.Stats == null) return 1f;
+                float max = GetFinalStatValue(StatType.Health);
+                return max > 0 ? GetCurrentStatValue(StatType.Health) / max : 1f;
+            }
         }
 
+        public int GoldCount => _sessionData.CurrentCoinCount;
+        public string LevelInfo => $"第{_sessionData.Chapter}关 第{_sessionData.Level}层";
+
+        private int _countdownValue;
+        public int CountdownValue => _countdownValue;
+
+        private bool _showCountdown;
+        public bool ShowCountdown => _showCountdown;
+
         /// <summary>
-        /// ViewModel 开始工作的切入点，启动监听和初次广播
+        /// 当前有修改器生效（FinalValue ≠ BaseValue）的属性类型列表。
+        /// View 据此决定哪些 StatType 图标可见，生命周期与属性状态完全同步。
         /// </summary>
+        private readonly List<StatType> _modifiedStats = new();
+        public IReadOnlyList<StatType> ModifiedStats => _modifiedStats;
+
+        [Inject]
+        public PlayerStatusViewModel(PlayerModel playerModel, GameSessionData sessionData, ResourcesManager resources)
+        {
+            _playerModel = playerModel;
+            _sessionData = sessionData;
+            _resources = resources;
+        }
+
         public override void OnEnter()
         {
-            if (_characterStats == null)
-            {
-                return;
-            }
+            if (_playerModel == null) return;
 
-            // 绑定角色属性变更事件，以随时触发刷新
-            // _characterStats.onDataChanged += HandleDataChanged;
+            if (_playerModel.Stats != null)
+                _playerModel.Stats.OnDataChanged += HandleStatsChanged;
+
+            _playerModel.OnStatsInitialized += OnPlayerStatsReady;
+
+            RebuildModifiedStats();
             NotifyRefresh();
         }
 
-        /// <summary>
-        /// 结束监听时收回事件注册
-        /// </summary>
         public override void OnExit()
         {
-            if (_characterStats == null)
+            if (_playerModel != null)
             {
-                return;
+                if (_playerModel.Stats != null)
+                    _playerModel.Stats.OnDataChanged -= HandleStatsChanged;
+                _playerModel.OnStatsInitialized -= OnPlayerStatsReady;
             }
-
-            // 离开时注销事件防止闭包泄漏
-            // _characterStats.onDataChanged -= HandleDataChanged;
         }
 
-        /// <summary>
-        /// 当属性层触发变化时，接管数据并向视图层转发刷新信标
-        /// </summary>
-        /// <param name="refreshKey">变动涉及的属性键标识</param>
-        private void HandleDataChanged(int refreshKey)
+        private void OnPlayerStatsReady()
         {
+            if (_playerModel?.Stats != null)
+                _playerModel.Stats.OnDataChanged += HandleStatsChanged;
+
+            RebuildModifiedStats();
+            NotifyRefresh();
+        }
+
+        private void HandleStatsChanged(int refreshKey)
+        {
+            RebuildModifiedStats();
             NotifyRefresh(refreshKey);
         }
 
         /// <summary>
-        /// 给视图层提供获取该属性包含所有加成后的最终数值的接口
+        /// 扫描所有 StatType，将 FinalValue ≠ BaseValue 的属性加入可见列表。
+        /// 该逻辑替代了原先基于 HexConfig.iconPath 的字符串路径方案：
+        /// 无需追踪 Buff 生命周期，图标显示状态与属性实际状态完全同步。
         /// </summary>
-        /// <param name="statType">期望的属性类别</param>
-        /// <returns>最终浮点属性数值</returns>
-        public float GetFinalStatValue(StatType statType)
+        private void RebuildModifiedStats()
         {
-            if (_characterStats == null)
-            {
-                return 0f;
-            }
+            _modifiedStats.Clear();
+            if (_playerModel?.Stats == null) return;
 
-            // 查找对应状态类型数据
-            BaseStat stat = _characterStats.GetStat(statType);
-            return stat != null ? stat.FinalValue : 0f;
+            foreach (StatType statType in System.Enum.GetValues(typeof(StatType)))
+            {
+                BaseStat stat = _playerModel.Stats.GetStat(statType);
+                if (stat != null && Math.Abs(stat.FinalValue - stat.BaseValue) > 0.001f)
+                    _modifiedStats.Add(statType);
+            }
+        }
+
+        public void SetCountdown(int value, bool visible)
+        {
+            _countdownValue = value;
+            _showCountdown = visible;
+            NotifyRefresh();
         }
 
         /// <summary>
-        /// 给视图层提供获取该属性当前变动数值（例如血量或蓝量）的接口
+        /// 关卡推进后刷新层数/金币等会话数据显示（由 LevelManager.AdvanceProgression 调用）。
         /// </summary>
-        /// <param name="statType">期望的属性类别</param>
-        /// <returns>当前的浮点数值</returns>
+        public void RefreshSessionInfo()
+        {
+            NotifyRefresh();
+        }
+
+        public float GetFinalStatValue(StatType statType)
+        {
+            if (_playerModel?.Stats == null) return 100f;
+            BaseStat stat = _playerModel.Stats.GetStat(statType);
+            return (stat != null && stat.FinalValue > 0) ? stat.FinalValue : 100f;
+        }
+
         public float GetCurrentStatValue(StatType statType)
         {
-            if (_characterStats == null)
-            {
-                return 0f;
-            }
-
-            // 返回当前实时的值
-            return _characterStats.GetCurrentStatValue(statType);
+            if (_playerModel?.Stats == null) return 0f;
+            return _playerModel.Stats.GetCurrentStatValue(statType);
         }
     }
 }
